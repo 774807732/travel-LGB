@@ -1,0 +1,182 @@
+[
+  {
+    "id": "home",
+    "source": "outputs/art/source/home.png",
+    "output": "public/art/backgrounds/home.webp",
+    "width": 900
+  },
+  {
+    "id": "idle",
+    "source": "outputs/art/source/idle-alpha.png",
+    "output": "public/art/characters/idle.webp",
+    "width": 300
+  },
+  {
+    "id": "card_daoming_01",
+    "source": "outputs/art/source/card_daoming_01.png",
+    "output": "public/art/cards/card_daoming_01.webp",
+    "width": 1200
+  },
+  {
+    "id": "yard",
+    "source": "outputs/art/source/yard.png",
+    "output": "public/art/backgrounds/yard.webp",
+    "width": 900
+  },
+  {
+    "id": "satchel",
+    "source": "outputs/art/source/satchel.png",
+    "output": "public/art/props/satchel.webp",
+    "width": 300
+  },
+  {
+    "id": "mail-clip",
+    "source": "outputs/art/source/mail-clip-alpha.png",
+    "output": "public/art/props/mail-clip.webp",
+    "width": 300
+  },
+  {
+    "id": "harvest-tray",
+    "source": "outputs/art/source/harvest-tray-alpha.png",
+    "output": "public/art/props/harvest-tray.webp",
+    "width": 300
+  },
+  {
+    "id": "packing",
+    "source": "outputs/art/source/packing-alpha.png",
+    "output": "public/art/characters/packing.webp",
+    "width": 300
+  },
+  {
+    "id": "eating",
+    "source": "outputs/art/source/eating-alpha.png",
+    "output": "public/art/characters/eating.webp",
+    "width": 300
+  },
+  {
+    "id": "dozing",
+    "source": "outputs/art/source/dozing-alpha.png",
+    "output": "public/art/characters/dozing.webp",
+    "width": 300
+  },
+  {
+    "id": "walking",
+    "source": "outputs/art/source/walking-alpha.png",
+    "output": "public/art/characters/walking.webp",
+    "width": 300
+  },
+  {
+    "id": "food_home_meal",
+    "source": "outputs/art/source/food_home_meal.png",
+    "output": "public/art/items/food_home_meal.webp",
+    "width": 300
+  },
+  {
+    "id": "food_yeerba",
+    "source": "outputs/art/source/food_yeerba.png",
+    "output": "public/art/items/food_yeerba.webp",
+    "width": 300
+  },
+  {
+    "id": "food_guokui",
+    "source": "outputs/art/source/food_guokui.png",
+    "output": "public/art/items/food_guokui.webp",
+    "width": 300
+  },
+  {
+    "id": "gear_bamboo_flask",
+    "source": "outputs/art/source/gear_bamboo_flask.png",
+    "output": "public/art/items/gear_bamboo_flask.webp",
+    "width": 300
+  },
+  {
+    "id": "card_daoming_02",
+    "source": "outputs/art/source/card_daoming_02.png",
+    "output": "public/art/cards/card_daoming_02.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_daoming_03",
+    "source": "outputs/art/source/card_daoming_03.png",
+    "output": "public/art/cards/card_daoming_03.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_tea_01",
+    "source": "outputs/art/source/card_tea_01.png",
+    "output": "public/art/cards/card_tea_01.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_tea_02",
+    "source": "outputs/art/source/card_tea_02.png",
+    "output": "public/art/cards/card_tea_02.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_tea_03",
+    "source": "outputs/art/source/card_tea_03.png",
+    "output": "public/art/cards/card_tea_03.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_river_01",
+    "source": "outputs/art/source/card_river_01.png",
+    "output": "public/art/cards/card_river_01.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_river_02",
+    "source": "outputs/art/source/card_river_02.png",
+    "output": "public/art/cards/card_river_02.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_river_03",
+    "source": "outputs/art/source/card_river_03.png",
+    "output": "public/art/cards/card_river_03.webp",
+    "width": 1200
+  },
+  {
+    "id": "gear_oilpaper_umbrella",
+    "source": "outputs/art/source/gear_oilpaper_umbrella.png",
+    "output": "public/art/items/gear_oilpaper_umbrella.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_bamboo_mat",
+    "source": "outputs/art/source/souvenir_bamboo_mat-alpha.png",
+    "output": "public/art/items/souvenir_bamboo_mat.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_bamboo_basket",
+    "source": "outputs/art/source/souvenir_bamboo_basket-alpha.png",
+    "output": "public/art/items/souvenir_bamboo_basket.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_gaiwan",
+    "source": "outputs/art/source/souvenir_gaiwan.png",
+    "output": "public/art/items/souvenir_gaiwan.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_tea_stool",
+    "source": "outputs/art/source/souvenir_tea_stool-alpha.png",
+    "output": "public/art/items/souvenir_tea_stool.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_river_sketch",
+    "source": "outputs/art/source/souvenir_river_sketch.png",
+    "output": "public/art/items/souvenir_river_sketch.webp",
+    "width": 300
+  },
+  {
+    "id": "souvenir_pebble",
+    "source": "outputs/art/source/souvenir_pebble.png",
+    "output": "public/art/items/souvenir_pebble.webp",
+    "width": 300
+  }
+]

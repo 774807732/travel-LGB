@@ -1,0 +1,725 @@
+{
+  "task": "旅行癞疙宝 game objects asset handoff",
+  "tool": "builtin image_gen; one distinct asset per call; 19 initial assets and one targeted non-destructive yeerba edit",
+  "directory": "/private/tmp/lagobao-objects.hghBgA",
+  "selectedCount": 19,
+  "status": "All requested subjects produced and visually inspected",
+  "integrationNotes": [
+    "Parent owns project integration. These files are staged in the explicitly requested temporary directory; copy final selected assets into the project.",
+    "All isolated RGB output backgrounds look white without checkerboards, but measured corner channels vary 253-255 rather than mathematically exact #FFFFFF. No software image edits were performed.",
+    "Satchel is genuine alpha, all other selected isolated images are RGB near-white.",
+    "Many outputs occupy roughly 85-94% of image width despite requested 75-80%; outlines are complete with safe nonzero margins. Parent can normalize sprite bounds when compositing.",
+    "Use food_yeerba-v2.png for inventory key food_yeerba; retain food_yeerba.png only as superseded original.",
+    "Yard is exact 3:4 but anchor positions drifted from requested coordinates; use observed anchors stated in asset QA."
+  ],
+  "assets": [
+    {
+      "name": "dozing",
+      "path": "/private/tmp/lagobao-objects.hghBgA/dozing.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          255,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "dozing",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-de7e30bb-2f8d-4d32-9746-59f2ba0e94d0.png",
+      "prompt": "Use case: illustration-story. Asset type: one 2D game action sprite, DOZING. Reference 1: exact character identity only, do NOT reproduce its erroneous checkerboard. Same squat olive-brown toad, broad low head and body, cream belly, few olive wart patches, bean-shaped amber cheek glands, short stout FOUR limbs and no clothing. Simplified flat gouache color areas, bold brown outline. Draw same toad resting very low in a squat, full body, eyes completely CLOSED into relaxed arcs, forefeet resting together in front under chin, stout hindlegs tucked to sides, sleepy quiet expression. Three-quarter front view. No satchel, no bowl, no bed, no pillow, no other objects, no Z marks. Composition: single full object centered in square canvas, subject inside the central 75-80% of canvas, symmetric 10-12% safe padding on every side. Background solid pure white #FFFFFF clean white void. No floor, cast shadow, vignette, checkerboard, gray pattern, transparency visualization, scene, text, logo, border or watermark.",
+      "visualQA": "Identity preserved; closed relaxed eyes, squat resting pose, no satchel."
+    },
+    {
+      "name": "eating",
+      "path": "/private/tmp/lagobao-objects.hghBgA/eating.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          253,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "eating",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-e2c290b9-486a-4be0-b837-d33a806b72dd.png",
+      "prompt": "Use case: illustration-story. Asset type: unique single 2D game character action sprite, EATING. Match reference 1's exact toad identity: squat low olive-brown body, broad flat head, sleepy heavy-lidded amber eyes, cream belly, a few olive wart patches, bean-shaped golden cheek glands, stout short four limbs. No clothing. Keep brown bold outline and simplified flat hand-painted gouache, gentle muted earthy palette. Reference 1 checkerboard is an ERROR: absolutely do not reproduce it. Action: the same toad squats facing slightly right in three-quarter front view, holds a small ceramic bowl of white rice in its two short forefeet close below its mouth, enjoying a quiet meal with sleepy amber eyes. Bowl small relative to large cream belly. No satchel and no other props, no chopsticks. One character, one bowl. Composition: full object centered, square canvas, entire subject at 75-80% canvas with symmetric safe padding. Background MUST be a solid pure white #FFFFFF clean empty void. No floor, no cast shadow, no vignette, no gray, no checkerboard, no transparency visualization, no scenery, no text, no logos, no watermark.",
+      "visualQA": "Identity preserved; toad holds rice bowl in forefeet, no satchel."
+    },
+    {
+      "name": "food_guokui",
+      "path": "/private/tmp/lagobao-objects.hghBgA/food_guokui.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          255,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "food_guokui",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-89593011-571e-490d-8633-dcca47c06dd5.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown silhouette, minimal texture, legible at small icon size. Draw one round golden Sichuan guokui flatbread with small cut edge exposing pale soft inner crumb, a few toasted brown spots and subtle flaky surface, three-quarter view. No filling, plate or bowl. Composition: one full item centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, an empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Golden round flatbread with exposed cut edge and toasted surface, no plate."
+    },
+    {
+      "name": "food_home_meal",
+      "path": "/private/tmp/lagobao-objects.hghBgA/food_home_meal.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "food_home_meal",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-2f25eac4-0c30-4f93-a993-0390bd987ca6.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated 2D inventory item icon. Reference 1 gives warm muted gouache style only. Draw ONE small cream ceramic rice bowl filled with white rice, modest blue rim, one tiny blue floral mark. Three-quarter view slightly from above. Simple clear bold brown outer outline, flat painted gouache muted cream/indigo, only restrained texture. No chopsticks, no steam, no characters, no table, no other objects. Composition: single full object centered in square canvas, subject inside the central 75-80% of canvas, symmetric 10-12% safe padding on every side. Background solid pure white #FFFFFF clean white void. No floor, cast shadow, vignette, checkerboard, gray pattern, transparency visualization, scene, text, logo, border or watermark.",
+      "visualQA": "One ceramic rice bowl, modest blue rim and mark, no extras."
+    },
+    {
+      "name": "food_yeerba",
+      "path": "/private/tmp/lagobao-objects.hghBgA/food_yeerba.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          255,
+          255
+        ],
+        [
+          255,
+          254,
+          255
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": false,
+      "inventoryKey": "food_yeerba",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-e7ffae4e-97cd-4a6a-9f3a-d2eb43281175.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown silhouette, minimal texture, legible at small icon size. Draw two traditional Sichuan yeerba rice dumplings as one compact pair: white plump smooth oval rice dumpling cakes wrapped in broad green leaves, one dumpling fully wrapped snugly in its green leaf and one opened with green leaf spread beneath exposing white rice cake. Simple leaf folds. No plate or bowl. Composition: one full item centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, an empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Superseded by food_yeerba-v2.png: original rear wrapping looked triangular like zongzi."
+    },
+    {
+      "name": "gear_bamboo_flask",
+      "path": "/private/tmp/lagobao-objects.hghBgA/gear_bamboo_flask.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          255
+        ],
+        [
+          255,
+          254,
+          255
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "gear_bamboo_flask",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-594c9fe1-bf31-4aca-b433-ecb897b68ceb.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown silhouette, minimal texture, legible at small icon size. Draw one CLOSED bamboo water flask: short stout cylindrical olive-green and honey-tan bamboo section, fitted closed round wooden lid, small natural cord loop attached to neck. Three-quarter view showing simple bamboo nodes. No pouring water or other props. Composition: one full item centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, an empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Closed bamboo flask with lid and natural cord loop."
+    },
+    {
+      "name": "gear_oilpaper_umbrella",
+      "path": "/private/tmp/lagobao-objects.hghBgA/gear_oilpaper_umbrella.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          255,
+          254
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          254,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "gear_oilpaper_umbrella",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-082104c7-44e9-421b-b7f0-d92caf35c1e2.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE small CLOSED traditional oilpaper umbrella, warm cream folded paper canopy around a slender bamboo shaft, compact folded ribs, simple straight brown wooden handle and tied cloth band. Angled diagonally from lower-left handle to upper-right pointed tip, completely folded shut. No open canopy, no floral decoration. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scenery, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Closed oilpaper umbrella with bamboo shaft and tied band; full diagonal object."
+    },
+    {
+      "name": "harvest-tray",
+      "path": "/private/tmp/lagobao-objects.hghBgA/harvest-tray.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          255,
+          254,
+          254
+        ],
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          253,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "harvest-tray",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-825e1160-49f8-4983-a100-1f3622e5d67b.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated 2D game prop. Reference image 1 defines rural gouache style ONLY. Draw one shallow round woven bamboo harvest tray holding golden drying beans/grains, tray viewed from slightly above so it appears oval, simple warm tan rim and visible golden beans. Clear bold brown outer contours, simple flat gouache color areas, restrained texture. No other objects. Composition: full object centered, square canvas, entire subject at 75-80% canvas with symmetric safe padding. Background MUST be a solid pure white #FFFFFF clean empty void. No floor, no cast shadow, no vignette, no gray, no checkerboard, no transparency visualization, no scenery, no text, no logos, no watermark.",
+      "visualQA": "Single oval-view round woven tray of golden drying beans. No extras."
+    },
+    {
+      "name": "mail-clip",
+      "path": "/private/tmp/lagobao-objects.hghBgA/mail-clip.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          254,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          254,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "mail-clip",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-4823f928-e6cd-489a-9940-3e0483470da0.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D game prop sprite. Reference image 1 is for muted rural gouache color and brown outlines ONLY. Draw one simple warm brown wooden clothespin vertically gripping the top center edge of a small folded cream-paper letter, clearly visible paper triangular fold, no lettering or seal. Clip and letter form a single compact object. Gentle three-quarter view, clear bold brown outer contours, flat gouache colors, restrained simple texture. Center the full object at 75-80% of square canvas with symmetric safe padding. Entire background is solid pure white #FFFFFF, absolutely clean white void, not paper-textured. No wooden post, no toad, no floor, no shadows, no vignette, no gray, no checkerboard, no pattern, no transparency visualization, no surrounding scene, text, label, border, logo or watermark.",
+      "visualQA": "One wooden clip gripping cream folded letter, no text, no post, no checkerboard."
+    },
+    {
+      "name": "packing",
+      "path": "/private/tmp/lagobao-objects.hghBgA/packing.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          254
+        ],
+        [
+          255,
+          254,
+          254
+        ],
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          253,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "packing",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-68fae328-9fc1-4920-9866-13731c47bf68.png",
+      "prompt": "Use case: illustration-story. Asset type: unique single 2D game character action sprite, PACKING. Match reference 1's exact toad identity: squat low olive-brown body, broad flat head, sleepy heavy-lidded amber eyes, cream belly, a few olive wart patches, bean-shaped golden cheek glands, stout short four limbs. No clothing. Keep brown bold outline and simplified flat hand-painted gouache, gentle muted earthy palette. Reference 1 checkerboard is an ERROR: absolutely do not reproduce it. Reference 2 defines indigo floral satchel with tiny red chili knot ONLY. Action: the same toad squats in three-quarter front view, one forefoot reaches to touch the OPEN indigo satchel on the ground beside its right flank, open flap visibly raised; no other props. Clearly show the toad looking calmly at the bag, front limbs short and stout. One character with one open bag. Composition: full object centered, square canvas, entire subject at 75-80% canvas with symmetric safe padding. Background MUST be a solid pure white #FFFFFF clean empty void. No floor, no cast shadow, no vignette, no gray, no checkerboard, no transparency visualization, no scenery, no text, no logos, no watermark.",
+      "visualQA": "Identity preserved; forefoot touches raised OPEN indigo satchel flap, stout squatting toad."
+    },
+    {
+      "name": "satchel",
+      "path": "/private/tmp/lagobao-objects.hghBgA/satchel.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "corner_pixels": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "selected": true,
+      "inventoryKey": "satchel",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-efd77d44-eae2-4050-a5f4-7d03d5fa7bd9.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D game prop sprite. Reference image 1 is for the little travel bag design and gouache style ONLY. Draw just that indigo blue small cloth travel satchel, closed curved flap with a simple cream floral motif, small golden-brown buckle, visible short strap loop, tiny red chili knot hanging beside buckle. No toad. Clear bold brown outer outline; simple muted gouache color areas, much simpler paint texture than reference. Center the entire single object in a square canvas, occupy 75-80% of image width with symmetric safe white padding and no cropped strap or chili. Entire background must be solid pure white #FFFFFF, an absolutely clean white void. No floor, shadow, vignette, gray, checkerboard, pattern, transparency visualization, surrounding scene, extra ornaments, words, labels, border, logo or watermark. One single isolated satchel only.",
+      "visualQA": "Single indigo floral closed satchel, buckle and red chili knot. Tool returned genuine RGBA transparency despite pure-white prompt; all corner alpha=0, alpha range 0-255. No baked checkerboard. Preserve alpha."
+    },
+    {
+      "name": "souvenir_bamboo_basket",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_bamboo_basket.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          254
+        ],
+        [
+          254,
+          254,
+          255
+        ],
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          253,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_bamboo_basket",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-47c98166-1c74-412c-b90b-2442b0a54f99.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE small OPEN woven bamboo basket, squat round basket with a simple arched bamboo carrying handle, warm honey tan and muted brown, visible empty interior, three-quarter view slightly above. No lid, no contents, no flowers, no other objects. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scenery, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Open empty woven bamboo basket with arch handle."
+    },
+    {
+      "name": "souvenir_bamboo_mat",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_bamboo_mat.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_bamboo_mat",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-f6751f13-3a59-4893-988f-b8a0a681bd4c.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY the matching simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE small rectangular woven bamboo mat, flat warm honey-tan weave, simple slightly darker bound edge. Gentle three-quarter view from above revealing clear rectangular shape, one slightly curling corner. No other objects on mat, no patterns beyond natural bamboo weave. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scenery, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Rectangular tan woven bamboo mat with slight curled corner."
+    },
+    {
+      "name": "souvenir_gaiwan",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_gaiwan.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_gaiwan",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-aa410eaf-9073-4ac2-9d28-e2a3e0321543.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY simplified gouache medium, brown outlines and muted palette. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE traditional Sichuan blue-and-white porcelain GAIWAN: small cream white tea bowl with graceful blue rim and sparse blue foliage motif, fitted domed lid with little knob fully closed, resting on matching small saucer. Three-quarter view slightly above. Bowl/lid/saucer form one compact coherent item. No handle, no rice, no tea spilling, no other objects. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Blue-white lidded tea bowl with matching saucer."
+    },
+    {
+      "name": "souvenir_pebble",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_pebble.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          254
+        ],
+        [
+          255,
+          254,
+          255
+        ],
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_pebble",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-a0176b9f-cba8-4a4e-a132-388395925f08.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE single smooth rounded gray river pebble, plump oval stone, warm-gray with a soft muted cool gray area and one broad curved pale highlight painted in gouache. Simple dimensional pebble with brown outline, no cracks, no inscriptions, no face, no stacking, no other objects. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene outside object, no extra ornaments, no characters, no labels, letters, words, border, logo or watermark.",
+      "visualQA": "One rounded smooth gray pebble, no inscription or face."
+    },
+    {
+      "name": "souvenir_river_sketch",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_river_sketch.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_river_sketch",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-c6c698cc-ed04-4f0f-b95d-bd5416f0222f.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY simplified gouache medium, brown outlines and muted palette, do not reproduce its bowl. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE small rectangular cream postcard paper, landscape orientation, seen gently angled from above. On the card there is a minimal hand-painted travel sketch of a quiet Sichuan irrigation river with two simple gray-tile rural rooftops, soft muted green riverbanks, a few quick brown line strokes. Mostly cream blank paper; sketch very simple and readable. No writing anywhere, no stamp, no envelope, no pen, no toad. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene outside object, no extra ornaments, no characters, no labels, letters, words, border, logo or watermark.",
+      "visualQA": "Cream postcard with minimal river/rooftop gouache sketch, no writing."
+    },
+    {
+      "name": "souvenir_tea_stool",
+      "path": "/private/tmp/lagobao-objects.hghBgA/souvenir_tea_stool.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          253,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "souvenir_tea_stool",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-e1d24c4b-fee1-457a-bd9a-19943185c3cf.png",
+      "prompt": "Use case: stylized-concept. Asset type: single isolated 2D inventory item icon for quiet Sichuan rural idle game. Reference image 1 gives ONLY simplified gouache medium, brown outlines and muted palette. Flat painted colors, clear bold warm-brown outer silhouette, minimal texture, legible at small icon size. Draw ONE small low bamboo tea stool: squat rectangular seat of horizontal bamboo slats, four short bamboo legs with simple joining crossbars, muted olive and honey tan bamboo, sturdy rustic Sichuan tea-house stool. Three-quarter view slightly above. No backrest, no cushion, no objects on stool. Composition: one full object centered, square canvas; longest dimension occupies 75-80% of canvas, symmetric clean padding. Solid pure #FFFFFF background, empty white void with NO floor, no cast shadows, no checkerboard, no transparency visualization, no scene, no extra ornaments, no characters, no labels, words, border, logo or watermark.",
+      "visualQA": "Low bamboo stool, rectangular slatted seat, no backrest or extras."
+    },
+    {
+      "name": "walking",
+      "path": "/private/tmp/lagobao-objects.hghBgA/walking.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          254,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          253,
+          254,
+          253
+        ],
+        [
+          254,
+          253,
+          253
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "walking",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-d52509d3-5ee8-42b0-b664-bcbd5bafbc2c.png",
+      "prompt": "Use case: illustration-story. Asset type: one 2D game action sprite, WALKING RIGHT. Reference 1: exact character identity only, do NOT reproduce its erroneous checkerboard. Same squat olive-brown toad, broad low head and body, cream belly, few olive wart patches, bean-shaped amber cheek glands, short stout FOUR limbs and no clothing. Simplified flat gouache color areas, bold brown outline. Reference 2: exact indigo floral satchel with little red chili knot. Draw same toad in a low FOUR-POINT walk to the RIGHT, three-quarter SIDE VIEW with nose facing the right edge; weight supported by four short stout limbs, a clear gentle step, heavy-lidded amber eyes. Wear the small satchel securely on near flank with visible strap. Keep body squat and horizontally low. No standing upright, no extra legs or arms, no additional bag, no other props. Composition: single full object centered in square canvas, subject inside the central 75-80% of canvas, symmetric 10-12% safe padding on every side. Background solid pure white #FFFFFF clean white void. No floor, cast shadow, vignette, checkerboard, gray pattern, transparency visualization, scene, text, logo, border or watermark.",
+      "visualQA": "Identity preserved; rightward three-quarter side walk, four short limbs, indigo satchel worn on flank."
+    },
+    {
+      "name": "yard-background",
+      "path": "/private/tmp/lagobao-objects.hghBgA/yard-background.png",
+      "width": 1086,
+      "height": 1448,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          116,
+          117,
+          127
+        ],
+        [
+          171,
+          198,
+          156
+        ],
+        [
+          85,
+          79,
+          50
+        ],
+        [
+          135,
+          128,
+          125
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "yard-background",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-0d765df4-89fb-4a37-aaad-1a70b972b89b.png",
+      "prompt": "Use case: illustration-story. Asset type: empty 2D mobile idle-game courtyard background, exact portrait 3:4 composition. Reference image 1 defines the same rustic Sichuan Linpan home, cream plaster walls, warm brown wood, bamboo, indigo cloth, flat hand-painted gouache with brown outlines and muted green/cream palette. Show the EXTERIOR courtyard of this same home, elevated gentle three-quarter view. Quiet gray stone-slab courtyard. House eaves enter from left; the home door is centered at x18%, y42%. A small completely EMPTY bamboo shop shelf is at back-right, centered x79%, y35%. A bare wooden post for a later letter clip is at x76%, y56%; do not draw a clip or letter on it. Rear boundary has bamboo and a FLAT horizontal irrigation canal, rural Sichuan greenery beyond. Leave the center-lower courtyard open and uncluttered, especially around x42%, y73%, for three separately composited harvest trays. Simple flat gouache areas, clear brown contours, restrained texture, diffuse gentle daylight. Full-bleed background, no border. NO toads, animals, humans, letters, mail, harvest trays, objects for sale, lettering, signs, text, logos, UI or watermark. Render one exact 3:4 portrait image.",
+      "visualQA": "Exact 1086x1448 = 3:4. Empty courtyard, bamboo rear, horizontal irrigation canal, empty bamboo shop shelf, bare wood post, open lower center. House architecture matches reference. Generated anchor positions drift: door center approx x25% y31%, shelf x76% y32%, post x87% y47%; adapt overlays to artwork. No toads, people, mail or harvest trays."
+    },
+    {
+      "name": "food_yeerba-v2",
+      "path": "/private/tmp/lagobao-objects.hghBgA/food_yeerba-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "corner_pixels": [
+        [
+          253,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          254,
+          253,
+          253
+        ],
+        [
+          254,
+          253,
+          254
+        ]
+      ],
+      "alpha_extrema": null,
+      "selected": true,
+      "inventoryKey": "food_yeerba",
+      "source": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-7fbe6cce-2cc2-4472-9c07-d2ee06f5acc4.png",
+      "prompt": "Use case: precise-object-edit. Asset type: corrected Sichuan yeerba game item icon. Image 1 is the edit target. Preserve its muted green leaves, white rice-cake pair, bold brown gouache contours, composition and white background. Correct the SHAPE of the rear wrapped dumpling: it must be a low rounded OVAL rice cake wrapped with one broad green leaf folded around the oval, NOT a triangular pyramid or zongzi. Both yeerba are plump smooth white oval rice-flour cakes. Keep the front one opened on a spread green leaf, with smooth rice-flour cake surface, no individually defined rice grains. Two small oval cakes total, one partly leaf-wrapped and one opened. No string tied like zongzi. No extra objects. Center compact pair in square canvas with at least 10% clean safe margin. Solid pure #FFFFFF background, no checkerboard, no gray pattern, no floor, no shadow, no labels or words, no watermark.",
+      "visualQA": "Final selected yeerba. Corrected rear cake to oval leaf wrap with smooth white rice-flour cake. Two oval cakes, one opened, no triangular zongzi."
+    }
+  ]
+}
+

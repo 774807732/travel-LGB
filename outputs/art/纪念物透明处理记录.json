@@ -1,0 +1,490 @@
+{
+  "task": "Six souvenir transparent PNG conversion",
+  "mode": "builtin image_gen only; one original image as sole edit target; no manual pixel processing",
+  "status": "PARTIAL: 3 of 6 subjects accepted; 3 failed after allowed retries",
+  "directory": "/private/tmp/lagobao-souvenirs-alpha.uELJlj",
+  "accepted": [
+    "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_bamboo_basket-alpha-v1.png",
+    "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_bamboo_mat-alpha-v1.png",
+    "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_tea_stool-alpha-v1.png"
+  ],
+  "failedSubjects": [
+    "souvenir_gaiwan",
+    "souvenir_river_sketch",
+    "souvenir_pebble"
+  ],
+  "retryAccounting": "Six initial conversions; one targeted retry each for gaiwan, river sketch and pebble; one additionally authorized final gaiwan retry. Total 10 imagegen calls.",
+  "notes": [
+    "Use normal alpha compositing for the 3 accepted PNGs.",
+    "Rejected conversions retain visible checkerboards. Preserve and use original white assets only if the main workflow chooses a suitable presentation.",
+    "Generative editing preserves overall design but slightly repaints pixels; no byte-identical art claim.",
+    "All validation uses sharp read-only metadata and raw pixel reads."
+  ],
+  "assets": [
+    {
+      "key": "souvenir_bamboo_basket-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_bamboo_basket-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "channels": 4,
+      "corners": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "center": [
+        178,
+        122,
+        56,
+        253
+      ],
+      "alphaCounts": {
+        "transparent": 883295,
+        "opaque": 1160,
+        "intermediate": 688061
+      },
+      "accepted": true,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing woven bamboo basket by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the woven bamboo basket must have alpha 0, and the colored object must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original object design exactly: same open empty warm-tan woven bamboo basket with arched handle, visible empty interior, three-quarter view, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_bamboo_basket.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-0b28d691-ca39-4895-872e-7bdc3391b80b.png",
+      "visualQA": "No visible background or checkerboard; object silhouette, gouache medium and subject identity preserved; colored center alpha253 is approximately 99.2% opaque. Small generative repainting occurs."
+    },
+    {
+      "key": "souvenir_bamboo_mat-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_bamboo_mat-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "channels": 4,
+      "corners": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "center": [
+        245,
+        199,
+        118,
+        253
+      ],
+      "alphaCounts": {
+        "transparent": 1005233,
+        "opaque": 908,
+        "intermediate": 566375
+      },
+      "accepted": true,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing woven bamboo mat by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the woven bamboo mat must have alpha 0, and the colored object must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original object design exactly: same rectangular tan woven bamboo mat with its slightly curled corner, bamboo edge binding, three-quarter view, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_bamboo_mat.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-2d4ceda9-2fd7-49d0-b118-ccb77ca0927b.png",
+      "visualQA": "No visible background or checkerboard; object silhouette, gouache medium and subject identity preserved; colored center alpha253 is approximately 99.2% opaque. Small generative repainting occurs."
+    },
+    {
+      "key": "souvenir_gaiwan-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_gaiwan-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          202,
+          201,
+          200
+        ],
+        [
+          198,
+          198,
+          195
+        ],
+        [
+          155,
+          151,
+          153
+        ],
+        [
+          202,
+          201,
+          200
+        ]
+      ],
+      "center": [
+        143,
+        160,
+        194
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing blue-white lidded tea bowl and saucer by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the blue-white lidded tea bowl and saucer must have alpha 0, and the colored object must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original object design exactly: same blue-white porcelain gaiwan, domed lid and knob, tea bowl and matching saucer, sparse blue foliage motifs, three-quarter view, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_gaiwan.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-767e3cc3-95af-41ac-a4bb-603bca61bb5f.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_gaiwan-alpha-v2",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_gaiwan-alpha-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          198,
+          196,
+          195
+        ],
+        [
+          195,
+          195,
+          190
+        ],
+        [
+          201,
+          202,
+          200
+        ],
+        [
+          151,
+          146,
+          149
+        ]
+      ],
+      "center": [
+        94,
+        135,
+        196
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing blue-white lidded tea bowl and saucer by removing its white backdrop entirely. Export an actual transparent PNG file with a real RGBA alpha channel. Empty space outside the object must have numerical alpha=0. The colored object including its pale areas must remain opaque alpha=255. There must be no background plane, no ground and no shadow.\nPreserve the existing original object design exactly: same blue-white porcelain gaiwan, domed lid and knob, bowl and saucer, sparse blue foliage motifs and warm cream ceramics, three-quarter view, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.\nCritical targeted correction: the previous output incorrectly painted gray checker squares into a three-channel RGB image. Do not illustrate transparency. Deliver four-channel RGBA PNG transparency, with completely empty alpha-zero pixels around the cutout; no visible checker pattern or grid of any kind. Keep every cream-colored part inside the object opaque.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_gaiwan.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-5178bb63-fb0d-46fd-b8bd-a15611366725.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_gaiwan-alpha-v3",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_gaiwan-alpha-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          187,
+          188,
+          187
+        ],
+        [
+          127,
+          128,
+          125
+        ],
+        [
+          131,
+          128,
+          130
+        ],
+        [
+          189,
+          189,
+          188
+        ]
+      ],
+      "center": [
+        127,
+        157,
+        207
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing illustrated subject by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the subject must have alpha 0, and all colored subject areas must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original design exactly: the blue-and-white ceramic gaiwan tea bowl with its closed domed lid, knob and matching saucer: same blue rim and foliage pattern, pale cream ceramic, proportions, angle and placement. Keep the light cream ceramic bowl, lid and saucer fully opaque. Same dark brown contour, gouache texture, silhouette, size, placement and square canvas composition. Retain all original subject parts and props. No new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_gaiwan.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-ef380c47-549f-4b94-9f4a-a6a3edbf81ca.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_pebble-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_pebble-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          191,
+          192,
+          189
+        ],
+        [
+          183,
+          180,
+          182
+        ],
+        [
+          253,
+          252,
+          253
+        ]
+      ],
+      "center": [
+        167,
+        157,
+        147
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing single smooth gray river pebble by removing its white backdrop entirely. Export an actual transparent PNG file with a real RGBA alpha channel. Empty space outside the object must have numerical alpha=0. The colored object including its pale areas must remain opaque alpha=255. There must be no background plane, no ground and no shadow.\nPreserve the existing original object design exactly: same plump oval gray pebble, broad pale painted highlight, smooth surface, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_pebble.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-81dd0a18-f61f-4077-982f-85e0a354f76b.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_pebble-alpha-v2",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_pebble-alpha-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          253,
+          253,
+          254
+        ],
+        [
+          254,
+          254,
+          254
+        ],
+        [
+          253,
+          253,
+          253
+        ],
+        [
+          252,
+          252,
+          251
+        ]
+      ],
+      "center": [
+        168,
+        157,
+        147
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing pebble by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the pebble must have alpha 0, and the colored pebble body must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original pebble design exactly: same single plump oval smooth gray river pebble, broad pale painted highlight, dark brown outline, gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.\nTargeted format correction: enable real PNG alpha transparency in the exported image. Do not paint a visible background to depict transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_pebble.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-a1e0ced0-1614-4021-817e-5c05cbcb22d3.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_river_sketch-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_river_sketch-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          206,
+          206,
+          206
+        ],
+        [
+          201,
+          201,
+          197
+        ],
+        [
+          210,
+          209,
+          209
+        ],
+        [
+          205,
+          205,
+          203
+        ]
+      ],
+      "center": [
+        177,
+        177,
+        111
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing cream postcard with river sketch by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the cream postcard with river sketch must have alpha 0, and the colored object must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original object design exactly: same cream landscape postcard paper tilted at the same angle, minimal river and two rural rooftops sketch, muted green banks, large cream paper areas, brown paper edge contour and gouache texture, silhouette, size, placement and square canvas composition. The cream postcard paper and all colored object areas must remain fully opaque. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_river_sketch.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-62532ad1-10c6-4884-8442-c3a58e16bbb8.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_river_sketch-alpha-v2",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_river_sketch-alpha-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "channels": 3,
+      "corners": [
+        [
+          191,
+          191,
+          195
+        ],
+        [
+          151,
+          150,
+          152
+        ],
+        [
+          143,
+          141,
+          148
+        ],
+        [
+          187,
+          186,
+          191
+        ]
+      ],
+      "center": [
+        181,
+        184,
+        120
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "opaque": 0,
+        "intermediate": 0
+      },
+      "accepted": false,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing cream postcard paper with river sketch by removing its white backdrop entirely. Export an actual transparent PNG file with a real RGBA alpha channel. Empty space outside the object must have numerical alpha=0. The colored object including its pale areas must remain opaque alpha=255. There must be no background plane, no ground and no shadow.\nPreserve the existing original object design exactly: same cream landscape postcard paper tilted at the same angle, minimal river and rural rooftops sketch, muted green banks, large cream paper areas, dark brown paper-edge contour and gouache texture, silhouette, size, placement and square canvas composition. No accessories and no new objects. Change only the backdrop into real empty transparency.\nCritical targeted correction: the previous output incorrectly painted gray checker squares into a three-channel RGB image. Do not illustrate transparency. Deliver four-channel RGBA PNG transparency, with completely empty alpha-zero pixels around the cutout; no visible checker pattern or grid of any kind. Keep every cream-colored part inside the object opaque.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_river_sketch.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-a95183f9-4247-4249-89e9-de4e99c1792c.png",
+      "visualQA": "Rejected: visible painted checkerboard, RGB only; not a transparent asset. Do not integrate this conversion."
+    },
+    {
+      "key": "souvenir_tea_stool-alpha-v1",
+      "path": "/private/tmp/lagobao-souvenirs-alpha.uELJlj/souvenir_tea_stool-alpha-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "channels": 4,
+      "corners": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "center": [
+        201,
+        161,
+        69,
+        253
+      ],
+      "alphaCounts": {
+        "transparent": 944695,
+        "opaque": 2197,
+        "intermediate": 625624
+      },
+      "accepted": true,
+      "prompt": "Use case: background-extraction\nInput images: Image 1 is the sole edit target.\nPrimary request: make a clean PNG cutout of the existing low bamboo tea stool by removing its white backdrop entirely. Export an actual transparent PNG with an RGBA alpha channel: empty space outside the low bamboo tea stool must have alpha 0, and the colored object must remain opaque. There must be no background plane, no white or gray checker pattern, no painted transparency symbol, no ground and no shadow.\nPreserve the existing original object design exactly: same low rectangular bamboo stool with horizontal bamboo seat slats and short stout legs and crossbars, muted olive and honey-tan bamboo, three-quarter view, dark brown contour and gouache texture, silhouette, size, placement and square canvas composition. The cream postcard paper and all colored object areas must remain fully opaque. No accessories and no new objects. Change only the backdrop into real empty transparency.",
+      "original": "/private/tmp/lagobao-objects.hghBgA/souvenir_tea_stool.png",
+      "generatedSource": "/Users/jojo/.codex/generated_images/01a08bde-42f4-7aa2-a9b8-db2043959ebc/exec-8c0fb4c8-10c0-439f-b087-c23206ea1ad9.png",
+      "visualQA": "No visible background or checkerboard; object silhouette, gouache medium and subject identity preserved; colored center alpha253 is approximately 99.2% opaque. Small generative repainting occurs."
+    }
+  ]
+}
