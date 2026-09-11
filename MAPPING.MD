@@ -1,12 +1,13 @@
 # 元素映射
 
-更新：2026-09-11。1.3 区分 Web 横版、手机竖版与两套场景坐标。
+更新：2026-09-11。1.3.1 Web 信桩按最新蓝框放在小铺左侧靠墙；区分信封入口与背景木柱。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
+| 刷新仍是旧图、改了没变化 | 先核对当前网址与已发布版本，不等同于背景缓存 | 本地 1.3.1：`yard-web-wall.webp`；线上版本 6 / 1.3：旧 `yard-web.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
@@ -18,7 +19,7 @@
 | 地面影子 | 帮助判断角色站在地面 | `.toad-ground-shadow` |
 | 发呆/收包/吃饭/瞌睡/出门 | 表现姿态，不是游戏阶段 | `idle/packing/eating/dozing/walking`、`idlePose/leaving` |
 | 屋头、屋里 | 室内家景 | `state.scene='home'`、`.scene-home`；`sceneImage` 选择 `home.webp / home-web.webp` |
-| 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`；`sceneImage` 选择 `yard.webp / yard-web.webp` |
+| 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`；`sceneImage` 选择 `yard.webp / yard-web-wall.webp` |
 | 门、回屋 | 双向换景热点 | `.home-door / .yard-door`、`changeScene` |
 | 木窗、竹榻、矮桌 | 背景绘画，不是按钮 | `.scene-background` |
 | 桌上的包、蓝布包、挎包 | 默认放在矮桌的独立行囊入口 | `.satchel-prop`；竖版 (50%,72%)，横版 (72.9%,73.1%+10px)；`props/satchel.webp` |
@@ -27,10 +28,11 @@
 | 家伙什、工具 | 可选永久槽 | `Loadout.gear`、`panel='gear'` |
 | 收拾好了 | 预留后等待自行出发 | `prepareTrip` |
 | 先不出门 | 取消预留、不耗库存 | `cancelPreparation` |
-| 簸箕、晒谷子、收成 | 定时积累 / 换盘缠 | `.harvest-props`、`harvestAt`、`availableHarvests / harvest` |
+| 簸箕、晒谷子、收成 | 定时积累 / 换盘缠；位于信笺后方 | `.harvest-props`（层级 3）、`harvestAt`、`availableHarvests / harvest` |
 | 货架、小铺 | 采购面板 | `.yard-shop`、`panel='shop'`、`buyItem` |
 | 钱、盘缠、文 | 唯一货币 | `state.coins`、`.coin-balance` |
-| 信夹、有信了 | 每趟来信入口 / 未读 | `.mail-prop / .letter-ribbon`、`unread`、`panel='inbox'` |
+| 信夹、有信了 | 每趟来信入口 / 未读 | `.mail-prop / .letter-ribbon`、`unread`、`panel='inbox'`；横版信封中心 (70.2%,39.2%)，宽 56px |
+| 信封的柱子、信桩、蓝框位置 | 小铺左侧靠墙的木柱和石底座，不是信封按钮 | `yard-web-wall.webp`、`WIDE_WALK_MAPS.yard.blockers` 中的 `信夹木桩`；移动时同步 `.mail-prop` |
 | 旅行照、见闻卡 | 带插画的旅途故事 | `CARDS`、`selectedCard`、`panel='card'`、`.travel-letter` |
 | 收齐几张、图鉴进度 | 不同卡种数 / 总数 9 | `state.unlockedCards.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
@@ -38,9 +40,9 @@
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 六种纪念物的 PNG 图像，不是手账按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；正常 alpha 合成 |
 | 土货、小东西 | 六种归来收藏 | `SOUVENIRS`、`state.souvenirs`、`panel='object'` |
-| 出门纸条、屋里留的信 | 离家留言，非见闻卡/收件信夹 | `.away-note`，角色和独立包同时隐藏 |
+| 出门纸条、屋里留的信 | 离家留言，非见闻卡/收件信夹；整体盖过簸箕 | `.away-note`（层级 5、点击穿透），角色和独立包同时隐藏 |
 | 留言信纸、花布信笺 | 生图纸张插画层 | `.away-note-art`、`props/departure-note.webp` |
-| 留言内容、疙宝落款 | 独立可读文字层 | `.away-note-copy`、`p / span` |
+| 留言内容、疙宝落款 | 正文与署名统一 14px 的独立文字层 | `.away-note-copy` 设置字号，`p / span` 继承 |
 | 在家/备妥/旅行 | 规则阶段 | `GameState.phase='home/packed/traveling'` |
 | 回来咯、小红点 | 归来未读 | `hasUnreadReturn`、`.dot / .nav-dot` |
 | 纸页、弹层 | 单层原生弹窗 | `Sheet`、`panel`、`viewKey` |

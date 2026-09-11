@@ -410,6 +410,8 @@ svg {
 }
 .away-note {
   position: absolute;
+  /* 留言整体盖过地面簸箕（3）和场景道具（4），仍允许点击穿透。 */
+  z-index: 5;
   left: 55%;
   top: 50%;
   width: 60%;
@@ -433,10 +435,11 @@ svg {
   top: 28%;
   color: #59432e;
   font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: 14px;
 }
 .away-note-copy p {
   margin: 0;
-  font-size: clamp(14px, 3.8vw, 17px);
+  font-size: inherit;
   font-weight: 500;
   line-height: 1.65;
   letter-spacing: 0.035em;
@@ -445,7 +448,7 @@ svg {
   display: block;
   margin-top: 3px;
   text-align: right;
-  font-size: 12px;
+  font-size: inherit;
   line-height: 1.5;
 }
 .mail-prop {
@@ -1876,8 +1879,9 @@ textarea {
   right: auto;
 }
 .scene[data-layout="wide"] .mail-prop {
-  left: calc(69.7% - 28px);
-  top: calc(47% - 28px);
+  /* 信封贴在小铺左侧靠墙木柱的正面；木夹留在柱顶下方。 */
+  left: calc(70.2% - 28px);
+  top: calc(39.2% - 28px);
   width: 56px;
 }
 .scene[data-layout="wide"] .harvest-props {

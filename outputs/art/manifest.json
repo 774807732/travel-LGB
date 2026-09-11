@@ -7,8 +7,8 @@
   },
   {
     "id": "yard-web",
-    "source": "outputs/art/source/yard-web.png",
-    "output": "public/art/backgrounds/yard-web.webp",
+    "source": "outputs/art/source/yard-web-wall.png",
+    "output": "public/art/backgrounds/yard-web-wall.webp",
     "width": 1672
   },
   {

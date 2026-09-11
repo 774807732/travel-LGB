@@ -201,7 +201,7 @@ function Scene({
             }
             onClick={onInbox}
           >
-            <img src="/art/props/mail-clip.webp" alt="窗边信夹" />
+            <img src="/art/props/mail-clip.webp" alt="院坝信夹" />
             {unread > 0 && <i className="dot" />}
           </button>
           <button
@@ -1438,7 +1438,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.3.0
+                旅行癞疙宝 · 1.3.1
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>

@@ -5,7 +5,9 @@ export const DESKTOP_MEDIA = "(min-width: 960px)";
 // 横版使用模型的原生比例（约 16:9），不拉伸或裁掉家具边缘。
 export const SCENE_ASPECTS = { portrait: 3 / 4, wide: 1672 / 941 } as const;
 export const sceneImage = (scene: SceneId, layout: SceneLayout) =>
-  `/art/backgrounds/${scene}${layout === "wide" ? "-web" : ""}.webp`;
+  scene === "yard" && layout === "wide"
+    ? "/art/backgrounds/yard-web-wall.webp"
+    : `/art/backgrounds/${scene}${layout === "wide" ? "-web" : ""}.webp`;
 
 type Rectangle = {
   name: string;
@@ -102,7 +104,8 @@ export const WIDE_WALK_MAPS: Record<SceneId, WalkMap> = {
     blockers: [
       { name: "屋墙与石阶", left: 0, top: 0, right: 0.41, bottom: 0.66 },
       { name: "竹货架", left: 0.71, top: 0.26, right: 0.96, bottom: 0.6 },
-      { name: "信夹木桩", left: 0.62, top: 0.38, right: 0.78, bottom: 0.72 },
+      // 信桩放在小铺左侧后墙边，身体余量也不能挡住院坝中间的通道。
+      { name: "信夹木桩", left: 0.62, top: 0.31, right: 0.78, bottom: 0.61 },
       { name: "晒谷簸箕", left: 0.34, top: 0.77, right: 0.66, bottom: 0.93 },
       { name: "左侧花木", left: 0, top: 0.52, right: 0.18, bottom: 1 },
       { name: "右侧花木", left: 0.9, top: 0.4, right: 1, bottom: 1 },

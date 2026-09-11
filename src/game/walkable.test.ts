@@ -1,8 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  findWalkPath,
   getWalkMap,
   initialScenePositions,
+  isClearSegment,
   isWalkable,
   WALK_MAPS,
   type SceneId,
@@ -63,4 +65,28 @@ test("横竖版各有独立落脚点与家具阻挡，缩窗不能把位置套�
   positions.wide.home.x = 0.4;
   assert.notEqual(positions.portrait.home.x, 0.4);
   assert.notEqual(getWalkMap("home", "wide").start.x, 0.4);
+});
+
+test("横版信桩位于小铺左侧靠墙，原空地可通行且不改变竖版", () => {
+  const from = { x: 0.5, y: 0.65 };
+  const to = { x: 0.8, y: 0.65 };
+  assert.ok(isWalkable("yard", { x: 0.697, y: 0.65 }, "wide"));
+  assert.ok(isClearSegment("yard", from, to, "wide"));
+  assert.deepEqual(findWalkPath("yard", from, to, "wide"), [from, to]);
+  const post = getWalkMap("yard", "wide").blockers.find(
+    (b) => b.name === "信夹木桩",
+  )!;
+  assert.ok(post.left >= 0.6 && post.right <= 0.81, "信桩应在小铺左侧");
+  assert.ok(post.bottom <= 0.62, "信桩需靠后墙，不能伸到院坝中央");
+  assert.ok(isWalkable("yard", { x: 0.875, y: 0.62 }, "wide"));
+  assert.equal(isWalkable("yard", { x: 0.68, y: 0.56 }, "wide"), false);
+  assert.equal(
+    isWalkable(
+      "yard",
+      { x: (post.left + post.right) / 2, y: post.bottom },
+      "wide",
+    ),
+    false,
+  );
+  assert.equal(isWalkable("yard", { x: 0.82, y: 0.5 }, "portrait"), false);
 });
