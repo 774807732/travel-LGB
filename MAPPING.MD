@@ -7,6 +7,8 @@
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
+| 线上环境、线上游戏 | ChatGPT Sites 托管站点，不是本地预览 | `.openai/hosting.json` → `project_id`、`static.directory='dist'`；进度仍为浏览器 localStorage |
+| 同时在线、并发、访问流量 | 在线人数、请求速率与传输量不同，不等同于 AI Token 配额 | Sites 套餐用量限制；当前无游戏侧并发配置，具体平台数值待账号界面或官方确认 |
 | 刷新仍是旧图、改了没变化 | 先核对网址与版本，不清玩家存档 | 原线上网址已发布 1.3.1 / 版本 7：`yard-web-wall.webp`；设置页版本文字 `1.3.1` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
@@ -28,7 +30,8 @@
 | 家伙什、工具 | 可选永久槽 | `Loadout.gear`、`panel='gear'` |
 | 收拾好了 | 预留后等待自行出发 | `prepareTrip` |
 | 先不出门 | 取消预留、不耗库存 | `cancelPreparation` |
-| 簸箕、晒谷子、收成 | 定时积累 / 换盘缠；位于信笺后方 | `.harvest-props`（层级 3）、`harvestAt`、`availableHarvests / harvest` |
+| 簸箕、晒谷子、收成 | 定时积累 / 换盘缠；桌面左下斜排，手机不变 | 横版 `.harvest-wide / .harvest-tray`、`WIDE_HARVEST_TRAYS`（共用图像/碰撞中心）；竖版 `.harvest-props`；层级 3，`availableHarvests / harvest` |
+| 收成提示条、慢慢来 | 独立点击收成入口，桌面底部居中 | `.harvest-caption`，中心横向 50% / 顶部 91%，仍调用 `onHarvest` |
 | 货架、小铺 | 采购面板 | `.yard-shop`、`panel='shop'`、`buyItem` |
 | 钱、盘缠、文 | 唯一货币 | `state.coins`、`.coin-balance` |
 | 信夹、有信了 | 每趟来信入口 / 未读 | `.mail-prop / .letter-ribbon`、`unread`、`panel='inbox'`；横版信封中心 (70.2%,39.2%)，宽 56px |

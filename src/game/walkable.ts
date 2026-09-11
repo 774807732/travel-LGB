@@ -4,6 +4,12 @@ export type ScenePoint = { x: number; y: number };
 export const DESKTOP_MEDIA = "(min-width: 960px)";
 // 横版使用模型的原生比例（约 16:9），不拉伸或裁掉家具边缘。
 export const SCENE_ASPECTS = { portrait: 3 / 4, wide: 1672 / 941 } as const;
+// 按截图红圈取中心：左上 → 右下；渲染与碰撞共用，避免只移图片。
+export const WIDE_HARVEST_TRAYS = [
+  { x: 0.148, y: 0.77 },
+  { x: 0.238, y: 0.842 },
+  { x: 0.332, y: 0.91 },
+] as const;
 export const sceneImage = (scene: SceneId, layout: SceneLayout) =>
   scene === "yard" && layout === "wide"
     ? "/art/backgrounds/yard-web-wall.webp"
@@ -106,7 +112,13 @@ export const WIDE_WALK_MAPS: Record<SceneId, WalkMap> = {
       { name: "竹货架", left: 0.71, top: 0.26, right: 0.96, bottom: 0.6 },
       // 信桩放在小铺左侧后墙边，身体余量也不能挡住院坝中间的通道。
       { name: "信夹木桩", left: 0.62, top: 0.31, right: 0.78, bottom: 0.61 },
-      { name: "晒谷簸箕", left: 0.34, top: 0.77, right: 0.66, bottom: 0.93 },
+      ...WIDE_HARVEST_TRAYS.map((point, index) => ({
+        name: `晒谷簸箕${index + 1}`,
+        left: point.x - 0.07,
+        top: point.y - 0.055,
+        right: point.x + 0.07,
+        bottom: Math.min(1, point.y + 0.115),
+      })),
       { name: "左侧花木", left: 0, top: 0.52, right: 0.18, bottom: 1 },
       { name: "右侧花木", left: 0.9, top: 0.4, right: 1, bottom: 1 },
     ],

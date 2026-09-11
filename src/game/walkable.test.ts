@@ -7,6 +7,7 @@ import {
   isClearSegment,
   isWalkable,
   WALK_MAPS,
+  WIDE_HARVEST_TRAYS,
   type SceneId,
 } from "./walkable";
 
@@ -89,4 +90,25 @@ test("横版信桩位于小铺左侧靠墙，原空地可通行且不改变竖�
     false,
   );
   assert.equal(isWalkable("yard", { x: 0.82, y: 0.5 }, "portrait"), false);
+});
+
+test("横版簸箕沿左下红圈斜排，碰撞跟随且中央旧址重新可走", () => {
+  assert.equal(WIDE_HARVEST_TRAYS.length, 3);
+  const blockers = getWalkMap("yard", "wide").blockers.filter((b) =>
+    b.name.startsWith("晒谷簸箕"),
+  );
+  assert.equal(blockers.length, 3);
+  WIDE_HARVEST_TRAYS.forEach((point, i) => {
+    assert.equal(isWalkable("yard", point, "wide"), false);
+    assert.equal((blockers[i].left + blockers[i].right) / 2, point.x);
+    if (i > 0) {
+      assert.ok(point.x > WIDE_HARVEST_TRAYS[i - 1].x);
+      assert.ok(point.y > WIDE_HARVEST_TRAYS[i - 1].y);
+    }
+  });
+  assert.ok(isWalkable("yard", { x: 0.5, y: 0.85 }, "wide"));
+  assert.ok(isClearSegment("yard", { x: 0.5, y: 0.65 }, { x: 0.5, y: 0.94 }, "wide"));
+  // 不把桌面位置和碰撞套到手机竖版。
+  assert.equal(getWalkMap("yard").blockers.filter((b) => b.name === "晒谷簸箕").length, 1);
+  assert.equal(isWalkable("yard", { x: 0.5, y: 0.72 }), false);
 });

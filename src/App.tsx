@@ -36,6 +36,7 @@ import { enableAudio, playSound } from "./game/audio";
 import { useGame } from "./game/useGame";
 import {
   DESKTOP_MEDIA,
+  WIDE_HARVEST_TRAYS,
   initialScenePositions,
   isWalkable,
   sceneImage,
@@ -204,25 +205,49 @@ function Scene({
             <img src="/art/props/mail-clip.webp" alt="院坝信夹" />
             {unread > 0 && <i className="dot" />}
           </button>
-          <button
-            className="harvest-props"
-            aria-label={
-              ready ? "收起 " + ready + " 份收成" : "收成还在慢慢攒着"
-            }
-            onClick={onHarvest}
-          >
-            {[0, 1, 2].map((i) => (
-              <img
-                key={i}
-                className={i < ready ? "ready" : ""}
-                src="/art/props/harvest-tray.webp"
-                alt=""
-              />
-            ))}
-            <span>
-              {ready ? ready + " 份收成，可以收啦" : "收成慢慢来，不用守着"}
-            </span>
-          </button>
+          {layout === "wide" ? (
+            <div className="harvest-wide">
+              {WIDE_HARVEST_TRAYS.map((point, i) => (
+                <button
+                  key={i}
+                  className="harvest-tray"
+                  style={{ left: `${point.x * 100}%`, top: `${point.y * 100}%` }}
+                  aria-label={`${i + 1} 号簸箕，${ready ? `收起 ${ready} 份收成` : "收成还在慢慢攒着"}`}
+                  onClick={onHarvest}
+                >
+                  <img
+                    className={i < ready ? "ready" : ""}
+                    src="/art/props/harvest-tray.webp"
+                    alt=""
+                    draggable="false"
+                  />
+                </button>
+              ))}
+              <button className="harvest-caption" onClick={onHarvest}>
+                {ready ? ready + " 份收成，可以收啦" : "收成慢慢来，不用守着"}
+              </button>
+            </div>
+          ) : (
+            <button
+              className="harvest-props"
+              aria-label={
+                ready ? "收起 " + ready + " 份收成" : "收成还在慢慢攒着"
+              }
+              onClick={onHarvest}
+            >
+              {[0, 1, 2].map((i) => (
+                <img
+                  key={i}
+                  className={i < ready ? "ready" : ""}
+                  src="/art/props/harvest-tray.webp"
+                  alt=""
+                />
+              ))}
+              <span>
+                {ready ? ready + " 份收成，可以收啦" : "收成慢慢来，不用守着"}
+              </span>
+            </button>
+          )}
         </>
       )}
       {atHome ? (

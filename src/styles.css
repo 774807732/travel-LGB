@@ -1884,10 +1884,51 @@ textarea {
   top: calc(39.2% - 28px);
   width: 56px;
 }
-.scene[data-layout="wide"] .harvest-props {
-  left: 38%;
-  top: 76%;
+.harvest-wide {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.harvest-tray {
+  position: absolute;
+  /* 保留原来单个簸箕的宽度，只移动中心；空隙不拦截点地。 */
+  width: clamp(57.6px, 6.4%, 76.8px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+  transform: translate(-50%, -50%) rotate(-9deg);
+  pointer-events: auto;
+}
+.harvest-tray:active {
+  transform: translate(-50%, calc(-50% + 1px)) rotate(-9deg);
+}
+.harvest-tray img {
+  width: 100%;
+  opacity: 0.27;
+  mix-blend-mode: multiply;
+}
+.harvest-tray img.ready {
+  opacity: 1;
+}
+.harvest-caption {
+  position: absolute;
+  left: 50%;
+  top: 91%;
   width: clamp(180px, 20%, 240px);
+  min-height: 0;
+  padding: 2px 0;
+  border: 0;
+  border-radius: 20px;
+  background: #ede5cddc;
+  color: #5e6447;
+  font-size: 10px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+.harvest-caption:active {
+  transform: translate(-50%, 1px);
 }
 
 @media (min-width: 960px) {
