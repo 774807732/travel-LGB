@@ -1,0 +1,169 @@
+{
+  "updatedAt": "2026-09-11",
+  "authorization": "这7张素材你抠出透明png再用啊",
+  "generatedNewArt": false,
+  "records": [
+    {
+      "id": "souvenir_glass_panda",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_glass_panda.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_glass_panda.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 984605,
+      "opaquePixels": 587911,
+      "subjectBounds": {
+        "left": 238,
+        "top": 98,
+        "right": 1026,
+        "bottom": 1147
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_corn",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_corn.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_corn.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 1029876,
+      "opaquePixels": 542640,
+      "subjectBounds": {
+        "left": 199,
+        "top": 84,
+        "right": 993,
+        "bottom": 1154
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_sweet_potato",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_sweet_potato.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_sweet_potato.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 992726,
+      "opaquePixels": 579790,
+      "subjectBounds": {
+        "left": 87,
+        "top": 230,
+        "right": 1176,
+        "bottom": 1029
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_bamboo_dragonfly",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_bamboo_dragonfly.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_bamboo_dragonfly.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 1411359,
+      "opaquePixels": 161157,
+      "subjectBounds": {
+        "left": 109,
+        "top": 85,
+        "right": 1147,
+        "bottom": 1141
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_palm_fan",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_palm_fan.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_palm_fan.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 1040469,
+      "opaquePixels": 532047,
+      "subjectBounds": {
+        "left": 234,
+        "top": 111,
+        "right": 1078,
+        "bottom": 1141
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_wooden_boat",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_wooden_boat.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_wooden_boat.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 1213969,
+      "opaquePixels": 358547,
+      "subjectBounds": {
+        "left": 140,
+        "top": 334,
+        "right": 1120,
+        "bottom": 959
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "souvenir_small_pumpkin",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_small_pumpkin.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/souvenir_small_pumpkin.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 965182,
+      "opaquePixels": 607334,
+      "subjectBounds": {
+        "left": 157,
+        "top": 177,
+        "right": 1105,
+        "bottom": 1060
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "food_sweet_potato_congee",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/tianba-v1/food_sweet_potato_congee.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/food_sweet_potato_congee.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 930521,
+      "opaquePixels": 641995,
+      "subjectBounds": {
+        "left": 93,
+        "top": 252,
+        "right": 1217,
+        "bottom": 1112
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    },
+    {
+      "id": "gear_straw_hat",
+      "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/tianba-v1/gear_straw_hat.png",
+      "output": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenirs-alpha-v1/gear_straw_hat.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixels": 1033771,
+      "opaquePixels": 538745,
+      "subjectBounds": {
+        "left": 56,
+        "top": 194,
+        "right": 1201,
+        "bottom": 1170
+      },
+      "sourceUnchanged": true,
+      "method": "彩色主体最大连通片+外部背景灌填；保留内部原始 RGB；交付缩小采用预乘 alpha 抗锯齿"
+    }
+  ]
+}

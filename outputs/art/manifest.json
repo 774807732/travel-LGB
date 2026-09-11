@@ -74,7 +74,7 @@
   },
   {
     "id": "card_daoming_01",
-    "source": "outputs/art/source/card_daoming_01.png",
+    "source": "outputs/art/source/cards-clean-v2/card_daoming_01.png",
     "output": "public/art/cards/card_daoming_01.webp",
     "width": 1200
   },
@@ -152,49 +152,49 @@
   },
   {
     "id": "card_daoming_02",
-    "source": "outputs/art/source/card_daoming_02.png",
+    "source": "outputs/art/source/cards-clean-v2/card_daoming_02.png",
     "output": "public/art/cards/card_daoming_02.webp",
     "width": 1200
   },
   {
     "id": "card_daoming_03",
-    "source": "outputs/art/source/card_daoming_03.png",
+    "source": "outputs/art/source/cards-clean-v2/card_daoming_03.png",
     "output": "public/art/cards/card_daoming_03.webp",
     "width": 1200
   },
   {
     "id": "card_tea_01",
-    "source": "outputs/art/source/card_tea_01.png",
+    "source": "outputs/art/source/cards-clean-v2/card_tea_01.png",
     "output": "public/art/cards/card_tea_01.webp",
     "width": 1200
   },
   {
     "id": "card_tea_02",
-    "source": "outputs/art/source/card_tea_02.png",
+    "source": "outputs/art/source/cards-clean-v2/card_tea_02.png",
     "output": "public/art/cards/card_tea_02.webp",
     "width": 1200
   },
   {
     "id": "card_tea_03",
-    "source": "outputs/art/source/card_tea_03.png",
+    "source": "outputs/art/source/cards-clean-v2/card_tea_03.png",
     "output": "public/art/cards/card_tea_03.webp",
     "width": 1200
   },
   {
     "id": "card_river_01",
-    "source": "outputs/art/source/card_river_01.png",
+    "source": "outputs/art/source/cards-clean-v2/card_river_01.png",
     "output": "public/art/cards/card_river_01.webp",
     "width": 1200
   },
   {
     "id": "card_river_02",
-    "source": "outputs/art/source/card_river_02.png",
+    "source": "outputs/art/source/cards-clean-v2/card_river_02.png",
     "output": "public/art/cards/card_river_02.webp",
     "width": 1200
   },
   {
     "id": "card_river_03",
-    "source": "outputs/art/source/card_river_03.png",
+    "source": "outputs/art/source/cards-clean-v2/card_river_03.png",
     "output": "public/art/cards/card_river_03.webp",
     "width": 1200
   },
@@ -235,9 +235,21 @@
     "width": 300
   },
   {
-    "id": "souvenir_pebble",
-    "source": "outputs/art/source/souvenir_pebble-alpha-v2.png",
-    "output": "public/art/items/souvenir_pebble.png",
+    "id": "souvenir_glass_panda",
+    "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_glass_panda.png",
+    "output": "public/art/items/souvenir_glass_panda.png",
     "width": 300
+  },
+  { "id": "souvenir_corn", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_corn.png", "output": "public/art/items/souvenir_corn.png", "width": 300 },
+  { "id": "souvenir_sweet_potato", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_sweet_potato.png", "output": "public/art/items/souvenir_sweet_potato.png", "width": 300 },
+  { "id": "souvenir_bamboo_dragonfly", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_bamboo_dragonfly.png", "output": "public/art/items/souvenir_bamboo_dragonfly.png", "width": 300 },
+  { "id": "souvenir_palm_fan", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_palm_fan.png", "output": "public/art/items/souvenir_palm_fan.png", "width": 300 },
+  { "id": "souvenir_wooden_boat", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_wooden_boat.png", "output": "public/art/items/souvenir_wooden_boat.png", "width": 300 },
+  { "id": "souvenir_small_pumpkin", "source": "outputs/art/source/souvenirs-alpha-v1/souvenir_small_pumpkin.png", "output": "public/art/items/souvenir_small_pumpkin.png", "width": 300 },
+  { "id": "food_sweet_potato_congee", "source": "outputs/art/source/souvenirs-alpha-v1/food_sweet_potato_congee.png", "output": "public/art/items/food_sweet_potato_congee.webp", "width": 300 },
+  { "id": "gear_straw_hat", "source": "outputs/art/source/souvenirs-alpha-v1/gear_straw_hat.png", "output": "public/art/items/gear_straw_hat.webp", "width": 300 },
+  { "id": "card_tianba_01", "source": "outputs/art/candidates/tianba-v1/card_tianba_01-v2.png", "output": "public/art/cards/card_tianba_01.webp", "width": 1200 },
+  { "id": "card_tianba_02", "source": "outputs/art/candidates/tianba-v1/card_tianba_02.png", "output": "public/art/cards/card_tianba_02.webp", "width": 1200 },
+  { "id": "card_tianba_03", "source": "outputs/art/candidates/tianba-v1/card_tianba_03.png", "output": "public/art/cards/card_tianba_03.webp", "width": 1200
   }
 ]

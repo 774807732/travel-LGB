@@ -736,8 +736,8 @@ export default function App() {
             <dd>{state.completed.length} 趟</dd>
             <dt>已收集</dt>
             <dd>
-              {state.unlockedCards.length} / 9 张 ·{" "}
-              {Object.keys(state.souvenirs).length} / 6 种
+              {state.unlockedCards.length} / {CARDS.length} 张 ·{" "}
+              {Object.keys(state.souvenirs).length} / {SOUVENIRS.length} 种
             </dd>
           </dl>
           <button
@@ -975,7 +975,7 @@ export default function App() {
                 </span>
               </div>
               <p className="muted intro">
-                不用样样都买，一份家常饭也能走遍三处。
+                不用样样都买，一份家常饭也能走遍四处。
               </p>
               <h3 className="section-label">
                 吃点好的 <small>每趟一份</small>
@@ -1080,11 +1080,11 @@ export default function App() {
                       沿途见闻{" "}
                       <strong>
                         {state.unlockedCards.length}
-                        <small> / 9</small>
+                        <small> / {CARDS.length}</small>
                       </strong>
                     </p>
                     <span>
-                      {state.unlockedCards.length === 9
+                      {state.unlockedCards.length === CARDS.length
                         ? "小小一本，装满了蜀地日常。"
                         : "每一次远行，都留一点日常。"}
                     </span>
@@ -1144,13 +1144,13 @@ export default function App() {
                       带回的小东西{" "}
                       <strong>
                         {Object.keys(state.souvenirs).length}
-                        <small> / 6</small>
+                        <small> / {SOUVENIRS.length}</small>
                       </strong>
                     </p>
                     <span>不是贵重的，是它路上惦记着带回来的。</span>
                   </div>
                   <div className="souvenir-grid">
-                    {SOUVENIRS.map((item) => {
+                    {ROUTES.flatMap(route => SOUVENIRS.filter(item => item.routeId === route.id)).map((item) => {
                       const count = state.souvenirs[item.id] ?? 0;
                       return (
                         <button
@@ -1463,7 +1463,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.3.1
+                旅行癞疙宝 · 1.4.0
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
@@ -1494,7 +1494,7 @@ export default function App() {
                 <li>
                   <b>慢慢攒一本手账</b>
                   <p>
-                    三处蜀地、九张见闻、六种纪念物。没有稀有度，没有完不成的每日任务。
+                    四处蜀地、十二张见闻、十二种纪念物。带上红苕稀饭，还可能遇到田坝的一段特别见闻。没有稀有度，没有完不成的每日任务。
                   </p>
                 </li>
               </ol>
@@ -1576,7 +1576,7 @@ export default function App() {
               </p>
               <dl className="save-summary">
                 <dt>已有见闻</dt>
-                <dd>{candidate.state.unlockedCards.length} / 9 张</dd>
+                <dd>{candidate.state.unlockedCards.length} / {CARDS.length} 张</dd>
                 <dt>完成旅程</dt>
                 <dd>{candidate.state.completed.length} 趟</dd>
                 <dt>盘缠</dt>

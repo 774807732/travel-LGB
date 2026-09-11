@@ -1,0 +1,46 @@
+{
+  "id": "card_tianba_01_v2",
+  "title": "幺姑婆，又在地头吃晌午啊",
+  "source_path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/tianba-v1/card_tianba_01.png",
+  "prompt": "Use case: precise-object-edit.\nAsset type: revised narrative game postcard illustration.\nInput images: Image 1 is the ONLY edit target. Edit this exact supplied composition, not a new unrelated scene.\nPrimary correction: change the right-side elderly woman from standing and hoeing in the rice field to RESTING AT THE DRY FIELD EDGE AND EATING HER MIDDAY MEAL. The story is a friendly greeting to an auntie having lunch at the field edge, not a joke about someone looking down or working. The left-foreground toad still waves to her.\n\nWoman action and placement: keep her in the same right-midground story area, naturally seated on a small low wooden stool on a DRY earthen ridge beside the rice, not sitting in water. One hand supports a plain white enamel or ceramic rice bowl; the other hand clearly holds a pair of chopsticks and is eating from the bowl. Keep bowl and chopsticks distinct and readable. She turns her face slightly toward the waving toad with a relaxed, friendly response. Her limbs and seated posture must be anatomically natural, not a giant or theatrical pose. Her small hoe now lies safely on the dry ground beside the stool, directed away from both characters, and is no longer held. Put the existing modest bamboo work basket nearby as a small lunch-break cue rather than on her waist; do not add a spread of new props.\n\nReplace the old costume completely: a practical everyday Sichuan rural working woman's plain gray-blue FRONT-BUTTON SHIRT, straight vertical front placket with visible ordinary buttons, small turned shirt collar, and naturally rolled sleeves. Loose dark-gray FULL-LENGTH trousers and plain dark cloth or rubber work shoes. Simple gray-white SHORT HAIR combed naturally close to the head, NO bun. A sun-weathered but healthy, kindly and capable older face, ordinary and dignified.\nRemove all elements of the previous stylized costume: NO overlapping V-neck or cross-wrapped kimono-like front, NO wrap shirt, NO floral apron tied at the waist, NO high round bun, NO white neck scarf or stage-costume neck towel. No tourist ethnic costume, regional facial caricature, exaggerated poverty cues or theatrical clothing. The change is ordinary clothing construction and hairstyle, not an exaggerated ethnic face.\n\nComposition invariants: keep the 3:2 full-bleed landscape frame and exact camera viewpoint. Preserve the left-front toad's position, scale, raised waving paw, body pose, face and satchel. Preserve the indigo-blue floral cloth satchel and red chili knot, the diagonal irrigation channel connecting foreground to midground, the flat Sichuan rice paddies, distant linpan bamboo/tree groves, gray-tile houses, low horizon, blue sky and warm early-summer midday light. Allow only the small local dry-ground/stool adjustment needed for the woman's lunch spot; do not recompose the field or move the toad.\nToad identity lock: keep the squat low-bodied neckless olive/ochre-yellow toad, cream belly, sleepy amber eyes, bean-shaped glands behind the eyes, main identifying larger wart marks, short robust limbs and dark-brown contour. Do not turn it into an upright human-shaped figure, long-limbed frog or different mascot.\n\nSurface cleanup: noticeably simplify the over-busy small paint flecks, fragmented highlights and mottled soil in this input. Paint ground and earthen field banks as clean coherent broad ochre/gray-brown color areas with just a few sparse directional soil strokes, not dense small chips or dots. Leaves should be whole readable leaf shapes with one main color and at most one simple shadow plane. Consolidate grass, shrubs and distant trees into clear larger clusters with far fewer tiny jagged leaves or bright confetti marks. Use a few connected cast-shadow shapes instead of scattered speckled shadows. Keep water, real rice clumps and useful structural boundaries readable. Clean up by repainting coherent shapes, not by blur or contrast reduction.\nStyle: retain warm, fresh, softly hand-painted 2D game illustration and natural brown outlines, but with extremely sparse random texture. No grain overlay, noisy paper texture, blurred edges, plastic airbrush, photorealism, 3D or flat-vector conversion.\nOutput: exactly ONE image, native 1536x1024, 3:2 landscape, full bleed. No title, words, letters, speech bubbles, UI, borders, frames, logos or watermark anywhere in the image.",
+  "requested_dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-b8ac58a0-28c3-422e-9b94-2d6b4d24222d.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "dimension_check": "passed",
+  "generation_mode": "built-in image_gen edit",
+  "referenced_image_paths": [
+    "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/tianba-v1/card_tianba_01.png"
+  ],
+  "generation_calls": 1,
+  "retries": 0,
+  "variants": 0,
+  "inspection": {
+    "story": "符合：右侧幺姑婆自然坐于干田埂上的低木凳，一手端普通白碗，一手拿筷子夹饭，稍转脸回应挥手的癞疙宝；不再站着持锄劳作。",
+    "clothing": "符合：灰蓝直门襟前扣衬衣、小翻领、挽袖、宽松深灰长裤与黑色普通布鞋；灰白短发贴头，没有高发髻。原交叠包裹领、花腰系围裙和舞台式白颈巾组合已删除。",
+    "props": "小锄头放在干地旁，竹篮在凳后；白碗与筷子可辨，姿态自然。",
+    "composition": "左前方矮胖无颈癞疙宝的挥掌姿态、蓝花布包与红辣椒结保持；主要斜向水渠、平原稻田、林盘灰瓦房空间关系保留。为坐姿在右中景增加了必要的小片干田埂。",
+    "texture": "前景土路和较大叶片明显更连贯、减少碎斑，没有观察到以模糊滤镜代替清理的明显迹象。"
+  },
+  "concerns": [
+    "渠岸草簇、田埂立面与部分远树仍保留细碎手绘笔触，未变成完全无纹理；整体较原图干净。"
+  ],
+  "development_or_integration_performed": false,
+  "recorded_at": "2026-09-11",
+  "candidate_path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/tianba-v1/card_tianba_01-v2.png",
+  "candidate_id": "card_tianba_01",
+  "revision": 2,
+  "change_reason": "用户纠正「低头」为「地头」，应表达田边吃午饭；同时将幺姑婆改为四川农村日常劳动装，不再使用旧图的持锄劳作叙事和交叠领/花腰结/高发髻组合。",
+  "production_files_edited": false,
+  "local_changes": "只新增修订候选及本记录，更新候选预览、方案和四份中文文档；首批五图与旧提示词原样保留。",
+  "owner_review": {
+    "story_and_clothes": "已逐图核对：干田埂小凳、端白碗用筷、锄头放旁边；灰蓝直门襟扣衬衣、短灰发、深色长裤和布鞋。",
+    "texture": "前景土路更连贯；远树、渠岸仍有细碎笔触，待用户确认，不宣称百分比测量或完全定稿。",
+    "state": "供用户看图，未接入游戏、未构建、未发布。"
+  }
+}

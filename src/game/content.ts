@@ -1,9 +1,10 @@
-export type FoodId = "food_home_meal" | "food_yeerba" | "food_guokui";
-export type GearId = "gear_bamboo_flask" | "gear_oilpaper_umbrella";
+export type FoodId = "food_home_meal" | "food_yeerba" | "food_guokui" | "food_sweet_potato_congee";
+export type GearId = "gear_bamboo_flask" | "gear_oilpaper_umbrella" | "gear_straw_hat";
 export type RouteId =
   | "route_daoming"
   | "route_chengdu_tea"
-  | "route_huanglongxi";
+  | "route_huanglongxi"
+  | "route_tianba";
 export type CardId =
   | "card_daoming_01"
   | "card_daoming_02"
@@ -13,14 +14,23 @@ export type CardId =
   | "card_tea_03"
   | "card_river_01"
   | "card_river_02"
-  | "card_river_03";
+  | "card_river_03"
+  | "card_tianba_01"
+  | "card_tianba_02"
+  | "card_tianba_03";
 export type SouvenirId =
   | "souvenir_bamboo_mat"
   | "souvenir_bamboo_basket"
   | "souvenir_gaiwan"
   | "souvenir_tea_stool"
   | "souvenir_river_sketch"
-  | "souvenir_pebble";
+  | "souvenir_glass_panda"
+  | "souvenir_bamboo_dragonfly"
+  | "souvenir_palm_fan"
+  | "souvenir_wooden_boat"
+  | "souvenir_corn"
+  | "souvenir_sweet_potato"
+  | "souvenir_small_pumpkin";
 export type ItemId = FoodId | GearId | SouvenirId;
 
 export const FOODS: {
@@ -51,6 +61,13 @@ export const FOODS: {
     hint: "更想找个茶铺歇脚",
     description: "外皮酥酥的，配一碗茶正好。更容易去成都坝坝茶。",
   },
+  {
+    id: "food_sweet_potato_congee",
+    name: "红苕稀饭",
+    price: 8,
+    hint: "不要胀太多哦",
+    description: "不要胀太多哦",
+  },
 ];
 export const GEARS: {
   id: GearId;
@@ -72,6 +89,13 @@ export const GEARS: {
     price: 24,
     hint: "河边走走，也踏实",
     description: "落雨就撑开。更容易去黄龙溪河街；买一次，每趟都能带。",
+  },
+  {
+    id: "gear_straw_hat",
+    name: "草帽",
+    price: 24,
+    hint: "帽檐一压，太阳也没得法",
+    description: "田埂边慢慢走，戴着遮太阳。更容易去田坝地头；买一次，每趟都能带。",
   },
 ];
 export const ROUTES: {
@@ -102,6 +126,13 @@ export const ROUTES: {
     note: "沿着水声慢慢走",
     tint: "#607d84",
   },
+  {
+    id: "route_tianba",
+    name: "田坝地头",
+    shortName: "田坝",
+    note: "田埂上的晌午",
+    tint: "#86934f",
+  },
 ];
 export const CARDS: {
   id: CardId;
@@ -109,6 +140,7 @@ export const CARDS: {
   title: string;
   text: string;
   note: string;
+  requiredFood?: FoodId;
 }[] = [
   {
     id: "card_daoming_01",
@@ -173,6 +205,28 @@ export const CARDS: {
     text: "外头的脚步远了，桥洞里只剩水响。它听了半晌，把这段安静也装进包里。",
     note: "桥洞框景是原创取景，不对应一座指定古桥。纪念物与旅途情节都是虚构所得。",
   },
+  {
+    id: "card_tianba_01",
+    routeId: "route_tianba",
+    title: "幺姑婆，又在地头吃晌午啊",
+    text: "幺姑婆搁下锄头，坐在田埂边吃晌午。它挥挥手打招呼，幺姑婆端着碗笑了：过来歇一哈嘛。",
+    note: "地头是田边，吃晌午是吃午饭。这位幺姑婆和这场相遇，都是疙宝旅途里的故事。",
+  },
+  {
+    id: "card_tianba_02",
+    routeId: "route_tianba",
+    title: "红烧稀饭胀多了",
+    text: "红苕甜，稀饭香，它一口接一口。碗见了底，肚皮也圆了：先坐一哈，等会儿再走。",
+    note: "这一趟带上红苕稀饭，才有这场吃得饱饱的田边小歇。不要胀太多哦。",
+    requiredFood: "food_sweet_potato_congee",
+  },
+  {
+    id: "card_tianba_03",
+    routeId: "route_tianba",
+    title: "草帽底下，眯一哈",
+    text: "田里的风吹过来，帽檐轻轻一晃。它把蓝布包靠稳，在田埂边眯了一小觉。",
+    note: "稻田、水渠和林盘相依，是这段虚构旅途的背景。草帽底下的一小片阴凉，也很安逸。",
+  },
 ];
 export const SOUVENIRS: {
   id: SouvenirId;
@@ -211,11 +265,17 @@ export const SOUVENIRS: {
     description: "线画得有点歪，那条河倒是一眼认得。",
   },
   {
-    id: "souvenir_pebble",
+    id: "souvenir_glass_panda",
     routeId: "route_huanglongxi",
-    name: "圆石小摆件",
-    description: "像一滴停下来的水，摸着凉凉的。",
+    name: "琉璃熊猫摆件",
+    description: "迎着光看，圆滚滚的一点透亮。",
   },
+  { id: "souvenir_bamboo_dragonfly", routeId: "route_daoming", name: "竹蜻蜓", description: "两手一搓，把竹乡的风放出去。" },
+  { id: "souvenir_palm_fan", routeId: "route_chengdu_tea", name: "小蒲扇", description: "轻轻摇两下，龙门阵还没摆完。" },
+  { id: "souvenir_wooden_boat", routeId: "route_huanglongxi", name: "小木船", description: "船小小的，把河街的水声记住了。" },
+  { id: "souvenir_corn", routeId: "route_tianba", name: "包谷", description: "苞叶一揭，满满一棒田坝里的太阳。" },
+  { id: "souvenir_sweet_potato", routeId: "route_tianba", name: "红苕", description: "幺姑婆塞的两个红苕，朴实又暖心。" },
+  { id: "souvenir_small_pumpkin", routeId: "route_tianba", name: "小南瓜", description: "圆墩墩一个，抱回屋里也喜庆。" },
 ];
 export const FOOD_NAMES = Object.fromEntries(
   FOODS.map((x) => [x.id, x.name]),
@@ -229,6 +289,6 @@ export const souvenirById = (id: SouvenirId) =>
   SOUVENIRS.find((x) => x.id === id)!;
 export const itemName = (id: ItemId) =>
   [...FOODS, ...GEARS, ...SOUVENIRS].find((x) => x.id === id)!.name;
-export const cardImage = (id: CardId) => `/art/cards/${id}.webp`;
+export const cardImage = (id: CardId) => `/art/cards/${id}.webp?v=clean-v2`;
 export const itemImage = (id: ItemId) =>
   `/art/items/${id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;

@@ -66,7 +66,7 @@ export function newGame(now: number, seed = hashSeed(now)): GameState {
     lastSeenAt: now,
     createdAt: now,
     seed: seed >>> 0,
-    inventory: { food_yeerba: 0, food_guokui: 0 },
+    inventory: { food_yeerba: 0, food_guokui: 0, food_sweet_potato_congee: 0 },
     ownedGear: [],
     bag: null,
     departureAt: null,
@@ -116,11 +116,14 @@ export function routeWeights(
     route_daoming: 1,
     route_chengdu_tea: 1,
     route_huanglongxi: 1,
+    route_tianba: 1,
   };
   if (loadout.food === "food_yeerba") weights.route_daoming++;
   if (loadout.food === "food_guokui") weights.route_chengdu_tea++;
+  if (loadout.food === "food_sweet_potato_congee") weights.route_tianba++;
   if (loadout.gear === "gear_bamboo_flask") weights.route_daoming++;
   if (loadout.gear === "gear_oilpaper_umbrella") weights.route_huanglongxi++;
+  if (loadout.gear === "gear_straw_hat") weights.route_tianba++;
   if (recent.length >= 2 && recent.at(-1) === recent.at(-2))
     weights[recent.at(-1)!] = 0;
   return weights;
@@ -147,7 +150,8 @@ function tripResult(state: GameState, loadout: Loadout, seed: number) {
       break;
     }
   }
-  const cards = CARDS.filter((c) => c.routeId === routeId);
+  // 先按本趟出发快照筛选条件卡，再执行未见优先；不能使用剩余库存判断。
+  const cards = CARDS.filter((c) => c.routeId === routeId && (!c.requiredFood || c.requiredFood === loadout.food));
   const unseen = cards.filter((c) => !state.unlockedCards.includes(c.id));
   const cardPool = unseen.length ? unseen : cards;
   const souvenirs = SOUVENIRS.filter((s) => s.routeId === routeId);

@@ -1,0 +1,569 @@
+{
+  "updated_at": "2026-09-11",
+  "status": "candidate_review_only_not_integrated",
+  "target_collection_count": 12,
+  "per_route_count": 3,
+  "new_image_count": 7,
+  "retained_image_count": 5,
+  "replaces": {
+    "old_id": "souvenir_pebble",
+    "candidate_id": "souvenir_glass_panda"
+  },
+  "processing_instruction": "用户明确选择：仍只用生图模型处理。没有程序抠图、修边、滤镜、改色或CLI/API替代。",
+  "generation": {
+    "collection": "seven-new-souvenir-candidates",
+    "generation_mode": "built-in image_gen with one local style reference per call",
+    "batch_method": "Promise.all, all seven requests started together",
+    "generation_calls": 7,
+    "retries": 0,
+    "variants": 0,
+    "requested_output_count": 7,
+    "completed_output_count": 7,
+    "scope": "Only seven new candidate images. Five existing souvenirs were not regenerated, edited or integrated.",
+    "notes": [
+      "Both optional existing item references were viewed, but only souvenir_bamboo_basket.png was supplied to generation as a painting-style reference.",
+      "All prompts are 197–207 English words and are preserved verbatim.",
+      "No web research, Sites tools, project changes, CLI/API fallback or image post-processing was performed.",
+      "User reiterated that image work must use the generation model only; no programmatic cutout, edge cleanup or color processing was used.",
+      "All seven files failed true-alpha transparency and requested-dimension checks; retain them only as visual candidates pending user direction.",
+      "Generated output files remain unchanged at tool-returned default locations."
+    ],
+    "assets": [
+      {
+        "id": "souvenir_glass_panda",
+        "name": "琉璃熊猫摆件",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one tiny seated panda figurine cast as a unified colored-glass sculpture. It has a plump milky-white, nearly clear glass body, translucent smoky-black round ears, two readable eye patches and four limbs. Add restrained pale aqua-green rim light, two or three clean highlights, and gentle broad internal refraction. Make the smooth, softly luminous glass material unmistakable, rather than fur, stone, ceramic or plastic. Show the whole seated silhouette in three-quarter front view. Do not add bamboo, packaging, a pedestal or a separate base.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 197,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one tiny seated panda figurine cast as a unified colored-glass sculpture. It has a plump milky-white, nearly clear glass body, translucent smoky-black round ears, two readable eye patches and four limbs. Add restrained pale aqua-green rim light, two or three clean highlights, and gentle broad internal refraction. Make the smooth, softly luminous glass material unmistakable, rather than fur, stone, ceramic or plastic. Show the whole seated silhouette in three-quarter front view. Do not add bamboo, packaging, a pedestal or a separate base.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-e0847fac-2ae0-46b0-844d-5121106ef44c.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "坐姿熊猫摆件完整，双圆耳、双眼圈及四肢可读；乳白与烟黑琉璃、浅青边光和温润折射明显，无底座、包装或竹子。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "高光数量明显多于2–3处的克制目标，轮廓也略厚；局部玻璃色层偏丰富。",
+          "主体占幅约八成多，略大于75%目标。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_corn",
+        "name": "包谷",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one complete golden ear of corn with its husk half peeled. Two or three pale-green husk leaves curl downward around its lower end. Arrange the cob gently diagonally so its complete rounded tip, orderly kernels and husk base are readable. Simplify the kernels into a limited number of large regular golden units, rather than hundreds of tiny dots or sparkling highlights. Keep the husk leaves as complete clean color shapes with one soft shadow each. This is a raw little harvest souvenir, not cooked food; no butter, plate or extra corn.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 206,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one complete golden ear of corn with its husk half peeled. Two or three pale-green husk leaves curl downward around its lower end. Arrange the cob gently diagonally so its complete rounded tip, orderly kernels and husk base are readable. Simplify the kernels into a limited number of large regular golden units, rather than hundreds of tiny dots or sparkling highlights. Keep the husk leaves as complete clean color shapes with one soft shadow each. This is a raw little harvest souvenir, not cooked food; no butter, plate or extra corn.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-cd49d91f-4125-41d5-bb50-a6c668ae0b15.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "单根金黄包谷，半剥浅绿苞叶与大颗粒排列清楚，无盘子、黄油或额外食物。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "几乎每颗谷粒都有独立高光，虽然不是细小噪点，整体仍偏亮。",
+          "主体高度约八成半，留白少于75%占幅目标。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_sweet_potato",
+        "name": "红苕",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: exactly two small whole raw sweet potatoes, one longer and one shorter, resting in a natural slightly staggered grouping. Their thin skins are muted purple-red and warm ochre-red, with subtly irregular organic outlines and only a few pale bud eyes. Both complete tapered ends should remain visible. Use broad smooth color transitions to suggest their rounded volume. They are uncut, unpeeled, uncooked harvest objects, distinct from sweet-potato porridge. Do not add mud flecks, cracks, exposed orange flesh, steam, leaves, plate, bowl or other vegetables.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 199,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: exactly two small whole raw sweet potatoes, one longer and one shorter, resting in a natural slightly staggered grouping. Their thin skins are muted purple-red and warm ochre-red, with subtly irregular organic outlines and only a few pale bud eyes. Both complete tapered ends should remain visible. Use broad smooth color transitions to suggest their rounded volume. They are uncut, unpeeled, uncooked harvest objects, distinct from sweet-potato porridge. Do not add mud flecks, cracks, exposed orange flesh, steam, leaves, plate, bowl or other vegetables.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-136400b6-c320-497e-81ae-7bc1c44b04e3.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "两只一长一短、自然错落的完整红苕，紫红与赭红皮、少量浅芽眼清楚，无盘碗、泥斑或熟食场景。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "表皮仍有明显密集的层叠色块/斑驳笔触，没有充分达到每面1–2层的清爽要求。",
+          "整体横向占幅偏大；两端浅黄点容易被读为轻微断茎端，而非完全同色薄皮。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_bamboo_dragonfly",
+        "name": "竹蜻蜓",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one traditional hand-spun bamboo-copter toy: a single long slender bamboo rod attached centrally beneath one flat bamboo rotor bar with two symmetrical ends. Tilt the complete toy slightly diagonally in three-quarter view so the rotor's flatness and thin edge are clear. Use pale bamboo-gold, a few simple directional grain lines and clean readable joints. Keep the silhouette elegant and unmistakably a small toy made from two simple bamboo parts. It is not an insect, helicopter vehicle or airplane. No cord, spinning trail, extra rotor, stand or decorative attachments.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 203,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one traditional hand-spun bamboo-copter toy: a single long slender bamboo rod attached centrally beneath one flat bamboo rotor bar with two symmetrical ends. Tilt the complete toy slightly diagonally in three-quarter view so the rotor's flatness and thin edge are clear. Use pale bamboo-gold, a few simple directional grain lines and clean readable joints. Keep the silhouette elegant and unmistakably a small toy made from two simple bamboo parts. It is not an insect, helicopter vehicle or airplane. No cord, spinning trail, extra rotor, stand or decorative attachments.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-043bc117-4052-47d4-a3a1-9d949ddffb1c.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "单根竹杆加双端对称扁旋翼，斜置且厚度可读，无绳子、旋转轨迹或昆虫形象。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "中央连接部画成较粗的圆筒轮毂，比极简两片竹制结构更厚重。",
+          "主体横向及竖向约八成多，占幅大于75%目标。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_palm_fan",
+        "name": "小蒲扇",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one complete small Chinese palm-leaf hand fan with a nearly round, gently heart-shaped leaf surface and a shallow natural notch. Give it a short simple wooden or bamboo handle, a fine bound edge, and a pale wheat-yellow surface with a quiet straw-green tint. Only a few structural veins radiate upward from the handle root; keep broad calm areas between them. Show the fan face at a slight three-quarter tilt, including the complete handle. This is a rigid palm-leaf fan, not a folding fan or feather fan. No tassel, ornament or dense striping.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 207,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one complete small Chinese palm-leaf hand fan with a nearly round, gently heart-shaped leaf surface and a shallow natural notch. Give it a short simple wooden or bamboo handle, a fine bound edge, and a pale wheat-yellow surface with a quiet straw-green tint. Only a few structural veins radiate upward from the handle root; keep broad calm areas between them. Show the fan face at a slight three-quarter tilt, including the complete handle. This is a rigid palm-leaf fan, not a folding fan or feather fan. No tassel, ornament or dense striping.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-ac4731ca-d1a3-4ac9-b7e0-a4ece7a5d8a0.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "完整近心形蒲扇，浅缺口、淡麦黄/草绿扇面、短柄、细包边与放射筋脉可读，未画成折扇。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "包边及绑结偏粗，表面仍有一些顺向层叠笔触，不过没有密集碎点。",
+          "主体高度约八成多，留白略不足。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_wooden_boat",
+        "name": "小木船",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one palm-sized hand-carved wooden boat ornament, viewed three-quarter from above. It has a low light-brown hull, two pointed gently upturned ends, a simple open shallow interior and exactly two small transverse benches. Show the complete hull so the tiny handmade scale is obvious. Use only a few sparse lengthwise wood-grain strokes and broad clean warm shadow planes inside the boat. This is a modest little wooden keepsake, not a complex large ship model. No mast, sail, canopy, oars, water, pedestal, packaging or people.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 198,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one palm-sized hand-carved wooden boat ornament, viewed three-quarter from above. It has a low light-brown hull, two pointed gently upturned ends, a simple open shallow interior and exactly two small transverse benches. Show the complete hull so the tiny handmade scale is obvious. Use only a few sparse lengthwise wood-grain strokes and broad clean warm shadow planes inside the boat. This is a modest little wooden keepsake, not a complex large ship model. No mast, sail, canopy, oars, water, pedestal, packaging or people.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-e1301d14-d6e4-417d-b71a-fff316f92557.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "单只简洁浅褐小木船，双头尖翘、敞口船舱和恰好两条横凳清楚；无帆、篷、水或人物。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "双头上翘较高，船身比低矮小雕刻的设定略厚重；木纹数量略多但走向连贯。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      },
+      {
+        "id": "souvenir_small_pumpkin",
+        "name": "小南瓜",
+        "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one small ripe pumpkin with a squat round silhouette, warm soft orange-yellow skin, six to eight broad naturally rounded lobes, and one short curved dark-green stem. Show the complete pumpkin in a gentle three-quarter view from slightly above, with the stem and wide low body clearly readable. Give it one coherent soft highlight area and one simple shadow side. The surface is clean and unblemished, with the broad lobe seams doing the structural work. No mottling, scratches, face, carved opening, vines, leaves, basket or other vegetables.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+        "prompt_word_count": 201,
+        "tool_input": {
+          "prompt": "Use case: stylized-concept. Create one original isolated game souvenir candidate.\nImage 1 is a painting-style reference only; do not reproduce its basket, weaving or object layout.\nSubject: one small ripe pumpkin with a squat round silhouette, warm soft orange-yellow skin, six to eight broad naturally rounded lobes, and one short curved dark-green stem. Show the complete pumpkin in a gentle three-quarter view from slightly above, with the stem and wide low body clearly readable. Give it one coherent soft highlight area and one simple shadow side. The surface is clean and unblemished, with the broad lobe seams doing the structural work. No mottling, scratches, face, carved opening, vines, leaves, basket or other vegetables.\nStyle: warm, fresh two-dimensional hand-painted game art, light deep-brown outlines, complete broad color areas, and only one or two simple shadow/highlight layers per surface. Keep the handmade softness without dense flecks, paper grain, stains, random scratches, photorealistic detail or rendered 3D.\nOutput: one NEW 1024x1024 square PNG. Center the complete subject at approximately 75% of the canvas with safe empty margins on every side. Use genuine transparent alpha outside the object; never draw a checkerboard or opaque background. No floor, scene, display card, collage, text, logo or watermark.",
+          "referenced_image_paths": [
+            "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png"
+          ]
+        },
+        "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-8c328878-052b-4b44-b7c9-08d2d7f76eaf.png",
+        "requested_dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "dimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "dimensions_check": "failed",
+        "alpha_check": {
+          "required": true,
+          "status": "failed",
+          "mode": "RGB",
+          "has_alpha_channel": false,
+          "alpha_extrema": [
+            255,
+            255
+          ],
+          "transparent_pixel_count": 0,
+          "partial_alpha_pixel_count": 0,
+          "transparent_fraction": 0,
+          "corner_alpha": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "method": "Read-only Pillow examination of the original generated file. No output image was rewritten."
+        },
+        "shape_review": "单只矮圆橙黄南瓜，宽瓣与弯绿蒂清楚，无表情、篮子、斑驳污渍或其他蔬菜。",
+        "concerns": [
+          "ALPHA FAILED: RGB PNG without alpha; transparent pixel count is 0. The visible checkerboard is painted into the image, not real transparency.",
+          "DIMENSIONS FAILED: requested 1024x1024; actual 1254x1254. No resizing performed.",
+          "蒂比短蒂设定略粗长；每瓣均有高光，较全物只保留一处高光的目标更丰富。"
+        ],
+        "generation_calls": 1,
+        "retries": 0,
+        "variants": 0,
+        "post_processing_performed": false,
+        "status": "visual_candidate_not_transparent_production_asset"
+      }
+    ]
+  },
+  "saved_assets": [
+    {
+      "id": "souvenir_glass_panda",
+      "name": "琉璃熊猫摆件",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-e0847fac-2ae0-46b0-844d-5121106ef44c.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_glass_panda.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_corn",
+      "name": "包谷",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-cd49d91f-4125-41d5-bb50-a6c668ae0b15.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_corn.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_sweet_potato",
+      "name": "红苕",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-136400b6-c320-497e-81ae-7bc1c44b04e3.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_sweet_potato.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_bamboo_dragonfly",
+      "name": "竹蜻蜓",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-043bc117-4052-47d4-a3a1-9d949ddffb1c.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_bamboo_dragonfly.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_palm_fan",
+      "name": "小蒲扇",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-ac4731ca-d1a3-4ac9-b7e0-a4ece7a5d8a0.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_palm_fan.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_wooden_boat",
+      "name": "小木船",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-e1301d14-d6e4-417d-b71a-fff316f92557.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_wooden_boat.png",
+      "production_ready": false
+    },
+    {
+      "id": "souvenir_small_pumpkin",
+      "name": "小南瓜",
+      "source": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-8c328878-052b-4b44-b7c9-08d2d7f76eaf.png",
+      "path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_small_pumpkin.png",
+      "production_ready": false
+    }
+  ],
+  "collection": [
+    {
+      "route": "道明竹乡",
+      "items": [
+        {
+          "id": "souvenir_bamboo_mat",
+          "name": "小竹垫",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_mat.png",
+          "new_candidate": false
+        },
+        {
+          "id": "souvenir_bamboo_basket",
+          "name": "小竹篮",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_bamboo_basket.png",
+          "new_candidate": false
+        },
+        {
+          "id": "souvenir_bamboo_dragonfly",
+          "name": "竹蜻蜓",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_bamboo_dragonfly.png",
+          "new_candidate": true
+        }
+      ]
+    },
+    {
+      "route": "成都坝坝茶",
+      "items": [
+        {
+          "id": "souvenir_gaiwan",
+          "name": "小盖碗",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_gaiwan.png",
+          "new_candidate": false
+        },
+        {
+          "id": "souvenir_tea_stool",
+          "name": "小竹凳",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_tea_stool.png",
+          "new_candidate": false
+        },
+        {
+          "id": "souvenir_palm_fan",
+          "name": "小蒲扇",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_palm_fan.png",
+          "new_candidate": true
+        }
+      ]
+    },
+    {
+      "route": "黄龙溪河街",
+      "items": [
+        {
+          "id": "souvenir_river_sketch",
+          "name": "河街速写",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/items/souvenir_river_sketch.png",
+          "new_candidate": false
+        },
+        {
+          "id": "souvenir_glass_panda",
+          "name": "琉璃熊猫摆件",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_glass_panda.png",
+          "new_candidate": true
+        },
+        {
+          "id": "souvenir_wooden_boat",
+          "name": "小木船",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_wooden_boat.png",
+          "new_candidate": true
+        }
+      ]
+    },
+    {
+      "route": "田坝地头",
+      "items": [
+        {
+          "id": "souvenir_corn",
+          "name": "包谷",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_corn.png",
+          "new_candidate": true
+        },
+        {
+          "id": "souvenir_sweet_potato",
+          "name": "红苕",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_sweet_potato.png",
+          "new_candidate": true
+        },
+        {
+          "id": "souvenir_small_pumpkin",
+          "name": "小南瓜",
+          "source": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/souvenirs-twelve-v1/souvenir_small_pumpkin.png",
+          "new_candidate": true
+        }
+      ]
+    }
+  ],
+  "owner_verification": {
+    "all_seven_viewed": true,
+    "sips_dimensions": "all 1254x1254",
+    "sips_hasAlpha": "no for all seven",
+    "alpha_pixel_count": 0,
+    "protected_file_hash_check": {
+      "file_count": 80,
+      "changed": []
+    },
+    "runtime_or_live_assets_changed": false,
+    "code_changed": false,
+    "save_data_changed": false,
+    "deployed": false
+  }
+}

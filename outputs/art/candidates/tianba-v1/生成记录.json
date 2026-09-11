@@ -1,0 +1,327 @@
+{
+  "collection": "tianba-first-look-proposals",
+  "generation_mode": "built-in image_gen generation with references",
+  "requested_output_count": 5,
+  "completed_output_count": 5,
+  "generation_calls": 5,
+  "retries": 0,
+  "variants": 0,
+  "scope": "Asset proposals for user aesthetic confirmation only. No project code, public assets or production manifests were edited.",
+  "notes": [
+    "All four required local references were viewed with view_image before generation.",
+    "Each asset was generated exactly once and visually inspected.",
+    "The card_tianba_01 story uses the corrected working-in-the-field interpretation, not a seated eating-lunch scene.",
+    "The title 红烧稀饭胀多了 is preserved verbatim as document metadata; the actual food is 红苕稀饭 / sweet-potato rice congee.",
+    "Both isolated-item outputs failed true transparency and requested-size checks. They were not cut out, filtered, resized or retried.",
+    "All generated files remain at their tool-returned default locations."
+  ],
+  "assets": [
+    {
+      "id": "card_tianba_01",
+      "title": "幺姑婆，又在低头吃晌午啊",
+      "requested_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha_required": false,
+      "reference_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_01.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_03.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/eating-alpha.png"
+      ],
+      "prompt": "Use case: illustration-story.\nAsset type: original narrative game postcard proposal; new composition, not an edit of a reference layout.\nInput images: Image 1 and Image 2 are clean-v2 art-style and toad-IP references ONLY, not scene layouts to copy. Image 3 is the toad's body/proportions reference ONLY, not an action or background to copy.\nScene/backdrop: An original early-summer rural scene on the flat Sichuan plain: fresh green rice paddies, narrow dry earthen field ridges, a modest irrigation channel, distant linpan bamboo-and-tree groves around gray-tile village homes, low gentle horizon. Bright, unpretentious, relaxed, cozy local rural humor. This is level productive farmland, NOT stepped tourist terraces or a dramatic mountain travel poster.\nStory: Laigebao travels along a narrow field ridge in the foreground, lifts its face and waves ONE front paw to warmly greet Yaogupo, an elderly Sichuan village woman who is currently working among rice plants in the midground. She is a HUMAN, not another animal. Show her in a naturally bent working posture, head still lowered, holding a small hoe and tending/weeding along the rice row. She hears the greeting and may turn her face slightly toward the little traveler without ceasing to look like she is at work. She is NOT seated eating lunch; no bowl in her hands. The intended caption is a humorous greeting, not a literal instruction to show eating.\nHuman design: kind, ordinary, neat elderly Chinese/Sichuan rural woman, gray hair in a bun, practical indigo cloth blouse and dark trousers, age-appropriate facial features and natural limbs. Her small hoe is safely directed into the soil away from the toad. No stylized giant proportions.\nComposition: create a fresh readable foreground-to-midground exchange across the narrow field ridge. The foreground toad should be large enough to recognize face, waving paw and satchel, while the woman remains in believable perspective and the green working rice fields occupy generous space. Use a naturally receding field path and irrigation water to connect them; keep the horizon low. Do not copy the bamboo-grove nap scene or stone-stair/fence scene of either reference.\nCharacter: Laigebao is the same squat, low-bodied, neckless olive/ochre-yellow toad as the references: wide body, short robust limbs, cream belly, sleepy half-lidded amber eyes, bean-shaped glands behind the eyes, a few larger identifying wart spots, and a strong dark-brown contour. Keep its recognizable silhouette and proportions; do not turn it into a slender frog, upright human-shaped animal, or a different mascot. Its indigo-blue floral cloth satchel with white flower motif and red chili knot stays recognizable.\nStyle and materials: Natural soft hand-painted 2D gouache with warm deep-brown structural outlines and clean coherent color planes, matching the clean-v2 references. Extremely sparse surface texture: each foreground leaf has ONE complete main-color shape plus at most ONE clear shadow plane; grass and shrubs form large readable clusters; distant woods are layered coherent color masses, not densely cut tiny leaves. Soil and any stone/brick use complete base-color planes with only two or three broad gentle tonal shifts, no stippled dots. Cast shadows are a few connected shapes. Almost no random paint grain, mottled chips, triangular flecks or speckles. Keep a handmade painted feeling without returning to busy mottled watercolor. Do not imitate any texture defect or opaque background in a reference.\nLighting/mood: warm clear early-summer midday, relaxed rural friendliness, gentle humor.\nOutput: ONE full-bleed landscape illustration, native 1536x1024, aspect ratio 3:2. No words, titles, captions, letters, logos, UI, panel divisions, border or frame. No 3D, photorealism, flat-vector conversion, blur filter, bleaching or texture-noise overlay.",
+      "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-f3e39956-e27c-4d51-a9d9-e249713817ce.png",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "dimensions_check": "passed",
+      "alpha_check": {
+        "required": false,
+        "status": "not_required",
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "transparent_pixel_count": 0,
+        "partial_alpha_pixel_count": 0,
+        "transparent_fraction": 0,
+        "corner_alpha": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "nontransparent_bbox": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "method": "Read-only Pillow inspection of the original generated file. No image was rewritten."
+      },
+      "concerns": [
+        "田土、田埂立面、草簇与远树仍有较密碎斑或细叶边缘，没有完全达到 clean-v2 低纹理要求。",
+        "幺姑婆持小锄、弯腰做农活的校正故事已体现，但面部抬起转向主角较明显，并非始终低头。",
+        "主角挥一掌、人与主角的呼应、平原稻田与灌溉渠可读；仅作为审美候选，未接入游戏。"
+      ],
+      "generation_calls": 1,
+      "retries": 0,
+      "variants": 0,
+      "status": "proposal_requires_review",
+      "integrated_into_project": false,
+      "candidate_path": "outputs/art/candidates/tianba-v1/card_tianba_01.png",
+      "copied_to_workspace": true,
+      "integrated_into_game": false
+    },
+    {
+      "id": "card_tianba_02",
+      "title": "红烧稀饭胀多了",
+      "requested_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha_required": false,
+      "reference_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_01.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_03.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/eating-alpha.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/food_home_meal.png"
+      ],
+      "prompt": "Use case: illustration-story.\nAsset type: original narrative game postcard proposal; new composition.\nInput images: Images 1 and 2 are clean-v2 visual-style and toad-IP references ONLY, not layouts to reproduce. Image 3 is a body-proportions reference ONLY; do not copy its bowl-holding action. Image 4 is only a warm painted food-prop rendering reference, NOT a request for its decorative bowl or dry rice.\nScene/backdrop: An original early-summer rural scene on the flat Sichuan plain: fresh green rice paddies, narrow dry earthen field ridges, a modest irrigation channel, distant linpan bamboo-and-tree groves around gray-tile village homes, low gentle horizon. Bright, unpretentious, relaxed, cozy local rural humor. This is level productive farmland, NOT stepped tourist terraces or a dramatic mountain travel poster.\nStory: Laigebao has eaten a little too much Sichuan SWEET-POTATO RICE CONGEE (红苕稀饭). Under the cool shade of a tree beside the field ridge, the toad sits leaning comfortably backward with BOTH front paws resting on its cream belly, slightly rounder than usual. Its sleepy, satisfied, mildly overfull expression is funny and gentle, not distressed. Do not make a painful swollen balloon, illness, vomiting or medical scene.\nFood prop: One low, wide-mouthed ceramic bowl with creamy-white glaze, a single thin indigo-blue line around the rim, no floral pattern, holding milky rice congee with a few readable rice grains and soft orange-yellow sweet-potato chunks; a plain wooden spoon rests naturally on the bowl rim. The bowl on the ground beside the toad contains a modest amount of leftover milky porridge with several recognizable soft sweet-potato pieces and a little liquid, as if just eaten. NO meat, red-braised sauce or brown stew. The satchel rests at the toad's side. Do not put the bowl in its hands.\nComposition: an original close-to-medium view of the reclining toad and bowl in the foreground tree shade, with enough open middle ground to read the narrow field ridge, irrigation water and broad fresh-green paddies beyond. The pose, both paws on belly, food and blue bag must all be clearly visible. Keep a low distant horizon and warm noon atmosphere; do not reproduce reference layouts.\nCharacter: Laigebao is the same squat, low-bodied, neckless olive/ochre-yellow toad as the references: wide body, short robust limbs, cream belly, sleepy half-lidded amber eyes, bean-shaped glands behind the eyes, a few larger identifying wart spots, and a strong dark-brown contour. Keep its recognizable silhouette and proportions; do not turn it into a slender frog, upright human-shaped animal, or a different mascot. Its indigo-blue floral cloth satchel with white flower motif and red chili knot stays recognizable.\nStyle and materials: Natural soft hand-painted 2D gouache with warm deep-brown structural outlines and clean coherent color planes, matching the clean-v2 references. Extremely sparse surface texture: each foreground leaf has ONE complete main-color shape plus at most ONE clear shadow plane; grass and shrubs form large readable clusters; distant woods are layered coherent color masses, not densely cut tiny leaves. Soil and any stone/brick use complete base-color planes with only two or three broad gentle tonal shifts, no stippled dots. Cast shadows are a few connected shapes. Almost no random paint grain, mottled chips, triangular flecks or speckles. Keep a handmade painted feeling without returning to busy mottled watercolor. Do not imitate any texture defect or opaque background in a reference.\nOutput: ONE full-bleed landscape illustration, native 1536x1024, aspect ratio 3:2. No words, titles, captions, letters, logos, UI, panel divisions, border or frame. No 3D, photorealism, flat-vector conversion, blur filter, bleaching or texture-noise overlay.",
+      "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-12f9d85f-ba03-4c16-96ba-fd612d3076e1.png",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "dimensions_check": "passed",
+      "alpha_check": {
+        "required": false,
+        "status": "not_required",
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "transparent_pixel_count": 0,
+        "partial_alpha_pixel_count": 0,
+        "transparent_fraction": 0,
+        "corner_alpha": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "nontransparent_bbox": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "method": "Read-only Pillow inspection of the original generated file. No image was rewritten."
+      },
+      "concerns": [
+        "树干、田土和稻簇纹理比 clean-v2 仍偏密，未完全达到极少碎斑要求。",
+        "后仰、两掌搭稍鼓奶油腹、满足吃撑表情清楚；碗形偏正常饭碗深度，而非特别矮的宽口陶碗。",
+        "场景碗与独立道具同为奶白釉、靛蓝沿、木勺、橙黄红苕，但比例和细节未做到完全一致。"
+      ],
+      "generation_calls": 1,
+      "retries": 0,
+      "variants": 0,
+      "status": "proposal_requires_review",
+      "integrated_into_project": false,
+      "candidate_path": "outputs/art/candidates/tianba-v1/card_tianba_02.png",
+      "copied_to_workspace": true,
+      "integrated_into_game": false
+    },
+    {
+      "id": "card_tianba_03",
+      "title": "草帽底下，眯一哈",
+      "requested_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha_required": false,
+      "reference_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_01.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_03.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/eating-alpha.png"
+      ],
+      "prompt": "Use case: illustration-story.\nAsset type: original narrative game postcard proposal; new composition.\nInput images: Images 1 and 2 are clean-v2 visual-style and toad-IP references ONLY; do not recreate their bamboo-grove or stone-fence layout. Image 3 is the squat toad body-proportions reference ONLY.\nScene/backdrop: An original early-summer rural scene on the flat Sichuan plain: fresh green rice paddies, narrow dry earthen field ridges, a modest irrigation channel, distant linpan bamboo-and-tree groves around gray-tile village homes, low gentle horizon. Bright, unpretentious, relaxed, cozy local rural humor. This is level productive farmland, NOT stepped tourist terraces or a dramatic mountain travel poster.\nStory: Laigebao leans comfortably against a dry earthen field ridge and dozes. A straw hat rests low on its head, its broad brim shading and covering about half the face; the cream belly and resting front paws remain clearly visible, with the blue floral satchel resting close beside the body. The image should make the cool patch under the hat brim feel quietly pleasant.\nShared hat design: A pale wheat-gold straw hat with a ROUND SHALLOW DOMED CROWN and a WIDE FLAT BRIM, plus a simple dark-brown chin cord. Show only a few sparse directional curved weave strokes, not dense crosshatching or dotted grain. No conical pointed crown, flowers, ornaments, printed fabric, blue floral cloth or chili decoration. Its silhouette and wheat-gold color should be clear even while worn.\nComposition: invent a quiet original field-edge composition centered on the little shaded nap, with a narrow irrigation channel curving beside the ridge. Neat rice clumps bend gently in a breeze and a low, distant linpan grove and gray-tile homes complete the open view. Keep the whole small toad and satchel readable; no additional animals or people. This is flat Sichuan farmland, not a steep terrace scene.\nCharacter: Laigebao is the same squat, low-bodied, neckless olive/ochre-yellow toad as the references: wide body, short robust limbs, cream belly, sleepy half-lidded amber eyes, bean-shaped glands behind the eyes, a few larger identifying wart spots, and a strong dark-brown contour. Keep its recognizable silhouette and proportions; do not turn it into a slender frog, upright human-shaped animal, or a different mascot. Its indigo-blue floral cloth satchel with white flower motif and red chili knot stays recognizable.\nStyle and materials: Natural soft hand-painted 2D gouache with warm deep-brown structural outlines and clean coherent color planes, matching the clean-v2 references. Extremely sparse surface texture: each foreground leaf has ONE complete main-color shape plus at most ONE clear shadow plane; grass and shrubs form large readable clusters; distant woods are layered coherent color masses, not densely cut tiny leaves. Soil and any stone/brick use complete base-color planes with only two or three broad gentle tonal shifts, no stippled dots. Cast shadows are a few connected shapes. Almost no random paint grain, mottled chips, triangular flecks or speckles. Keep a handmade painted feeling without returning to busy mottled watercolor. Do not imitate any texture defect or opaque background in a reference.\nLighting/mood: warm early-summer daylight outside the brim and a single cool coherent shaded area beneath it; restful and lightly humorous.\nOutput: ONE full-bleed landscape illustration, native 1536x1024, aspect ratio 3:2. No words, titles, captions, letters, logos, UI, panel divisions, border or frame. No 3D, photorealism, flat-vector conversion, blur filter, bleaching or texture-noise overlay.",
+      "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-33e2dc9c-05e6-4ea2-bb74-e5d89ce53f3f.png",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "dimensions_check": "passed",
+      "alpha_check": {
+        "required": false,
+        "status": "not_required",
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "transparent_pixel_count": 0,
+        "partial_alpha_pixel_count": 0,
+        "transparent_fraction": 0,
+        "corner_alpha": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "nontransparent_bbox": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "method": "Read-only Pillow inspection of the original generated file. No image was rewritten."
+      },
+      "concerns": [
+        "田土、草簇与树干碎斑仍较多；与确定的 clean-v2 干净背景仍有距离。",
+        "草帽遮住额头与眼睛上方、投下阴影，但没有低低盖住约半张脸；打盹感较轻。",
+        "场景草帽与独立道具同为麦金圆冠宽檐、深褐绳，但场景帽冠较低、编织笔触较密，尚非完全一致道具。"
+      ],
+      "generation_calls": 1,
+      "retries": 0,
+      "variants": 0,
+      "status": "proposal_requires_review",
+      "integrated_into_project": false,
+      "candidate_path": "outputs/art/candidates/tianba-v1/card_tianba_03.png",
+      "copied_to_workspace": true,
+      "integrated_into_game": false
+    },
+    {
+      "id": "food_sweet_potato_congee",
+      "title": "红苕稀饭",
+      "description": "不要胀太多哦",
+      "requested_dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alpha_required": true,
+      "reference_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/food_home_meal.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_01.png"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: original isolated 2D game food-item proposal on a GENUINELY TRANSPARENT PNG background.\nInput images: Image 1 is ONLY a reference for warm hand-painted game food-prop rendering. Do not copy its dry white rice, flower decoration, tall bowl or white background. Image 2 is ONLY a clean-v2 color-plane and outline-style reference; include no character or scenery from it.\nSubject: Sichuan sweet-potato rice congee, 红苕稀饭. One low, wide-mouthed ceramic bowl with creamy-white glaze, a single thin indigo-blue line around the rim, no floral pattern, holding milky rice congee with a few readable rice grains and soft orange-yellow sweet-potato chunks; a plain wooden spoon rests naturally on the bowl rim. The surface is creamy milky porridge with a few individually readable rice grains and FIVE TO SEVEN soft orange-yellow sweet-potato chunks, plus a restrained small wisp of steam. This is sweet-potato porridge, NOT red-braised meat, red sauce, pumpkin stew or dry heaped rice.\nComposition: a single centered food prop seen from three-quarter slightly above, showing the low wide bowl, porridge surface, spoon and complete base. The complete bowl-and-spoon silhouette occupies around 70–80% of the canvas with generous genuinely transparent margins on ALL FOUR sides. Do not crop the spoon, bowl or steam.\nStyle: natural dark-brown outlines and clean warm coherent color areas with shallow simple painted shading, soft handmade gouache feel but almost no mottled flecks or paper-grain noise. Keep the ceramic creamy-white with only one thin indigo rim line and no complex pattern. The wooden spoon is plain. Do not add extra side dishes, plates, characters, satchel or chili decorations.\nTransparency/output: ONE native 1024x1024 PNG with a real alpha channel; every pixel outside the item and delicate steam must be transparent, not white, gray or colored. No tabletop, ground plane, backdrop, rectangular tile, opaque silhouette shadow or drawn checkerboard. No words, titles, captions, letters, logos, UI, panel divisions, border or frame. No 3D, photorealism, flat-vector conversion, blur filter, bleaching or texture-noise overlay.",
+      "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-b7b8ec85-878f-423c-bdac-c22967af85b3.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "dimensions_check": "failed",
+      "alpha_check": {
+        "required": true,
+        "status": "failed",
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "transparent_pixel_count": 0,
+        "partial_alpha_pixel_count": 0,
+        "transparent_fraction": 0,
+        "corner_alpha": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "nontransparent_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "method": "Read-only Pillow inspection of the original generated file. No image was rewritten."
+      },
+      "concerns": [
+        "ALPHA FAILED: 返回 RGB PNG，无 alpha 通道，透明像素数为0；可见棋盘是被画进图片的假透明背景。",
+        "DIMENSIONS FAILED: 请求1024×1024，实际1254×1254；未进行手工缩放。",
+        "碗与木勺轮廓完整，但主体宽度约占画布90%，大于70–80%目标，四边留白偏少。",
+        "红苕稀饭没有肉类或红烧酱汁，外观可辨；约8块可见红苕略超5–7块要求，米粒/粥面笔触也偏细密。",
+        "仅能作为外观参考，不能作为透明生产道具；没有手工抠图、滤镜或重试。"
+      ],
+      "generation_calls": 1,
+      "retries": 0,
+      "variants": 0,
+      "status": "proposal_requires_review",
+      "integrated_into_project": false,
+      "candidate_path": "outputs/art/candidates/tianba-v1/food_sweet_potato_congee.png",
+      "copied_to_workspace": true,
+      "integrated_into_game": false
+    },
+    {
+      "id": "gear_straw_hat",
+      "title": "草帽",
+      "requested_dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alpha_required": true,
+      "reference_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/cards-clean-v2/card_daoming_01.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/food_home_meal.png"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: original isolated 2D game equipment-item proposal on a GENUINELY TRANSPARENT PNG background.\nInput images: Image 1 is ONLY a clean-v2 hand-painted color-plane and brown-outline style reference; include no toad, bag or scenery. Image 2 is ONLY a warm rustic isolated-item rendering reference; do not include its bowl, rice, flower motif or opaque white background.\nSubject: one simple everyday Sichuan fieldwork straw hat. A pale wheat-gold straw hat with a ROUND SHALLOW DOMED CROWN and a WIDE FLAT BRIM, plus a simple dark-brown chin cord. Show only a few sparse directional curved weave strokes, not dense crosshatching or dotted grain. No conical pointed crown, flowers, ornaments, printed fabric, blue floral cloth or chili decoration.\nComposition: centered, viewed from three-quarter slightly above so the round shallow dome and broad flat brim are both clearly readable. Show the COMPLETE hat and complete simple chin cord, uncut, with the overall silhouette taking about 70–80% of the canvas and generous genuinely transparent clearance on all four sides. The cord hangs or loops naturally below the brim, not an ornamental bow.\nStyle: natural warm deep-brown outline, pale wheat-gold main color, one or two broad soft painted shadow planes. Only a few separated directional curved weave lines suggest straw craft. No dense lattice, crosshatched net, pebbled stippling or noisy grain; no heavily mottled watercolor texture. Soft hand-painted 2D gouache, not photorealistic, vector-flat or 3D.\nTransparency/output: ONE native 1024x1024 PNG with real alpha transparency. All pixels outside the isolated hat and cord must be transparent, not white, gray or colored. No wearer, person, toad, tabletop, floor, background cast shadow, rectangular tile, or painted checkerboard. No blue floral fabric, red chili knot, flowers, tourist ornaments, brand or text. No words, titles, captions, letters, logos, UI, panel divisions, border or frame. No 3D, photorealism, flat-vector conversion, blur filter, bleaching or texture-noise overlay.",
+      "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-4f9ec6ba-2a67-4202-b0ca-f65f16c240d1.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "dimensions_check": "failed",
+      "alpha_check": {
+        "required": true,
+        "status": "failed",
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "transparent_pixel_count": 0,
+        "partial_alpha_pixel_count": 0,
+        "transparent_fraction": 0,
+        "corner_alpha": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "nontransparent_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "method": "Read-only Pillow inspection of the original generated file. No image was rewritten."
+      },
+      "concerns": [
+        "ALPHA FAILED: 返回 RGB PNG，无 alpha 通道，透明像素数为0；可见棋盘是被画进图片的假透明背景。",
+        "DIMENSIONS FAILED: 请求1024×1024，实际1254×1254；未进行手工缩放。",
+        "帽与绳轮廓完整，但横向约占画布92%，大于70–80%目标，左右留白不足。",
+        "麦金圆冠宽檐和深褐绳符合大方向；帽冠比场景卡略高，编织笔触数量偏多，与场景卡未完全一致。",
+        "仅能作为外观参考，不能作为透明生产道具；没有手工抠图、滤镜或重试。"
+      ],
+      "generation_calls": 1,
+      "retries": 0,
+      "variants": 0,
+      "status": "proposal_requires_review",
+      "integrated_into_project": false,
+      "candidate_path": "outputs/art/candidates/tianba-v1/gear_straw_hat.png",
+      "copied_to_workspace": true,
+      "integrated_into_game": false
+    }
+  ],
+  "date": "2026-09-11",
+  "delivery_status": "五张外观/构图候选已呈现，非可投产定稿。按用户要求暂停在看图阶段；未开发、未发布。",
+  "parent_review": "三卡保留故事但局部碎斑仍偏密；幺姑婆已持锄做活但脸偏抬起；草帽未完全遮半脸。两物无 alpha、透明像素数 0，不能当透明图使用。"
+}

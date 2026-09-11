@@ -1,0 +1,94 @@
+{
+  "id": "gear_rain_boots",
+  "name": "筒靴鞋",
+  "prompt": "Use case: stylized-concept.\nAsset type: one original isolated 2D game equipment-item candidate, \"old-fashioned farm rubber high boots\", on a truly transparent PNG canvas.\nInput images: Image 1 is the PRIMARY REAL-OBJECT SHAPE reference supplied by the user. Preserve this type of old-fashioned black agricultural rubber boot, but do not copy the wearer's legs, outdoor background, photo perspective, mud splatter, yellow trademark or lettering. Image 2 is ONLY a reference for warm soft hand-painted game-object rendering and deep-brown outline; do not copy the umbrella, its colors, white background, shape, wrapping or accessories.\n\nSubject: exactly ONE PAIR of EMPTY traditional Chinese rural farm rubber boots, tall straight shafts reaching just below the knee, broad OVAL OPEN TOPS, slightly narrowed ankles, rounded broad practical toes, and one-piece sturdy low-flat molded rubber soles with restrained visible tread. Each shaft has a NARROW SOLID brown-ochre top band edged by a THIN pale-cream line, matching the distinctive cuff color relationship in the user's photo. Keep both mouths visibly hollow and dark INSIDE, but make the boots and their painted interior surfaces opaque. The boots should read as practical old-style agricultural rubber footwear, not leather.\n\nPose/composition: arrange both empty boots naturally side by side, one slightly forward and the other slightly back, in a three-quarter front-and-side view. Both boot openings, complete toe shapes and complete sole contours must be visible and distinguishable. Do not hide one boot behind the other. The pair is centered on a NEW 1024x1024 square canvas, occupying about 80% of its height and width, with safe transparent margins on all four sides and no clipping. Create the new square layout rather than retaining either reference image's canvas dimensions or the user's downward point-of-view photo composition. Clear silhouettes should remain readable as a small game icon.\n\nMaterials and paint: matte charcoal-black to very dark gray-green rubber, expressed with large coherent softly painted highlights and shadow areas, plus just a few necessary ankle folds. Use simple dark-brown contour lines and clean low-noise warm 2D gouache color planes. Do NOT copy the dense dried mud and scuffs in the photo. Allow only TWO OR THREE small broad restrained mud patches close to the sole edges across the entire pair, with no all-over flecks. Keep the surface calm and plainly rubber, not glossy fashion leather, plastic 3D rendering or photorealistic product photography.\n\nRequired transparency: the output itself must be a PNG with a REAL ALPHA CHANNEL. All empty space around and between the boots is alpha=0. Boot surfaces and dark inner openings remain opaque; only natural edge antialiasing may be partially transparent. Do not depict transparency as a visible design. No white, gray, colored or paper backdrop, no checkerboard pattern, no rectangular sticker tile, no floor, no cast-shadow background or display card.\nOutput: exactly ONE native 1024x1024 image, one pair only, full complete objects.\nAvoid: legs, feet inside the boots, people, animals, umbrella, scenery, ground plane, fashionable riding boots, leather seams, pointed toes, high heels, yellow children's rain boots, lace-up tactical boots, buckles, zippers, over-knee waders, suspenders, brands, yellow labels, logos, letters, text, watermarks, decorative pattern, tiny stippling, mottled paint texture, noisy paper grain, dense scratches, blur filters, vector-flat conversion or 3D.",
+  "referenced_image_paths": [
+    "/var/folders/bc/4wp8_h096kjbvzjfw2w0s6yr0000gp/T/codex-clipboard-f141d39d-147a-4f5a-84f7-950f4bb42d10.png",
+    "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/gear_oilpaper_umbrella.png"
+  ],
+  "requested_dimensions": {
+    "width": 1024,
+    "height": 1024
+  },
+  "research": {
+    "image_queries": [
+      "四川 征峰 黑色 高筒 农用 胶靴 雨鞋"
+    ],
+    "image_query_count": 1,
+    "source_pages": [
+      {
+        "url": "https://www.zhengfengshoes.com/",
+        "title": "征峰鞋业-首页",
+        "status": "read",
+        "finding": "官网产品中心列出PVC男雨鞋N553(S-308)，并将劳动胶鞋、雨鞋列为核心产品类别；用于确认劳动雨靴的产品方向，不据此认定用户照片的具体品牌或型号。"
+      }
+    ],
+    "failed_pages": [
+      {
+        "url": "https://www.zhengfengshoes.com/article/21.html",
+        "status": "fetch_failed_cache_miss",
+        "used_as_evidence": false
+      }
+    ],
+    "visual_conclusion": "实际造型以用户本地照片为主：老式黑胶高筒、宽椭圆筒口、收踝圆阔鞋头、低平厚底、窄棕赭口边与米黄细沿。网页视觉检索用于核对高筒劳动雨靴这一类别，不采纳营销功能数值，不下载网页图。",
+    "network_images_downloaded": false
+  },
+  "generation_calls": 1,
+  "retries": 0,
+  "variants": 0,
+  "output_path": "/Users/jojo/.codex/generated_images/01a08f0e-8001-74a3-981a-7df893bec1d3/exec-5ccc01a2-1899-4670-8169-cddd48ba7ae5.png",
+  "dimensions": {
+    "width": 1254,
+    "height": 1254
+  },
+  "dimensions_check": "failed",
+  "alpha_check": {
+    "required": true,
+    "status": "failed",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGB",
+    "has_alpha_channel": false,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_pixel_count": 0,
+    "partial_alpha_pixel_count": 0,
+    "transparent_fraction": 0,
+    "corner_alpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "method": "Read-only Pillow inspection of original generated PNG. convert(RGBA) was used only in memory to measure alpha; no image file was edited or rewritten."
+  },
+  "shape_review": {
+    "observed": "一双无腿无人物的空高筒胶靴，前后略错落并置；两只宽椭圆筒口、收踝与圆阔鞋头、完整厚底均可见；炭黑/深灰胶面、棕赭口边和米黄沿保留，没有黄色商标、文字或logo。",
+    "type_match": "大方向符合用户照片的老式农用黑胶高筒鞋，并非黄色儿童雨靴、系带战术靴、皮革时装马靴或过膝涉水裤。",
+    "differences": "筒口棕边比照片显得更宽、表面带斑驳；鞋底齿块和局部鞋跟较明显，胶面高光与笔触比要求更厚重细碎。"
+  },
+  "concerns": [
+    "ALPHA FAILED: 实际RGB PNG，没有alpha通道，透明像素数0；背景棋盘是画进去的伪透明，不能作为透明生产道具。",
+    "DIMENSIONS FAILED: 请求1024×1024，实际1254×1254。未进行缩放。",
+    "安全留白不足：靴子整体高度接近画布全高，明显大于约80%的目标。",
+    "胶面/棕口边的碎笔触仍偏密，与项目低碎斑简洁风格有距离；底边可见泥迹也略多于2–3块目标。",
+    "仅作为外观候选。没有代码抠图、滤镜、重试、额外变体或游戏接入。"
+  ],
+  "generation_mode": "built-in image_gen generation with two local references",
+  "post_processing": false,
+  "integrated_into_game": false,
+  "status": "candidate_requires_review_not_production_ready",
+  "asset_agent_id": "gear_farm_rain_boots",
+  "recorded_at": "2026-09-11",
+  "candidate_path": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/rain-boots-v1/gear_rain_boots.png",
+  "reference_copy": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/rain-boots-v1/reference-user-boots.png",
+  "production_files_edited": false,
+  "local_changes": "新增候选、用户参考图副本、方案/预览/生成记录，更新四份中文文档；不改代码、正式资产、田坝候选或部署。",
+  "owner_review": "已查看原图并用 sips 确认1254×1254、hasAlpha=no；造型可供预览，棕口边偏宽、表面碎笔触偏多、安全留白不足、假透明，不接入游戏。",
+  "unchanged_check": {
+    "file_count": 76,
+    "changed": []
+  }
+}

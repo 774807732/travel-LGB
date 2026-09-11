@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>九张见闻 · 减纹理前后对照</title>
+  <style>
+    :root { color-scheme: light; --split: 50%; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; color: #493c2d; background: #f3ebdd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1440px; margin: auto; padding: 32px 24px 56px; }
+    h1 { margin: 0 0 10px; font: 600 clamp(24px, 3vw, 36px)/1.3 "Songti SC", serif; }
+    .intro { margin: 0 0 24px; max-width: 780px; font-size: 16px; line-height: 1.8; }
+    .toolbar { position: sticky; top: 0; z-index: 2; padding: 14px 0; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; background: #f3ebddf5; border-block: 1px solid #d9cfb9; }
+    .modes { display: flex; gap: 6px; }
+    button { min-height: 44px; padding: 0 16px; font: inherit; border: 1px solid #b9b69b; border-radius: 7px; color: inherit; background: #fffaf1; cursor: pointer; }
+    button[aria-pressed="true"] { color: white; background: #64724a; border-color: #64724a; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #53677a; outline-offset: 3px; }
+    .slider { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px; font-size: 14px; }
+    input[type="range"] { accent-color: #64724a; flex: 1; min-width: 100px; max-width: 320px; }
+    .grid { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    article { overflow: hidden; background: #fffaf1; border: 1px solid #d9cfb9; border-radius: 10px; }
+    .scene { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #d9cfb9; }
+    .scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+    .scene .new { clip-path: inset(0 0 0 var(--split)); }
+    .divider { position: absolute; inset-block: 0; left: var(--split); width: 2px; background: #fff8e7; box-shadow: 0 0 2px #302b24; }
+    .badge { position: absolute; top: 10px; padding: 5px 8px; background: #fff9eadd; font-size: 12px; border-radius: 4px; }
+    .before-label { left: 10px; } .after-label { right: 10px; }
+    .caption { padding: 15px 16px 18px; }
+    .route { margin: 0 0 5px; font-size: 13px; color: #76805d; }
+    h2 { margin: 0 0 12px; font-size: 18px; font-weight: 600; }
+    .links { display: flex; gap: 18px; font-size: 14px; }
+    a { color: #53677a; text-underline-offset: 3px; }
+    [data-mode="new"] .divider, [data-mode="old"] .divider, [data-mode="new"] .before-label, [data-mode="old"] .after-label { display: none; }
+    [data-mode="new"] .slider, [data-mode="old"] .slider { visibility: hidden; }
+    .note { margin-top: 24px; color: #756c5b; font-size: 14px; line-height: 1.7; }
+    @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+    @media (max-width: 560px) { main { padding: 24px 14px; } .grid { grid-template-columns: 1fr; } .toolbar { gap: 10px; } }
+  </style>
+</head>
+<body data-mode="compare">
+  <main>
+    <h1>九张见闻 · 让画面安静一点</h1>
+    <p class="intro">这次以碎斑纹理减少约 50% 为重绘目标，让石板、墙面、竹木和植被形成更完整的色块。拖动分界线，可以查看同一位置的前后变化。</p>
+    <div class="toolbar" aria-label="对照显示方式">
+      <div class="modes">
+        <button type="button" data-mode="compare" aria-pressed="true">前后对照</button>
+        <button type="button" data-mode="new" aria-pressed="false">只看重绘版</button>
+        <button type="button" data-mode="old" aria-pressed="false">只看原版</button>
+      </div>
+      <label class="slider">原版 ← <input id="split" type="range" min="0" max="100" value="50" aria-label="原版与重绘版分界位置"> → 重绘版</label>
+    </div>
+    <div class="grid" id="cards"></div>
+    <p class="note">“约 50%”是视觉减纹理目标，按画面观感比较；保留物体轮廓、石板接缝、雨水与角色识别斑点。点击图片下方链接可看原尺寸。</p>
+  </main>
+  <script>
+    const cards = [
+      ['card_daoming_01', '道明竹乡', '竹影里打个盹'],
+      ['card_daoming_02', '道明竹乡', '帮忙理了几根竹篾'],
+      ['card_daoming_03', '道明竹乡', '竹篱边吃叶儿粑'],
+      ['card_tea_01', '成都坝坝茶', '一碗茶，坐半晌'],
+      ['card_tea_02', '成都坝坝茶', '听隔壁摆龙门阵'],
+      ['card_tea_03', '成都坝坝茶', '竹椅底下乘个凉'],
+      ['card_river_01', '黄龙溪河街', '檐下等雨停'],
+      ['card_river_02', '黄龙溪河街', '沿着河街慢慢走'],
+      ['card_river_03', '黄龙溪河街', '桥洞里听水声'],
+    ];
+    const imageRoot = './cards-clean-v1/';
+    document.querySelector('#cards').innerHTML = cards.map(([id, route, title], index) => {
+      const oldImage = './cards-original-v1/' + id + '.webp';
+      const newImage = imageRoot + id + '.webp?v=clean-v1';
+      return `<article><div class="scene"><img src="${oldImage}" alt="${title}：原版" width="1200" height="800"><img class="new" src="${newImage}" alt="${title}：减纹理重绘版" width="1200" height="800"><span class="divider" aria-hidden="true"></span><span class="badge before-label">原版</span><span class="badge after-label">重绘版</span></div><div class="caption"><p class="route">${route}</p><h2>${index + 1}. ${title}</h2><div class="links"><a href="${newImage}" target="_blank" rel="noopener">查看重绘大图</a><a href="${oldImage}" target="_blank" rel="noopener">查看原图</a></div></div></article>`;
+    }).join('');
+    const slider = document.querySelector('#split');
+    const setSplit = value => document.documentElement.style.setProperty('--split', value + '%');
+    slider.addEventListener('input', () => setSplit(slider.value));
+    document.querySelectorAll('button[data-mode]').forEach(button => button.addEventListener('click', () => {
+      const mode = button.dataset.mode;
+      document.body.dataset.mode = mode;
+      document.querySelectorAll('button[data-mode]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      setSplit(mode === 'new' ? 0 : mode === 'old' ? 100 : slider.value);
+    }));
+  </script>
+</body>
+</html>

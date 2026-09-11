@@ -59,7 +59,7 @@ function trip(v: unknown, legacy = false): v is Trip {
   const route = ROUTES.find((x) => x.id === v.routeId);
   return (
     !!route &&
-    CARDS.some((c) => c.id === v.cardId && c.routeId === route.id) &&
+    CARDS.some((c) => c.id === v.cardId && c.routeId === route.id && (!c.requiredFood || c.requiredFood === (v.loadout as Loadout).food)) &&
     SOUVENIRS.some((s) => s.id === v.souvenirId && s.routeId === route.id)
   );
 }
@@ -76,6 +76,7 @@ function base(v: unknown, legacy = false): v is Record<string, unknown> {
     !record(v.inventory) ||
     !integer(v.inventory.food_yeerba) ||
     !integer(v.inventory.food_guokui) ||
+    !integer(v.inventory.food_sweet_potato_congee) ||
     !strings(v.ownedGear) ||
     !v.ownedGear.every((g) => GEARS.some((x) => x.id === g))
   )
@@ -274,7 +275,29 @@ export function decodeSave(raw: string): {
   // 既接受导出的带说明文件，也兼容旧版裸状态快照。
   if (record(value) && value.game === "travel-toad" && "state" in value)
     value = value.state;
-  if (isGameState(value)) return { state: value, migrated: false };
+  // 保留版本 1/2 的时间与数量，定向迁移旧圆石；不重算旅途、不重新发奖。
+  let contentMigrated = false;
+  if (record(value) && (value.version === 1 || value.version === 2)) {
+    if (record(value.inventory) && !Object.hasOwn(value.inventory, "food_sweet_potato_congee")) {
+      value.inventory.food_sweet_potato_congee = 0;
+      contentMigrated = true;
+    }
+    for (const t of [...(Array.isArray(value.completed) ? value.completed : []), value.trip]) {
+      if (record(t) && t.souvenirId === "souvenir_pebble") {
+        t.souvenirId = "souvenir_glass_panda";
+        contentMigrated = true;
+      }
+    }
+    if (record(value.souvenirs) && Object.hasOwn(value.souvenirs, "souvenir_pebble")) {
+      const count = value.souvenirs.souvenir_pebble;
+      const current = value.souvenirs.souvenir_glass_panda ?? 0;
+      if (!integer(count) || !integer(current)) throw new Error("收藏品数量有误，原存档未改动。");
+      value.souvenirs.souvenir_glass_panda = current + count;
+      delete value.souvenirs.souvenir_pebble;
+      contentMigrated = true;
+    }
+  }
+  if (isGameState(value)) return { state: value, migrated: contentMigrated };
   const migrated = migrateV1(value);
   if (migrated) return { state: migrated, migrated: true };
   throw new Error("存档版本或内容不完整，现有进度没有改变。");
