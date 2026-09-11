@@ -34,10 +34,12 @@
 ## 运行与交付
 
 - 源码仓库：https://github.com/774807732/travel-LGB ，SSH 为 `git@github.com:774807732/travel-LGB.git`，主分支 `main`；代码、游戏素材、测试与交付文档保留完整 Git 历史。
+- Mac mini 版：http://10.131.75.39:8788/ ，部署在 `brand-mini.local` 的 `/Users/jojo/Sites/travel-LGB`，由 LaunchAgent `com.jojo.travel-lgb.web` 常驻；仅已连接该网络的设备可访问，未配置公网域名、TLS 或鉴权。
 - 私密成品：https://travel-toad-sichuan.jake774807732.chatgpt.site 。1.4.0 / Sites 版本 10 于 2026-09-11 18:06（北京时间）发布成功，仍仅所有者可访问。
 - 原网址刷新即可加载靠墙信桩、14px 留言与簸箕遮挡修正；背景使用 `yard-web-wall.webp`。本次不改存档键或访问权限，无需清浏览器数据。
 - 托管边界（2026-09-11 官方资料核对）：线上访问不依赖本机 Wi-Fi，但需网络可达及获授权账号登录；用户 Wi-Fi/流量尚未实测。Sites 是持续托管成果，未查到固定到期天数；测试期有按套餐、跨站点的用量限制，未查到公开并发/QPS/带宽数值，不承诺永久或无限流量。参考 https://learn.chatgpt.com/docs/sites 。
 - 本地开发入口：http://127.0.0.1:5173/ ，需先运行开发命令；不同网址存档独立。
+- Mac mini、Sites 与本地预览是三个不同网址，浏览器存档互不自动迁移；换网址前需在设置中导出，再到新网址导入。
 - `npm ci` → `npm run dev`；固定访问 `http://127.0.0.1:5173/`。
 - `npm run build` 输出 `dist/`；`npm test` 运行规则与存档测试；`npm run assets` 重新编码正式素材。
 - `/?debug=1` 是独立测试存档，支持下一事件、离线一天和免费饭再出发；正常界面没有快进按钮。
