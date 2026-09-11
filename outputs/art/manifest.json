@@ -1,5 +1,11 @@
 [
   {
+    "id": "departure-note",
+    "source": "outputs/art/source/departure-note.png",
+    "output": "public/art/props/departure-note.webp",
+    "width": 900
+  },
+  {
     "id": "jump-atlas",
     "source": "outputs/art/source/jump-atlas.png",
     "output": "public/art/characters/jump-atlas.webp",

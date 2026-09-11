@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-11。1.2 补齐蹬腿姿态、时序、朝向和绕行名词。
+更新：2026-09-11。1.2.1 补出门信笺的图像与文字层，区别于旅途来信。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -35,7 +35,9 @@
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
 | 小格子、陈列架、收藏纸签 | 最近纪念物入口 / 白底图签 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 土货、小东西 | 六种归来收藏 | `SOUVENIRS`、`state.souvenirs`、`panel='object'` |
-| 出门纸条 | 离家反馈 | `.away-note`，角色和独立包同时隐藏 |
+| 出门纸条、屋里留的信 | 离家留言，非见闻卡/收件信夹 | `.away-note`，角色和独立包同时隐藏 |
+| 留言信纸、花布信笺 | 生图纸张插画层 | `.away-note-art`、`props/departure-note.webp` |
+| 留言内容、疙宝落款 | 独立可读文字层 | `.away-note-copy`、`p / span` |
 | 在家/备妥/旅行 | 规则阶段 | `GameState.phase='home/packed/traveling'` |
 | 回来咯、小红点 | 归来未读 | `hasUnreadReturn`、`.dot / .nav-dot` |
 | 纸页、弹层 | 单层原生弹窗 | `Sheet`、`panel`、`viewKey` |

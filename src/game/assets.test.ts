@@ -9,7 +9,7 @@ const manifest = JSON.parse(
   await readFile("outputs/art/manifest.json", "utf8"),
 ) as Asset[];
 
-test("31 个正式素材 ID 齐全，源图与网页资源均存在", async () => {
+test("32 个正式素材 ID 齐全，源图与网页资源均存在", async () => {
   const ids = [
     "home",
     "yard",
@@ -19,6 +19,7 @@ test("31 个正式素材 ID 齐全，源图与网页资源均存在", async () =
     "dozing",
     "walking",
     "jump-atlas",
+    "departure-note",
     "satchel",
     "mail-clip",
     "harvest-tray",
@@ -27,14 +28,14 @@ test("31 个正式素材 ID 齐全，源图与网页资源均存在", async () =
     ...GEARS.map((x) => x.id),
     ...SOUVENIRS.map((x) => x.id),
   ];
-  assert.equal(manifest.length, 31);
+  assert.equal(manifest.length, 32);
   assert.deepEqual(manifest.map((x) => x.id).sort(), ids.sort());
   for (const asset of manifest) {
     assert.ok((await stat(asset.source)).size > 0);
     assert.ok((await stat(asset.output)).size > 0);
   }
 });
-test("场景 3:4、见闻/动作图集 3:2、单件 1:1，WebP 总包小于 5 MB", async () => {
+test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，WebP 总包小于 5 MB", async () => {
   let bytes = 0;
   for (const asset of manifest) {
     const meta = await sharp(asset.output).metadata();
@@ -42,7 +43,8 @@ test("场景 3:4、见闻/动作图集 3:2、单件 1:1，WebP 总包小于 5 MB
     assert.equal(meta.width, asset.width);
     const ratio = asset.output.includes("/backgrounds/")
       ? 3 / 4
-      : asset.output.includes("/cards/") || asset.id === "jump-atlas"
+      : asset.output.includes("/cards/") ||
+          ["jump-atlas", "departure-note"].includes(asset.id)
         ? 3 / 2
         : 1;
     assert.equal(meta.width! / meta.height!, ratio);
@@ -79,6 +81,7 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
     "dozing",
     "walking",
     "jump-atlas",
+    "departure-note",
     "satchel",
     "mail-clip",
     "harvest-tray",

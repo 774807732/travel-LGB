@@ -229,9 +229,21 @@ function Scene({
           onToad={onToad}
         />
       ) : (
-        <div className="away-note">
-          <p>出去转转，莫急。</p>
-          <span>—— 疙宝</span>
+        <div className="away-note" role="note" aria-label="疙宝留下的出门留言">
+          <img
+            className="away-note-art"
+            src="/art/props/departure-note.webp"
+            alt=""
+            draggable="false"
+          />
+          <div className="away-note-copy">
+            <p>
+              出去转转，
+              <br />
+              莫急。
+            </p>
+            <span>—— 疙宝</span>
+          </div>
         </div>
       )}
     </section>
@@ -1405,7 +1417,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.2
+                旅行癞疙宝 · 1.2.1
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
