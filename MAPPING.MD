@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-11。撤销文字改名，恢复“旅行癞疙宝 / 癞疙宝 / 疙宝”；其他元素映射不变。
+更新：2026-09-11。簸箕放大 20% 已发布为 Sites 版本 9；名称仍为“旅行癞疙宝 / 癞疙宝 / 疙宝”。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -9,7 +9,7 @@
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
 | 线上环境、线上游戏 | ChatGPT Sites 托管站点，不是本地预览 | `.openai/hosting.json` → `project_id`、`static.directory='dist'`；进度仍为浏览器 localStorage |
 | 同时在线、并发、访问流量 | 在线人数、请求速率与传输量不同，不等同于 AI Token 配额 | Sites 套餐用量限制；当前无游戏侧并发配置，具体平台数值待账号界面或官方确认 |
-| 刷新仍是旧图、改了没变化 | 先核对网址与发布记录，不清玩家存档 | Sites 版本 8：`yard-web-wall.webp` + 左下斜排 `.harvest-wide`；设置页仍为 `1.3.1`，不能单凭该文字区分版本 7/8 |
+| 刷新仍是旧图、改了没变化 | 先核对网址与发布记录，不清玩家存档 | Sites 版本 9：`yard-web-wall.webp` + 左下斜排簸箕宽 `clamp(69.12px,7.68%,92.16px)`；设置页仍为 `1.3.1`，不能单凭该文字区分版本 7/8/9 |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
