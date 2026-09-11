@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isWalkable, WALK_MAPS, type SceneId } from "./walkable";
+import {
+  getWalkMap,
+  initialScenePositions,
+  isWalkable,
+  WALK_MAPS,
+  type SceneId,
+} from "./walkable";
 
 test("屋里和院坝的默认落脚点都可行走", () => {
   for (const scene of Object.keys(WALK_MAPS) as SceneId[])
@@ -18,7 +24,11 @@ test("屋里家具和院坝道具不能成为落脚点", () => {
     ["yard", { x: 0.82, y: 0.5 }],
   ] as const;
   for (const [scene, point] of blocked)
-    assert.equal(isWalkable(scene, point), false, scene + JSON.stringify(point));
+    assert.equal(
+      isWalkable(scene, point),
+      false,
+      scene + JSON.stringify(point),
+    );
 });
 
 test("两景保留多块可达的空地", () => {
@@ -32,4 +42,25 @@ test("两景保留多块可达的空地", () => {
   ] as const;
   for (const [scene, point] of open)
     assert.equal(isWalkable(scene, point), true, scene + JSON.stringify(point));
+});
+
+test("横竖版各有独立落脚点与家具阻挡，缩窗不能把位置套到另一张图", () => {
+  const positions = initialScenePositions();
+  for (const layout of ["portrait", "wide"] as const) {
+    for (const scene of ["home", "yard"] as const) {
+      const map = getWalkMap(scene, layout);
+      assert.ok(isWalkable(scene, positions[layout][scene], layout));
+      for (const b of map.blockers) {
+        const center = { x: (b.left + b.right) / 2, y: (b.top + b.bottom) / 2 };
+        assert.equal(
+          isWalkable(scene, center, layout),
+          false,
+          `${layout}/${scene}/${b.name}`,
+        );
+      }
+    }
+  }
+  positions.wide.home.x = 0.4;
+  assert.notEqual(positions.portrait.home.x, 0.4);
+  assert.notEqual(getWalkMap("home", "wide").start.x, 0.4);
 });

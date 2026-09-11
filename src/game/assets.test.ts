@@ -3,16 +3,19 @@ import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import sharp from "sharp";
 import { CARDS, FOODS, GEARS, SOUVENIRS, itemImage } from "./content";
+import { SCENE_ASPECTS, sceneImage } from "./walkable";
 
 type Asset = { id: string; source: string; output: string; width: number };
 const manifest = JSON.parse(
   await readFile("outputs/art/manifest.json", "utf8"),
 ) as Asset[];
 
-test("32 个正式素材 ID 齐全，源图与网页资源均存在", async () => {
+test("34 个正式素材 ID 齐全，横竖场景与源图均存在", async () => {
   const ids = [
     "home",
     "yard",
+    "home-web",
+    "yard-web",
     "idle",
     "packing",
     "eating",
@@ -28,14 +31,14 @@ test("32 个正式素材 ID 齐全，源图与网页资源均存在", async () =
     ...GEARS.map((x) => x.id),
     ...SOUVENIRS.map((x) => x.id),
   ];
-  assert.equal(manifest.length, 32);
+  assert.equal(manifest.length, 34);
   assert.deepEqual(manifest.map((x) => x.id).sort(), ids.sort());
   for (const asset of manifest) {
     assert.ok((await stat(asset.source)).size > 0);
     assert.ok((await stat(asset.output)).size > 0);
   }
 });
-test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，纪念物用 PNG，总包小于 5 MB", async () => {
+test("横版约 16:9 / 竖版 3:4，纪念物 PNG，完整资源小于 5 MB", async () => {
   let bytes = 0;
   for (const asset of manifest) {
     const meta = await sharp(asset.output).metadata();
@@ -45,7 +48,9 @@ test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，纪念物用 PNG，�
     );
     assert.equal(meta.width, asset.width);
     const ratio = asset.output.includes("/backgrounds/")
-      ? 3 / 4
+      ? asset.id.endsWith("-web")
+        ? SCENE_ASPECTS.wide
+        : SCENE_ASPECTS.portrait
       : asset.output.includes("/cards/") ||
           ["jump-atlas", "departure-note"].includes(asset.id)
         ? 3 / 2
@@ -53,7 +58,17 @@ test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，纪念物用 PNG，�
     assert.equal(meta.width! / meta.height!, ratio);
     bytes += (await stat(asset.output)).size;
   }
-  assert.ok(bytes < 5 * 1024 * 1024, "网页不带高分辨率概念板和源 PNG");
+  assert.ok(bytes < 5 * 1024 * 1024, "网页只带交付图，不带概念板和源 PNG");
+  for (const layout of ["portrait", "wide"] as const) {
+    for (const scene of ["home", "yard"] as const) {
+      const asset = manifest.find(
+        (a) => a.output === `public${sceneImage(scene, layout)}`,
+      );
+      assert.ok(asset, `${layout}/${scene} 必须有独立交付图`);
+      if (layout === "wide")
+        assert.ok(asset.width >= 1536, "横版必须使用模型重绘的大图");
+    }
+  }
   for (const item of [...FOODS, ...GEARS, ...SOUVENIRS]) {
     assert.equal(
       manifest.find((a) => a.id === item.id)?.output,

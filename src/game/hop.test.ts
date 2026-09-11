@@ -1,11 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { HOP_DURATION, groundDistance, sampleHop, splitIntoHops } from "./hop";
+import {
+  HOP_DURATION,
+  HOP_STRIDE_PX,
+  groundDistance,
+  sampleHop,
+  splitIntoHops,
+} from "./hop";
 import {
   findWalkPath,
   isClearSegment,
   isWalkable,
   WALK_MAPS,
+  getWalkMap,
+  SCENE_ASPECTS,
   type SceneId,
 } from "./walkable";
 
@@ -21,6 +29,34 @@ test("先蓄力再位移，空中仅一个抛物线，前掌接地后停止位�
   }
   assert.equal(sampleHop(600).frame, 4);
   assert.equal(sampleHop(HOP_DURATION).done, true);
+});
+
+test("横版按实际宽高比分跳，760–1280px 场景仍每跳不超过 74px", () => {
+  for (const [scene, target] of [
+    ["home", { x: 0.8, y: 0.95 }],
+    ["yard", { x: 0.8, y: 0.92 }],
+  ] as const) {
+    const start = getWalkMap(scene, "wide").start;
+    const path = findWalkPath(scene, start, target, "wide");
+    assert.ok(path, scene);
+    for (const width of [760, 960, 1280]) {
+      let previous = start;
+      const hops = splitIntoHops(
+        path,
+        HOP_STRIDE_PX / width,
+        SCENE_ASPECTS.wide,
+      );
+      for (const next of hops) {
+        assert.ok(
+          groundDistance(previous, next, SCENE_ASPECTS.wide) * width <=
+            HOP_STRIDE_PX + 0.001,
+        );
+        assert.ok(isClearSegment(scene, previous, next, "wide"));
+        previous = next;
+      }
+      assert.deepEqual(hops.at(-1), target);
+    }
+  }
 });
 
 test("绕过屋里矮桌和院坝簸箕，整条路径与每个小跳都不穿家具", () => {

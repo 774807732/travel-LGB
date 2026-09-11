@@ -1,10 +1,22 @@
 import { useEffect, useRef, type CSSProperties } from "react";
-import { findWalkPath, type SceneId, type ScenePoint } from "../game/walkable";
-import { groundDistance, sampleHop, splitIntoHops } from "../game/hop";
+import {
+  findWalkPath,
+  SCENE_ASPECTS,
+  type SceneLayout,
+  type SceneId,
+  type ScenePoint,
+} from "../game/walkable";
+import {
+  groundDistance,
+  HOP_STRIDE_PX,
+  sampleHop,
+  splitIntoHops,
+} from "../game/hop";
 
 export type HopCommand = { id: number; target: ScenePoint };
 type Props = {
   scene: SceneId;
+  layout: SceneLayout;
   position: ScenePoint;
   command: HopCommand | null;
   pose: string;
@@ -26,6 +38,11 @@ export function ToadActor(props: Props) {
 
   useEffect(() => {
     const node = actor.current!;
+    const sceneElement = node.parentElement!;
+    let sceneWidth = sceneElement.getBoundingClientRect().width;
+    const aspect = SCENE_ASPECTS[props.layout];
+    const distancePx = (a: ScenePoint, b: ScenePoint) =>
+      groundDistance(a, b, aspect) * sceneWidth;
     let current = { ...latest.current.position };
     let queued: ScenePoint | null = null;
     let route: ScenePoint[] = [];
@@ -68,9 +85,15 @@ export function ToadActor(props: Props) {
       if (disposed) return;
       if (!hop) {
         if (queued) {
-          const path = findWalkPath(props.scene, current, queued);
+          const path = findWalkPath(props.scene, current, queued, props.layout);
           queued = null;
-          route = path ? splitIntoHops(path) : [];
+          route = path
+            ? splitIntoHops(
+                path,
+                HOP_STRIDE_PX / Math.max(1, sceneWidth),
+                aspect,
+              )
+            : [];
           if (!path) latest.current.onBlocked();
         }
         const to = route.shift();
@@ -78,7 +101,7 @@ export function ToadActor(props: Props) {
           rest();
           return;
         }
-        if (groundDistance(current, to) < 0.008) {
+        if (distancePx(current, to) < 2) {
           current = to;
           latest.current.onLand(current);
           raf = requestAnimationFrame(tick);
@@ -94,7 +117,7 @@ export function ToadActor(props: Props) {
           from: current,
           to,
           started: now,
-          height: Math.min(30, 11 + groundDistance(current, to) * 100),
+          height: Math.min(30, 11 + distancePx(current, to) / 4),
         };
         node.dataset.moving = "true";
       }
@@ -136,14 +159,24 @@ export function ToadActor(props: Props) {
     };
     atlas.src = "/art/characters/jump-atlas.webp";
     rest();
+    const resize = new ResizeObserver(([entry]) => {
+      const width = entry.contentRect.width;
+      if (Math.abs(width - sceneWidth) > 1) {
+        // 窗口变化后撤回未完成跳跃，按新的像素尺寸重新规划下一次。
+        sceneWidth = width;
+        stop(false);
+      }
+    });
+    resize.observe(sceneElement);
     return () => {
       disposed = true;
       cancelAnimationFrame(raf);
       atlas.onload = null;
       atlas.onerror = null;
       controller.current = null;
+      resize.disconnect();
     };
-  }, [props.scene]);
+  }, [props.scene, props.layout]);
 
   useEffect(() => {
     if (props.command && !props.leaving)

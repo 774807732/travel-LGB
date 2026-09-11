@@ -1,25 +1,27 @@
 # 元素映射
 
-更新：2026-09-11。1.2.2 对齐桌上行囊与透明纪念物，取消收藏纸签。
+更新：2026-09-11。1.3 区分 Web 横版、手机竖版与两套场景坐标。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
+| Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
+| 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
 | 朝哪边、转身 | 起跳前左右朝向 | `--toad-facing` |
-| 绕桌子、分几跳 | 避障路径与小跳落点序列 | `findWalkPath / isClearSegment / splitIntoHops` |
-| 地板、可走区 | 允许落脚的场景多边形 | `WALK_MAPS[scene].floor`、`isWalkable` |
-| 碰撞体、挡住 | 家具/道具的不可落脚矩形 | `WALK_MAPS[scene].blockers` |
-| 脚底点、落脚点 | 角色位置基准，不是图片左上角 | `ScenePoint`、`--toad-x / --toad-y` |
+| 绕桌子、分几跳 | 按布局避障、每跳最多 74px | `findWalkPath / isClearSegment / splitIntoHops`、`HOP_STRIDE_PX` |
+| 地板、可走区 | 当前构图允许落脚的多边形 | `getWalkMap(scene, layout).floor`、`isWalkable` |
+| 碰撞体、挡住 | 当前构图家具/道具的不可落脚矩形 | `WALK_MAPS / WIDE_WALK_MAPS`、`getWalkMap(...).blockers` |
+| 脚底点、落脚点 | 各布局/场景独立位置，不是图片左上角 | `ScenePoint`、`toadPositions[layout][scene]`、`--toad-x / --toad-y` |
 | 地面影子 | 帮助判断角色站在地面 | `.toad-ground-shadow` |
 | 发呆/收包/吃饭/瞌睡/出门 | 表现姿态，不是游戏阶段 | `idle/packing/eating/dozing/walking`、`idlePose/leaving` |
-| 屋头、屋里 | 室内家景 | `state.scene='home'`、`.scene-home`、`home.webp` |
-| 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`、`yard.webp` |
+| 屋头、屋里 | 室内家景 | `state.scene='home'`、`.scene-home`；`sceneImage` 选择 `home.webp / home-web.webp` |
+| 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`；`sceneImage` 选择 `yard.webp / yard-web.webp` |
 | 门、回屋 | 双向换景热点 | `.home-door / .yard-door`、`changeScene` |
 | 木窗、竹榻、矮桌 | 背景绘画，不是按钮 | `.scene-background` |
-| 桌上的包、蓝布包、挎包 | 默认放在矮桌的独立行囊入口 | `.satchel-prop`：左 50% / 上 72% / 底部居中锚定；`props/satchel.webp` |
+| 桌上的包、蓝布包、挎包 | 默认放在矮桌的独立行囊入口 | `.satchel-prop`；竖版 (50%,72%)，横版 (72.9%,73.1%+10px)；`props/satchel.webp` |
 | 行囊、准备栏 | 一吃食一用具的配置 | `panel='bag'`、`draft`、`state.bag` |
 | 吃的、干粮 | 必选槽 | `Loadout.food`、`panel='food'` |
 | 家伙什、工具 | 可选永久槽 | `Loadout.gear`、`panel='gear'` |

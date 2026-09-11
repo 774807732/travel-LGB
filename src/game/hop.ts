@@ -11,16 +11,24 @@ export const HOP_DURATION = Object.values(HOP_TIMING).reduce(
   (sum, ms) => sum + ms,
   0,
 );
-export const groundDistance = (a: ScenePoint, b: ScenePoint) =>
-  Math.hypot(b.x - a.x, ((b.y - a.y) * 4) / 3);
+export const HOP_STRIDE_PX = 74;
+export const groundDistance = (a: ScenePoint, b: ScenePoint, aspect = 3 / 4) =>
+  Math.hypot(b.x - a.x, (b.y - a.y) / aspect);
 
 // 各段都落在地面；长距离由多次完整蹬腿构成，不能拉长成一次滑行。
-export function splitIntoHops(path: ScenePoint[], stride = 0.19): ScenePoint[] {
+export function splitIntoHops(
+  path: ScenePoint[],
+  stride = 0.19,
+  aspect = 3 / 4,
+): ScenePoint[] {
   const steps: ScenePoint[] = [];
   for (let i = 1; i < path.length; i++) {
     const from = path[i - 1],
       to = path[i];
-    const count = Math.max(1, Math.ceil(groundDistance(from, to) / stride));
+    const count = Math.max(
+      1,
+      Math.ceil(groundDistance(from, to, aspect) / stride),
+    );
     for (let part = 1; part <= count; part++) {
       const t = part / count;
       steps.push({

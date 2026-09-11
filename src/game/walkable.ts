@@ -1,5 +1,11 @@
 export type SceneId = "home" | "yard";
+export type SceneLayout = "portrait" | "wide";
 export type ScenePoint = { x: number; y: number };
+export const DESKTOP_MEDIA = "(min-width: 960px)";
+// 横版使用模型的原生比例（约 16:9），不拉伸或裁掉家具边缘。
+export const SCENE_ASPECTS = { portrait: 3 / 4, wide: 1672 / 941 } as const;
+export const sceneImage = (scene: SceneId, layout: SceneLayout) =>
+  `/art/backgrounds/${scene}${layout === "wide" ? "-web" : ""}.webp`;
 
 type Rectangle = {
   name: string;
@@ -58,6 +64,66 @@ export const WALK_MAPS: Record<SceneId, WalkMap> = {
   },
 };
 
+// 横版重绘场景有自己的家具分布；不能套用竖版碰撞与落脚点。
+export const WIDE_WALK_MAPS: Record<SceneId, WalkMap> = {
+  home: {
+    start: { x: 0.45, y: 0.65 },
+    floor: [
+      { x: 0.08, y: 0.52 },
+      { x: 0.9, y: 0.52 },
+      { x: 0.95, y: 0.97 },
+      { x: 0.08, y: 0.97 },
+    ],
+    blockers: [
+      { name: "竹榻与陶罐", left: 0, top: 0.18, right: 0.3, bottom: 0.7 },
+      {
+        name: "窗下柜与小凳",
+        left: 0.26,
+        top: 0.25,
+        right: 0.63,
+        bottom: 0.54,
+      },
+      { name: "门槛", left: 0.65, top: 0.12, right: 0.86, bottom: 0.54 },
+      { name: "右侧柜与盆栽", left: 0.85, top: 0.3, right: 1, bottom: 0.74 },
+      { name: "小格架", left: 0.02, top: 0.64, right: 0.26, bottom: 0.97 },
+      { name: "矮桌", left: 0.56, top: 0.62, right: 0.9, bottom: 0.93 },
+    ],
+  },
+  yard: {
+    start: { x: 0.5, y: 0.65 },
+    floor: [
+      { x: 0.12, y: 0.53 },
+      { x: 0.89, y: 0.53 },
+      { x: 0.9, y: 0.72 },
+      { x: 0.8, y: 0.97 },
+      { x: 0.25, y: 0.97 },
+      { x: 0.12, y: 0.73 },
+    ],
+    blockers: [
+      { name: "屋墙与石阶", left: 0, top: 0, right: 0.41, bottom: 0.66 },
+      { name: "竹货架", left: 0.71, top: 0.26, right: 0.96, bottom: 0.6 },
+      { name: "信夹木桩", left: 0.62, top: 0.38, right: 0.78, bottom: 0.72 },
+      { name: "晒谷簸箕", left: 0.34, top: 0.77, right: 0.66, bottom: 0.93 },
+      { name: "左侧花木", left: 0, top: 0.52, right: 0.18, bottom: 1 },
+      { name: "右侧花木", left: 0.9, top: 0.4, right: 1, bottom: 1 },
+    ],
+  },
+};
+
+export const getWalkMap = (scene: SceneId, layout: SceneLayout = "portrait") =>
+  (layout === "wide" ? WIDE_WALK_MAPS : WALK_MAPS)[scene];
+
+export const initialScenePositions = () => ({
+  portrait: {
+    home: { ...WALK_MAPS.home.start },
+    yard: { ...WALK_MAPS.yard.start },
+  },
+  wide: {
+    home: { ...WIDE_WALK_MAPS.home.start },
+    yard: { ...WIDE_WALK_MAPS.yard.start },
+  },
+});
+
 function insidePolygon(point: ScenePoint, polygon: ScenePoint[]) {
   let inside = false;
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
@@ -72,9 +138,13 @@ function insidePolygon(point: ScenePoint, polygon: ScenePoint[]) {
   return inside;
 }
 
-export function isWalkable(scene: SceneId, point: ScenePoint) {
+export function isWalkable(
+  scene: SceneId,
+  point: ScenePoint,
+  layout: SceneLayout = "portrait",
+) {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return false;
-  const map = WALK_MAPS[scene];
+  const map = getWalkMap(scene, layout);
   if (!insidePolygon(point, map.floor)) return false;
   return !map.blockers.some(
     (blocker) =>
@@ -90,15 +160,20 @@ export function isClearSegment(
   scene: SceneId,
   from: ScenePoint,
   to: ScenePoint,
+  layout: SceneLayout = "portrait",
 ) {
   const samples = Math.ceil(Math.hypot(to.x - from.x, to.y - from.y) / 0.004);
   for (let i = 0; i <= samples; i++) {
     const t = samples ? i / samples : 0;
     if (
-      !isWalkable(scene, {
-        x: from.x + (to.x - from.x) * t,
-        y: from.y + (to.y - from.y) * t,
-      })
+      !isWalkable(
+        scene,
+        {
+          x: from.x + (to.x - from.x) * t,
+          y: from.y + (to.y - from.y) * t,
+        },
+        layout,
+      )
     )
       return false;
   }
@@ -109,18 +184,20 @@ export function findWalkPath(
   scene: SceneId,
   from: ScenePoint,
   to: ScenePoint,
+  layout: SceneLayout = "portrait",
 ): ScenePoint[] | null {
-  if (!isWalkable(scene, from) || !isWalkable(scene, to)) return null;
-  if (isClearSegment(scene, from, to)) return [from, to];
+  if (!isWalkable(scene, from, layout) || !isWalkable(scene, to, layout))
+    return null;
+  if (isClearSegment(scene, from, to, layout)) return [from, to];
   const margin = 0.012;
-  const corners = WALK_MAPS[scene].blockers
-    .flatMap((b) => [
+  const corners = getWalkMap(scene, layout)
+    .blockers.flatMap((b) => [
       { x: b.left - margin, y: b.top - margin },
       { x: b.right + margin, y: b.top - margin },
       { x: b.left - margin, y: b.bottom + margin },
       { x: b.right + margin, y: b.bottom + margin },
     ])
-    .filter((p) => isWalkable(scene, p));
+    .filter((p) => isWalkable(scene, p, layout));
   const nodes = [from, to, ...corners],
     visited = new Set<number>();
   const costs = nodes.map(() => Infinity),
@@ -147,11 +224,11 @@ export function findWalkPath(
       if (visited.has(next)) continue;
       const distance = Math.hypot(
         nodes[next].x - nodes[current].x,
-        ((nodes[next].y - nodes[current].y) * 4) / 3,
+        (nodes[next].y - nodes[current].y) / SCENE_ASPECTS[layout],
       );
       if (
         costs[current] + distance >= costs[next] ||
-        !isClearSegment(scene, nodes[current], nodes[next])
+        !isClearSegment(scene, nodes[current], nodes[next], layout)
       )
         continue;
       costs[next] = costs[current] + distance;

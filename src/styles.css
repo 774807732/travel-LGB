@@ -1741,3 +1741,157 @@ textarea {
 .gift-prop .item-art {
   filter: drop-shadow(0 2px 1px #4a382a30);
 }
+
+/* Web 横版独立构图；角色和小道具不随场景整体放大。 */
+.game-page[data-layout="wide"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+}
+.game-page[data-layout="wide"] .game-column {
+  width: min(
+    1282px,
+    calc(100vw - 48px),
+    max(760px, calc((100svh - 230px) * 1672 / 941 + 2px))
+  );
+}
+.game-page[data-layout="wide"] .game-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 0.8fr);
+  grid-template-areas: "header balance" "scene scene" "ribbon ribbon" "status navigation";
+  border-radius: 16px;
+}
+.game-page[data-layout="wide"] .game-header {
+  grid-area: header;
+  padding: 12px 20px;
+  gap: 12px;
+}
+.game-page[data-layout="wide"] .game-header > div {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+}
+.game-page[data-layout="wide"] .game-header h1 {
+  font-size: 24px;
+}
+.game-page[data-layout="wide"] .status-bar {
+  grid-area: balance;
+  gap: 20px;
+  padding: 12px 24px;
+}
+.game-page[data-layout="wide"] .letter-ribbon,
+.game-page[data-layout="wide"] .yard-actions {
+  grid-area: ribbon;
+  min-height: 44px;
+  font-size: 14px;
+}
+.game-page[data-layout="wide"] .letter-ribbon {
+  padding-inline: 24px;
+}
+.game-page[data-layout="wide"] .yard-actions button {
+  font-size: 14px;
+  padding-block: 8px;
+}
+.game-page[data-layout="wide"] .traveler-status {
+  grid-area: status;
+  min-height: 68px;
+  padding: 10px 24px;
+}
+.game-page[data-layout="wide"] .traveler-status h2 {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.game-page[data-layout="wide"] .traveler-status p {
+  font-size: 14px;
+}
+.game-page[data-layout="wide"] .bottom-nav {
+  grid-area: navigation;
+  padding: 9px 16px;
+  align-items: center;
+  border-left: 1px solid var(--line);
+}
+.game-page[data-layout="wide"] .bottom-nav button {
+  min-height: 44px;
+  font-size: 14px;
+}
+.game-page[data-layout="wide"] .debug-panel {
+  width: min(100%, 640px);
+  margin: 0;
+}
+.scene[data-layout="wide"] {
+  grid-area: scene;
+  aspect-ratio: 1672 / 941;
+}
+.scene[data-layout="wide"] .scene-background {
+  object-fit: contain;
+  object-position: center;
+}
+.scene[data-layout="wide"] .scene-label {
+  top: 18px;
+  left: 22px;
+  font-size: 14px;
+}
+.scene[data-layout="wide"] .toad-hotspot {
+  width: 96px;
+}
+.scene[data-layout="wide"] .home-door {
+  left: 70%;
+  top: 15%;
+  width: 14%;
+  height: 36%;
+  right: auto;
+}
+.scene[data-layout="wide"] .satchel-prop {
+  left: 72.9%;
+  top: calc(73.1% + 10px);
+  width: 58px;
+}
+.scene[data-layout="wide"] .gift-prop,
+.scene[data-layout="wide"] .gift-prop.has-gift {
+  left: 13.6%;
+  top: calc(72.3% + 9px);
+  width: 54px;
+  height: 54px;
+  transform: translate(-50%, -100%);
+}
+.scene[data-layout="wide"] .away-note {
+  left: 50%;
+  top: 53%;
+  width: 264px;
+}
+.scene[data-layout="wide"] .yard-door {
+  left: 16%;
+  top: 21%;
+  width: 12%;
+  height: 34%;
+}
+.scene[data-layout="wide"] .yard-shop {
+  left: 75%;
+  top: 28%;
+  width: 18%;
+  height: 28%;
+  right: auto;
+}
+.scene[data-layout="wide"] .mail-prop {
+  left: calc(69.7% - 28px);
+  top: calc(47% - 28px);
+  width: 56px;
+}
+.scene[data-layout="wide"] .harvest-props {
+  left: 38%;
+  top: 76%;
+  width: clamp(180px, 20%, 240px);
+}
+
+@media (min-width: 960px) {
+  .sheet {
+    width: min(560px, calc(100vw - 64px));
+    max-height: min(840px, 88dvh);
+  }
+  .sheet-wide {
+    width: min(720px, calc(100vw - 64px));
+  }
+}

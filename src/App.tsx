@@ -34,7 +34,14 @@ import {
 import { decodeSave, MAX_IMPORT_BYTES } from "./game/storage";
 import { enableAudio, playSound } from "./game/audio";
 import { useGame } from "./game/useGame";
-import { isWalkable, WALK_MAPS, type ScenePoint } from "./game/walkable";
+import {
+  DESKTOP_MEDIA,
+  initialScenePositions,
+  isWalkable,
+  sceneImage,
+  type SceneLayout,
+  type ScenePoint,
+} from "./game/walkable";
 
 type Panel =
   | "bag"
@@ -61,6 +68,7 @@ const ItemArt = ({ id }: { id: ItemId }) => (
 
 function Scene({
   state,
+  layout,
   pose,
   leaving,
   onToad,
@@ -80,6 +88,7 @@ function Scene({
   onBlocked,
 }: {
   state: GameState;
+  layout: SceneLayout;
   pose: string;
   leaving: boolean;
   onToad: () => void;
@@ -113,12 +122,13 @@ function Scene({
   return (
     <section
       className={"scene scene-" + state.scene + (atHome ? " can-move" : "")}
+      data-layout={layout}
       aria-label={home ? "疙宝的屋里" : "竹林边的院坝"}
       onClick={atHome && !leaving ? handleGroundClick : undefined}
     >
       <img
         className="scene-background"
-        src={"/art/backgrounds/" + state.scene + ".webp"}
+        src={sceneImage(state.scene, layout)}
         alt={
           home
             ? "木窗外是竹林与水渠，竹榻和矮桌围着安静的地板。"
@@ -217,8 +227,9 @@ function Scene({
       )}
       {atHome ? (
         <ToadActor
-          key={state.scene}
+          key={layout + state.scene}
           scene={state.scene}
+          layout={layout}
           position={toadPosition}
           command={hopCommand}
           pose={pose}
@@ -265,10 +276,10 @@ export default function App() {
     [idlePose, setIdlePose] = useState(0),
     [leaving, setLeaving] = useState(false),
     [hopCommand, setHopCommand] = useState<HopCommand | null>(null),
-    [toadPositions, setToadPositions] = useState(() => ({
-      home: { ...WALK_MAPS.home.start },
-      yard: { ...WALK_MAPS.yard.start },
-    }));
+    [toadPositions, setToadPositions] = useState(initialScenePositions);
+  const [layout, setLayout] = useState<SceneLayout>(() =>
+    matchMedia(DESKTOP_MEDIA).matches ? "wide" : "portrait",
+  );
   const [importText, setImportText] = useState(""),
     [importError, setImportError] = useState("");
   const [candidate, setCandidate] = useState<{
@@ -336,7 +347,7 @@ export default function App() {
   }
   function moveToad(point: ScenePoint) {
     const scene = viewState.scene;
-    if (!isWalkable(scene, point)) {
+    if (!isWalkable(scene, point, layout)) {
       showToast("那边有东西，换块空地嘛。");
       return;
     }
@@ -390,6 +401,15 @@ export default function App() {
     },
     [],
   );
+  useEffect(() => {
+    const media = matchMedia(DESKTOP_MEDIA);
+    const sync = () => {
+      setHopCommand(null);
+      setLayout(media.matches ? "wide" : "portrait");
+    };
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)"),
       sync = () => setSystemReduced(media.matches);
@@ -490,7 +510,7 @@ export default function App() {
   const viewState =
     mode === "reader" ? { ...state, scene: readerScene } : state;
   return (
-    <main className="game-page">
+    <main className="game-page" data-layout={layout}>
       <div className="game-column">
         {debug && (
           <div className="mode-banner">
@@ -525,6 +545,7 @@ export default function App() {
           </div>
           <Scene
             state={viewState}
+            layout={layout}
             pose={
               state.phase === "packed" ? "packing" : quietMotion ? "idle" : pose
             }
@@ -548,14 +569,14 @@ export default function App() {
             onShop={() => open("shop")}
             onInbox={() => open("inbox")}
             unread={unread.length}
-            toadPosition={toadPositions[viewState.scene]}
+            toadPosition={toadPositions[layout][viewState.scene]}
             hopCommand={hopCommand}
             quietMotion={quietMotion}
             onGround={moveToad}
             onLand={(point) =>
               setToadPositions((positions) => ({
                 ...positions,
-                [viewState.scene]: point,
+                [layout]: { ...positions[layout], [viewState.scene]: point },
               }))
             }
             onBlocked={() => showToast("这边挤不过去，换块空地嘛。")}
@@ -1417,7 +1438,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.2.2
+                旅行癞疙宝 · 1.3.0
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>

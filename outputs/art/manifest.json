@@ -1,5 +1,17 @@
 [
   {
+    "id": "home-web",
+    "source": "outputs/art/source/home-web.png",
+    "output": "public/art/backgrounds/home-web.webp",
+    "width": 1672
+  },
+  {
+    "id": "yard-web",
+    "source": "outputs/art/source/yard-web.png",
+    "output": "public/art/backgrounds/yard-web.webp",
+    "width": 1672
+  },
+  {
     "id": "departure-note",
     "source": "outputs/art/source/departure-note.png",
     "output": "public/art/props/departure-note.webp",
