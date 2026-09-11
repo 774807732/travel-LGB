@@ -33,6 +33,7 @@
 
 ## 运行与交付
 
+- 源码仓库：https://github.com/774807732/travel-LGB ，SSH 为 `git@github.com:774807732/travel-LGB.git`，主分支 `main`；代码、游戏素材、测试与交付文档保留完整 Git 历史。
 - 私密成品：https://travel-toad-sichuan.jake774807732.chatgpt.site 。1.4.0 / Sites 版本 10 于 2026-09-11 18:06（北京时间）发布成功，仍仅所有者可访问。
 - 原网址刷新即可加载靠墙信桩、14px 留言与簸箕遮挡修正；背景使用 `yard-web-wall.webp`。本次不改存档键或访问权限，无需清浏览器数据。
 - 托管边界（2026-09-11 官方资料核对）：线上访问不依赖本机 Wi-Fi，但需网络可达及获授权账号登录；用户 Wi-Fi/流量尚未实测。Sites 是持续托管成果，未查到固定到期天数；测试期有按套餐、跨站点的用量限制，未查到公开并发/QPS/带宽数值，不承诺永久或无限流量。参考 https://learn.chatgpt.com/docs/sites 。
