@@ -198,6 +198,9 @@ svg {
   overflow: hidden;
   animation: scene-in 240ms var(--ease);
 }
+.scene.can-move {
+  cursor: pointer;
+}
 .scene-background {
   position: absolute;
   inset: 0;
@@ -274,10 +277,15 @@ svg {
 }
 .toad-hotspot {
   width: 110px;
-  left: 40%;
-  top: 53%;
+  left: var(--toad-x, 48%);
+  top: var(--toad-y, 59%);
   z-index: 3;
-  transform-origin: center 90%;
+  min-height: 0;
+  transform: translate(-50%, -100%);
+  transform-origin: center bottom;
+  transition:
+    left 680ms var(--ease),
+    top 680ms var(--ease);
   mix-blend-mode: multiply;
 }
 .toad-sprite {
@@ -285,9 +293,26 @@ svg {
   animation: toad-breathe 4s ease-in-out infinite;
   transform-origin: center 90%;
   user-select: none;
+  position: relative;
+  z-index: 1;
+}
+.toad-sprite.is-hopping {
+  animation: toad-hop 680ms ease-in-out;
+}
+.toad-ground-shadow {
+  position: absolute;
+  z-index: 0;
+  left: 25%;
+  right: 25%;
+  bottom: 1%;
+  height: 9%;
+  border-radius: 50%;
+  background: #453b2b24;
+  filter: blur(2px);
+  transform-origin: center;
 }
 .toad-hotspot:active {
-  transform: scale(0.98);
+  transform: translate(-50%, -100%) scale(0.98);
 }
 .toad-leaving {
   animation: toad-leave 1s var(--ease) forwards;
@@ -1416,15 +1441,29 @@ textarea {
 }
 @keyframes toad-leave {
   0% {
-    transform: translate(0, 0);
+    transform: translate(-50%, -100%);
     opacity: 1;
   }
   70% {
     opacity: 1;
   }
   100% {
-    transform: translate(155%, -45%);
+    transform: translate(105%, -145%);
     opacity: 0;
+  }
+}
+@keyframes toad-hop {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  23%,
+  70% {
+    transform: translateY(-17%) scaleY(1.02);
+  }
+  44%,
+  86% {
+    transform: translateY(0) scaleY(0.97);
   }
 }
 @keyframes mail-sway {
@@ -1577,10 +1616,6 @@ textarea {
 }
 .scene {
   aspect-ratio: 3/4;
-}
-.toad-hotspot {
-  left: 42%;
-  top: 43%;
 }
 .satchel-prop {
   left: 68%;

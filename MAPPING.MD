@@ -1,10 +1,15 @@
 # 元素映射
 
-更新：2026-09-11。已对照发布成品复核命名；修改前先对照俗称、场景和实际符号，避免把图画道具与逻辑数据混为一谈。
+更新：2026-09-11。补齐 1.1 点地移动与碰撞名词；修改前先对照俗称、场景和实际符号。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
+| 点地、跳过去 | 点击可走地面移动到脚底落点 | `moveToad`、`toadPositions`、`.is-hopping` |
+| 地板、可走区 | 允许落脚的场景多边形 | `WALK_MAPS[scene].floor`、`isWalkable` |
+| 碰撞体、挡住 | 家具/道具的不可落脚矩形 | `WALK_MAPS[scene].blockers` |
+| 脚底点、落脚点 | 角色位置基准，不是图片左上角 | `ScenePoint`、`--toad-x / --toad-y` |
+| 地面影子 | 帮助判断角色站在地面 | `.toad-ground-shadow` |
 | 发呆/收包/吃饭/瞌睡/出门 | 表现姿态，不是游戏阶段 | `idle/packing/eating/dozing/walking`、`idlePose/leaving` |
 | 屋头、屋里 | 室内家景 | `state.scene='home'`、`.scene-home`、`home.webp` |
 | 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`、`yard.webp` |

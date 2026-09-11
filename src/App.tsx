@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 import { Icon } from "./components/Icon";
 import { Sheet } from "./components/Sheet";
 import {
@@ -33,6 +33,11 @@ import {
 import { decodeSave, MAX_IMPORT_BYTES } from "./game/storage";
 import { enableAudio, playSound } from "./game/audio";
 import { useGame } from "./game/useGame";
+import {
+  isWalkable,
+  WALK_MAPS,
+  type ScenePoint,
+} from "./game/walkable";
 
 type Panel =
   | "bag"
@@ -70,6 +75,11 @@ function Scene({
   onShop,
   onInbox,
   unread,
+  toadPosition,
+  hopToken,
+  hopping,
+  quietMotion,
+  onGround,
 }: {
   state: GameState;
   pose: string;
@@ -83,14 +93,33 @@ function Scene({
   onShop: () => void;
   onInbox: () => void;
   unread: number;
+  toadPosition: ScenePoint;
+  hopToken: number;
+  hopping: boolean;
+  quietMotion: boolean;
+  onGround: (point: ScenePoint) => void;
 }) {
   const home = state.scene === "home",
     ready = availableHarvests(state),
     lastGift = state.completed.at(-1)?.souvenirId;
+  function handleGroundClick(event: MouseEvent<HTMLElement>) {
+    if ((event.target as HTMLElement).closest("button")) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    onGround({
+      x: (event.clientX - bounds.left) / bounds.width,
+      y: (event.clientY - bounds.top) / bounds.height,
+    });
+  }
+  const toadStyle = {
+    "--toad-x": toadPosition.x * 100 + "%",
+    "--toad-y": toadPosition.y * 100 + "%",
+  } as CSSProperties;
+  const atHome = state.phase !== "traveling" || leaving;
   return (
     <section
-      className={"scene scene-" + state.scene}
+      className={"scene scene-" + state.scene + (atHome ? " can-move" : "")}
       aria-label={home ? "疙宝的屋里" : "竹林边的院坝"}
+      onClick={atHome && !leaving ? handleGroundClick : undefined}
     >
       <img
         className="scene-background"
@@ -117,27 +146,6 @@ function Scene({
               去院坝 <Icon name="arrow" size={14} />
             </span>
           </button>
-          {state.phase !== "traveling" || leaving ? (
-            <button
-              className={"toad-hotspot " + (leaving ? "toad-leaving" : "")}
-              aria-label="摸摸疙宝"
-              onClick={onToad}
-            >
-              <img
-                className="toad-sprite"
-                src={
-                  "/art/characters/" + (leaving ? "walking" : pose) + ".webp"
-                }
-                alt="宽胖、半垂眼的癞疙宝"
-                draggable="false"
-              />
-            </button>
-          ) : (
-            <div className="away-note">
-              <p>出去转转，莫急。</p>
-              <span>—— 疙宝</span>
-            </div>
-          )}
           {state.phase === "home" && (
             <button
               className="world-prop satchel-prop"
@@ -212,6 +220,35 @@ function Scene({
           </button>
         </>
       )}
+      {atHome ? (
+        <button
+          className={"toad-hotspot " + (leaving ? "toad-leaving" : "")}
+          aria-label="摸摸疙宝"
+          style={toadStyle}
+          onClick={(event) => {
+            event.stopPropagation();
+            onToad();
+          }}
+        >
+          <span className="toad-ground-shadow" aria-hidden="true" />
+          <img
+            key={(leaving ? "walking" : pose) + "-" + hopToken}
+            className={
+              "toad-sprite " + (!quietMotion && hopping ? "is-hopping" : "")
+            }
+            src={
+              "/art/characters/" + (leaving ? "walking" : pose) + ".webp"
+            }
+            alt="宽胖、半垂眼的癞疙宝"
+            draggable="false"
+          />
+        </button>
+      ) : (
+        <div className="away-note">
+          <p>出去转转，莫急。</p>
+          <span>—— 疙宝</span>
+        </div>
+      )}
     </section>
   );
 }
@@ -229,7 +266,13 @@ export default function App() {
     [returnPanel, setReturnPanel] = useState<Panel>("journal");
   const [toast, setToast] = useState(""),
     [idlePose, setIdlePose] = useState(0),
-    [leaving, setLeaving] = useState(false);
+    [leaving, setLeaving] = useState(false),
+    [hopToken, setHopToken] = useState(0),
+    [hopping, setHopping] = useState(false),
+    [toadPositions, setToadPositions] = useState(() => ({
+      home: { ...WALK_MAPS.home.start },
+      yard: { ...WALK_MAPS.yard.start },
+    }));
   const [importText, setImportText] = useState(""),
     [importError, setImportError] = useState("");
   const [candidate, setCandidate] = useState<{
@@ -246,6 +289,7 @@ export default function App() {
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
       undefined,
     ),
+    hopTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined),
     previousPhase = useRef(state.phase),
     fileInput = useRef<HTMLInputElement>(null);
   const canWrite = mode === "owner",
@@ -294,6 +338,22 @@ export default function App() {
     }
     if (perform((s) => ({ ...s, scene }))) playSound("tap");
   }
+  function moveToad(point: ScenePoint) {
+    const scene = viewState.scene;
+    if (!isWalkable(scene, point)) {
+      showToast("那边有东西，换块空地嘛。");
+      return;
+    }
+    setToadPositions((positions) => ({
+      ...positions,
+      [scene]: point,
+    }));
+    setHopToken((token) => token + 1);
+    setHopping(true);
+    clearTimeout(hopTimer.current);
+    hopTimer.current = setTimeout(() => setHopping(false), 700);
+    playSound("tap");
+  }
   function readCard(id: CardId, from: Panel, tripId?: string) {
     setSelectedCard(id);
     setReturnPanel(from);
@@ -334,7 +394,13 @@ export default function App() {
       setImportError((error as Error).message);
     }
   }
-  useEffect(() => () => clearTimeout(toastTimer.current), []);
+  useEffect(
+    () => () => {
+      clearTimeout(toastTimer.current);
+      clearTimeout(hopTimer.current);
+    },
+    [],
+  );
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)"),
       sync = () => setSystemReduced(media.matches);
@@ -486,6 +552,11 @@ export default function App() {
             onShop={() => open("shop")}
             onInbox={() => open("inbox")}
             unread={unread.length}
+            toadPosition={toadPositions[viewState.scene]}
+            hopToken={hopToken}
+            hopping={hopping}
+            quietMotion={quietMotion}
+            onGround={moveToad}
           />
           {viewState.scene === "yard" ? (
             <div className="yard-actions">
@@ -1344,7 +1415,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 首版 1.0
+                旅行癞疙宝 · 1.1
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
