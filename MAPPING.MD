@@ -7,7 +7,7 @@
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
-| 刷新仍是旧图、改了没变化 | 先核对当前网址与已发布版本，不等同于背景缓存 | 本地 1.3.1：`yard-web-wall.webp`；线上版本 6 / 1.3：旧 `yard-web.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对网址与版本，不清玩家存档 | 原线上网址已发布 1.3.1 / 版本 7：`yard-web-wall.webp`；设置页版本文字 `1.3.1` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
