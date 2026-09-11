@@ -1892,8 +1892,8 @@ textarea {
 }
 .harvest-tray {
   position: absolute;
-  /* 保留原来单个簸箕的宽度，只移动中心；空隙不拦截点地。 */
-  width: clamp(57.6px, 6.4%, 76.8px);
+  /* 相比斜排初版宽高均放大 20%，中心和角度不变；点击框随尺寸增长。 */
+  width: clamp(69.12px, 7.68%, 92.16px);
   aspect-ratio: 1;
   padding: 0;
   border: 0;

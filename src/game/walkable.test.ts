@@ -107,6 +107,8 @@ test("横版簸箕沿左下红圈斜排，碰撞跟随且中央旧址重新可�
     }
   });
   assert.ok(isWalkable("yard", { x: 0.5, y: 0.85 }, "wide"));
+  assert.equal(isWalkable("yard", { x: 0.313, y: 0.832 }, "wide"), false,
+    "放大后的第二个簸箕外缘也要阻挡落脚");
   assert.ok(isClearSegment("yard", { x: 0.5, y: 0.65 }, { x: 0.5, y: 0.94 }, "wide"));
   // 不把桌面位置和碰撞套到手机竖版。
   assert.equal(getWalkMap("yard").blockers.filter((b) => b.name === "晒谷簸箕").length, 1);

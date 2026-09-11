@@ -114,10 +114,11 @@ export const WIDE_WALK_MAPS: Record<SceneId, WalkMap> = {
       { name: "信夹木桩", left: 0.62, top: 0.31, right: 0.78, bottom: 0.61 },
       ...WIDE_HARVEST_TRAYS.map((point, index) => ({
         name: `晒谷簸箕${index + 1}`,
-        left: point.x - 0.07,
-        top: point.y - 0.055,
-        right: point.x + 0.07,
-        bottom: Math.min(1, point.y + 0.115),
+        // 簸箕放大 20% 后补足外缘碰撞，中心仍沿原斜线。
+        left: point.x - 0.08,
+        top: point.y - 0.07,
+        right: point.x + 0.08,
+        bottom: Math.min(1, point.y + 0.13),
       })),
       { name: "左侧花木", left: 0, top: 0.52, right: 0.18, bottom: 1 },
       { name: "右侧花木", left: 0.9, top: 0.4, right: 1, bottom: 1 },

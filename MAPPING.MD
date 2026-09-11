@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-11。1.3.1 Web 信桩按最新蓝框放在小铺左侧靠墙；区分信封入口与背景木柱。
+更新：2026-09-11。撤销文字改名，恢复“旅行癞疙宝 / 癞疙宝 / 疙宝”；其他元素映射不变。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -31,6 +31,7 @@
 | 收拾好了 | 预留后等待自行出发 | `prepareTrip` |
 | 先不出门 | 取消预留、不耗库存 | `cancelPreparation` |
 | 簸箕、晒谷子、收成 | 定时积累 / 换盘缠；桌面左下斜排，手机不变 | 横版 `.harvest-wide / .harvest-tray`、`WIDE_HARVEST_TRAYS`（共用图像/碰撞中心）；竖版 `.harvest-props`；层级 3，`availableHarvests / harvest` |
+| 簸箕大小、素材放大 20% | 三簸箕显示宽高各 ×1.2，非移动中心或重绘图片 | `.harvest-tray` 宽 `clamp(69.12px,7.68%,92.16px)`，`aspect-ratio:1`；点击框随按钮尺寸，碰撞在 `WIDE_WALK_MAPS.yard` |
 | 收成提示条、慢慢来 | 独立点击收成入口，桌面底部居中 | `.harvest-caption`，中心横向 50% / 顶部 91%，仍调用 `onHarvest` |
 | 货架、小铺 | 采购面板 | `.yard-shop`、`panel='shop'`、`buyItem` |
 | 钱、盘缠、文 | 唯一货币 | `state.coins`、`.coin-balance` |
