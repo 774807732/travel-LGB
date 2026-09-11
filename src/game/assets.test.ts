@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import sharp from "sharp";
-import { CARDS, FOODS, GEARS, SOUVENIRS } from "./content";
+import { CARDS, FOODS, GEARS, SOUVENIRS, itemImage } from "./content";
 
 type Asset = { id: string; source: string; output: string; width: number };
 const manifest = JSON.parse(
@@ -35,11 +35,14 @@ test("32 个正式素材 ID 齐全，源图与网页资源均存在", async () =
     assert.ok((await stat(asset.output)).size > 0);
   }
 });
-test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，WebP 总包小于 5 MB", async () => {
+test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，纪念物用 PNG，总包小于 5 MB", async () => {
   let bytes = 0;
   for (const asset of manifest) {
     const meta = await sharp(asset.output).metadata();
-    assert.equal(meta.format, "webp");
+    assert.equal(
+      meta.format,
+      asset.id.startsWith("souvenir_") ? "png" : "webp",
+    );
     assert.equal(meta.width, asset.width);
     const ratio = asset.output.includes("/backgrounds/")
       ? 3 / 4
@@ -51,6 +54,12 @@ test("场景 3:4、见闻/图集/信笺 3:2、单件 1:1，WebP 总包小于 5 M
     bytes += (await stat(asset.output)).size;
   }
   assert.ok(bytes < 5 * 1024 * 1024, "网页不带高分辨率概念板和源 PNG");
+  for (const item of [...FOODS, ...GEARS, ...SOUVENIRS]) {
+    assert.equal(
+      manifest.find((a) => a.id === item.id)?.output,
+      `public${itemImage(item.id)}`,
+    );
+  }
 });
 test("六个跳跃姿态各占完整单元，四条格边全透明且每格有实色角色", async () => {
   const { data, info } = await sharp("public/art/characters/jump-atlas.webp")
@@ -85,6 +94,7 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
     "satchel",
     "mail-clip",
     "harvest-tray",
+    ...SOUVENIRS.map((x) => x.id),
   ]);
   for (const asset of manifest.filter((a) => ids.has(a.id))) {
     const meta = await sharp(asset.output).metadata();
@@ -101,6 +111,26 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
         .raw()
         .toBuffer();
       assert.equal(pixel[3], 0, asset.id + " 角落必须透明");
+    }
+    if (asset.id.startsWith("souvenir_")) {
+      const { data, info } = await sharp(asset.output)
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+      let transparent = 0,
+        solid = 0;
+      for (let i = 3; i < data.length; i += 4) {
+        if (data[i] === 0) transparent++;
+        if (data[i] > 240) solid++;
+      }
+      assert.ok(
+        transparent > info.width * info.height * 0.15,
+        asset.id + " 外围应真实镂空",
+      );
+      assert.ok(
+        solid > info.width * info.height * 0.08,
+        asset.id + " 物件本身应保留实色",
+      );
     }
   }
 });

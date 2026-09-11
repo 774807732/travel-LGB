@@ -350,8 +350,12 @@ svg {
 }
 .satchel-prop {
   width: 58px;
-  left: 64%;
-  top: 63%;
+  left: 50%;
+  top: 72%;
+  transform: translate(-50%, -100%);
+}
+.satchel-prop img {
+  filter: drop-shadow(0 2px 1px #4a382a30);
 }
 .world-prop img {
   width: 100%;
@@ -380,8 +384,9 @@ svg {
   height: 49px;
 }
 .gift-prop.has-gift {
-  top: 70%;
   width: 54px;
+  height: 54px;
+  transform: translate(-50%, -100%);
 }
 .empty-shelf-label {
   font-size: 10px;
@@ -1648,10 +1653,6 @@ textarea {
 .scene {
   aspect-ratio: 3/4;
 }
-.satchel-prop {
-  left: 68%;
-  top: 53%;
-}
 .home-door {
   top: 10%;
   right: 6%;
@@ -1718,6 +1719,10 @@ textarea {
 .gift-prop.has-gift {
   top: 63%;
 }
+.gift-prop.has-gift {
+  left: 14%;
+  top: 70%;
+}
 /* 真透明场景素材正常合成，避免木地板染透角色和道具。 */
 .toad-hotspot,
 .world-prop,
@@ -1726,16 +1731,13 @@ textarea {
 .item-art[src*="/souvenir_"] {
   mix-blend-mode: normal;
 }
-/* 六物统一作为白色收藏纸签陈列，不依赖图像是否带透明通道。 */
+/* 纪念物直接使用真透明 PNG；不要再添加矩形收藏纸签。 */
 .item-art[src*="/souvenir_"] {
-  background: #fff;
-  border: 1px solid #e3d9c7;
-  border-radius: 6px;
-  padding: 5px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
 }
 .gift-prop .item-art {
-  border-radius: 2px;
-  padding: 2px;
-  transform: rotate(-5deg);
-  box-shadow: 1px 2px 2px #4a382a30;
+  filter: drop-shadow(0 2px 1px #4a382a30);
 }

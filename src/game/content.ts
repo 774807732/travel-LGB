@@ -230,4 +230,5 @@ export const souvenirById = (id: SouvenirId) =>
 export const itemName = (id: ItemId) =>
   [...FOODS, ...GEARS, ...SOUVENIRS].find((x) => x.id === id)!.name;
 export const cardImage = (id: CardId) => `/art/cards/${id}.webp`;
-export const itemImage = (id: ItemId) => `/art/items/${id}.webp`;
+export const itemImage = (id: ItemId) =>
+  `/art/items/${id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;

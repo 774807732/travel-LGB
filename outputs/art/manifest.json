@@ -195,37 +195,37 @@
   {
     "id": "souvenir_bamboo_mat",
     "source": "outputs/art/source/souvenir_bamboo_mat-alpha.png",
-    "output": "public/art/items/souvenir_bamboo_mat.webp",
+    "output": "public/art/items/souvenir_bamboo_mat.png",
     "width": 300
   },
   {
     "id": "souvenir_bamboo_basket",
     "source": "outputs/art/source/souvenir_bamboo_basket-alpha.png",
-    "output": "public/art/items/souvenir_bamboo_basket.webp",
+    "output": "public/art/items/souvenir_bamboo_basket.png",
     "width": 300
   },
   {
     "id": "souvenir_gaiwan",
-    "source": "outputs/art/source/souvenir_gaiwan.png",
-    "output": "public/art/items/souvenir_gaiwan.webp",
+    "source": "outputs/art/source/souvenir_gaiwan-alpha-v2.png",
+    "output": "public/art/items/souvenir_gaiwan.png",
     "width": 300
   },
   {
     "id": "souvenir_tea_stool",
     "source": "outputs/art/source/souvenir_tea_stool-alpha.png",
-    "output": "public/art/items/souvenir_tea_stool.webp",
+    "output": "public/art/items/souvenir_tea_stool.png",
     "width": 300
   },
   {
     "id": "souvenir_river_sketch",
-    "source": "outputs/art/source/souvenir_river_sketch.png",
-    "output": "public/art/items/souvenir_river_sketch.webp",
+    "source": "outputs/art/source/souvenir_river_sketch-alpha-v2.png",
+    "output": "public/art/items/souvenir_river_sketch.png",
     "width": 300
   },
   {
     "id": "souvenir_pebble",
-    "source": "outputs/art/source/souvenir_pebble.png",
-    "output": "public/art/items/souvenir_pebble.webp",
+    "source": "outputs/art/source/souvenir_pebble-alpha-v2.png",
+    "output": "public/art/items/souvenir_pebble.png",
     "width": 300
   }
 ]

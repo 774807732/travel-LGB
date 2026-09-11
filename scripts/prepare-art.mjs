@@ -42,10 +42,16 @@ for (const asset of manifest) {
         .toBuffer(),
     );
   }
-  await pipeline
-    .resize({ width: asset.width ?? 960, withoutEnlargement: true })
-    .webp({ quality: 88, alphaQuality: 100 })
-    .toFile(target);
+  pipeline = pipeline.resize({
+    width: asset.width ?? 960,
+    withoutEnlargement: true,
+  });
+  if (target.endsWith(".png")) {
+    if (!meta.hasAlpha) throw new Error(asset.id + " PNG 必须保留真实透明通道");
+    await pipeline.png({ compressionLevel: 9 }).toFile(target);
+  } else {
+    await pipeline.webp({ quality: 88, alphaQuality: 100 }).toFile(target);
+  }
   console.log(
     JSON.stringify({
       id: asset.id,

@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-11。1.2.1 补出门信笺的图像与文字层，区别于旅途来信。
+更新：2026-09-11。1.2.2 对齐桌上行囊与透明纪念物，取消收藏纸签。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -19,7 +19,7 @@
 | 院坝、坝子 | 室外家景 | `state.scene='yard'`、`.scene-yard`、`yard.webp` |
 | 门、回屋 | 双向换景热点 | `.home-door / .yard-door`、`changeScene` |
 | 木窗、竹榻、矮桌 | 背景绘画，不是按钮 | `.scene-background` |
-| 蓝布包、挎包 | 独立场景道具 / 行囊入口 | `.satchel-prop`、`props/satchel.webp` |
+| 桌上的包、蓝布包、挎包 | 默认放在矮桌的独立行囊入口 | `.satchel-prop`：左 50% / 上 72% / 底部居中锚定；`props/satchel.webp` |
 | 行囊、准备栏 | 一吃食一用具的配置 | `panel='bag'`、`draft`、`state.bag` |
 | 吃的、干粮 | 必选槽 | `Loadout.food`、`panel='food'` |
 | 家伙什、工具 | 可选永久槽 | `Loadout.gear`、`panel='gear'` |
@@ -33,7 +33,8 @@
 | 收齐几张、图鉴进度 | 不同卡种数 / 总数 9 | `state.unlockedCards.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 小格子、陈列架、收藏纸签 | 最近纪念物入口 / 白底图签 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
+| 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
+| 透明抠图、物品白底 | 六种纪念物的 PNG 图像，不是手账按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；正常 alpha 合成 |
 | 土货、小东西 | 六种归来收藏 | `SOUVENIRS`、`state.souvenirs`、`panel='object'` |
 | 出门纸条、屋里留的信 | 离家留言，非见闻卡/收件信夹 | `.away-note`，角色和独立包同时隐藏 |
 | 留言信纸、花布信笺 | 生图纸张插画层 | `.away-note-art`、`props/departure-note.webp` |
