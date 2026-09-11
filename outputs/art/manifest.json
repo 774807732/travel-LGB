@@ -1,5 +1,48 @@
 [
   {
+    "id": "jump-atlas",
+    "source": "outputs/art/source/jump-atlas.png",
+    "output": "public/art/characters/jump-atlas.webp",
+    "width": 1200,
+    "atlas": {
+      "cellSize": 800,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "extract": { "left": 41, "top": 172, "width": 436, "height": 316 },
+          "left": 181,
+          "top": 388
+        },
+        {
+          "extract": { "left": 474, "top": 62, "width": 615, "height": 438 },
+          "left": 163,
+          "top": 266
+        },
+        {
+          "extract": { "left": 1107, "top": 97, "width": 383, "height": 376 },
+          "left": 207,
+          "top": 277
+        },
+        {
+          "extract": { "left": 20, "top": 579, "width": 489, "height": 354 },
+          "left": 138,
+          "top": 361
+        },
+        {
+          "extract": { "left": 544, "top": 633, "width": 471, "height": 304 },
+          "left": 154,
+          "top": 400
+        },
+        {
+          "extract": { "left": 1045, "top": 581, "width": 469, "height": 378 },
+          "left": 165,
+          "top": 326
+        }
+      ]
+    }
+  },
+  {
     "id": "home",
     "source": "outputs/art/source/home.png",
     "output": "public/art/backgrounds/home.webp",

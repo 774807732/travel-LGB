@@ -1,11 +1,15 @@
 # 元素映射
 
-更新：2026-09-11。补齐 1.1 点地移动与碰撞名词；修改前先对照俗称、场景和实际符号。
+更新：2026-09-11。1.2 补齐蹬腿姿态、时序、朝向和绕行名词。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
-| 点地、跳过去 | 点击可走地面移动到脚底落点 | `moveToad`、`toadPositions`、`.is-hopping` |
+| 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
+| 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
+| 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
+| 朝哪边、转身 | 起跳前左右朝向 | `--toad-facing` |
+| 绕桌子、分几跳 | 避障路径与小跳落点序列 | `findWalkPath / isClearSegment / splitIntoHops` |
 | 地板、可走区 | 允许落脚的场景多边形 | `WALK_MAPS[scene].floor`、`isWalkable` |
 | 碰撞体、挡住 | 家具/道具的不可落脚矩形 | `WALK_MAPS[scene].blockers` |
 | 脚底点、落脚点 | 角色位置基准，不是图片左上角 | `ScenePoint`、`--toad-x / --toad-y` |

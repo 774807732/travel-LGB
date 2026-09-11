@@ -281,11 +281,10 @@ svg {
   top: var(--toad-y, 59%);
   z-index: 3;
   min-height: 0;
+  aspect-ratio: 1;
   transform: translate(-50%, -100%);
   transform-origin: center bottom;
-  transition:
-    left 680ms var(--ease),
-    top 680ms var(--ease);
+  transition: none;
   mix-blend-mode: multiply;
 }
 .toad-sprite {
@@ -296,18 +295,42 @@ svg {
   position: relative;
   z-index: 1;
 }
-.toad-sprite.is-hopping {
-  animation: toad-hop 680ms ease-in-out;
+.toad-body {
+  position: absolute;
+  inset: 0;
+  transform: translateY(var(--hop-lift, 0px)) scaleX(var(--toad-facing, 1));
+  transform-origin: 50% 88%;
+  pointer-events: none;
+}
+.toad-jump-sprite {
+  position: absolute;
+  /* 统一躯干比例与脚底线，长后腿可以伸出普通站姿的画布。 */
+  width: 166.666667%;
+  height: 166.666667%;
+  left: -33.333333%;
+  top: -58.333333%;
+  display: none;
+  background: url("/art/characters/jump-atlas.webp") var(--hop-column, 0%)
+    var(--hop-row, 0%) / 300% 200% no-repeat;
+}
+.toad-hotspot[data-moving="true"] .toad-sprite {
+  visibility: hidden;
+  animation: none;
+}
+.toad-hotspot[data-moving="true"] .toad-jump-sprite {
+  display: block;
 }
 .toad-ground-shadow {
   position: absolute;
   z-index: 0;
   left: 25%;
   right: 25%;
-  bottom: 1%;
+  bottom: 9%;
   height: 9%;
   border-radius: 50%;
-  background: #453b2b24;
+  background: #453b2b;
+  opacity: var(--shadow-opacity, 0.24);
+  transform: scale(var(--shadow-scale, 1));
   filter: blur(2px);
   transform-origin: center;
 }
@@ -1450,20 +1473,6 @@ textarea {
   100% {
     transform: translate(105%, -145%);
     opacity: 0;
-  }
-}
-@keyframes toad-hop {
-  0%,
-  100% {
-    transform: translateY(0) scaleY(1);
-  }
-  23%,
-  70% {
-    transform: translateY(-17%) scaleY(1.02);
-  }
-  44%,
-  86% {
-    transform: translateY(0) scaleY(0.97);
   }
 }
 @keyframes mail-sway {

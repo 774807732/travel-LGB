@@ -73,6 +73,7 @@ function insidePolygon(point: ScenePoint, polygon: ScenePoint[]) {
 }
 
 export function isWalkable(scene: SceneId, point: ScenePoint) {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return false;
   const map = WALK_MAPS[scene];
   if (!insidePolygon(point, map.floor)) return false;
   return !map.blockers.some(
@@ -84,3 +85,78 @@ export function isWalkable(scene: SceneId, point: ScenePoint) {
   );
 }
 
+// 检查整段地面投影，防止终点合法却在途中穿过家具。
+export function isClearSegment(
+  scene: SceneId,
+  from: ScenePoint,
+  to: ScenePoint,
+) {
+  const samples = Math.ceil(Math.hypot(to.x - from.x, to.y - from.y) / 0.004);
+  for (let i = 0; i <= samples; i++) {
+    const t = samples ? i / samples : 0;
+    if (
+      !isWalkable(scene, {
+        x: from.x + (to.x - from.x) * t,
+        y: from.y + (to.y - from.y) * t,
+      })
+    )
+      return false;
+  }
+  return true;
+}
+
+export function findWalkPath(
+  scene: SceneId,
+  from: ScenePoint,
+  to: ScenePoint,
+): ScenePoint[] | null {
+  if (!isWalkable(scene, from) || !isWalkable(scene, to)) return null;
+  if (isClearSegment(scene, from, to)) return [from, to];
+  const margin = 0.012;
+  const corners = WALK_MAPS[scene].blockers
+    .flatMap((b) => [
+      { x: b.left - margin, y: b.top - margin },
+      { x: b.right + margin, y: b.top - margin },
+      { x: b.left - margin, y: b.bottom + margin },
+      { x: b.right + margin, y: b.bottom + margin },
+    ])
+    .filter((p) => isWalkable(scene, p));
+  const nodes = [from, to, ...corners],
+    visited = new Set<number>();
+  const costs = nodes.map(() => Infinity),
+    previous = nodes.map(() => -1);
+  costs[0] = 0;
+  while (visited.size < nodes.length) {
+    let current = -1;
+    for (let i = 0; i < nodes.length; i++)
+      if (
+        !visited.has(i) &&
+        Number.isFinite(costs[i]) &&
+        (current < 0 || costs[i] < costs[current])
+      )
+        current = i;
+    if (current < 0) return null;
+    if (current === 1) {
+      const path: ScenePoint[] = [];
+      for (let index = 1; index !== -1; index = previous[index])
+        path.unshift(nodes[index]);
+      return path;
+    }
+    visited.add(current);
+    for (let next = 0; next < nodes.length; next++) {
+      if (visited.has(next)) continue;
+      const distance = Math.hypot(
+        nodes[next].x - nodes[current].x,
+        ((nodes[next].y - nodes[current].y) * 4) / 3,
+      );
+      if (
+        costs[current] + distance >= costs[next] ||
+        !isClearSegment(scene, nodes[current], nodes[next])
+      )
+        continue;
+      costs[next] = costs[current] + distance;
+      previous[next] = current;
+    }
+  }
+  return null;
+}
