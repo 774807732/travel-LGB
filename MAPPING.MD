@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-11。1.4.0 / Sites 版本 10 已发布：四地十二件收藏，7 张新收藏品真透明 PNG；田坝三卡/红苕稀饭/草帽已启用，原料收藏与出发吃食保持区分。
+更新：2026-09-12。正式环境指 Mac mini 1.4.0；原 Sites 站点已永久删除，旧托管配置已移除。四地十二件收藏与食物/用具映射不变。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -14,11 +14,11 @@
 | 草帽、宽檐帽 | 24 文永久用具，圆冠宽扁檐 | `gear_straw_hat`，提高田坝倾向，透明 WebP |
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
-| 线上环境、线上游戏 | ChatGPT Sites 托管站点，不是本地预览 | `.openai/hosting.json` → `project_id`、`static.directory='dist'`；进度仍为浏览器 localStorage |
-| Mac mini 版、内网版 | Mac mini 上的常驻静态站点 | `brand-mini.local`、`http://10.131.75.39:8788/`、`com.jojo.travel-lgb.web` |
+| 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
+| 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `brand-mini.local`、`http://10.131.75.39:8788/`、`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 同时在线、并发、访问流量 | 在线人数、请求速率与传输量不同，不等同于 AI Token 配额 | Sites 套餐用量限制；当前无游戏侧并发配置，具体平台数值待账号界面或官方确认 |
-| 刷新仍是旧图、改了没变化 | 先核对网址与发布记录，不清玩家存档 | 当前 Sites 版本 10、设置页 `1.4.0`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
+| 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.0`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |

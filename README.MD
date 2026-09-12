@@ -1,8 +1,6 @@
 # 旅行癞疙宝
 
-更新：2026-09-11｜1.4.0 已发布到原私密网址（Sites 版本 10）：七件收藏品程序抠成真透明 PNG，四地十二件收藏、田坝三卡/红苕稀饭/草帽已接入。43 项测试与构建通过，旧存档自动接续。
-
-最新线上：Sites 版本 10 / 1.4.0。桌面三个簸箕的尺寸、位置、点击框与碰撞保持不变。
+更新：2026-09-12｜正式环境为 Mac mini（1.4.0），原 Sites 站点已永久删除。四地十二卡/十二收藏、红苕稀饭与草帽已接入；本次仅调整部署归属，游戏内容与存档规则不变。
 
 原九张见闻沿用第二轮减纹理图，随本次更新发布；[对照](outputs/art/review/九张见闻第二轮减纹理对照.html)、[提示词](outputs/art/见闻第二轮减纹理提示词.json)与旧图留档。
 
@@ -34,12 +32,10 @@
 ## 运行与交付
 
 - 源码仓库：https://github.com/774807732/travel-LGB ，SSH 为 `git@github.com:774807732/travel-LGB.git`，主分支 `main`；代码、游戏素材、测试与交付文档保留完整 Git 历史。
-- Mac mini 版：http://10.131.75.39:8788/ ，部署在 `brand-mini.local` 的 `/Users/jojo/Sites/travel-LGB`，由 LaunchAgent `com.jojo.travel-lgb.web` 常驻；仅已连接该网络的设备可访问，未配置公网域名、TLS 或鉴权。
-- 私密成品：https://travel-toad-sichuan.jake774807732.chatgpt.site 。1.4.0 / Sites 版本 10 于 2026-09-11 18:06（北京时间）发布成功，仍仅所有者可访问。
-- 原网址刷新即可加载靠墙信桩、14px 留言与簸箕遮挡修正；背景使用 `yard-web-wall.webp`。本次不改存档键或访问权限，无需清浏览器数据。
-- 托管边界（2026-09-11 官方资料核对）：线上访问不依赖本机 Wi-Fi，但需网络可达及获授权账号登录；用户 Wi-Fi/流量尚未实测。Sites 是持续托管成果，未查到固定到期天数；测试期有按套餐、跨站点的用量限制，未查到公开并发/QPS/带宽数值，不承诺永久或无限流量。参考 https://learn.chatgpt.com/docs/sites 。
+- 正式环境（Mac mini）：http://10.131.75.39:8788/ ，部署在 `brand-mini.local` 的 `/Users/jojo/Sites/travel-LGB`，由 LaunchAgent `com.jojo.travel-lgb.web` 常驻；仅已连接该网络的设备可访问，未配置公网域名、TLS 或鉴权。
+- Sites 已于 2026-09-12 永久删除；历史见 `outputs/release/发布记录.MD`。已移除 `.openai/hosting.json`，后续发布只更新 Mac mini，不重建 Sites。
 - 本地开发入口：http://127.0.0.1:5173/ ，需先运行开发命令；不同网址存档独立。
-- Mac mini、Sites 与本地预览是三个不同网址，浏览器存档互不自动迁移；换网址前需在设置中导出，再到新网址导入。
+- Mac mini 与本地预览的存档按网址隔离；可在设置中导出/导入。旧 Sites 存档不会自动迁入 Mac mini，已有导出文件仍可导入。
 - `npm ci` → `npm run dev`；固定访问 `http://127.0.0.1:5173/`。
 - `npm run build` 输出 `dist/`；`npm test` 运行规则与存档测试；`npm run assets` 重新编码正式素材。
 - `/?debug=1` 是独立测试存档，支持下一事件、离线一天和免费饭再出发；正常界面没有快进按钮。
@@ -76,8 +72,8 @@
 - `:backup` 有效快照；`:damaged` 异常原文；`:before-replace` 主动替换前备份。坏档不静默清空，保存失败明确提示。
 - 声音为本地 Web Audio 合成，默认关闭；图像由模型生成。此次用户授权程序去背景，`scripts/extract-souvenirs.mjs --tianba` 保留原图与处理记录；十二收藏用透明 PNG，其他资源 WebP，编码时保留 alpha。
 - 不上传玩家进度、不跨设备同步。清浏览器数据或换网址前请导出；localhost、127.0.0.1 和正式域名各有独立存档。
-- 构建发布为私密静态站点；无数据库、账户系统或密钥需求。
-- 托管位置：ChatGPT Sites 管理的线上环境，上传 `dist/`，不是本机 5173 服务；Sites 承担访问控制，游戏进度仍在浏览器 localStorage。具体云厂商/机房地域未获确认；平台说明见 https://learn.chatgpt.com/zh-Hans/docs/sites 。
+- 正式构建为静态站点；无数据库、账户系统或密钥需求。
+- Mac mini 以 LaunchAgent 常驻服务提供构建产物，入口为 `current` 指向的发布目录；部署说明见 `deploy/mac-mini/README.md`。游戏进度仍在访问者浏览器 localStorage。
 
 每次任务结束前同步本文件、`DESIGN.MD`、`MAPPING.MD`、`HANDOF.MD`。前期方案保留设计假设，实际进度以交接与验收记录为准。
 

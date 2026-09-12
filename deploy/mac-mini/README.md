@@ -1,5 +1,8 @@
 # Mac mini 部署
 
+2026-09-12 起作为正式环境；原 Sites 站点已永久删除，后续不重建 Sites。
+
+- 正式入口：`http://10.131.75.39:8788/`。
 - 主机：`brand-mini.local`（SSH `jojo@10.131.75.39`）。
 - 源码：`/Users/jojo/Sites/travel-LGB/source`，跟踪 GitHub `main`。
 - 成品：`/Users/jojo/Sites/travel-LGB/releases/<commit>`；`current` 原子指向当前版本。
