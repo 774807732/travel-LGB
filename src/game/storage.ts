@@ -312,6 +312,7 @@ export function loadGame(
   storage: StoragePort,
   key: string,
   now: number,
+  readOnly = false,
 ): LoadedGame {
   try {
     const raw = storage.getItem(key);
@@ -332,7 +333,7 @@ export function loadGame(
         try {
           const decoded = decodeSave(backup);
           // 只有先保留损坏原文，才允许在有效备份上继续。
-          storage.setItem(key + ":damaged", raw);
+          if (!readOnly) storage.setItem(key + ":damaged", raw);
           return {
             state: decoded.state,
             warning: "主存档有异常，已从上一份有效备份恢复；异常原文已保留。",

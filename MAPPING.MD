@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-12。正式环境指 Mac mini 1.4.0；原 Sites 站点已永久删除，旧托管配置已移除。四地十二件收藏与食物/用具映射不变。
+更新：2026-09-13。1.4.1 HTTP 存档兼容待发布 Mac mini；原 Sites 已删除。补记互斥租约与只读原因。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -70,7 +70,9 @@
 | 纸页、弹层 | 单层原生弹窗 | `Sheet`、`panel`、`viewKey` |
 | 环境声 / 少动一点 | 保存的偏好 | `soundEnabled / reducedMotion`、`audio.ts` |
 | 备份、恢复、重新开始 | 本地存档操作 | `panel='settings/import/confirm'`、`candidate`、`decodeSave / replace` |
-| 另一个窗口 | 只读与自动接续 | `useGame.mode`、`readerScene`、Web Locks |
+| 另一个窗口、这里只查看 | 其他页占用写权限；可看景，关闭原页或租约过期后接续 | `mode === "reader"`、`readerScene`、`READER_NOTICE` |
+| 存储不可用、暂停操作 | 浏览器存储或协调失败，不是其他页占用；刷新前可导出备份 | `mode === "unavailable"`、`STORAGE_NOTICE`、`game.readOnlyNotice` |
+| HTTP 存档锁、窗口接续 | 原生 Web Locks 优先，否则 IndexedDB 租约；每次写入同步核验 | `writer.ts`、`createBrowserWriter`、`createLeaseWriter`、`Writer.run`、`LEASE_MS=12000`、`HEARTBEAT_MS=2000` |
 | 时间试验台、快进 | 独立测试工具 | `?debug=1`、`advanceDebug` |
 
 ## 内容 ID

@@ -340,12 +340,12 @@ export default function App() {
     clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setToast(""), 4200);
   };
-  function perform(
+  async function perform(
     action: (s: GameState, now: number) => GameState,
     message?: string,
   ) {
     try {
-      act(action);
+      await act(action);
       if (message) showToast(message);
       return true;
     } catch (error) {
@@ -361,14 +361,14 @@ export default function App() {
       perform((s) => ({ ...s, hasUnreadReturn: false }));
     setPanel(next);
   }
-  function changeScene(scene: GameState["scene"]) {
+  async function changeScene(scene: GameState["scene"]) {
     setHopCommand(null);
-    if (mode === "reader") {
+    if (mode === "reader" || mode === "unavailable") {
       setReaderScene(scene);
       playSound("tap");
       return;
     }
-    if (perform((s) => ({ ...s, scene }))) playSound("tap");
+    if (await perform((s) => ({ ...s, scene }))) playSound("tap");
   }
   function moveToad(point: ScenePoint) {
     const scene = viewState.scene;
@@ -388,12 +388,12 @@ export default function App() {
     if (tripId && canWrite && !state.readLetters.includes(tripId))
       perform((s, now) => markLetterRead(s, tripId, now));
   }
-  function collect() {
+  async function collect() {
     if (!ready) {
       showToast("每隔四小时攒一份，最多留三份。莫急。");
       return;
     }
-    if (perform(harvest, "收好咯，盘缠 +" + ready * 12 + " 文。"))
+    if (await perform(harvest, "收好咯，盘缠 +" + ready * 12 + " 文。"))
       playSound("harvest");
   }
   function download(text: string, name = "旅行癞疙宝存档") {
@@ -533,7 +533,9 @@ export default function App() {
   const packedBag =
     state.phase === "traveling" ? (state.bag ?? emptyBag) : draft;
   const viewState =
-    mode === "reader" ? { ...state, scene: readerScene } : state;
+    mode === "reader" || mode === "unavailable"
+      ? { ...state, scene: readerScene }
+      : state;
   return (
     <main className="game-page" data-layout={layout}>
       <div className="game-column">
@@ -697,7 +699,7 @@ export default function App() {
         </section>
         <p
           className={
-            "save-status " + (mode === "protected" ? "save-warning" : "")
+            "save-status " + (["protected", "unavailable"].includes(mode) ? "save-warning" : "")
           }
           role="status"
         >
@@ -705,8 +707,8 @@ export default function App() {
             ? "正在打开疙宝的小屋…"
             : mode === "protected"
               ? warning
-              : mode === "reader"
-                ? "另一窗口正在照看疙宝 · 这里只查看"
+              : mode === "reader" || mode === "unavailable"
+                ? game.readOnlyNotice
                 : (warning ?? "进度留在此浏览器 · 离开也会继续旅行")}
         </p>
         {mode === "protected" && (
@@ -742,11 +744,11 @@ export default function App() {
           </dl>
           <button
             disabled={!canWrite || nextEventAt(state) === null}
-            onClick={() => advanceDebug()}
+            onClick={() => void advanceDebug().catch((error: Error) => showToast(error.message))}
           >
             推进到下一事件
           </button>
-          <button disabled={!canWrite} onClick={() => advanceDebug(86400000)}>
+          <button disabled={!canWrite} onClick={() => void advanceDebug(86400000).catch((error: Error) => showToast(error.message))}>
             模拟离线一天
           </button>
           <button
@@ -780,9 +782,9 @@ export default function App() {
           ].includes(panel)}
           onBack={back}
         >
-          {mode === "reader" && (
+          {(mode === "reader" || mode === "unavailable") && (
             <p className="notice">
-              当前只查看。关闭正在照看的窗口后，这里会自动接续。
+              {game.readOnlyNotice}
             </p>
           )}
           {panel === "bag" && (
@@ -836,9 +838,9 @@ export default function App() {
                   <button
                     className="primary"
                     disabled={!canWrite}
-                    onClick={() => {
+                    onClick={async () => {
                       if (
-                        perform(
+                        await perform(
                           (s, now) => prepareTrip(s, draft, now),
                           "包包收好咯，它会自己出门。",
                         )
@@ -854,9 +856,9 @@ export default function App() {
                     <button
                       className="secondary"
                       disabled={!canWrite}
-                      onClick={() => {
+                      onClick={async () => {
                         if (
-                          perform(cancelPreparation, "先在家歇歇，吃食还在。")
+                          await perform(cancelPreparation, "先在家歇歇，吃食还在。")
                         )
                           setPanel(null);
                       }}
@@ -996,9 +998,9 @@ export default function App() {
                     className="price-button"
                     disabled={!canWrite || state.coins < item.price}
                     aria-label={"购买" + item.name + "，" + item.price + "文"}
-                    onClick={() => {
+                    onClick={async () => {
                       if (
-                        perform(
+                        await perform(
                           (s, now) => buyItem(s, item.id, now),
                           item.name + "备好了一份。",
                         )
@@ -1029,9 +1031,9 @@ export default function App() {
                       state.coins < item.price
                     }
                     aria-label={"购买" + item.name + "，" + item.price + "文"}
-                    onClick={() => {
+                    onClick={async () => {
                       if (
-                        perform(
+                        await perform(
                           (s, now) => buyItem(s, item.id, now),
                           item.name + "收好了，以后都能带。",
                         )
@@ -1350,9 +1352,9 @@ export default function App() {
                   role="switch"
                   checked={state.soundEnabled}
                   disabled={!canWrite}
-                  onChange={(e) => {
+                  onChange={async (e) => {
                     const checked = e.target.checked;
-                    if (perform((s) => ({ ...s, soundEnabled: checked })))
+                    if (await perform((s) => ({ ...s, soundEnabled: checked })))
                       void enableAudio(checked);
                   }}
                 />
@@ -1600,9 +1602,9 @@ export default function App() {
               <button
                 className="primary"
                 disabled={!canReplace}
-                onClick={() => {
+                onClick={async () => {
                   try {
-                    replace(candidate.state);
+                    await replace(candidate.state);
                     setPanel(null);
                     setCandidate(null);
                     showToast("小屋收拾好了，接着慢慢玩。");
