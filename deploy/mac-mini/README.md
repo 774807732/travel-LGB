@@ -6,9 +6,17 @@
 - 主机：`brand-mini.local`（SSH `jojo@10.131.75.39`）。
 - 源码：`/Users/jojo/Sites/travel-LGB/source`，跟踪 GitHub `main`。
 - 成品：`/Users/jojo/Sites/travel-LGB/releases/<commit>`；`current` 原子指向当前版本。
-- 服务：LaunchAgent `com.jojo.travel-lgb.web` 监听 `8788`；`com.jojo.travel-lgb.alias` 监听 `80`；`com.jojo.travel-lgb.https` 用带 DuckDNS DNS 插件的 Caddy 2.11.4 监听 `443`，均反代至 `127.0.0.1:8788`。
+- 服务：LaunchAgent `com.jojo.travel-lgb.web` 在 `8788` 提供静态文件；`com.jojo.travel-lgb.alias` 监听 `80`；`com.jojo.travel-lgb.https` 用带 DuckDNS DNS 插件的 Caddy 2.11.4 监听 `443`。后两者均反代至 `127.0.0.1:8788`。
 - 日志：`~/Library/Logs/travel-lgb-web.log` 与 `.error.log`。
 - 更新：源码执行 `git pull --ff-only`、`npm ci`、`npm run build`，复制到新提交目录后切换 `current`，再重启 LaunchAgent。
+
+仅文档变更只同步 `source`，不构建、切换 `current` 或重启。2026-09-14 交接审计：应用 `7375ea8` 的 58 文件与本地构建一致，7 份运行配置一致，三个服务及 TLS 正常；没有数据库、上传服务或环境变量迁移需求。
+
+GitHub SSH 22 超时，可临时使用官方 443 入口，保留原 `origin` 与严格主机校验（当前机器已信任 GitHub 主机密钥）：
+
+```sh
+GIT_SSH_COMMAND='ssh -p 443 -o HostName=ssh.github.com -o HostKeyAlias=github.com -o StrictHostKeyChecking=yes -o BatchMode=yes -o ConnectTimeout=8' git push origin main
+```
 
 macOS 原子切换符号链接须用 `mv -fh <新链接> current`；少了 `-h` 会沿着旧 `current` 所指目录移动，导致线上仍停留旧版。切换后立刻 `readlink current` 核对，再测 HTTPS 新资源。
 
