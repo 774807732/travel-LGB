@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-14｜接手复核的源码起点为 `ea41e0e`，`current` 仍指向应用 `7375ea8`；前端元素未改。域名曾一次解析异常随后恢复，详见交接快照；正式入口仍为 `https://travel-lgb.duckdns.org/`。
+更新：2026-09-14｜筒靴鞋与正式 HTTPS 独立档验收完成，Mini 应用 `3a636fe`（1.4.2）；正式入口仍为 `https://travel-lgb.duckdns.org/`。旧伞 ID 不改，历史和在途无需迁移。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -10,7 +10,8 @@
 | www.travellgb.com、travel-lgb.co | 历史拟议名称，均未启用 | 无线上配置或前端变量 |
 | brand-mini.local、Mini 的名字 | 已在当前 MacBook 验通的 Bonjour 内网别名，不保证所有设备可解析；与 IP 存档独立 | `http://brand-mini.local:8788/`；Mac mini LocalHostName |
 | JOJO-Office、办公室 Wi-Fi | Mini 当前连接的 SSID，不是游戏的访问白名单 | en1；服务监听 `0.0.0.0:8788`，实际可达性由路由/防火墙决定 |
-| 筒靴鞋、农用雨靴、黑胶筒靴 | 油纸伞的替换候选，仍属永久用具，不是新增一项；首图假透明待修 | 候选 `gear_rain_boots`，目录 `outputs/art/candidates/rain-boots-v1/`；现用/旧存档仍是 `gear_oilpaper_umbrella`，接入时需兼容迁移 |
+| 筒靴鞋、农用雨靴、黑胶筒靴 | 已替换油纸伞的 24 文永久用具，不新增格子、不要求重买，河街权重不变 | 稳定 `GearId=gear_oilpaper_umbrella`；`itemImage` 映射 `/art/items/gear_rain_boots.webp`；源图 `outputs/art/source/rain-boots-v2/` |
+| 代理下打不开、直连可访问 | 私网 Mini 无法经外部代理访问时，仅对本游戏域名加直连例外 | 本机 Wi-Fi / AX88179A 追加 `travel-lgb.duckdns.org`；保留原代理与规则，不是改服务器 HTTPS 或清存档 |
 | 田坝地头、田坝、田坎 | 第四个旅行目的地，不是第三个可操作家场景 | `route_tianba` |
 | 幺姑婆、地头吃晌午 | 农妇在田边吃午饭；不是低头动作或独立可点 NPC | `card_tianba_01`，用 `card_tianba_01-v2.png` |
 | 红烧稀饭胀多了、吃撑见闻 | 食物条件卡；标题保留用户原文「红烧」 | `card_tianba_02.requiredFood`，按 `Trip.loadout.food` 筛选 |
@@ -22,9 +23,9 @@
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/7375ea8a7750e994689ab16b005262d30e34c96c` 是现用应用。部署前核对差异和成品哈希 |
+| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/3a636fea6375bf539587053200f7c25df1ff5b97` 是现用应用，59 文件哈希一致，`7375ea8` 留作回滚 |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.1`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.2`、小铺筒靴鞋、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
