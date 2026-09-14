@@ -1,6 +1,6 @@
 # 任务交接
 
-更新：2026-09-14｜用户已允许将本批含内网信息的最终验收文档同步公开仓库。Mac mini 应用仍为 1.4.1 / `cc5316c`，本次不重新部署；原 Sites 保持永久删除。
+更新：2026-09-14｜免费二级域名内网方案已接入：`http://travel-lgb.duckdns.org/` 指向 Mini，独立 Caddy 代理 80→8788；旧入口保留，未开放外网。未改游戏构建或正常玩家存档。
 
 后续只更新 GitHub `main` 与 Mac mini；`.openai/hosting.json` 已移除，不得自动重建或发布 Sites。删除不涉及 GitHub 源码、Mac mini 产物与访问者浏览器存档。
 
@@ -8,6 +8,15 @@
 
 ## 当前进度
 
+- [x] 域名核查：`travellgb.com` 的 .com WHOIS 为 No match、Verisign RDAP 404、DNS NXDOMAIN；没有可由本项目修改的注册/DNS 记录。Mini 当前仍提供 `10.131.75.39:8788`。
+- [x] 网络核查：Mini en1 连接 JOJO-Office；Python 服务监听 `0.0.0.0:8788`、macOS 防火墙关闭。另一台电脑通过不同内网接口/网关可达 Mini 并返回 200；访问由路由决定，不按 SSID 决定。未实测手机流量，私网 IP 无公网直达路径。
+- [x] 访问范围确定：用户明确「暂时不用买下域名，在公司内网支持访问即可」。已验 `brand-mini.local:8788` 与 IP 均返回 200；Mini 经 en1 连接 JOJO-Office，DHCP 下发公司 DNS `10.130.205.51/.55`，两台均对 `www.travellgb.com` 回 NXDOMAIN。没有改外网暴露。
+- [x] 当前链接方案：新正式内网入口 `http://travel-lgb.duckdns.org/`；保留 `10.131.75.39:8788` 和可选 Bonjour 别名。新旧域名浏览器存档独立。
+- [x] 新 .co 候选初查：旧写法 `http://.travel-lgb.co/` 有前导点；按现指定 `travel-lgb.co` 查 .co WHOIS 为 DOMAIN NOT FOUND、权威 DNS 为 NXDOMAIN。WHOIS 不保证注册商可售，未购买、未配置、未改 Mini。
+- [x] 自有 `travel-lgb.co` 方案暂停：用户改选免费二级域名，不购买或部署 `.co`。
+- [x] 免费域名接入：用户申请并将 `travel-lgb.duckdns.org` A 记录改为 `10.131.75.39`；公开 DNS、公司两台 DNS 返回一致。Mini 复制独立 Caddy 2.11.4，以 `com.jojo.travel-lgb.alias` 常驻代理 80→8788；新旧入口、JS/CSS/角色图均返回 200。
+- [ ] 浏览器交互验收：本轮浏览器控制不可用，未在新来源实际测试存档读写；请在新网址用独立测试档试收成、刷新恢复，勿操作正常玩家进度。DuckDNS 无自动更新；Mini IP 变化后需用户在账号中更新 A 记录。
+- [x] 外网可达性说明：免费二级域名若仍指向 Mini 私网地址，仅名称可从公网解析，手机流量不能直达；外网访问需独立公网入口或反向隧道，并考虑 HTTPS、鉴权及公司网络许可。当前未开放外网。
 - [x] 只读提示诊断：mini 页面 Chrome 控制台实测 `isSecureContext=false`、`typeof navigator.locks="undefined"`；`useGame.ts` 无锁分支保持 `reader`，操作和页脚误报另一窗口占用。此前部署检查只验证页面/资源可访问，未覆盖该环境写入操作。
 - [x] 1.4.1 HTTP 修复：IndexedDB 排他事务租约、2 秒续约/12 秒过期；写前重读存档并核验权限，保留 Web Locks 分支。只读原因分流，动作/恢复改异步，保存成功再提示；只读页不写坏档备份。
 - [x] 1.4.1 本地验收：53 项测试（新增 10 项）及构建通过；HTTP 独立档实测收成 24→36、购买粥 36→28、刷新保留、免费饭出发、双页只读同步与关闭/休眠接续、归来 1 趟盘缠 36；127.0.0.1 原生锁可出发。正常玩家存档未操作。

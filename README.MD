@@ -1,6 +1,6 @@
 # 旅行癞疙宝
 
-更新：2026-09-14｜经用户允许，本批含内网部署信息的最终验收文档同步公开仓库；1.4.1 已发布 Mac mini，本次不改游戏或重新部署。原 Sites 保持删除。
+更新：2026-09-14｜Mac mini 内网正式入口已改为 `http://travel-lgb.duckdns.org/`；旧 IP 入口保留。域名只指向内网，不支持手机流量直达；游戏画面与逻辑未改。
 
 原九张见闻沿用第二轮减纹理图，随本次更新发布；[对照](outputs/art/review/九张见闻第二轮减纹理对照.html)、[提示词](outputs/art/见闻第二轮减纹理提示词.json)与旧图留档。
 
@@ -32,10 +32,14 @@
 ## 运行与交付
 
 - 源码仓库：https://github.com/774807732/travel-LGB ，SSH 为 `git@github.com:774807732/travel-LGB.git`，主分支 `main`；代码、游戏素材、测试与交付文档保留完整 Git 历史。
-- 正式环境（Mac mini）：http://10.131.75.39:8788/ ，部署在 `brand-mini.local` 的 `/Users/jojo/Sites/travel-LGB`，由 LaunchAgent `com.jojo.travel-lgb.web` 常驻；仅已连接该网络的设备可访问，未配置公网域名、TLS 或鉴权。
+- 正式环境（Mac mini）：http://travel-lgb.duckdns.org/ ，部署在 `/Users/jojo/Sites/travel-LGB`；独立 Caddy 代理 `80 → 8788`，旧入口 http://10.131.75.39:8788/ 保留。仅可由能连接 Mini 内网的设备访问，未开外网、HTTPS 或鉴权。
 - Sites 已于 2026-09-12 永久删除；历史见 `outputs/release/发布记录.MD`。已移除 `.openai/hosting.json`，后续发布只更新 Mac mini，不重建 Sites。
 - 本地开发入口：http://127.0.0.1:5173/ ，需先运行开发命令；不同网址存档独立。
 - Mac mini 与本地预览的存档按网址隔离；可在设置中导出/导入。旧 Sites 存档不会自动迁入 Mac mini，已有导出文件仍可导入。
+- Mini 连 `JOJO-Office` Wi-Fi（en1），游戏服务绑定所有网卡 `0.0.0.0:8788`，并未按 SSID 限制；能路由到 `10.131.75.39` 的其他内网/VPN 设备可访问。`10/8` 为私网地址，手机流量直接访问仍需另配公网入口。换正式域名后浏览器存档因网址变化仍需导出/导入。
+- `brand-mini.local` 是 Bonjour 内网主机名，已在当前 MacBook 返回 200；其他设备是否可解析需逐台核验。公司 DHCP 提供的两台 DNS `10.130.205.51/.55` 对 `www.travellgb.com` 均返回 NXDOMAIN；若要这个未注册域名仅内网可用，须由公司 DNS 管理员添加内部记录。新主机名与 IP 属不同浏览器来源，原进度不会自动出现。
+- 用户申请并设置 `travel-lgb.duckdns.org → 10.131.75.39`；公开 DNS 与公司两台 DNS 均验通，Mini 新旧入口及主要脚本/样式/角色素材返回 200。DuckDNS 当前需用户在 Mini 内网地址变化时手动更新；外网版另需公网入口与安全方案。
+- 新域名与旧 IP 是不同浏览器存档来源：旧入口先在设置中导出进度，再到新入口导入。此前拟议的 `travellgb.com`、`travel-lgb.co` 均未启用。
 - `npm ci` → `npm run dev`；固定访问 `http://127.0.0.1:5173/`。
 - `npm run build` 输出 `dist/`；`npm test` 运行规则与存档测试；`npm run assets` 重新编码正式素材。
 - `/?debug=1` 是独立测试存档，支持下一事件、离线一天和免费饭再出发；正常界面没有快进按钮。

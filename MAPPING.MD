@@ -1,10 +1,14 @@
 # 元素映射
 
-更新：2026-09-14。经用户允许同步最终文档；1.4.1 已发布 Mac mini，互斥租约与只读原因映射不变，原 Sites 保持删除。
+更新：2026-09-14。Mini 内网正式入口为 `http://travel-lgb.duckdns.org/`；旧 IP/Bonjour 入口保留，存档按网址隔离。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
+| travel-lgb.duckdns.org、免费游戏网址 | 正式内网入口，公开 DNS 指向 Mini 私网地址，不支持手机流量直达 | `http://travel-lgb.duckdns.org/`；`com.jojo.travel-lgb.alias`、Caddy `:80 → 127.0.0.1:8788` |
+| www.travellgb.com、travel-lgb.co | 历史拟议名称，均未启用 | 无线上配置或前端变量 |
+| brand-mini.local、Mini 的名字 | 已在当前 MacBook 验通的 Bonjour 内网别名，不保证所有设备可解析；与 IP 存档独立 | `http://brand-mini.local:8788/`；Mac mini LocalHostName |
+| JOJO-Office、办公室 Wi-Fi | Mini 当前连接的 SSID，不是游戏的访问白名单 | en1；服务监听 `0.0.0.0:8788`，实际可达性由路由/防火墙决定 |
 | 筒靴鞋、农用雨靴、黑胶筒靴 | 油纸伞的替换候选，仍属永久用具，不是新增一项；首图假透明待修 | 候选 `gear_rain_boots`，目录 `outputs/art/candidates/rain-boots-v1/`；现用/旧存档仍是 `gear_oilpaper_umbrella`，接入时需兼容迁移 |
 | 田坝地头、田坝、田坎 | 第四个旅行目的地，不是第三个可操作家场景 | `route_tianba` |
 | 幺姑婆、地头吃晌午 | 农妇在田边吃午饭；不是低头动作或独立可点 NPC | `card_tianba_01`，用 `card_tianba_01-v2.png` |
@@ -15,7 +19,7 @@
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
-| 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `brand-mini.local`、`http://10.131.75.39:8788/`、`com.jojo.travel-lgb.web` |
+| 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `http://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
 | 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.0`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
