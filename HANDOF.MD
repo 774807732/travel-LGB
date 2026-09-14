@@ -1,6 +1,6 @@
 # 任务交接
 
-更新：2026-09-14｜免费二级域名内网方案已接入：`http://travel-lgb.duckdns.org/` 指向 Mini，独立 Caddy 代理 80→8788；旧入口保留，未开放外网。未改游戏构建或正常玩家存档。
+更新：2026-09-14｜`https://travel-lgb.duckdns.org/` 已启用可信证书并指向 Mini，独立 Caddy 代理 443→8788；HTTP 与旧 IP 入口保留，未开放外网。未改游戏构建或正常玩家存档。
 
 后续只更新 GitHub `main` 与 Mac mini；`.openai/hosting.json` 已移除，不得自动重建或发布 Sites。删除不涉及 GitHub 源码、Mac mini 产物与访问者浏览器存档。
 
@@ -8,10 +8,13 @@
 
 ## 当前进度
 
+- [x] HTTPS 故障修复：Chrome 自动访问 `https://` 时 Mini 原无 443 监听，故 `ERR_CONNECTION_CLOSED`；现已启用含 DuckDNS DNS 插件的独立 Caddy 与 LaunchAgent，证书域名匹配、客户端校验通过，首页/JS/CSS/角色图均为 200，HTTP 80 仍为 200。
+- [x] 凭据安全：旧 Token 曾误入普通终端，未使用；用户自行重新生成并通过 Mini 隐藏输入脚本安装新 Token。文件权限 600、未写入仓库；后续不读取或打印 Token。证书自动续期依赖该 Token 持续有效。
+- [ ] HTTPS 浏览器交互验收：服务器和静态资源已通过检查；尚未在用户浏览器亲自验证存档导出/导入与交互。HTTP → HTTPS 是不同来源，旧进度不会自动出现。
 - [x] 域名核查：`travellgb.com` 的 .com WHOIS 为 No match、Verisign RDAP 404、DNS NXDOMAIN；没有可由本项目修改的注册/DNS 记录。Mini 当前仍提供 `10.131.75.39:8788`。
 - [x] 网络核查：Mini en1 连接 JOJO-Office；Python 服务监听 `0.0.0.0:8788`、macOS 防火墙关闭。另一台电脑通过不同内网接口/网关可达 Mini 并返回 200；访问由路由决定，不按 SSID 决定。未实测手机流量，私网 IP 无公网直达路径。
 - [x] 访问范围确定：用户明确「暂时不用买下域名，在公司内网支持访问即可」。已验 `brand-mini.local:8788` 与 IP 均返回 200；Mini 经 en1 连接 JOJO-Office，DHCP 下发公司 DNS `10.130.205.51/.55`，两台均对 `www.travellgb.com` 回 NXDOMAIN。没有改外网暴露。
-- [x] 当前链接方案：新正式内网入口 `http://travel-lgb.duckdns.org/`；保留 `10.131.75.39:8788` 和可选 Bonjour 别名。新旧域名浏览器存档独立。
+- [x] 当前链接方案：正式内网入口 `https://travel-lgb.duckdns.org/`；保留 HTTP 域名、`10.131.75.39:8788` 和可选 Bonjour 别名。不同协议/主机名的浏览器存档独立。
 - [x] 新 .co 候选初查：旧写法 `http://.travel-lgb.co/` 有前导点；按现指定 `travel-lgb.co` 查 .co WHOIS 为 DOMAIN NOT FOUND、权威 DNS 为 NXDOMAIN。WHOIS 不保证注册商可售，未购买、未配置、未改 Mini。
 - [x] 自有 `travel-lgb.co` 方案暂停：用户改选免费二级域名，不购买或部署 `.co`。
 - [x] 免费域名接入：用户申请并将 `travel-lgb.duckdns.org` A 记录改为 `10.131.75.39`；公开 DNS、公司两台 DNS 返回一致。Mini 复制独立 Caddy 2.11.4，以 `com.jojo.travel-lgb.alias` 常驻代理 80→8788；新旧入口、JS/CSS/角色图均返回 200。
@@ -32,7 +35,7 @@
 - [x] GitHub 交付：`origin` 指向 `git@github.com:774807732/travel-LGB.git`，首次完整推送到 `main` 成功；后续开发继续提交并推送该分支。
 - [x] Mac mini 部署：应用提交 `e8c565d288e579330b07d5d29a31251f9af571fe`，稀疏源码 12 MB、成品 6 MB/58 文件；39 项不依赖原画归档的测试及构建通过。服务监听 8788，Mac mini 本机与当前 MacBook 均返回 200，未改已有 Caddy。
 - [x] 删除原 Sites 站点：用户确认后永久删除，管理页提示成功、站点列表为空、连接器返回 404；已移除活动托管配置并保留历史记录。
-- [ ] Mac mini 公网访问：当前仅通过已连接网络的 `10.131.75.39:8788` 访问，未配置域名、HTTPS、防火墙放行或访问鉴权；如需公网另行确认暴露范围。
+- [ ] Mac mini 公网访问：当前域名解析到 `10.131.75.39` 私网地址，虽已有 HTTPS，仍无公网入口或访问鉴权；如需外网访问须另行确认暴露范围与安全方案。
 - [ ] 后续独立任务：筒靴鞋去背景与替换旧伞；原画残余碎笔触如需继续收整，另行重绘，不把本次抠图当作风格修订。
 
 ## 历史任务记录（以下状态为当时记录，以当前进度为准）

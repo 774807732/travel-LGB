@@ -1,11 +1,12 @@
 # 元素映射
 
-更新：2026-09-14。Mini 内网正式入口为 `http://travel-lgb.duckdns.org/`；旧 IP/Bonjour 入口保留，存档按网址隔离。
+更新：2026-09-14。Mini 内网正式入口为 `https://travel-lgb.duckdns.org/`；HTTP、旧 IP/Bonjour 入口保留，存档按网址隔离。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
 | 疙宝、癞疙宝 | 角色精灵 / 日常回应 | `Scene`、`.toad-hotspot`、`.toad-sprite` |
-| travel-lgb.duckdns.org、免费游戏网址 | 正式内网入口，公开 DNS 指向 Mini 私网地址，不支持手机流量直达 | `http://travel-lgb.duckdns.org/`；`com.jojo.travel-lgb.alias`、Caddy `:80 → 127.0.0.1:8788` |
+| travel-lgb.duckdns.org、免费游戏网址 | 正式内网 HTTPS 入口，公开 DNS 指向 Mini 私网地址，不支持手机流量直达 | `https://travel-lgb.duckdns.org/`；`com.jojo.travel-lgb.https`、Caddy `:443 → 127.0.0.1:8788`；HTTP 别名 `:80` 保留 |
+| 安全网址、证书 | HTTPS 连接与自动续期，不是外网开放或游戏账号 | `Caddyfile.https`、`run-https.sh`；DuckDNS Token 仅在 Mini 的用户目录，绝不提交 Git |
 | www.travellgb.com、travel-lgb.co | 历史拟议名称，均未启用 | 无线上配置或前端变量 |
 | brand-mini.local、Mini 的名字 | 已在当前 MacBook 验通的 Bonjour 内网别名，不保证所有设备可解析；与 IP 存档独立 | `http://brand-mini.local:8788/`；Mac mini LocalHostName |
 | JOJO-Office、办公室 Wi-Fi | Mini 当前连接的 SSID，不是游戏的访问白名单 | en1；服务监听 `0.0.0.0:8788`，实际可达性由路由/防火墙决定 |
@@ -19,7 +20,7 @@
 | Web 版、桌面大画面 | ≥960px 横向约 16:9 场景；角色仍 96px | `layout='wide'`、`DESKTOP_MEDIA`、`SCENE_ASPECTS.wide=1672/941`、`data-layout` |
 | 手机版、竖版 | <960px 的原 3:4 构图 | `layout='portrait'` |
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
-| 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `http://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
+| 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
 | 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.0`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |

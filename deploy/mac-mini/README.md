@@ -2,15 +2,21 @@
 
 2026-09-12 起作为正式环境；原 Sites 站点已永久删除，后续不重建 Sites。
 
-- 正式内网入口：`http://travel-lgb.duckdns.org/`；旧入口 `http://10.131.75.39:8788/` 保留。
+- 正式内网入口：`https://travel-lgb.duckdns.org/`；HTTP 别名与旧入口 `http://10.131.75.39:8788/` 保留。
 - 主机：`brand-mini.local`（SSH `jojo@10.131.75.39`）。
 - 源码：`/Users/jojo/Sites/travel-LGB/source`，跟踪 GitHub `main`。
 - 成品：`/Users/jojo/Sites/travel-LGB/releases/<commit>`；`current` 原子指向当前版本。
-- 服务：LaunchAgent `com.jojo.travel-lgb.web` 监听 `8788`；独立 `com.jojo.travel-lgb.alias` 用 Caddy 2.11.4 监听 `80` 并反代至 `127.0.0.1:8788`。
+- 服务：LaunchAgent `com.jojo.travel-lgb.web` 监听 `8788`；`com.jojo.travel-lgb.alias` 监听 `80`；`com.jojo.travel-lgb.https` 用带 DuckDNS DNS 插件的 Caddy 2.11.4 监听 `443`，均反代至 `127.0.0.1:8788`。
 - 日志：`~/Library/Logs/travel-lgb-web.log` 与 `.error.log`。
 - 更新：源码执行 `git pull --ff-only`、`npm ci`、`npm run build`，复制到新提交目录后切换 `current`，再重启 LaunchAgent。
 
-新代理使用项目自有的 Caddy 可执行文件与配置，不修改 Mini 上其他 Caddy 服务；未配置公网入口、TLS 或访问鉴权。
+新代理使用项目自有的 Caddy 可执行文件与配置，不修改 Mini 上其他 Caddy 服务；未配置公网入口或访问鉴权。HTTPS 经 DuckDNS DNS 验证签发并由 Caddy 自动续期，证书只覆盖 `travel-lgb.duckdns.org`。Token 存放在 Mini 的 `~/Library/Application Support/travel-lgb/duckdns.token`，权限 600，禁止提交 Git 或贴入聊天。
+
+HTTPS 部署文件为本目录的 `Caddyfile.https`、`run-https.sh`、`install-duckdns-token.sh`、`com.jojo.travel-lgb.https.plist`；Mini 专用可执行文件为 `~/Sites/travel-LGB/bin/caddy-duckdns`（Caddy v2.11.4，模块 `dns.providers.duckdns`）。重建时使用官方 Caddy 构建器添加 `github.com/caddy-dns/duckdns`；普通版 Caddy 不含此模块。证书和 Token 均不进仓库。
+
+首次安装或更换 Token：先在 DuckDNS 账号取得新 Token，再从自己的终端执行 `ssh -tt jojo@10.131.75.39 '/Users/jojo/Sites/travel-LGB/alias/install-duckdns-token.sh'`，等出现隐藏输入提示后粘贴，不要直接当命令输入。随后启动/重启 `com.jojo.travel-lgb.https`。若 Token 曾出现在普通终端或日志中，先在 DuckDNS 重新生成，旧值作废。Mini 私网 IP 改变时仍需手动更新 DuckDNS A 记录。
+
+验收：`curl -I https://travel-lgb.duckdns.org/` 应返回 200 且不使用 `-k`；同时检查 JS/CSS/角色图及 `http://` 旧入口。HTTPS、HTTP、IP 均是不同浏览器存档来源，切换前先导出进度。
 
 1.4.1 起支持内网 HTTP 存档：无 Web Locks 时使用 IndexedDB 租约互斥，存档仍在原 localStorage。验收必须在非 localhost 的 HTTP 地址测试实际操作与双页接续，不能仅以 HTTP 200 判定可玩；调试入口 `/?debug=1` 与正常存档隔离。
 

@@ -1,6 +1,6 @@
 # 旅行癞疙宝
 
-更新：2026-09-14｜Mac mini 内网正式入口已改为 `http://travel-lgb.duckdns.org/`；旧 IP 入口保留。域名只指向内网，不支持手机流量直达；游戏画面与逻辑未改。
+更新：2026-09-14｜Mac mini 正式入口改为 `https://travel-lgb.duckdns.org/`，已验证证书与主要资源；HTTP 和旧 IP 入口保留。域名只指向内网，不支持手机流量直达；游戏画面与逻辑未改。
 
 原九张见闻沿用第二轮减纹理图，随本次更新发布；[对照](outputs/art/review/九张见闻第二轮减纹理对照.html)、[提示词](outputs/art/见闻第二轮减纹理提示词.json)与旧图留档。
 
@@ -32,14 +32,14 @@
 ## 运行与交付
 
 - 源码仓库：https://github.com/774807732/travel-LGB ，SSH 为 `git@github.com:774807732/travel-LGB.git`，主分支 `main`；代码、游戏素材、测试与交付文档保留完整 Git 历史。
-- 正式环境（Mac mini）：http://travel-lgb.duckdns.org/ ，部署在 `/Users/jojo/Sites/travel-LGB`；独立 Caddy 代理 `80 → 8788`，旧入口 http://10.131.75.39:8788/ 保留。仅可由能连接 Mini 内网的设备访问，未开外网、HTTPS 或鉴权。
+- 正式环境（Mac mini）：https://travel-lgb.duckdns.org/ ，部署在 `/Users/jojo/Sites/travel-LGB`；独立 Caddy HTTPS 代理 `443 → 8788`，HTTP `80 → 8788` 与旧入口 http://10.131.75.39:8788/ 保留。仅可由能连接 Mini 内网的设备访问，未开外网或访问鉴权。
 - Sites 已于 2026-09-12 永久删除；历史见 `outputs/release/发布记录.MD`。已移除 `.openai/hosting.json`，后续发布只更新 Mac mini，不重建 Sites。
 - 本地开发入口：http://127.0.0.1:5173/ ，需先运行开发命令；不同网址存档独立。
 - Mac mini 与本地预览的存档按网址隔离；可在设置中导出/导入。旧 Sites 存档不会自动迁入 Mac mini，已有导出文件仍可导入。
 - Mini 连 `JOJO-Office` Wi-Fi（en1），游戏服务绑定所有网卡 `0.0.0.0:8788`，并未按 SSID 限制；能路由到 `10.131.75.39` 的其他内网/VPN 设备可访问。`10/8` 为私网地址，手机流量直接访问仍需另配公网入口。换正式域名后浏览器存档因网址变化仍需导出/导入。
 - `brand-mini.local` 是 Bonjour 内网主机名，已在当前 MacBook 返回 200；其他设备是否可解析需逐台核验。公司 DHCP 提供的两台 DNS `10.130.205.51/.55` 对 `www.travellgb.com` 均返回 NXDOMAIN；若要这个未注册域名仅内网可用，须由公司 DNS 管理员添加内部记录。新主机名与 IP 属不同浏览器来源，原进度不会自动出现。
-- 用户申请并设置 `travel-lgb.duckdns.org → 10.131.75.39`；公开 DNS 与公司两台 DNS 均验通，Mini 新旧入口及主要脚本/样式/角色素材返回 200。DuckDNS 当前需用户在 Mini 内网地址变化时手动更新；外网版另需公网入口与安全方案。
-- 新域名与旧 IP 是不同浏览器存档来源：旧入口先在设置中导出进度，再到新入口导入。此前拟议的 `travellgb.com`、`travel-lgb.co` 均未启用。
+- 用户申请并设置 `travel-lgb.duckdns.org → 10.131.75.39`；HTTPS 证书、首页及主要脚本/样式/角色素材均验通。Caddy 通过 DuckDNS DNS 验证自动管理证书；Token 只保存在 Mini 用户目录，不进 Git。Mini 内网地址变化时仍需在 DuckDNS 更新 A 记录；外网版另需公网入口与安全方案。
+- HTTPS、HTTP 与旧 IP 是不同浏览器存档来源：旧入口先在设置中导出进度，再到 HTTPS 入口导入。此前拟议的 `travellgb.com`、`travel-lgb.co` 均未启用。
 - `npm ci` → `npm run dev`；固定访问 `http://127.0.0.1:5173/`。
 - `npm run build` 输出 `dist/`；`npm test` 运行规则与存档测试；`npm run assets` 重新编码正式素材。
 - `/?debug=1` 是独立测试存档，支持下一事件、离线一天和免费饭再出发；正常界面没有快进按钮。
@@ -80,7 +80,7 @@
 - `:backup` 有效快照；`:damaged` 异常原文；`:before-replace` 主动替换前备份。坏档不静默清空，保存失败明确提示。
 - 声音为本地 Web Audio 合成，默认关闭；图像由模型生成。此次用户授权程序去背景，`scripts/extract-souvenirs.mjs --tianba` 保留原图与处理记录；十二收藏用透明 PNG，其他资源 WebP，编码时保留 alpha。
 - 不上传玩家进度、不跨设备同步。清浏览器数据或换网址前请导出；localhost、127.0.0.1 和正式域名各有独立存档。
-- 正式构建为静态站点；无数据库、账户系统或密钥需求。
+- 正式构建为静态站点；游戏无数据库、账户系统或密钥需求。Mini 的 HTTPS 代理另需 DuckDNS Token 签发/续期证书，Token 不随构建发布。
 - Mac mini 以 LaunchAgent 常驻服务提供构建产物，入口为 `current` 指向的发布目录；部署说明见 `deploy/mac-mini/README.md`。游戏进度仍在访问者浏览器 localStorage。
 
 每次任务结束前同步本文件、`DESIGN.MD`、`MAPPING.MD`、`HANDOF.MD`。前期方案保留设计假设，实际进度以交接与验收记录为准。

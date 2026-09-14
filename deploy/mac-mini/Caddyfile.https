@@ -1,0 +1,11 @@
+{
+	admin off
+	auto_https disable_redirects
+}
+
+travel-lgb.duckdns.org {
+	tls {
+		dns duckdns {env.DUCKDNS_API_TOKEN}
+	}
+	reverse_proxy 127.0.0.1:8788
+}
