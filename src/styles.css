@@ -1716,7 +1716,8 @@ textarea {
 .harvest-props img,
 .item-art[src*="/souvenir_"],
 .item-art[src*="/food_sweet_potato_congee"],
-.item-art[src*="/gear_straw_hat"] {
+.item-art[src*="/gear_straw_hat"],
+.item-art[src*="/gear_rain_boots"] {
   mix-blend-mode: normal;
 }
 /* 纪念物直接使用真透明 PNG；不要再添加矩形收藏纸签。 */

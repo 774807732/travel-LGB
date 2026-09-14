@@ -84,11 +84,12 @@ export const GEARS: {
     description: "装一筒水，慢慢喝。更容易去竹乡；买一次，每趟都能带。",
   },
   {
+    // 保留旧 ID，让已买油纸伞、预备行囊与在途/历史快照直接接续。
     id: "gear_oilpaper_umbrella",
-    name: "油纸伞",
+    name: "筒靴鞋",
     price: 24,
     hint: "河边走走，也踏实",
-    description: "落雨就撑开。更容易去黄龙溪河街；买一次，每趟都能带。",
+    description: "套上筒靴鞋，落雨也好走。更容易去黄龙溪河街；买一次，每趟都能带。",
   },
   {
     id: "gear_straw_hat",
@@ -291,4 +292,4 @@ export const itemName = (id: ItemId) =>
   [...FOODS, ...GEARS, ...SOUVENIRS].find((x) => x.id === id)!.name;
 export const cardImage = (id: CardId) => `/art/cards/${id}.webp?v=clean-v2`;
 export const itemImage = (id: ItemId) =>
-  `/art/items/${id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;
+  `/art/items/${id === "gear_oilpaper_umbrella" ? "gear_rain_boots" : id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;

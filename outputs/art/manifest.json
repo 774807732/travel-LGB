@@ -200,8 +200,8 @@
   },
   {
     "id": "gear_oilpaper_umbrella",
-    "source": "outputs/art/source/gear_oilpaper_umbrella.png",
-    "output": "public/art/items/gear_oilpaper_umbrella.webp",
+    "source": "outputs/art/source/rain-boots-v2/gear_rain_boots.png",
+    "output": "public/art/items/gear_rain_boots.webp",
     "width": 300
   },
   {

@@ -112,6 +112,7 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
     ...SOUVENIRS.map((x) => x.id),
     "food_sweet_potato_congee",
     "gear_straw_hat",
+    "gear_oilpaper_umbrella",
   ]);
   for (const asset of manifest.filter((a) => ids.has(a.id))) {
     const meta = await sharp(asset.output).metadata();
@@ -129,7 +130,7 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
         .toBuffer();
       assert.equal(pixel[3], 0, asset.id + " 角落必须透明");
     }
-    if (asset.id.startsWith("souvenir_")) {
+    if (asset.id.startsWith("souvenir_") || asset.id === "gear_oilpaper_umbrella") {
       const { data, info } = await sharp(asset.output)
         .ensureAlpha()
         .raw()

@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-09-14",
+  "source": "outputs/art/source/rain-boots-v2/gear_rain_boots-generated.png",
+  "originalMode": "RGB",
+  "outputMode": "RGBA",
+  "width": 1254,
+  "height": 1254,
+  "generatedAlpha": false,
+  "method": "明亮中性背景与深色/彩色主体分离，保留主体连通片原始 RGB；透明裁边后等比缩至 80% 画布并补足留白",
+  "sourceBounds": {
+    "left": 209,
+    "top": 47,
+    "right": 1126,
+    "bottom": 1214
+  },
+  "foregroundPixelsBeforeResize": 692897,
+  "sourceUnchanged": true,
+  "redrawByScript": false
+}
