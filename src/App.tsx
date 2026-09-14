@@ -1091,52 +1091,42 @@ export default function App() {
                         : "每一次远行，都留一点日常。"}
                     </span>
                   </div>
-                  {ROUTES.map((route) => (
-                    <section className="route-collection" key={route.id}>
-                      <h3>
-                        {route.name}
-                        <small>{route.note}</small>
-                      </h3>
-                      <div className="card-grid">
-                        {CARDS.filter((c) => c.routeId === route.id).map(
-                          (c) => {
-                            const known = state.unlockedCards.includes(c.id);
-                            return (
-                              <button
-                                key={c.id}
-                                className={
-                                  "postcard-thumb " +
-                                  (known ? "" : "undiscovered")
-                                }
-                                aria-label={
-                                  known
-                                    ? "查看见闻：" + c.title
-                                    : "尚未收到的见闻"
-                                }
-                                disabled={!known}
-                                onClick={() => readCard(c.id, "journal")}
-                              >
-                                <span className="thumb-art">
-                                  {known ? (
-                                    <img
-                                      src={cardImage(c.id)}
-                                      alt=""
-                                      loading="lazy"
-                                    />
-                                  ) : (
-                                    <Icon name="leaf" size={24} />
-                                  )}
-                                </span>
-                                <span className="thumb-title">
-                                  {known ? c.title : "等一封来信"}
-                                </span>
-                              </button>
-                            );
-                          },
-                        )}
-                      </div>
-                    </section>
-                  ))}
+                  <div className="card-grid" aria-label="全部见闻">
+                    {CARDS.map((c) => {
+                      const known = state.unlockedCards.includes(c.id);
+                      return (
+                        <button
+                          key={c.id}
+                          className={
+                            "postcard-thumb " +
+                            (known ? "" : "undiscovered")
+                          }
+                          aria-label={
+                            known
+                              ? "查看见闻：" + c.title
+                              : "尚未收到的见闻"
+                          }
+                          disabled={!known}
+                          onClick={() => readCard(c.id, "journal")}
+                        >
+                          <span className="thumb-art">
+                            {known ? (
+                              <img
+                                src={cardImage(c.id)}
+                                alt=""
+                                loading="lazy"
+                              />
+                            ) : (
+                              <Icon name="leaf" size={24} />
+                            )}
+                          </span>
+                          <span className="thumb-title">
+                            {known ? c.title : "等一封来信"}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </>
               )}
               {panel === "souvenirs" && (

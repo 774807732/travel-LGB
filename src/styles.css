@@ -986,23 +986,6 @@ svg {
   display: block;
   margin-top: 4px;
 }
-.route-collection {
-  margin: 24px 0 0;
-}
-.route-collection h3 {
-  font-family: "Songti SC", serif;
-  font-size: 16px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-.route-collection h3 small {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
-  font-size: 10px;
-  color: #95927d;
-}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1020,10 +1003,10 @@ svg {
   min-width: 0;
   transition: transform 160ms;
 }
-.postcard-thumb:nth-child(1) {
+.postcard-thumb:nth-child(3n + 1) {
   transform: rotate(-1deg);
 }
-.postcard-thumb:nth-child(3) {
+.postcard-thumb:nth-child(3n) {
   transform: rotate(1deg);
 }
 .postcard-thumb:not(:disabled):hover {
