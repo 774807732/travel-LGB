@@ -1,6 +1,6 @@
 # 元素映射
 
-更新：2026-09-14。Mini 内网正式入口为 `https://travel-lgb.duckdns.org/`；HTTP、旧 IP/Bonjour 入口保留，存档按网址隔离。
+更新：2026-09-14。手账见闻已改为不分地点的连续卡片墙；Mini 内网正式入口仍为 `https://travel-lgb.duckdns.org/`。
 
 | 俗称 | 学名 / 职责 | 变量、组件或定位 |
 |---|---|---|
@@ -23,7 +23,7 @@
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.0`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.1`、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
@@ -58,6 +58,8 @@
 | 收齐几张、图鉴进度 | 不同卡种数 / 当前总数 12 | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
+| 见闻墙、全部见闻 | 手账里连续排列的十二张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
+| 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
 | 手信、礼物、土货、小东西 | 12 件；每趟本地 1 件，未收集优先，不与见闻固定绑定 | `SOUVENIRS`、`state.souvenirs`、`panel='object'` |

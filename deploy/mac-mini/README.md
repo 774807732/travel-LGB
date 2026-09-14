@@ -10,6 +10,8 @@
 - 日志：`~/Library/Logs/travel-lgb-web.log` 与 `.error.log`。
 - 更新：源码执行 `git pull --ff-only`、`npm ci`、`npm run build`，复制到新提交目录后切换 `current`，再重启 LaunchAgent。
 
+macOS 原子切换符号链接须用 `mv -fh <新链接> current`；少了 `-h` 会沿着旧 `current` 所指目录移动，导致线上仍停留旧版。切换后立刻 `readlink current` 核对，再测 HTTPS 新资源。
+
 新代理使用项目自有的 Caddy 可执行文件与配置，不修改 Mini 上其他 Caddy 服务；未配置公网入口或访问鉴权。HTTPS 经 DuckDNS DNS 验证签发并由 Caddy 自动续期，证书只覆盖 `travel-lgb.duckdns.org`。Token 存放在 Mini 的 `~/Library/Application Support/travel-lgb/duckdns.token`，权限 600，禁止提交 Git 或贴入聊天。
 
 HTTPS 部署文件为本目录的 `Caddyfile.https`、`run-https.sh`、`install-duckdns-token.sh`、`com.jojo.travel-lgb.https.plist`；Mini 专用可执行文件为 `~/Sites/travel-LGB/bin/caddy-duckdns`（Caddy v2.11.4，模块 `dns.providers.duckdns`）。重建时使用官方 Caddy 构建器添加 `github.com/caddy-dns/duckdns`；普通版 Caddy 不含此模块。证书和 Token 均不进仓库。
