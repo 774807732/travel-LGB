@@ -1,15 +1,19 @@
 # 元素映射
 
+2026-09-15 Git同步范围：最新封面、四卡定稿来源、旧候选删除及素材测试/文档；`manifest.json`、内容ID、`public/art/`与运行时映射不变。63项测试和构建复验通过，仅GitHub `main`交付，不同步Mini源码或发布应用。
+
+2026-09-15 素材清理：四张最终PNG及 `素材说明.MD / 定稿记录.json` 在 `outputs/art/source/cards-fourth-v1/`；游戏仍引用 `public/art/cards/<id>.webp`，manifest路径不变。封面只保留 `outputs/art/promo/cover-3x2-v10/` 的最终PNG、8层自包含SVG及说明，1536×1024。旧过程文件149个已移入废纸篓；素材测试直接核验定稿固定SHA-256。63项测试/构建通过，成品与运行时资源不变，不发布Mini。
+
 2026-09-15 用户授权发布后，1.4.5 应用 `1735608` 已上线 Mini，本地与正式均为十六卡。四地第四卡已进入 `CardId`、`CARDS`、图片映射与素材清单；定稿原图逐字节归档到 `outputs/art/source/cards-fourth-v1/`，只编码四张 WebP，不重绘。先通过本地 63 项测试/构建与独立档试玩，再经 Mini 58 项非原画归档测试/构建、63 文件哈希一致后发布。HTTPS 资源/TLS 通过，正式 Chrome 连接关闭，交互与旧 HTTPS 缺口仍待补；1.4.4 保留回滚。
 
-| 已发布的新故事 | 稳定 ID / 所属路线 | 定稿来源（候选根目录下，原图保留） |
+| 已发布的新故事 | 稳定 ID / 所属路线 | 定稿文件（outputs/art/source/cards-fourth-v1/ 下） |
 |---|---|---|
-| 竹林边，抓天牛 | `card_daoming_04` / `route_daoming` | `cards-fourth-v2/card_daoming_04.png` |
-| 看人采耳，自己也眯了眼 | `card_tea_04` / `route_chengdu_tea` | `cards-fourth-v7/card_tea_04.png` |
-| 送片叶子顺水走 | `card_river_04` / `route_huanglongxi` | `cards-fourth-v1/card_river_04-v2.png` |
-| 坝坝宴，安逸～（用户指定新标题，正文/图不变） | `card_tianba_04` / `route_tianba` | `cards-fourth-v7/card_tianba_04.png` |
+| 竹林边，抓天牛 | `card_daoming_04` / `route_daoming` | `card_daoming_04.png` |
+| 看人采耳，自己也眯了眼 | `card_tea_04` / `route_chengdu_tea` | `card_tea_04.png` |
+| 送片叶子顺水走 | `card_river_04` / `route_huanglongxi` | `card_river_04.png` |
+| 坝坝宴，安逸～（用户指定新标题，正文/图不变） | `card_tianba_04` / `route_tianba` | `card_tianba_04.png` |
 
-四卡各补一则普通故事，不新增目的地、道具、收藏、条件或收费玩法；祝寿为已选的虚构主题。`cardImage` 对 `_04` 返回 `/art/cards/<id>.webp?v=fourth-v1`，原十二卡 `?v=clean-v2` 不变。图鉴、调试和导入预览由 `CARDS.length` 显示十六；旧存档键/version=2、已定在途及旧记录不变。旧竹蜻蜓/蒲扇/鸭队、本人采耳与过大体型宴席图仅留档，不再使用。
+四卡各补一则普通故事，不新增目的地、道具、收藏、条件或收费玩法；祝寿为已选的虚构主题。`cardImage` 对 `_04` 返回 `/art/cards/<id>.webp?v=fourth-v1`，原十二卡 `?v=clean-v2` 不变。图鉴、调试和导入预览由 `CARDS.length` 显示十六；旧存档键/version=2、已定在途及旧记录不变。旧竹蜻蜓/蒲扇/鸭队、本人采耳与过大体型宴席候选已按用户要求移出工作区，不再使用。
 
 2026-09-15 1.4.4（`e0177d4`）已发布 Mini：新增主界面常驻存档提醒，入口只打开既有设置；存档机制不变。先通过本地 58 项测试/构建及桌面/390/360px/只读独立档页面验收，再经 Mini 54 项测试/构建和 59 文件哈希核对后发布；HTTPS 资源/TLS 通过，正式内置浏览器连接失败，交互冒烟待补。
 
@@ -109,7 +113,7 @@
 ## 内容 ID
 
 - 地点：`route_daoming / route_chengdu_tea / route_huanglongxi / route_tianba`。
-- 本地十六卡：`card_daoming_01–04 / card_tea_01–04 / card_river_01–04 / card_tianba_01–04`；Mini 未发布新增的 `_04`。
+- 十六卡：`card_daoming_01–04 / card_tea_01–04 / card_river_01–04 / card_tianba_01–04`；新增 `_04` 已随 1.4.5 发布 Mini。
 - 吃食：`food_home_meal / food_yeerba / food_guokui / food_sweet_potato_congee`；用具：`gear_bamboo_flask / gear_oilpaper_umbrella / gear_straw_hat`。
 - 十二纪念物 ID 见上方四地手信映射；旧 `souvenir_pebble` 仅作为迁移输入。
 - 完整定义在 `src/game/content.ts`；素材 ID 对应 `outputs/art/manifest.json`。

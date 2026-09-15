@@ -78,18 +78,18 @@ test("横版约 16:9 / 竖版 3:4，纪念物 PNG，十六卡完整资源小于 
     );
   }
 });
-test("四张定稿与用户选定源图逐字节一致，交付保持完整 3:2 且单图小于 300 KiB", async () => {
+test("四张定稿保持用户确认的 SHA-256，交付完整 3:2 且单图小于 300 KiB", async () => {
+  // 旧候选已按用户要求清理；保留独立固定哈希，直接保护正式源图。
   const selected = {
-    card_daoming_04: ["cards-fourth-v2/card_daoming_04.png", "a7de951df9dcf4da2d34b22ccaf72e44aa9b44b5640b638c8651b69bb860aeff"],
-    card_tea_04: ["cards-fourth-v7/card_tea_04.png", "52bbcfdb66a7316f649daaf1614c2ade7e29d0e2481a38ec53101d58660f2d3f"],
-    card_river_04: ["cards-fourth-v1/card_river_04-v2.png", "60ea2623ccbd3434ef27d2f7dfc1232b3db7cef5f45bf069814c80ec6898dcf4"],
-    card_tianba_04: ["cards-fourth-v7/card_tianba_04.png", "ec74dae287596c3753a327f35fdcf18451f1662e91ea166039656e38cd36b3bc"],
+    card_daoming_04: "a7de951df9dcf4da2d34b22ccaf72e44aa9b44b5640b638c8651b69bb860aeff",
+    card_tea_04: "52bbcfdb66a7316f649daaf1614c2ade7e29d0e2481a38ec53101d58660f2d3f",
+    card_river_04: "60ea2623ccbd3434ef27d2f7dfc1232b3db7cef5f45bf069814c80ec6898dcf4",
+    card_tianba_04: "ec74dae287596c3753a327f35fdcf18451f1662e91ea166039656e38cd36b3bc",
   };
-  for (const [id, [candidate, hash]] of Object.entries(selected)) {
+  for (const [id, hash] of Object.entries(selected)) {
     const asset = manifest.find((a) => a.id === id)!;
     const source = await readFile(asset.source);
     assert.equal(createHash("sha256").update(source).digest("hex"), hash);
-    assert.deepEqual(source, await readFile(`outputs/art/candidates/${candidate}`));
     const meta = await sharp(source).metadata();
     assert.equal(meta.width, 1536);
     assert.equal(meta.height, 1024);
