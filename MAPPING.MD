@@ -1,8 +1,8 @@
 # 元素映射
 
-2026-09-15 用户确认后，四地第四卡已进入本地 1.4.5 的 `CardId`、`CARDS`、图片映射与素材清单。本地十六卡，Mini 仍 1.4.4 十二卡；未提交推送部署。定稿原图逐字节归档到 `outputs/art/source/cards-fourth-v1/`，只编码四张 WebP，不重绘；树上故事用语已配套。63 项测试、构建与本地独立档四趟/刷新/图文/窄屏/导入往返通过，旧 HTTPS 缺口不关闭。
+2026-09-15 用户授权发布后，1.4.5 应用 `1735608` 已上线 Mini，本地与正式均为十六卡。四地第四卡已进入 `CardId`、`CARDS`、图片映射与素材清单；定稿原图逐字节归档到 `outputs/art/source/cards-fourth-v1/`，只编码四张 WebP，不重绘。先通过本地 63 项测试/构建与独立档试玩，再经 Mini 58 项非原画归档测试/构建、63 文件哈希一致后发布。HTTPS 资源/TLS 通过，正式 Chrome 连接关闭，交互与旧 HTTPS 缺口仍待补；1.4.4 保留回滚。
 
-| 已接入本地的新故事 | 稳定 ID / 所属路线 | 定稿来源（候选根目录下，原图保留） |
+| 已发布的新故事 | 稳定 ID / 所属路线 | 定稿来源（候选根目录下，原图保留） |
 |---|---|---|
 | 竹林边，抓天牛 | `card_daoming_04` / `route_daoming` | `cards-fourth-v2/card_daoming_04.png` |
 | 看人采耳，自己也眯了眼 | `card_tea_04` / `route_chengdu_tea` | `cards-fourth-v7/card_tea_04.png` |
@@ -42,9 +42,9 @@
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/e0177d42399662a1824c848cf27853e196705303` 是现用应用，59 文件哈希一致，`d0287e3` 留作回滚 |
+| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/17356086be460d970854ec5c3af81ad5c2c8a3ba` 是现用应用，63 文件哈希一致，`e0177d4` 留作回滚 |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.4`、底部「不会自动同步存档」、帮助「旅途随机一到四小时」、小铺筒靴鞋、手账 12 卡/12 物；场景仍用 `yard-web-wall.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.5`、底部「不会自动同步存档」、帮助「旅途随机一到四小时」、小铺筒靴鞋、手账 16 卡/12 物及「坝坝宴，安逸～」；场景仍用 `yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
@@ -76,10 +76,10 @@
 | 斑驳、碎斑、点状纹理、画面太花 | 材质与阴影的高频碎色块；第二轮以第一轮为底再减约 60% | 九张 `public/art/cards/card_*.webp`；重点树叶/草丛/大青砖，不等同于角色主要疙瘩或石板接缝 |
 | 减纹理版、干净版见闻、第二轮 | 当前九张重绘图，卡片 ID 与存档不变 | `outputs/art/source/cards-clean-v2/` → 原 WebP 路径；`cardImage(id)` 加 `?v=clean-v2` |
 | 上一版、第一轮、对照底图 | 本次编辑基准，不是最初原图 | 原生源图 `outputs/art/source/cards-clean-v1/`；网页备份 `outputs/art/review/cards-clean-v1/`；最初原图仍在 `review/cards-original-v1/` |
-| 收齐几张、图鉴进度 | 不同卡种数 / 本地总数 16（Mini 12） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
+| 收齐几张、图鉴进度 | 不同卡种数 / 总数 16（本地与 Mini 一致） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 见闻墙、全部见闻 | 本地手账连续排列十六张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
+| 见闻墙、全部见闻 | 手账连续排列十六张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
