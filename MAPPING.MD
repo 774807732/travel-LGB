@@ -93,7 +93,7 @@
 | 存储不可用、暂停操作 | 浏览器存储或协调失败，不是其他页占用；刷新前可导出备份 | `mode === "unavailable"`、`STORAGE_NOTICE`、`game.readOnlyNotice` |
 | HTTP 存档锁、窗口接续 | 原生 Web Locks 优先，否则 IndexedDB 租约；每次写入同步核验 | `writer.ts`、`createBrowserWriter`、`createLeaseWriter`、`Writer.run`、`LEASE_MS=12000`、`HEARTBEAT_MS=2000` |
 | 时间试验台、快进 | 独立测试工具 | `?debug=1`、`advanceDebug` |
-| 本地测试、试玩、上线验收 | 自动化/构建与浏览器交互是不同验收层次 | 本地 `npm test`＋`npm run build`＋相关独立档浏览器验收均通过后，才切 Mini `current`，再做正式 HTTPS 冒烟；1.4.3 仅先完成自动化/构建，遗漏本地交互便发布的流程缺口已记录（2026-09-15） |
+| 本地测试、试玩、上线验收 | 用户固定四步发布顺序，各步结果独立记录 | 本地自动化与构建 → 本地独立档试玩通过 → 发布 Mini → 正式 HTTPS 检查；前两步未通过不切 `current`，HTTPS 资源/TLS 不替代交互；仅文档不部署（2026-09-15 用户确认） |
 
 ## 内容 ID
 
