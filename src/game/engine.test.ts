@@ -107,10 +107,63 @@ test("首趟后恢复日常时间；未读不阻塞下一趟", () => {
   assert.ok(wait >= 120000 && wait <= 300000);
   const trip = advanceGame(next, next.departureAt!).trip!;
   assert.ok(
-    trip.returnsAt - trip.departedAt >= 7200000 &&
+    trip.returnsAt - trip.departedAt >= 3600000 &&
       trip.returnsAt - trip.departedAt <= 14400000,
   );
   assert.equal(next.hasUnreadReturn, true);
+});
+test("日常旅行随机 1–4 小时，准备仍为 2–5 分钟，来信在中点", () => {
+  const home = advanceGame(packed(), now + 105000);
+  const durations = new Set<number>();
+  const hourBands = new Set<number>();
+  for (let seed = 0; seed < 1000; seed++) {
+    const next = prepareTrip({ ...home, seed }, meal, home.lastSeenAt);
+    const wait = next.departureAt! - home.lastSeenAt;
+    assert.ok(wait >= 120000 && wait <= 300000);
+    const out = advanceGame(next, next.departureAt!);
+    const trip = out.trip!;
+    const duration = trip.returnsAt - trip.departedAt;
+    assert.ok(duration >= 3600000 && duration <= 14400000);
+    assert.equal(duration % 1000, 0);
+    assert.equal(trip.letterAt, trip.departedAt + duration / 2);
+    assert.deepEqual(advanceGame(JSON.parse(JSON.stringify(out)), out.lastSeenAt).trip, trip);
+    durations.add(duration);
+    hourBands.add(Math.min(3, Math.floor(duration / 3600000)));
+  }
+  assert.ok(durations.size > 900, "不是固定时长");
+  assert.deepEqual([...hourBands].sort(), [1, 2, 3], "覆盖新增的 1–2 小时及原有时段");
+});
+test("旧版在途存档保留出门/来信/归来时间，按原计划结算且不重发", () => {
+  const home = advanceGame(packed(), now + 105000);
+  const next = prepareTrip(home, meal, home.lastSeenAt);
+  const legacy = advanceGame(next, next.departureAt!);
+  // 旧版已出发的 3 小时旅行；新规则不可重新抽取这趟的时长或结果。
+  legacy.trip!.letterAt = legacy.trip!.departedAt + 5400000;
+  legacy.trip!.returnsAt = legacy.trip!.departedAt + 10800000;
+  const savedTrip = structuredClone(legacy.trip!);
+  const map = new Map<string, string>();
+  const storage = {
+    getItem: (key: string) => map.get(key) ?? null,
+    setItem: (key: string, value: string) => { map.set(key, value); },
+  };
+  assert.equal(saveGame(storage, DEBUG_SAVE_KEY, legacy), true);
+  const loaded = loadGame(storage, DEBUG_SAVE_KEY, savedTrip.departedAt + 3600000);
+  assert.equal(loaded.blocked, false);
+  const resumed = advanceGame(loaded.state, savedTrip.departedAt + 3600000);
+  assert.deepEqual(resumed.trip, savedTrip);
+  assert.equal(availableLetters(resumed).some((t) => t.id === savedTrip.id), false);
+  const letter = advanceGame(resumed, savedTrip.letterAt);
+  assert.ok(availableLetters(letter).some((t) => t.id === savedTrip.id));
+  assert.equal(advanceGame(letter, savedTrip.returnsAt - 1).phase, "traveling");
+  const returned = advanceGame(letter, savedTrip.returnsAt);
+  assert.deepEqual(returned.completed.at(-1), savedTrip);
+  assert.equal(returned.coins, legacy.coins + 8);
+  assert.equal(returned.souvenirCount, legacy.souvenirCount + 1);
+  const replayed = advanceGame(JSON.parse(JSON.stringify(returned)), savedTrip.returnsAt + 86400000);
+  assert.equal(replayed.phase, "home");
+  assert.equal(replayed.completed.length, returned.completed.length);
+  assert.equal(replayed.coins, returned.coins);
+  assert.equal(replayed.souvenirCount, returned.souvenirCount);
 });
 test("固定结果经序列化后不改变；存档阶段校验", () => {
   for (const at of [0, 15000, 60000, 105000]) {

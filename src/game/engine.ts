@@ -161,7 +161,7 @@ function tripResult(state: GameState, loadout: Loadout, seed: number) {
     routeId,
     cardId: cardPool[Math.floor(rng() * cardPool.length)].id,
     souvenirId: souvenirPool[Math.floor(rng() * souvenirPool.length)].id,
-    duration: (7200 + Math.floor(rng() * 7201)) * 1000,
+    duration: (3600 + Math.floor(rng() * 10801)) * 1000,
   };
 }
 export function availableLetters(state: GameState): Trip[] {

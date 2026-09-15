@@ -1455,7 +1455,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.4.2
+                旅行癞疙宝 · 1.4.3
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
@@ -1480,7 +1480,7 @@ export default function App() {
                 <li>
                   <b>把时间留给它</b>
                   <p>
-                    后续收好行囊约两到五分钟出门，旅途两到四小时。会捎信，也会带小东西回家。
+                    后续收好行囊约两到五分钟出门，旅途随机一到四小时。会捎信，也会带小东西回家。
                   </p>
                 </li>
                 <li>
