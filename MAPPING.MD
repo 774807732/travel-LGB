@@ -1,6 +1,6 @@
 # 元素映射
 
-2026-09-15 发布准备：`package.json / package-lock.json / App.tsx` 设置页版本统一为1.4.6；手账布局映射与两项回归将按用户授权提交并部署Mini。65项测试/构建与本地独立档复验通过，ID/素材/存档键/格式均不变；正式结果待补记。
+2026-09-15｜1.4.6（`db87df6`）已推送并发布Mini；版本在 `package.json / package-lock.json / App.tsx` 统一。手账 `Sheet.wide` 和桌面四列映射现为正式实现，ID/素材/存档键/格式不变。先通过本地65项测试/构建和独立档，再经Mini60项测试/构建、63文件哈希核对发布；HTTPS资源/TLS及Chrome独立档布局、详情返回、刷新接续/提示入口通过。旧四卡与日常旅程完整验收仍待补，不以本轮首趟冒烟替代。
 
 2026-09-15 本地手账四列：`App.tsx` 对 `journal / souvenirs / records` 传入 `Sheet.wide`；`styles.css` 的≥960px断点将 `.sheet-wide` 设为760px，`.sheet-wide .card-grid` 设为4列，窄屏基础3列不变。新增 `journal-layout.test.ts`，共65项测试及构建/独立档验收通过；不改ID、素材、存档、奖励或普通弹窗，未推送/发布Mini。
 
@@ -50,9 +50,9 @@
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/17356086be460d970854ec5c3af81ad5c2c8a3ba` 是现用应用，63 文件哈希一致，`e0177d4` 留作回滚 |
+| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/db87df67675d56b1a035e74e812fd5e1281cc6e8` 是现用应用，63文件哈希一致，`1735608`及更早版本留作回滚 |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mac mini 的 `current` 链接、设置页 `1.4.5`、底部「不会自动同步存档」、帮助「旅途随机一到四小时」、小铺筒靴鞋、手账 16 卡/12 物及「坝坝宴，安逸～」；场景仍用 `yard-web-wall.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mini `current`、设置页 `1.4.6`、桌面760px四列手账、底部「不会自动同步存档」、帮助「旅途随机一到四小时」、小铺筒靴鞋、手账16卡/12物及「坝坝宴，安逸～」；场景仍用 `yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
@@ -87,7 +87,7 @@
 | 收齐几张、图鉴进度 | 不同卡种数 / 总数 16（本地与 Mini 一致） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 见闻墙、全部见闻 | 手账连续排列十六张卡，本地桌面每行4张、窄屏3张，不按地点分组；路线ID仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`Sheet.wide`、`.sheet-wide .card-grid`、`.postcard-thumb`；三标签共用桌面760px宽度 |
+| 见闻墙、全部见闻 | 手账连续排列十六张卡，桌面每行4张、窄屏3张，本地与Mini一致，不按地点分组；路线ID仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`Sheet.wide`、`.sheet-wide .card-grid`、`.postcard-thumb`；三标签共用桌面760px宽度 |
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
