@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-15",
+  "method": "built-in image_gen.imagegen",
+  "calls": 2,
+  "base": "cards-fourth-v5",
+  "status": "two texture-cleaned candidates, not integrated/committed/pushed/deployed",
+  "feedback_scope": "用户五张局部截图均指过密纹理，不是五张待生成插画；只改当前树上采耳与七桌寿宴两图。",
+  "visual_checks": {
+    "crop_01_paving": "采耳中央灰石板上的密集碎叶投影明显合并为较大的连续树荫，石板面杂色收敛；保留石板边线、透视与少量苔缝。",
+    "crop_02_branch_shadow": "前景树枝上的细碎明暗和点状叶影已大幅减少，枝干保持棕色主面、顺形亮面与深色下侧，不再通体斑驳。",
+    "crop_03_yard_mottle": "寿宴院坝改为完整暖土色底与少量柔和色差，未改为石板地或纯白空地。",
+    "crop_04_bark": "树皮原先密集碎片/瓦片状纹路显著合并，保留少量沿枝干走向的纹理与自然体积。",
+    "crop_05_yard_shadow": "寿桃端菜者及桌组周围的碎叶影收敛为较连贯的树荫，桌椅下接触阴影保留。",
+    "scene_locks": "两图仍为树上侧后俯视，疙宝/布包的位置姿态与主要识别特征保留；两个人类采耳、盖碗/工具卷可辨；寿宴仍七桌（后三/中三/近一），寿字/老人/寿桃保留。",
+    "limitations": "以上为目视前后对照，不声称测得某个减纹理百分比或背景逐像素不变；必要树纹、地面柔和笔触、花叶细节与角色主要斑点仍在，局部次要细节有模型重绘差异。"
+  },
+  "outputs": [
+    {
+      "id": "card_tea_04",
+      "sourcePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-e5eec7d7-002d-48a3-8614-9124316086c1.png",
+      "savedPath": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/cards-fourth-v6/card_tea_04.png"
+    },
+    {
+      "id": "card_tianba_04",
+      "sourcePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-379e0199-5d27-46ce-ba33-489bbc20a364.png",
+      "savedPath": "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/candidates/cards-fourth-v6/card_tianba_04.png"
+    }
+  ],
+  "prior_seventeen_images": "unchanged",
+  "old_count": 17,
+  "checks": [
+    {
+      "file": "card_tea_04.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": false,
+      "bytes": 2539811,
+      "sha256": "36bc400de815de6c9c98eb6c5ec550df5eca8ce4885c1d2d168334da8c6e4b94",
+      "full_decode": "passed"
+    },
+    {
+      "file": "card_tianba_04.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": false,
+      "bytes": 2595628,
+      "sha256": "f66adf2998e8f2f97002d3bd28601994159423d726b8d1ee9c4963d76bbfa36b",
+      "full_decode": "passed"
+    }
+  ],
+  "feedback": [
+    {
+      "file": "反馈截图/01.png",
+      "sha256": "99a948edf11e31d98b86dd3fc1164f69fe761eb3849db201ede96823f7431b4e",
+      "source_copy": "identical"
+    },
+    {
+      "file": "反馈截图/02.png",
+      "sha256": "c08887a777e94da35fc811d273d37d1a6d97cfa1791fbeb6ded45346713614da",
+      "source_copy": "identical"
+    },
+    {
+      "file": "反馈截图/03.png",
+      "sha256": "47feaca88d0d548c29107ab1c0e15939d96c161e00bce519bfbe50e08e927b9a",
+      "source_copy": "identical"
+    },
+    {
+      "file": "反馈截图/04.png",
+      "sha256": "299dfa88fa6318367936403e963837a079631b8cfa09a1527eade0a94091f330",
+      "source_copy": "identical"
+    },
+    {
+      "file": "反馈截图/05.png",
+      "sha256": "9d21f565aed8d8dc2fe4be92e3cce7dab8212abddb47eec2b86a928a88c0fbcd",
+      "source_copy": "identical"
+    }
+  ],
+  "source_audit": {
+    "local_head": "2456b9dbb2417718a9c6c1410898d5c14f6b7a3c",
+    "github_main": "2456b9dbb2417718a9c6c1410898d5c14f6b7a3c",
+    "mini_source": "2456b9dbb2417718a9c6c1410898d5c14f6b7a3c",
+    "mini_clean": true,
+    "mini_current": "releases/e0177d42399662a1824c848cf27853e196705303"
+  },
+  "unchanged_scope": [
+    "src",
+    "public",
+    "package.json",
+    "package-lock.json",
+    "deploy",
+    "outputs/art/manifest.json",
+    "other two fourth-card choices",
+    "normal player storage"
+  ],
+  "workflow_note": "Only candidate art + documentation. No filters, image-processing cleanup, cropping or recoding used for deliverable images; copied native model outputs. No game build or browser playthrough/deployment performed or claimed. Existing HTTPS gaps remain open."
+}

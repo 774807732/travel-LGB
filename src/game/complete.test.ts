@@ -42,14 +42,14 @@ function memory() {
   };
 }
 
-test("内容完整：四地各三张见闻、三种纪念物，标识不重复", () => {
+test("内容完整：四地各四张见闻、三种纪念物，标识不重复", () => {
   assert.equal(ROUTES.length, 4);
-  assert.equal(CARDS.length, 12);
+  assert.equal(CARDS.length, 16);
   assert.equal(SOUVENIRS.length, 12);
-  assert.equal(new Set(CARDS.map((x) => x.id)).size, 12);
+  assert.equal(new Set(CARDS.map((x) => x.id)).size, 16);
   assert.equal(new Set(SOUVENIRS.map((x) => x.id)).size, 12);
   for (const route of ROUTES) {
-    assert.equal(CARDS.filter((c) => c.routeId === route.id).length, 3);
+    assert.equal(CARDS.filter((c) => c.routeId === route.id).length, 4);
     assert.equal(SOUVENIRS.filter((s) => s.routeId === route.id).length, 3);
   }
 });
@@ -73,7 +73,7 @@ test("路线倾向叠加但不锁定目的地；连续两次同地后排除", ()
     0,
   );
 });
-test("100 组存档免费饭可收齐 11 张普通卡与 12 物，不连去同地三次", () => {
+test("100 组存档免费饭可收齐 15 张普通卡与 12 物，不连去同地三次", () => {
   for (let seed = 1; seed <= 100; seed++) {
     let state = newGame(now, seed);
     const cards = new Set<string>(),
@@ -93,9 +93,9 @@ test("100 组存档免费饭可收齐 11 张普通卡与 12 物，不连去同�
       gifts.add(trip.souvenirId);
       assert.equal(isGameState(state), true);
       assert.notEqual(trip.cardId, "card_tianba_02");
-      if (cards.size === 11 && gifts.size === 12) break;
+      if (cards.size === 15 && gifts.size === 12) break;
     }
-    assert.equal(cards.size, 11);
+    assert.equal(cards.size, 15);
     assert.equal(gifts.size, 12);
   }
 });

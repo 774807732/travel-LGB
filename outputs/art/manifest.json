@@ -1,5 +1,29 @@
 [
   {
+    "id": "card_daoming_04",
+    "source": "outputs/art/source/cards-fourth-v1/card_daoming_04.png",
+    "output": "public/art/cards/card_daoming_04.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_tea_04",
+    "source": "outputs/art/source/cards-fourth-v1/card_tea_04.png",
+    "output": "public/art/cards/card_tea_04.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_river_04",
+    "source": "outputs/art/source/cards-fourth-v1/card_river_04.png",
+    "output": "public/art/cards/card_river_04.webp",
+    "width": 1200
+  },
+  {
+    "id": "card_tianba_04",
+    "source": "outputs/art/source/cards-fourth-v1/card_tianba_04.png",
+    "output": "public/art/cards/card_tianba_04.webp",
+    "width": 1200
+  },
+  {
     "id": "home-web",
     "source": "outputs/art/source/home-web.png",
     "output": "public/art/backgrounds/home-web.webp",

@@ -1,5 +1,16 @@
 # 元素映射
 
+2026-09-15 用户确认后，四地第四卡已进入本地 1.4.5 的 `CardId`、`CARDS`、图片映射与素材清单。本地十六卡，Mini 仍 1.4.4 十二卡；未提交推送部署。定稿原图逐字节归档到 `outputs/art/source/cards-fourth-v1/`，只编码四张 WebP，不重绘；树上故事用语已配套。63 项测试、构建与本地独立档四趟/刷新/图文/窄屏/导入往返通过，旧 HTTPS 缺口不关闭。
+
+| 已接入本地的新故事 | 稳定 ID / 所属路线 | 定稿来源（候选根目录下，原图保留） |
+|---|---|---|
+| 竹林边，抓天牛 | `card_daoming_04` / `route_daoming` | `cards-fourth-v2/card_daoming_04.png` |
+| 看人采耳，自己也眯了眼 | `card_tea_04` / `route_chengdu_tea` | `cards-fourth-v7/card_tea_04.png` |
+| 送片叶子顺水走 | `card_river_04` / `route_huanglongxi` | `cards-fourth-v1/card_river_04-v2.png` |
+| 坝坝宴，安逸～（用户指定新标题，正文/图不变） | `card_tianba_04` / `route_tianba` | `cards-fourth-v7/card_tianba_04.png` |
+
+四卡各补一则普通故事，不新增目的地、道具、收藏、条件或收费玩法；祝寿为已选的虚构主题。`cardImage` 对 `_04` 返回 `/art/cards/<id>.webp?v=fourth-v1`，原十二卡 `?v=clean-v2` 不变。图鉴、调试和导入预览由 `CARDS.length` 显示十六；旧存档键/version=2、已定在途及旧记录不变。旧竹蜻蜓/蒲扇/鸭队、本人采耳与过大体型宴席图仅留档，不再使用。
+
 2026-09-15 1.4.4（`e0177d4`）已发布 Mini：新增主界面常驻存档提醒，入口只打开既有设置；存档机制不变。先通过本地 58 项测试/构建及桌面/390/360px/只读独立档页面验收，再经 Mini 54 项测试/构建和 59 文件哈希核对后发布；HTTPS 资源/TLS 通过，正式内置浏览器连接失败，交互冒烟待补。
 
 2026-09-15 1.4.3 已发布 Mini（`d0287e3`）。时间口径：准备＝确认行囊至 `departureAt`（首趟 15 秒，后续 120–300 秒）；旅行＝`returnsAt - departedAt`（首趟 90 秒，后续改为 3600–14400 整秒，含两端）。`tripResult` 用 `3600 + floor(rng() * 10801)`；来信为 `departedAt + duration / 2`。只在新出发时抽取，已保存 `Trip` 的三时间戳/路线/卡/物不重算，存档键与 version=2 不变。帮助文案同步，57/53 项测试及构建、HTTPS 资源校验通过；独立档浏览器交互受安全拦截/连接失败影响待补验。
@@ -65,10 +76,10 @@
 | 斑驳、碎斑、点状纹理、画面太花 | 材质与阴影的高频碎色块；第二轮以第一轮为底再减约 60% | 九张 `public/art/cards/card_*.webp`；重点树叶/草丛/大青砖，不等同于角色主要疙瘩或石板接缝 |
 | 减纹理版、干净版见闻、第二轮 | 当前九张重绘图，卡片 ID 与存档不变 | `outputs/art/source/cards-clean-v2/` → 原 WebP 路径；`cardImage(id)` 加 `?v=clean-v2` |
 | 上一版、第一轮、对照底图 | 本次编辑基准，不是最初原图 | 原生源图 `outputs/art/source/cards-clean-v1/`；网页备份 `outputs/art/review/cards-clean-v1/`；最初原图仍在 `review/cards-original-v1/` |
-| 收齐几张、图鉴进度 | 不同卡种数 / 当前总数 12 | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
+| 收齐几张、图鉴进度 | 不同卡种数 / 本地总数 16（Mini 12） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 见闻墙、全部见闻 | 手账里连续排列的十二张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
+| 见闻墙、全部见闻 | 本地手账连续排列十六张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
@@ -98,11 +109,11 @@
 ## 内容 ID
 
 - 地点：`route_daoming / route_chengdu_tea / route_huanglongxi / route_tianba`。
-- 十二卡：`card_daoming_01–03 / card_tea_01–03 / card_river_01–03 / card_tianba_01–03`。
+- 本地十六卡：`card_daoming_01–04 / card_tea_01–04 / card_river_01–04 / card_tianba_01–04`；Mini 未发布新增的 `_04`。
 - 吃食：`food_home_meal / food_yeerba / food_guokui / food_sweet_potato_congee`；用具：`gear_bamboo_flask / gear_oilpaper_umbrella / gear_straw_hat`。
 - 十二纪念物 ID 见上方四地手信映射；旧 `souvenir_pebble` 仅作为迁移输入。
 - 完整定义在 `src/game/content.ts`；素材 ID 对应 `outputs/art/manifest.json`。
 
 白肚皮是角色色块，纸底是 UI；布包是场景配件，行囊是配置面板；“三地”不是可点击选目的地的地图。
 
-见闻图文件映射：`card_daoming_01–03.webp` 为竹乡三图，`card_tea_01–03.webp` 为坝坝茶三图，`card_river_01–03.webp` 为河街三图，均在 `public/art/cards/`。
+见闻图文件映射：`public/art/cards/` 内 `card_daoming_01–04.webp` 为竹乡四图，`card_tea_01–04.webp` 为坝坝茶四图，`card_river_01–04.webp` 为河街四图，`card_tianba_01–04.webp` 为田坝四图。人工验收档生成器为 `scripts/create-card-review.ts`，只供本地 `?debug=1` 导入。

@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import sharp from "sharp";
 import { CARDS, FOODS, GEARS, SOUVENIRS, itemImage } from "./content";
 import { SCENE_ASPECTS, sceneImage } from "./walkable";
@@ -31,14 +32,14 @@ test("正式素材 ID 齐全，横竖场景与源图均存在", async () => {
     ...GEARS.map((x) => x.id),
     ...SOUVENIRS.map((x) => x.id),
   ];
-  assert.equal(manifest.length, 45);
+  assert.equal(manifest.length, 49);
   assert.deepEqual(manifest.map((x) => x.id).sort(), ids.sort());
   for (const asset of manifest) {
     assert.ok((await stat(asset.source)).size > 0);
     assert.ok((await stat(asset.output)).size > 0);
   }
 });
-test("横版约 16:9 / 竖版 3:4，纪念物 PNG，完整资源小于 5 MB", async () => {
+test("横版约 16:9 / 竖版 3:4，纪念物 PNG，十六卡完整资源小于 6 MiB", async () => {
   let bytes = 0;
   for (const asset of manifest) {
     const meta = await sharp(asset.output).metadata();
@@ -58,7 +59,8 @@ test("横版约 16:9 / 竖版 3:4，纪念物 PNG，完整资源小于 5 MB", as
     assert.equal(meta.width! / meta.height!, ratio);
     bytes += (await stat(asset.output)).size;
   }
-  assert.ok(bytes < 5 * 1024 * 1024, "网页只带交付图，不带概念板和源 PNG");
+  // 四张新增 1200×800 卡约 0.96 MiB；原图不降质，整包预算相应增加 1 MiB。
+  assert.ok(bytes < 6 * 1024 * 1024, "网页只带交付图，不带概念板和源 PNG");
   for (const layout of ["portrait", "wide"] as const) {
     for (const scene of ["home", "yard"] as const) {
       const asset = manifest.find(
@@ -74,6 +76,27 @@ test("横版约 16:9 / 竖版 3:4，纪念物 PNG，完整资源小于 5 MB", as
       manifest.find((a) => a.id === item.id)?.output,
       `public${itemImage(item.id)}`,
     );
+  }
+});
+test("四张定稿与用户选定源图逐字节一致，交付保持完整 3:2 且单图小于 300 KiB", async () => {
+  const selected = {
+    card_daoming_04: ["cards-fourth-v2/card_daoming_04.png", "a7de951df9dcf4da2d34b22ccaf72e44aa9b44b5640b638c8651b69bb860aeff"],
+    card_tea_04: ["cards-fourth-v7/card_tea_04.png", "52bbcfdb66a7316f649daaf1614c2ade7e29d0e2481a38ec53101d58660f2d3f"],
+    card_river_04: ["cards-fourth-v1/card_river_04-v2.png", "60ea2623ccbd3434ef27d2f7dfc1232b3db7cef5f45bf069814c80ec6898dcf4"],
+    card_tianba_04: ["cards-fourth-v7/card_tianba_04.png", "ec74dae287596c3753a327f35fdcf18451f1662e91ea166039656e38cd36b3bc"],
+  };
+  for (const [id, [candidate, hash]] of Object.entries(selected)) {
+    const asset = manifest.find((a) => a.id === id)!;
+    const source = await readFile(asset.source);
+    assert.equal(createHash("sha256").update(source).digest("hex"), hash);
+    assert.deepEqual(source, await readFile(`outputs/art/candidates/${candidate}`));
+    const meta = await sharp(source).metadata();
+    assert.equal(meta.width, 1536);
+    assert.equal(meta.height, 1024);
+    const encoded = await sharp(asset.output).raw().toBuffer({ resolveWithObject: true });
+    assert.equal(encoded.info.width, 1200);
+    assert.equal(encoded.info.height, 800);
+    assert.ok((await stat(asset.output)).size < 300 * 1024);
   }
 });
 test("六个跳跃姿态各占完整单元，四条格边全透明且每格有实色角色", async () => {

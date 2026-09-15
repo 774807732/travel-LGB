@@ -9,15 +9,19 @@ export type CardId =
   | "card_daoming_01"
   | "card_daoming_02"
   | "card_daoming_03"
+  | "card_daoming_04"
   | "card_tea_01"
   | "card_tea_02"
   | "card_tea_03"
+  | "card_tea_04"
   | "card_river_01"
   | "card_river_02"
   | "card_river_03"
+  | "card_river_04"
   | "card_tianba_01"
   | "card_tianba_02"
-  | "card_tianba_03";
+  | "card_tianba_03"
+  | "card_tianba_04";
 export type SouvenirId =
   | "souvenir_bamboo_mat"
   | "souvenir_bamboo_basket"
@@ -165,6 +169,13 @@ export const CARDS: {
     note: "叶儿粑在四川多地可见，包叶和做法因地方而异。旅途里的这一份，是故事中的吃食。",
   },
   {
+    id: "card_daoming_04",
+    routeId: "route_daoming",
+    title: "竹林边，抓天牛",
+    text: "天牛刚从树皮上探出头，就被它轻轻拢在爪爪里。两根长须晃啊晃，它也跟着歪脑壳：你倒是莫慌嘛。",
+    note: "这场竹林边的小相遇是原创故事。看够了，就让天牛回树上去，不往包里装。",
+  },
+  {
     id: "card_tea_01",
     routeId: "route_chengdu_tea",
     title: "一碗茶，坐半晌",
@@ -184,6 +195,13 @@ export const CARDS: {
     title: "竹椅底下乘个凉",
     text: "上头聊得热闹，下头凉风正好。它把包垫稳，决定再坐一会儿。",
     note: "坝坝茶在露天院坝里喝。竹椅下的一小块阴凉，也能成为小旅客的好位置。",
+  },
+  {
+    id: "card_tea_04",
+    routeId: "route_chengdu_tea",
+    title: "看人采耳，自己也眯了眼",
+    text: "师傅拿着细家伙什，在茶客耳边轻轻忙活。它蹲在树杈上往下看，见人家眯着眼，自己也跟着眯了眯。",
+    note: "采耳的是树下的茶客，疙宝只在枝头安静看一会儿。这段虚构见闻，不是采耳操作示范。",
   },
   {
     id: "card_river_01",
@@ -207,6 +225,13 @@ export const CARDS: {
     note: "桥洞框景是原创取景，不对应一座指定古桥。纪念物与旅途情节都是虚构所得。",
   },
   {
+    id: "card_river_04",
+    routeId: "route_huanglongxi",
+    title: "送片叶子顺水走",
+    text: "它把一片落叶轻轻搁在水面上。叶子转了个圈才往前走，它蹲在岸边，又送了好一截目光。",
+    note: "一片落叶、几圈水纹，就是这趟旅途的小事。河街取景与情节均为原创，不对应指定河岸。",
+  },
+  {
     id: "card_tianba_01",
     routeId: "route_tianba",
     title: "幺姑婆，又在地头吃晌午啊",
@@ -227,6 +252,13 @@ export const CARDS: {
     title: "草帽底下，眯一哈",
     text: "田里的风吹过来，帽檐轻轻一晃。它把蓝布包靠稳，在田埂边眯了一小觉。",
     note: "稻田、水渠和林盘相依，是这段虚构旅途的背景。草帽底下的一小片阴凉，也很安逸。",
+  },
+  {
+    id: "card_tianba_04",
+    routeId: "route_tianba",
+    title: "坝坝宴，安逸～",
+    text: "院坝里摆开了一桌又一桌，寿桃端到了老人家面前。它蹲在树杈上往下看，笑声一阵阵飘过来：今天这儿，闹热得很。",
+    note: "这场坝坝宴选了祝寿的主题，寿字、寿桃和围桌笑语都是故事里的布置，不对应真实人物或宴席。",
   },
 ];
 export const SOUVENIRS: {
@@ -290,6 +322,7 @@ export const souvenirById = (id: SouvenirId) =>
   SOUVENIRS.find((x) => x.id === id)!;
 export const itemName = (id: ItemId) =>
   [...FOODS, ...GEARS, ...SOUVENIRS].find((x) => x.id === id)!.name;
-export const cardImage = (id: CardId) => `/art/cards/${id}.webp?v=clean-v2`;
+export const cardImage = (id: CardId) =>
+  `/art/cards/${id}.webp?v=${id.endsWith("_04") ? "fourth-v1" : "clean-v2"}`;
 export const itemImage = (id: ItemId) =>
   `/art/items/${id === "gear_oilpaper_umbrella" ? "gear_rain_boots" : id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;
