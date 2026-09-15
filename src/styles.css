@@ -628,6 +628,33 @@ svg {
 .save-warning {
   color: #984f3a;
 }
+.save-notice {
+  margin: 0 12px 12px;
+  padding: 10px 14px 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8f3e8;
+  color: var(--ink);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.save-notice p {
+  margin: 0;
+}
+.save-notice strong {
+  font-weight: 600;
+}
+.save-notice button {
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--indigo);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .first-guide {
   display: flex;
   gap: 8px;

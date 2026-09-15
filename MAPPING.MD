@@ -1,5 +1,7 @@
 # 元素映射
 
+2026-09-15 1.4.4：新增主界面常驻存档提醒，入口只打开既有设置；存档机制不变。已通过本地 58 项测试、构建及相关独立档浏览器验收，再进入 Mini 发布；当前待发布/HTTPS 冒烟。
+
 2026-09-15 1.4.3 已发布 Mini（`d0287e3`）。时间口径：准备＝确认行囊至 `departureAt`（首趟 15 秒，后续 120–300 秒）；旅行＝`returnsAt - departedAt`（首趟 90 秒，后续改为 3600–14400 整秒，含两端）。`tripResult` 用 `3600 + floor(rng() * 10801)`；来信为 `departedAt + duration / 2`。只在新出发时抽取，已保存 `Trip` 的三时间戳/路线/卡/物不重算，存档键与 version=2 不变。帮助文案同步，57/53 项测试及构建、HTTPS 资源校验通过；独立档浏览器交互受安全拦截/连接失败影响待补验。
 
 2026-09-15 名词补充：大陆公网入口＝大陆公网 IP/接入服务；域名＝解析到入口的名称；ICP备案＝大陆网站/CDN 接入需核对的要求，三者不同。可评估现成授权域名的子域名，不必新注册；DuckDNS 不自带公网入口，所有方案仍未实施。
@@ -85,10 +87,13 @@
 | 纸页、弹层 | 单层原生弹窗 | `Sheet`、`panel`、`viewKey` |
 | 环境声 / 少动一点 | 保存的偏好 | `soundEnabled / reducedMotion`、`audio.ts` |
 | 备份、恢复、重新开始 | 本地存档操作 | `panel='settings/import/confirm'`、`candidate`、`decodeSave / replace` |
+| 存档提示、换手机不自动同步 | 主界面底部常驻提醒，非弹窗或云同步功能；只读时仍可查看 | `SaveNotice`、`.save-notice`、`aria-label="存档提示"`；「存档备份与迁移」→ `open("settings")`；`save-notice.test.ts` |
+| 个人存档、没有账号也记得进度 | 当前设备的浏览器用户配置＋来源隔离，不按玩家身份/IP 识别；同配置共用，换设备不自动同步 | `useGame` → `window.localStorage`；`saveGame` 将完整状态序列化为 JSON，正常 `travel-toad:v1` / 调试 `travel-toad:review:v1`；本地备份随网站数据清除而丢失，迁移用 `exportGame / decodeSave`。2026-09-15 仅核对说明 |
 | 另一个窗口、这里只查看 | 其他页占用写权限；可看景，关闭原页或租约过期后接续 | `mode === "reader"`、`readerScene`、`READER_NOTICE` |
 | 存储不可用、暂停操作 | 浏览器存储或协调失败，不是其他页占用；刷新前可导出备份 | `mode === "unavailable"`、`STORAGE_NOTICE`、`game.readOnlyNotice` |
 | HTTP 存档锁、窗口接续 | 原生 Web Locks 优先，否则 IndexedDB 租约；每次写入同步核验 | `writer.ts`、`createBrowserWriter`、`createLeaseWriter`、`Writer.run`、`LEASE_MS=12000`、`HEARTBEAT_MS=2000` |
 | 时间试验台、快进 | 独立测试工具 | `?debug=1`、`advanceDebug` |
+| 本地测试、试玩、上线验收 | 自动化/构建与浏览器交互是不同验收层次 | 本地 `npm test`＋`npm run build`＋相关独立档浏览器验收均通过后，才切 Mini `current`，再做正式 HTTPS 冒烟；1.4.3 仅先完成自动化/构建，遗漏本地交互便发布的流程缺口已记录（2026-09-15） |
 
 ## 内容 ID
 

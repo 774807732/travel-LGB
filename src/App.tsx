@@ -34,6 +34,7 @@ import {
 import { decodeSave, MAX_IMPORT_BYTES } from "./game/storage";
 import { enableAudio, playSound } from "./game/audio";
 import { useGame } from "./game/useGame";
+import { SaveNotice } from "./components/SaveNotice";
 import {
   DESKTOP_MEDIA,
   WIDE_HARVEST_TRAYS,
@@ -716,6 +717,7 @@ export default function App() {
             导出原始数据 / 恢复存档
           </button>
         )}
+        <SaveNotice onOpenSettings={() => open("settings")} />
         {!state.tutorialStarted && state.phase === "home" && (
           <button className="first-guide" onClick={() => open("bag")}>
             先装一份免费的家常饭 <Icon name="arrow" size={16} />
@@ -1373,7 +1375,7 @@ export default function App() {
                   不用注册，不上传游戏进度。离开后，备好的这一趟会继续；回来不会自动开始下一趟。
                 </p>
                 <small>
-                  清除浏览器数据、换设备或换网址会失去本地进度。更新或迁移前，请先导出一份。
+                  更换手机、浏览器或网址，不会自动同步存档。请先导出，再到新设备或浏览器导入。清除浏览器数据可能导致存档丢失。
                 </small>
               </div>
               <button
@@ -1455,7 +1457,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.4.3
+                旅行癞疙宝 · 1.4.4
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
