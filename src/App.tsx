@@ -765,6 +765,7 @@ export default function App() {
       {panel && (
         <Sheet
           title={titles[panel]}
+          wide={["journal", "souvenirs", "records"].includes(panel)}
           viewKey={
             panel === "card"
               ? selectedCard
@@ -1457,7 +1458,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                旅行癞疙宝 · 1.4.5
+                  旅行癞疙宝 · 1.4.6
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>

@@ -1,5 +1,9 @@
 # 元素映射
 
+2026-09-15 发布准备：`package.json / package-lock.json / App.tsx` 设置页版本统一为1.4.6；手账布局映射与两项回归将按用户授权提交并部署Mini。65项测试/构建与本地独立档复验通过，ID/素材/存档键/格式均不变；正式结果待补记。
+
+2026-09-15 本地手账四列：`App.tsx` 对 `journal / souvenirs / records` 传入 `Sheet.wide`；`styles.css` 的≥960px断点将 `.sheet-wide` 设为760px，`.sheet-wide .card-grid` 设为4列，窄屏基础3列不变。新增 `journal-layout.test.ts`，共65项测试及构建/独立档验收通过；不改ID、素材、存档、奖励或普通弹窗，未推送/发布Mini。
+
 2026-09-15 Git同步范围：最新封面、四卡定稿来源、旧候选删除及素材测试/文档；`manifest.json`、内容ID、`public/art/`与运行时映射不变。63项测试和构建复验通过，仅GitHub `main`交付，不同步Mini源码或发布应用。
 
 2026-09-15 素材清理：四张最终PNG及 `素材说明.MD / 定稿记录.json` 在 `outputs/art/source/cards-fourth-v1/`；游戏仍引用 `public/art/cards/<id>.webp`，manifest路径不变。封面只保留 `outputs/art/promo/cover-3x2-v10/` 的最终PNG、8层自包含SVG及说明，1536×1024。旧过程文件149个已移入废纸篓；素材测试直接核验定稿固定SHA-256。63项测试/构建通过，成品与运行时资源不变，不发布Mini。
@@ -83,7 +87,7 @@
 | 收齐几张、图鉴进度 | 不同卡种数 / 总数 16（本地与 Mini 一致） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 见闻墙、全部见闻 | 手账连续排列十六张卡，视觉不按地点分组；路线 ID 仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`.card-grid`、`.postcard-thumb` |
+| 见闻墙、全部见闻 | 手账连续排列十六张卡，本地桌面每行4张、窄屏3张，不按地点分组；路线ID仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`Sheet.wide`、`.sheet-wide .card-grid`、`.postcard-thumb`；三标签共用桌面760px宽度 |
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |

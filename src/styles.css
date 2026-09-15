@@ -1950,6 +1950,9 @@ textarea {
     max-height: min(840px, 88dvh);
   }
   .sheet-wide {
-    width: min(720px, calc(100vw - 64px));
+    width: min(760px, calc(100vw - 64px));
+  }
+  .sheet-wide .card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
