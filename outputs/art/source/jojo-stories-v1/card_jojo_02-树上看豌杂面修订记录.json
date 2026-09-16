@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-16",
+  "id": "card_jojo_02",
+  "status": "local-story-and-art-revision-awaiting-user-review",
+  "userRequest": "包子还烫，先闻一哈的插画改为癞疙宝在树上看见叫叫在吃豌豆杂酱面",
+  "tool": "built-in image_gen.imagegen",
+  "useCase": "precise-object-edit",
+  "base": {
+    "file": "card_jojo_02.png",
+    "sha256": "7b747171abde1e0b143d917336e2377f7209cf2d2e110c61fed2c665cec3cd3a",
+    "note": "用户选定的减纹理包子版原图，保留不覆盖。"
+  },
+  "otherActiveRevisionRecord": "card_jojo_01-猪儿虫构图v3记录.json",
+  "story": {
+    "title": "树下那碗豌杂面",
+    "text": "疙宝蹲在树杈上，往下看见叫叫正坐在小桌前吃豌豆杂酱面。筷子挑起一绺面，碗里的豌豆和杂酱还冒着热气。树叶轻轻晃，叫叫埋头吃得香，疙宝就在树荫里看了一会儿。",
+    "note": "茶铺边的一顿豌豆杂酱面，是旅途里偶然看见的日常。疙宝在树上旁观，不与叫叫交谈或同桌；不新增可购买吃食、出游条件或奖励。",
+    "visual": "从前景树杈向下看茶铺院坝，疙宝与靛蓝花包在左侧粗枝上，转头往下看；右侧下方叫叫坐小竹凳、在矮桌前用筷子挑面，碗里可见面条、浅金豌豆与褐色杂酱。保留茶铺与竹桌椅的乡土感，低碎斑手绘，不对话或共享饭食。",
+    "image": "card_jojo_02-noodles-v2.png"
+  },
+  "successfulCalls": 2,
+  "calls": [
+    {
+      "phase": "tree-overlook-noodle-story",
+      "prompt": "Use case: precise-object-edit.\nAsset type: full-bleed 3:2 travel-story postcard for the existing Sichuan countryside game 旅行癞疙宝.\nInput image 1: the user-selected cleaned-texture tea-stall illustration, the edit target and sole visual anchor for both character identities, brushwork, colors and location. NOT an earlier noisy draft.\n\nPrimary request: replace the steamed-bun story with \"the toad is up in the tree and sees Jojo eating pea-and-minced-pork noodles (豌豆杂酱面) below\".\n\nRECOMPOSE THE CAMERA TO MAKE THIS TRUE:\nAn elevated, gently downward-looking view FROM the tea courtyard tree, looking past the toad on a solid foreground branch toward Jojo below. Not the existing ground-level camera with a toad pasted on a random stick.\nThe sturdy tree trunk and one broad branch frame the LEFT/lower-left foreground. The toad crouches securely on the branch in readable three-quarter side/back view, head turned down/right to watch the courtyard. His amber eye, orange gland, cream jaw and characteristic broad olive-brown spots remain identifiable. His small indigo flower satchel and red chili charm rest beside him on the same branch. Body squat, folded hind legs slim, no swollen thighs; not a giant toad portrait. Toad's full silhouette about 19–22% of image height. A few leaves frame, never hide, his face or the main action.\nJOJO is on the RIGHT middle ground BELOW the tree, seated on a short bamboo stool at a small low wooden/bamboo table outside the same rustic tiled-roof tea shop. Jojo and meal clearly visible without zooming, but Jojo is still a small secondary cameo, full seated figure about 21–24% of image height, not an oversized foreground mascot. Keep the composition balanced between the tree/toad left and dining scene right; table top clearly visible from above, ground/furniture perspectives all consistent. Courtyard pale stone paving leads the eye between them without a big empty slab of space. Retain recognizable warm wooden shop front, indigo door valance, a few bamboo tea chairs, cream parasol and surrounding greenery. Adapt their geometry to the elevated camera rather than preserving the original ground-level perspective.\n\nMAKE THE FOOD AND EATING ACTION CLEAR:\nRemove the former white steamed bun and its little plate entirely. Put ONE substantial ceramic noodle bowl on Jojo's low table. Bowl seen from above enough to show yellowish wheat noodle strands, a distinct mound of soft pale-golden/beige cooked PEAS and browned minced pork sauce, with a LITTLE reddish-brown sauce and tiny scallion accents. It is a simple Sichuan pea-and-minced-pork noodle meal, not ramen with eggs, spaghetti, a bowl of bright-green edamame, dumplings or a steamed bun. The bowl should be about half to two-thirds Jojo's face width so contents read at postcard size without becoming enormous.\nJojo is actively eating, not merely looking at the bowl: one rounded yellow wing-hand holds ONE PAIR of slender wooden chopsticks, lifting a short bundle of noodles toward his tiny orange beak; a few continuous noodles connect the chopsticks to the bowl. Other hand steadies the bowl or rests beside it. Quiet concentration and pleasure, no exaggerated noodle explosion or grin. Rounded hands, no realistic human fingers. Food should look inviting in broad painted shapes, not photoreal macro details. Use only a couple of soft steam curls, no smoke cloud obscuring face or noodles.\n\nIDENTITY:\nExactly one toad and one Jojo. No duplicated ground-level toad under the bench. Jojo keeps yellow continuous capsule head/body without neck/waist, two-lobed tuft, white-rimmed dark-brown eyes, tiny orange beak, three rounded front bow lobes, red-orange wraparound cape and short orange legs/feet. Do not redesign him into a realistic bird or a different mascot. The toad is the existing ochre-olive character, not a bright green frog. No talking, waving, mutual eye contact, shared meal or serving each other. Jojo minds his own meal; toad only quietly witnesses it. Any existing distant cook stays incidental and simplified.\n\nSTYLE LOCK:\nContinue the selected base's low-mottling hand-painted gouache, fresh neutral sunlight, soft warm stone/wood and greens. LARGE cohesive color shapes, simple clustered leaves, broad connected shade, sparse directional paint marks. Do not add all-over paper grain, chipped stone flecks, bark scratches, dense broken leaf-shadows or global red/yellow wash. No blur, glossy3D, flat vector or anime redesign. Branch bark needs only broad connected shading with one or two structural lines.\nOutput ONE complete 1536x1024 landscape illustration, no caption, title, speech bubbles, UI, border, collage or inset.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/jojo-stories-v1/card_jojo_02.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-c8de313d-a276-4e57-92ac-f6dbc20ffffd.png",
+      "selected": false,
+      "inspection": "树上俯视和挑面动作成立，碗中可见面条、豌豆和杂酱；前景树皮碎纹偏多，继续局部收整。"
+    },
+    {
+      "phase": "bark-and-paving-texture-cleanup",
+      "prompt": "Use case: precise-object-edit / background texture refinement.\nInput image 1 is the current tree-overlook illustration of Jojo eating pea-and-minced-pork noodles. Keep this exact successful composition and storytelling.\n\nChange ONLY the excessive high-frequency mottled texture on the huge foreground tree trunk/branch and courtyard paving. The bark currently contains many disconnected yellow/brown chips, scratches and dappled fragments, making the image unnecessarily noisy. Repaint bark with a cohesive warm brown base, 2–3 broad curved value planes following the branch cylinder, and only a FEW long restrained structural bark lines. Reduce little fragmented bark marks by about 60% as a VISUAL goal, while retaining understated handmade gouache brush strokes, not sterile plastic.\nOn stone paving, preserve slab boundaries and soft warm/cool light but join tiny broken leaf-shadow fragments into a few coherent broad soft patches; reduce tiny speckle highlights and mottled color chips. Leaves should retain simple silhouettes and one broad shadow plane, not acquire new spotted textures. Keep some natural broad painterly variation rather than making it anime cel shading or flat vector. No blur or global smoothing filter.\n\nLOCK all other content: elevated tree-branch viewpoint; toad and blue flower satchel on the foreground branch, same identity/size/pose and main body spots; Jojo seated at the low bamboo table below; precise eating action, pair of chopsticks and visible lifted noodles; bowl's wheat noodles, pale-golden cooked peas, browned minced pork, scallion garnish and soft steam. Food toppings and the toad's natural identity spots are NOT the surface noise to remove.\nKeep the same house, indigo curtain, parasol, tea furniture, cook, colors, proportions, perspective, composition and lighting. Do not enlarge/shrink/move characters, add new props, change the food or make them interact. Avoid global red/yellow tint or added grain.\nOne complete full-bleed 1536x1024 3:2 image, no text, frame or UI.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-c8de313d-a276-4e57-92ac-f6dbc20ffffd.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9bc18712-50c0-44ee-b8f4-04b52e835a1a.png",
+      "selected": true,
+      "inspection": "树皮碎色块减少为较连贯的明暗面，地面阴影更连贯；树上疙宝、花包与树下叫叫挑面、碗里食物和茶铺俯视关系保留。"
+    }
+  ],
+  "output": {
+    "file": "card_jojo_02-noodles-v2.png",
+    "bytes": 2428647,
+    "width": 1536,
+    "height": 1024,
+    "channels": 3,
+    "hasAlpha": false,
+    "sha256": "c73213750315b692ba514df6c221591712462dcb294407740641d2905af3c4bf",
+    "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9bc18712-50c0-44ee-b8f4-04b52e835a1a.png"
+  },
+  "inspection": {
+    "fullImageViewed": true,
+    "postcardWidth": 620,
+    "postcardPreview": "/private/tmp/travel-lgb-jojo-noodles-qa-pHmHPm/postcard-620.png",
+    "result": "620px宽静态缩略预览中可辨树上旁观、树下坐凳挑面及面碗；不是游戏/浏览器或正式HTTPS验收。"
+  },
+  "processing": "成品逐字节复制模型输出，不用程序重绘、滤镜、裁切或压缩。临时620px预览仅用于检查；提示词中的减纹理百分比/角色占比是视觉目标，不是精确像素测量。",
+  "preserved": [
+    {
+      "file": "card_jojo_01-caterpillar-v2.png",
+      "sha256": "f3440eff46daac2651b8ec2ec16d164dc6625629cd27e08fb0d919490e39f60f"
+    },
+    {
+      "file": "card_jojo_01-caterpillar-v3.png",
+      "sha256": "516dcb757015219eccb843d28fd1ce1e50434a62196e2a5b7c4951c306d71b30"
+    },
+    {
+      "file": "card_jojo_01.png",
+      "sha256": "3bb219ebcfb894ed9940a7f5b6a380917bb105fd08318ea7741656f9497875dd"
+    },
+    {
+      "file": "card_jojo_02.png",
+      "sha256": "7b747171abde1e0b143d917336e2377f7209cf2d2e110c61fed2c665cec3cd3a"
+    },
+    {
+      "file": "card_jojo_03.png",
+      "sha256": "b8a9d376bd66ccb68493bbf2ef888dc6eb1f91edfea6798c91d6eec308f34190"
+    },
+    {
+      "file": "card_jojo_04.png",
+      "sha256": "590fff18b73e0ad8100b7fd1e35ffd92026281b0c8bc13ddca32e5cd0100175b"
+    }
+  ],
+  "protectedRuntime": {
+    "files": 90,
+    "sha256": "e0b2dcc75d1fef8828f94d01f1cd85d4b30ba14608e5de71d6d7f000df8e0d9b"
+  },
+  "scope": "仅本地第二则插画/故事和预览映射；第一则抓虫v3及第三/四则不变，原图保留。runtimeIntegration.enabled=false；无构建/试玩、提交/推送、发布、存档或Token操作。",
+  "deploymentCheck": "本轮Mini只读SSH返回Operation not permitted，未获得新的线上状态。"
+}

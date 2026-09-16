@@ -4,7 +4,7 @@ import { advanceGame, newGame, type GameState } from "../engine";
 
 export function twelveCardSave(now = 1_800_000_000_000): GameState {
   let state = newGame(now, 71);
-  for (const card of CARDS.filter((c) => !c.id.endsWith("_04"))) {
+  for (const card of CARDS.filter((c) => !c.categoryId && !c.id.endsWith("_04"))) {
     const number = state.nextTripNumber;
     const departedAt = state.lastSeenAt + 1000;
     const loadout = { food: card.requiredFood ?? "food_home_meal", gear: null } as const;

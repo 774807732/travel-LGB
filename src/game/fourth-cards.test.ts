@@ -6,7 +6,7 @@ import { decodeSave, exportGame, isGameState, DEBUG_SAVE_KEY, SAVE_KEY } from ".
 import { twelveCardSave } from "./fixtures/twelve-card-save";
 
 const meal = { food: "food_home_meal", gear: null } as const;
-const fourth = CARDS.filter((c) => c.id.endsWith("_04"));
+const fourth = CARDS.filter((c) => !c.categoryId && c.id.endsWith("_04"));
 
 test("第四卡均为普通见闻，配套图路径独立，原十二卡缓存路径不变", () => {
   assert.equal(fourth.length, 4);
@@ -17,7 +17,7 @@ test("第四卡均为普通见闻，配套图路径独立，原十二卡缓存�
     assert.ok(cards[0].title && cards[0].text && cards[0].note);
     assert.equal(cardImage(cards[0].id), `/art/cards/${cards[0].id}.webp?v=fourth-v1`);
   }
-  for (const c of CARDS.filter((c) => !c.id.endsWith("_04")))
+  for (const c of CARDS.filter((c) => !c.categoryId && !c.id.endsWith("_04")))
     assert.equal(cardImage(c.id), `/art/cards/${c.id}.webp?v=clean-v2`);
 });
 
@@ -69,7 +69,8 @@ test("四地新卡按未见优先获得，来信/归来及导出导入后刷新�
     const out = advanceGame(packed, packed.departureAt!);
     const trip = out.trip!;
     const newCard = fourth.find((c) => c.routeId === trip.routeId)!;
-    if (!awarded.has(newCard.id)) assert.equal(trip.cardId, newCard.id);
+    const unseen = CARDS.filter((c) => c.routeId === trip.routeId && !c.requiredFood && !state.unlockedCards.includes(c.id));
+    if (unseen.length) assert.ok(unseen.some((c) => c.id === trip.cardId));
     assert.deepEqual(decodeSave(exportGame(out)).state, out);
     assert.ok(trip.returnsAt - trip.departedAt >= 3600000);
     assert.ok(trip.returnsAt - trip.departedAt <= 14400000);
@@ -89,6 +90,7 @@ test("四地新卡按未见优先获得，来信/归来及导出导入后刷新�
     state = returned;
   }
   assert.equal(awarded.size, 4);
-  assert.equal(state.unlockedCards.length, 16);
+  assert.ok(CARDS.filter((c) => !c.categoryId).every((c) => state.unlockedCards.includes(c.id)));
+  assert.ok(state.unlockedCards.length >= 16 && state.unlockedCards.length <= 20);
   assert.deepEqual(state.completed.slice(0, 12), oldTrips);
 });

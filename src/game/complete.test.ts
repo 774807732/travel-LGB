@@ -12,7 +12,7 @@ import {
   type GameState,
   type Loadout,
 } from "./engine";
-import { CARDS, ROUTES, SOUVENIRS } from "./content";
+import { CARDS, ROUTES, SOUVENIRS, souvenirsForCard } from "./content";
 import {
   archiveBeforeReplace,
   decodeSave,
@@ -42,15 +42,16 @@ function memory() {
   };
 }
 
-test("内容完整：四地各四张见闻、三种纪念物，标识不重复", () => {
+test("内容完整：原四地各五张见闻、共十四种纪念物，标识不重复", () => {
   assert.equal(ROUTES.length, 4);
-  assert.equal(CARDS.length, 16);
-  assert.equal(SOUVENIRS.length, 12);
-  assert.equal(new Set(CARDS.map((x) => x.id)).size, 16);
-  assert.equal(new Set(SOUVENIRS.map((x) => x.id)).size, 12);
+  assert.equal(CARDS.length, 20);
+  assert.equal(SOUVENIRS.length, 14);
+  assert.equal(new Set(CARDS.map((x) => x.id)).size, 20);
+  assert.equal(new Set(SOUVENIRS.map((x) => x.id)).size, 14);
   for (const route of ROUTES) {
-    assert.equal(CARDS.filter((c) => c.routeId === route.id).length, 4);
-    assert.equal(SOUVENIRS.filter((s) => s.routeId === route.id).length, 3);
+    assert.equal(CARDS.filter((c) => c.routeId === route.id).length, 5);
+    assert.equal(SOUVENIRS.filter((s) => s.routeId === route.id).length,
+      ["route_daoming", "route_chengdu_tea"].includes(route.id) ? 4 : 3);
   }
 });
 test("路线倾向叠加但不锁定目的地；连续两次同地后排除", () => {
@@ -73,7 +74,7 @@ test("路线倾向叠加但不锁定目的地；连续两次同地后排除", ()
     0,
   );
 });
-test("100 组存档免费饭可收齐 15 张普通卡与 12 物，不连去同地三次", () => {
+test("100 组存档免费饭可收齐 19 张普通卡与 14 物，不连去同地三次", () => {
   for (let seed = 1; seed <= 100; seed++) {
     let state = newGame(now, seed);
     const cards = new Set<string>(),
@@ -86,17 +87,17 @@ test("100 组存档免费饭可收齐 15 张普通卡与 12 物，不连去同�
       const routeCards = CARDS.filter((c) => c.routeId === trip.routeId && !c.requiredFood);
       if (routeCards.some((c) => !cards.has(c.id)))
         assert.ok(!cards.has(trip.cardId), "有未见卡时优先新卡");
-      const routeGifts = SOUVENIRS.filter((s) => s.routeId === trip.routeId);
+      const routeGifts = souvenirsForCard(trip.cardId);
       if (routeGifts.some((s) => !gifts.has(s.id)))
         assert.ok(!gifts.has(trip.souvenirId), "有未收纪念物时优先新物");
       cards.add(trip.cardId);
       gifts.add(trip.souvenirId);
       assert.equal(isGameState(state), true);
       assert.notEqual(trip.cardId, "card_tianba_02");
-      if (cards.size === 15 && gifts.size === 12) break;
+      if (cards.size === 19 && gifts.size === 14) break;
     }
-    assert.equal(cards.size, 15);
-    assert.equal(gifts.size, 12);
+    assert.equal(cards.size, 19);
+    assert.equal(gifts.size, 14);
   }
 });
 test("重复见闻累计次数、首末日期与总信数一致，重放不增加", () => {

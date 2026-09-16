@@ -275,5 +275,11 @@
   { "id": "card_tianba_01", "source": "outputs/art/candidates/tianba-v1/card_tianba_01-v2.png", "output": "public/art/cards/card_tianba_01.webp", "width": 1200 },
   { "id": "card_tianba_02", "source": "outputs/art/candidates/tianba-v1/card_tianba_02.png", "output": "public/art/cards/card_tianba_02.webp", "width": 1200 },
   { "id": "card_tianba_03", "source": "outputs/art/candidates/tianba-v1/card_tianba_03.png", "output": "public/art/cards/card_tianba_03.webp", "width": 1200
-  }
+  },
+  { "id": "card_jojo_01", "source": "outputs/art/source/jojo-stories-v1/card_jojo_01-caterpillar-v3.png", "output": "public/art/cards/card_jojo_01.webp", "width": 1200 },
+  { "id": "card_jojo_02", "source": "outputs/art/source/jojo-stories-v1/card_jojo_02-noodles-v2.png", "output": "public/art/cards/card_jojo_02.webp", "width": 1200 },
+  { "id": "card_jojo_03", "source": "outputs/art/source/jojo-stories-v1/card_jojo_03.png", "output": "public/art/cards/card_jojo_03.webp", "width": 1200 },
+  { "id": "card_jojo_04", "source": "outputs/art/source/jojo-stories-v1/card_jojo_04.png", "output": "public/art/cards/card_jojo_04.webp", "width": 1200 },
+  { "id": "souvenir_caterpillar", "source": "outputs/art/source/jojo-souvenirs-v1/souvenir_caterpillar.png", "output": "public/art/items/souvenir_caterpillar.png", "width": 300 },
+  { "id": "souvenir_wanza_noodles", "source": "outputs/art/source/jojo-souvenirs-v1/souvenir_wanza_noodles.png", "output": "public/art/items/souvenir_wanza_noodles.png", "width": 300 }
 ]

@@ -1,5 +1,23 @@
 # 元素映射
 
+2026-09-16｜1.4.7映射已落地，用户明确推送Git并只发布Mini：`category_jojo`为跨原四地点的彩蛋分类，不是`RouteId`。`card_jojo_01–04`依次对应竹乡/坝坝茶/河街/田坝，源图依次抓虫v3/豌杂面v2/水车/等风，网页`/art/cards/card_jojo_01–04.webp?v=jojo-v1`；旧16卡顺序/缓存路径不变。`cards[].souvenirId`绑定`01→souvenir_caterpillar`、`02→souvenir_wanza_noodles`，`souvenirsForCard`统一抽取及存档验证；其他卡用原地点三物未收优先，每趟一件。两PNG在`public/art/items/`，不进入FOODS/GEARS；存档键/version=2不变。72项本地测试/构建和独立档通过，待推送发布；后续以[验收记录](outputs/release/1.4.7-叫叫彩蛋发布验收.MD)为准，下面未接入记录为历史。
+
+2026-09-16 收藏草案映射：`card_jojo_01 → souvenir_caterpillar（猪儿虫）`，`card_jojo_02 → souvenir_wanza_noodles（豌杂面）`，后两则无新增收藏。对应透明PNG在 `outputs/art/source/jojo-souvenirs-v1/`；`jojo-stories-v1/content-draft.json` 的 `souvenirs / cards[].souvenirId / souvenirAssociation` 记录关系，交付清单同步。新9文件ZIP包含四见闻与两收藏，旧7文件ZIP为历史快照。该关联不表示已实现必得或额外掉落；运行时 `SouvenirId / SOUVENIRS / CARDS / ROUTES / manifest`、12件收藏、吃食/存档均不变，无发布。
+
+2026-09-16 交付映射：`outputs/art/delivery/jojo-four-latest-20260916/素材清单.json` 逐项记录草案 `card_jojo_01–04` 到四个带序号中文PNG文件的映射、当前版本、原来源和SHA-256；来源依次为 `card_jojo_01-caterpillar-v3.png`、`card_jojo_02-noodles-v2.png`、`card_jojo_03.png`、`card_jojo_04.png`。ZIP仅含四图、故事MD、清单JSON、预览HTML，未混入旧图；这是独立交付副本，不修改原草案或运行时 `CARDS / ROUTES / public/art / manifest`，无接入或发布。
+
+2026-09-16 第二则映射：草案 `card_jojo_02 / route_chengdu_tea` 标题改为「树下那碗豌杂面」，图片为 `outputs/art/source/jojo-stories-v1/card_jojo_02-noodles-v2.png`。正文/构图说明/预览同步，原 `card_jojo_02.png` 保留；第一则仍抓虫v3，其余两则不变。两则当前修订记录列在 `content-draft.json / 生成记录.json` 的 `activeRevisionRecords`；运行时类别、ID、manifest、存档不改，无发布。
+
+2026-09-16 最新映射：草案 `card_jojo_01 / route_daoming` 仍为「竹林里，抓猪儿虫」，图片现指向 `outputs/art/source/jojo-stories-v1/card_jojo_01-caterpillar-v3.png`（虫体清楚、右侧构图）；四则文字和其他三图不变。当前映射以 `content-draft.json` 为准，v3实际提示词/来源见 `card_jojo_01-猪儿虫构图v3记录.json`，原减纹理底图、v2及初始清理记录保留作溯源/回退。运行时、manifest、存档不变，无发布。
+
+2026-09-16 选稿映射：`card_jojo_01–04.png` 依次仍为等蜗牛／等包子凉／看水车／田埂等风，四张减纹理版均为用户指定的后续底图。初稿原生路径与废纸篓恢复路径、保留图SHA-256见 `outputs/art/source/jojo-stories-v1/清理与底图确认.json`；截图的展示顺序不改变编号。生成记录保留历史路径但不作为当前编辑输入；`runtimeIntegration.enabled=false`、游戏资源及运行时ID不变，未发布。
+
+2026-09-16｜「叫叫」分类草案在 `outputs/art/source/jojo-stories-v1/content-draft.json`：`category_jojo` 下拟用 `card_jojo_01–04`，分别为等蜗牛过路／包子还烫，先闻一哈／水车又转了一圈／田埂上，等一阵风，对应同目录四张PNG。暂按原竹乡/坝坝茶/河街/田坝取景，分类与第5目的地的区别待明确；`runtimeIntegration.enabled=false`，不是已新增后端或运行时类别。未修改 `RouteId / CardId / CARDS / ROUTES / public/art / manifest`、抽取规则或存档，运行内容仍四地十六卡，未发布。
+
+2026-09-16 人物定位确认：「叫叫／彩蛋角色」对应独立背景客串，详细规则见 `outputs/ip-concept/jojo-cameo-v1/角色设定.MD` 的「人物设定（用户确认）」；不是跟随者、可点击NPC、任务或奖励系统，不映射新增运行时ID/交互/存档字段。仅文档修订，三张概念图和现有游戏资源均不变，未推送或部署。
+
+2026-09-16｜叫叫彩蛋仅概念归档：`outputs/ip-concept/jojo-cameo-v1/01-turnaround.png`（多视图）、`02-construction-proportions.png`（结构比例）、`03-expressions-actions.png`（表情动作）。七张原参考在同目录 `references/`，规则/实际提示词/检查分别见 `角色设定.MD`、`生成记录.json`、`验收记录.MD`。三图为不透明纸底设定板，不是精灵或已接入资源；未加入 `public/`、素材manifest、`CARDS`、角色ID或存档，未提交/发布，Mini仍运行1.4.6。
+
 2026-09-15｜1.4.6（`db87df6`）已推送并发布Mini；版本在 `package.json / package-lock.json / App.tsx` 统一。手账 `Sheet.wide` 和桌面四列映射现为正式实现，ID/素材/存档键/格式不变。先通过本地65项测试/构建和独立档，再经Mini60项测试/构建、63文件哈希核对发布；HTTPS资源/TLS及Chrome独立档布局、详情返回、刷新接续/提示入口通过。旧四卡与日常旅程完整验收仍待补，不以本轮首趟冒烟替代。
 
 2026-09-15 本地手账四列：`App.tsx` 对 `journal / souvenirs / records` 传入 `Sheet.wide`；`styles.css` 的≥960px断点将 `.sheet-wide` 设为760px，`.sheet-wide .card-grid` 设为4列，窄屏基础3列不变。新增 `journal-layout.test.ts`，共65项测试及构建/独立档验收通过；不改ID、素材、存档、奖励或普通弹窗，未推送/发布Mini。
@@ -91,7 +109,7 @@
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
 | 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
-| 手信、礼物、土货、小东西 | 12 件；每趟本地 1 件，未收集优先，不与见闻固定绑定 | `SOUVENIRS`、`state.souvenirs`、`panel='object'` |
+| 手信、礼物、土货、小东西 | 14种，每趟1件；抓虫/面卡绑定新物，其他卡用原地点3物未收优先 | `CARDS[].souvenirId`、`souvenirsForCard`、`SOUVENIRS`、`state.souvenirs`、`panel='object'` |
 | 竹乡手信 | 小竹垫、小竹篮、竹蜻蜓 | `route_daoming` → `souvenir_bamboo_mat / souvenir_bamboo_basket / souvenir_bamboo_dragonfly` |
 | 坝坝茶手信 | 小盖碗、小竹凳、小蒲扇 | `route_chengdu_tea` → `souvenir_gaiwan / souvenir_tea_stool / souvenir_palm_fan` |
 | 河街手信 | 河街速写、琉璃熊猫、小木船 | `route_huanglongxi` → `souvenir_river_sketch / souvenir_glass_panda / souvenir_wooden_boat` |
@@ -118,6 +136,7 @@
 
 - 地点：`route_daoming / route_chengdu_tea / route_huanglongxi / route_tianba`。
 - 十六卡：`card_daoming_01–04 / card_tea_01–04 / card_river_01–04 / card_tianba_01–04`；新增 `_04` 已随 1.4.5 发布 Mini。
+- 1.4.7追加叫叫4卡：`card_jojo_01–04`，分类`category_jojo`；新增收藏` souvenir_caterpillar / souvenir_wanza_noodles`（均非吃食），总计20卡/14物。
 - 吃食：`food_home_meal / food_yeerba / food_guokui / food_sweet_potato_congee`；用具：`gear_bamboo_flask / gear_oilpaper_umbrella / gear_straw_hat`。
 - 十二纪念物 ID 见上方四地手信映射；旧 `souvenir_pebble` 仅作为迁移输入。
 - 完整定义在 `src/game/content.ts`；素材 ID 对应 `outputs/art/manifest.json`。

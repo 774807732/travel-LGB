@@ -17,6 +17,7 @@ import {
 } from "./game/engine";
 import {
   CARDS,
+  CARD_CATEGORIES,
   FOODS,
   GEARS,
   ROUTES,
@@ -1302,7 +1303,7 @@ export default function App() {
                 alt={routeById(card.routeId).name + "，" + card.title}
               />
               <div className="letter-meta">
-                <span>{routeById(card.routeId).name}</span>
+                <span>{routeById(card.routeId).name}{card.categoryId ? ` · ${CARD_CATEGORIES[card.categoryId]}` : ""}</span>
                 <span>
                   见闻 {String(CARDS.indexOf(card) + 1).padStart(2, "0")}
                 </span>
@@ -1458,7 +1459,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                  旅行癞疙宝 · 1.4.6
+                  旅行癞疙宝 · 1.4.7
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
@@ -1489,7 +1490,7 @@ export default function App() {
                 <li>
                   <b>慢慢攒一本手账</b>
                   <p>
-                    四处蜀地、十六张见闻、十二种纪念物。带上红苕稀饭，还可能遇到田坝的一段特别见闻。没有稀有度，没有完不成的每日任务。
+                    四处蜀地、{CARDS.length}张见闻、{SOUVENIRS.length}种纪念物。偶尔也会看见叫叫，自顾自地做些小事。带上红苕稀饭，还可能遇到田坝的一段特别见闻。没有稀有度，没有完不成的每日任务。
                   </p>
                 </li>
               </ol>

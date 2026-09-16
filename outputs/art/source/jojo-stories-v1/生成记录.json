@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-16",
+  "status": "user-selected-edit-bases",
+  "selectionAndCleanupRecord": "清理与底图确认.json",
+  "latestRevisionRecord": "card_jojo_02-树上看豌杂面修订记录.json",
+  "futureEditBases": "初次选定的四张减纹理底图保留；第一则当前为card_jojo_01-caterpillar-v3.png，第二则当前为card_jojo_02-noodles-v2.png，第三/四则沿用原选定图。当前图文以content-draft.json为准。本文件calls与selectedOutputs仅记录最初8次调用及当时选稿；后续实际编辑见activeRevisionRecords。",
+  "tool": "built-in image_gen.imagegen",
+  "useCase": "illustration-story",
+  "successfulCalls": 8,
+  "calls": [
+    {
+      "id": "card_jojo_01",
+      "phase": "initial",
+      "prompt": "Use case: illustration-story.\nAsset type: a full-bleed 3:2 landscape travel postcard illustration for the existing Sichuan countryside idle game 旅行癞疙宝. Generate ONE new complete scene, not a collage, no border or text.\nReference roles: Image 1 is the authoritative original JOJO/叫叫 character turnaround, identity and proportions only. Image 2 is its painted adaptation, use its restrained gouache contours, not the sheet layout. Image 3 is the game's TOAD identity and brushwork. Image 4 (when provided) is local architecture/palette/style reference only, NOT a composition to copy.\nCharacter identity must stay separate: JOJO is yellow with a continuous upright plump capsule head/body, no neck, no waist, a little two-lobed tuft, curved eyebrows, round white-rimmed dark brown eyes, very small orange beak, short orange legs and rounded feet, rounded yellow droplet arms longer than exposed legs. Head region longer than body region. Wraparound warm red-orange cape with THREE rounded front bow lobes, hem above feet. No white belly, blush, feathers, human fingers, long legs, boots, or accessory bag. With a three-quarter face, the beak belongs BETWEEN the eyes and the bow follows the face centerline; true profile has only one visible eye.\nTOAD/癞疙宝 is the small squat ochre-olive toad from reference3: broad low body, cream belly, amber half-lidded eyes, orange oval glands behind eyes, a few broad rounded brown bumps/spots, slim folded hindlegs (NOT swollen bodybuilder thighs). Small indigo flower satchel with a red chili charm alongside him. Not a green frog and not a chick.\nBoth characters occupy a small part of a roomy environment. Exactly one of each. The toad remains the traveling protagonist, JOJO a secondary cameo minding its own business at a different depth and position. They do not talk, wave at each other, touch, pose together, or gaze at the camera. Both grounded in the SAME painted world with matching light, perspective, soft contact shadows and appropriate occlusion. Jojo readable, not hidden in a faraway speck, but never a giant foreground mascot.\nStyle: warm yet neutral daylight, low-mottling hand-painted opaque watercolor/gouache, thin natural dark brown contour, natural colors, soft cohesive light. Preserve a little broad directional brushwork but use clean connected color shapes, simple leaf clusters, large connected shadow patches and only one or two subtle tone changes per paving slab. NO all-over granular paper overlay, mottled speckles, densely fragmented leaf shadows, bark scratches, dense stone noise, sepia/red wash, soft-focus blur, glossy 3D rendering or flat vector aesthetic. Scene space more important than ornament. Foreground/midground/background clearly separated without busy clutter.\nOutput: 1536x1024 landscape 3:2 composition. No title, caption, speech bubbles, lettering, logo, watermark, diagrams or UI. Do not draw the reference sheets.\n\nScene: a quiet Sichuan bamboo-grove lane after light morning rain, a curved broad grey stone path leads from foreground to a low bamboo fence and a small tiled-roof plaster house far behind. Large clean cool-green bamboo leaves and a small drainage channel; rain stopped, soft fresh light, no heavy rain/no fantasy forest.\nAction and composition: an intimate ground-level wide establishing view, lots of environmental space. The toad rests naturally at a bamboo root in the foreground, about 18% of image height, bag beside him, looking quietly off along the lane. A few paces further along at a bend, JOJO stands slightly leaning forward, looking DOWN at ONE little realistic brown spiral-shell snail slowly crossing a stone seam in front of his feet, careful not to step on it. JOJO's whole figure about 17% of image height, small but recognizable, slightly sideways front three-quarter, feet grounded. Snail about one-sixth of Jojo height so readable without being monstrous. Snail and gaze must line up. No shared action or eye contact. Leave a calm sweeping path between the two characters. Sparse shallow wet sheen instead of scattered flecks, a few bamboo leaves at edges, no extra animals.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/references/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_daoming_04.webp"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-3f3b854b-c798-4e4c-88b3-a22a3ebf0ee4.png",
+      "selected": false
+    },
+    {
+      "id": "card_jojo_01",
+      "phase": "cleanup",
+      "prompt": "Use case: precise-object-edit / restrained texture simplification. Edit this illustration only. KEEP the exact 3:2 composition, characters' identity, proportions, pose, size and positions, the little snail, toad's indigo bag, bamboo path, house and fence, all perspective and neutral fresh color balance.\n\nThe stone path, bamboo trunks, leaves, walls and especially water reflections are TOO uniformly mottled with disconnected little chips and speckles. Reduce this high-frequency irregular surface mottling by about SIXTY PERCENT as a VISUAL goal, not a measured pixel claim. Repaint each broad stone slab with an intact cool grey base and only one or two soft broad muted value variations; preserve slab boundaries, real steps, dampness and a few broad reflected sky patches. On bamboo use intact green lengths, clear joints and ONE connected side shadow, not many chipped paint flecks. On leaf clusters keep botanical silhouettes, a coherent green fill and at most one secondary tone; simplify distant foliage into grouped painted masses. The toad's cream belly should have broad cohesive shading not camouflage flecks, but preserve its important LARGE olive-brown identity spots and characteristic glands. Keep Jojo's face and red cape exactly unchanged.\n\nPreserve understated handmade gouache character with a FEW broad directional brush marks and slightly natural contour edges. Do not blur, bleach, desaturate, sharpen, apply a global smoothing filter, or convert to cel anime, flat vector or glossy3D. No dense paper grain overlay anywhere. The result should be visibly cleaner and calmer but still naturally hand painted, not sterile. No new objects, no lettering. Return the same single complete illustration.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-3f3b854b-c798-4e4c-88b3-a22a3ebf0ee4.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9c5cea0a-ab11-49c5-bf2c-fa4700a7f333.png",
+      "selected": true
+    },
+    {
+      "id": "card_jojo_02",
+      "phase": "initial",
+      "prompt": "Use case: illustration-story.\nAsset type: a full-bleed 3:2 landscape travel postcard illustration for the existing Sichuan countryside idle game 旅行癞疙宝. Generate ONE new complete scene, not a collage, no border or text.\nReference roles: Image 1 is the authoritative original JOJO/叫叫 character turnaround, identity and proportions only. Image 2 is its painted adaptation, use its restrained gouache contours, not the sheet layout. Image 3 is the game's TOAD identity and brushwork. Image 4 (when provided) is local architecture/palette/style reference only, NOT a composition to copy.\nCharacter identity must stay separate: JOJO is yellow with a continuous upright plump capsule head/body, no neck, no waist, a little two-lobed tuft, curved eyebrows, round white-rimmed dark brown eyes, very small orange beak, short orange legs and rounded feet, rounded yellow droplet arms longer than exposed legs. Head region longer than body region. Wraparound warm red-orange cape with THREE rounded front bow lobes, hem above feet. No white belly, blush, feathers, human fingers, long legs, boots, or accessory bag. With a three-quarter face, the beak belongs BETWEEN the eyes and the bow follows the face centerline; true profile has only one visible eye.\nTOAD/癞疙宝 is the small squat ochre-olive toad from reference3: broad low body, cream belly, amber half-lidded eyes, orange oval glands behind eyes, a few broad rounded brown bumps/spots, slim folded hindlegs (NOT swollen bodybuilder thighs). Small indigo flower satchel with a red chili charm alongside him. Not a green frog and not a chick.\nBoth characters occupy a small part of a roomy environment. Exactly one of each. The toad remains the traveling protagonist, JOJO a secondary cameo minding its own business at a different depth and position. They do not talk, wave at each other, touch, pose together, or gaze at the camera. Both grounded in the SAME painted world with matching light, perspective, soft contact shadows and appropriate occlusion. Jojo readable, not hidden in a faraway speck, but never a giant foreground mascot.\nStyle: warm yet neutral daylight, low-mottling hand-painted opaque watercolor/gouache, thin natural dark brown contour, natural colors, soft cohesive light. Preserve a little broad directional brushwork but use clean connected color shapes, simple leaf clusters, large connected shadow patches and only one or two subtle tone changes per paving slab. NO all-over granular paper overlay, mottled speckles, densely fragmented leaf shadows, bark scratches, dense stone noise, sepia/red wash, soft-focus blur, glossy 3D rendering or flat vector aesthetic. Scene space more important than ornament. Foreground/midground/background clearly separated without busy clutter.\nOutput: 1536x1024 landscape 3:2 composition. No title, caption, speech bubbles, lettering, logo, watermark, diagrams or UI. Do not draw the reference sheets.\n\nScene: a peaceful Chengdu outdoor teahouse corner beside a tiny morning steamed-bun stall. Grey clay roof tiles, wooden hatch, natural bamboo stools, small bamboo tables and warm cream plaster. One stacked bamboo steamer near the hatch, lid resting beside it, a couple of pale rising ribbons of steam (not clouds filling the image). A plain porcelain tea bowl on a farther table. At most one softly simplified adult stallkeeper in the far background, no crowds and no character interaction.\nAction and composition: wide eye-level establishing scene with a bamboo bench making a diagonal through the lower foreground. The small toad rests in the cool shade at the foot of the near bamboo bench, indigo satchel alongside, about 18% canvas height. Further back near the stall, JOJO stands on the paving beside a LOW stool used as a small table, with ONE steamed bun on a plain saucer at his chest level. Whole JOJO about 18% image height, standing naturally, a modest lean to smell the bun as he waits for it to cool, arms relaxed and beak closed. Do not give Jojo a human-sized body or put him atop furniture. The bun and stool scale must match the small character; human furnishings elsewhere establish size. Jojo's cape/bow/beak and two eyes correctly aligned in three-quarter view, and no eye contact with the toad. Warm food/quiet cool shade contrast, broad tidy surfaces, no dense dappled sunlight. No written shop signs.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/references/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_daoming_04.webp",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_tea_04.webp"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9026e654-1184-4664-9068-0575de852a66.png",
+      "selected": false
+    },
+    {
+      "id": "card_jojo_02",
+      "phase": "cleanup",
+      "prompt": "Edit the supplied full 3:2 illustration to reduce excessive mottled surface texture by about 60% as a VISUAL goal. Preserve the exact composition and every depicted character, object, pose, color family, perspective, edge structure and lighting direction. Change surface treatment only.\nThe foreground bamboo bench must have intact golden-green cylindrical surfaces, simple joints, one connected shadow and a few purposeful long strokes, NOT chipped bark or countless scratches. Tree trunk, plaster and roof timber should read as broad material planes. The stone paving should have clean bases, clear joints, only one or two soft value patches per slab and large connected shade. Keep the small yellow Jojo waiting beside the bun, the toad resting under the bench, the satchel, bun steam and distant stallkeeper EXACTLY in place with unchanged faces/anatomy/colors.\nAcross leaves and distant foliage, keep main silhouettes, connected grouped masses, a coherent base green and at most one secondary tone; no many speckles per leaf. Preserve the toad's LARGE characteristic spots and glands, but simplify tiny random belly/skin flecks. Keep Jojo's yellow body and red-orange cape faithful and unchanged.\nKeep restrained opaque watercolor/gouache charm: a few broad directional brushstrokes, small natural edge variation, soft form shading, not completely flat. This is hand-painted surface consolidation, NOT blur or a global smoothing filter. No global warm/red/sepia tint, no desaturation, no bleaching, no cel-anime conversion, no 3D or plastic. No paper-grain overlay. No text, no new objects. Return the same single complete full-bleed illustration.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9026e654-1184-4664-9068-0575de852a66.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-0bfe58c9-14b8-46e4-a7d5-87cb2b79b36f.png",
+      "selected": true
+    },
+    {
+      "id": "card_jojo_03",
+      "phase": "initial",
+      "prompt": "Use case: illustration-story.\nAsset type: a full-bleed 3:2 landscape travel postcard illustration for the existing Sichuan countryside idle game 旅行癞疙宝. Generate ONE new complete scene, not a collage, no border or text.\nReference roles: Image 1 is the authoritative original JOJO/叫叫 character turnaround, identity and proportions only. Image 2 is its painted adaptation, use its restrained gouache contours, not the sheet layout. Image 3 is the game's TOAD identity and brushwork. Image 4 (when provided) is local architecture/palette/style reference only, NOT a composition to copy.\nCharacter identity must stay separate: JOJO is yellow with a continuous upright plump capsule head/body, no neck, no waist, a little two-lobed tuft, curved eyebrows, round white-rimmed dark brown eyes, very small orange beak, short orange legs and rounded feet, rounded yellow droplet arms longer than exposed legs. Head region longer than body region. Wraparound warm red-orange cape with THREE rounded front bow lobes, hem above feet. No white belly, blush, feathers, human fingers, long legs, boots, or accessory bag. With a three-quarter face, the beak belongs BETWEEN the eyes and the bow follows the face centerline; true profile has only one visible eye.\nTOAD/癞疙宝 is the small squat ochre-olive toad from reference3: broad low body, cream belly, amber half-lidded eyes, orange oval glands behind eyes, a few broad rounded brown bumps/spots, slim folded hindlegs (NOT swollen bodybuilder thighs). Small indigo flower satchel with a red chili charm alongside him. Not a green frog and not a chick.\nBoth characters occupy a small part of a roomy environment. Exactly one of each. The toad remains the traveling protagonist, JOJO a secondary cameo minding its own business at a different depth and position. They do not talk, wave at each other, touch, pose together, or gaze at the camera. Both grounded in the SAME painted world with matching light, perspective, soft contact shadows and appropriate occlusion. Jojo readable, not hidden in a faraway speck, but never a giant foreground mascot.\nStyle: warm yet neutral daylight, low-mottling hand-painted opaque watercolor/gouache, thin natural dark brown contour, natural colors, soft cohesive light. Preserve a little broad directional brushwork but use clean connected color shapes, simple leaf clusters, large connected shadow patches and only one or two subtle tone changes per paving slab. NO all-over granular paper overlay, mottled speckles, densely fragmented leaf shadows, bark scratches, dense stone noise, sepia/red wash, soft-focus blur, glossy 3D rendering or flat vector aesthetic. Scene space more important than ornament. Foreground/midground/background clearly separated without busy clutter.\nOutput: 1536x1024 landscape 3:2 composition. No title, caption, speech bubbles, lettering, logo, watermark, diagrams or UI. Do not draw the reference sheets.\n\nScene: a fictional peaceful Sichuan old river-street side-channel, calm blue-green water, plaster and dark timber houses with grey tiled roofs across the water, and a modest wooden paddle waterwheel turning slowly beside the bank in the middle distance. The wheel is mounted coherently on a horizontal axle at a narrow channel; its lower paddles meet the flowing water, a little water falling from them, not a mill fantasy or impossible giant machine. Simple low wooden safety railing on the dry bank. Sparse willow branches framing sky, distant architecture simplified.\nAction and composition: broad side-on riverside establishing view, water leads across the scene. Small toad lounges on a broad dry stone ledge in the nearer foreground listening to the water, indigo flower satchel a short distance behind him, about 17% image height. JOJO is a few paces further along on the SAFE dry path behind the railing, near the wheel but not touching machinery, about 17% canvas height. Show a readable three-quarter figure with a small head tilt, curious eyes tracking the paddles. Railing should not hide his face or bow; lower legs may be naturally partly occluded. Neither looks at or interacts with the other. The wheel and water are the landscape focal point, not an enormous close-up character. Soft neutral afternoon light, broad bands of reflection and a few complete ripples, no fragmented glitter pattern/no noisy pebble texture. No boats or crowds needed.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/references/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_daoming_04.webp",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_river_04.webp"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-7f19eb48-2add-4e76-b9f7-a1244cf4084d.png",
+      "selected": false
+    },
+    {
+      "id": "card_jojo_03",
+      "phase": "cleanup",
+      "prompt": "Edit the supplied full 3:2 illustration to reduce excessive mottled surface texture by about 60% as a VISUAL goal. Preserve the exact composition and every depicted character, object, pose, color family, perspective, edge structure and lighting direction. Change surface treatment only.\nSimplify the stone bank faces, steps and tree bark into intact color planes with a few muted broad strokes, no camouflage chips. The river needs broad, continuous gently rippled blue-green reflections, no all-over fragmented zig-zag glitter. Keep several essential ripples and the small localized splash at the waterwheel. Keep the entire waterwheel structure, toad, blue bag, small Jojo behind the railing, houses and bridge identical in position, size, anatomy and perspective. Do not change the wheel mechanics or hide Jojo.\nAcross leaves and distant foliage, keep main silhouettes, connected grouped masses, a coherent base green and at most one secondary tone; no many speckles per leaf. Preserve the toad's LARGE characteristic spots and glands, but simplify tiny random belly/skin flecks. Keep Jojo's yellow body and red-orange cape faithful and unchanged.\nKeep restrained opaque watercolor/gouache charm: a few broad directional brushstrokes, small natural edge variation, soft form shading, not completely flat. This is hand-painted surface consolidation, NOT blur or a global smoothing filter. No global warm/red/sepia tint, no desaturation, no bleaching, no cel-anime conversion, no 3D or plastic. No paper-grain overlay. No text, no new objects. Return the same single complete full-bleed illustration.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-7f19eb48-2add-4e76-b9f7-a1244cf4084d.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-1605451a-35f9-444b-8ec7-ba536250490f.png",
+      "selected": true
+    },
+    {
+      "id": "card_jojo_04",
+      "phase": "initial",
+      "prompt": "Use case: illustration-story.\nAsset type: a full-bleed 3:2 landscape travel postcard illustration for the existing Sichuan countryside idle game 旅行癞疙宝. Generate ONE new complete scene, not a collage, no border or text.\nReference roles: Image 1 is the authoritative original JOJO/叫叫 character turnaround, identity and proportions only. Image 2 is its painted adaptation, use its restrained gouache contours, not the sheet layout. Image 3 is the game's TOAD identity and brushwork. Image 4 (when provided) is local architecture/palette/style reference only, NOT a composition to copy.\nCharacter identity must stay separate: JOJO is yellow with a continuous upright plump capsule head/body, no neck, no waist, a little two-lobed tuft, curved eyebrows, round white-rimmed dark brown eyes, very small orange beak, short orange legs and rounded feet, rounded yellow droplet arms longer than exposed legs. Head region longer than body region. Wraparound warm red-orange cape with THREE rounded front bow lobes, hem above feet. No white belly, blush, feathers, human fingers, long legs, boots, or accessory bag. With a three-quarter face, the beak belongs BETWEEN the eyes and the bow follows the face centerline; true profile has only one visible eye.\nTOAD/癞疙宝 is the small squat ochre-olive toad from reference3: broad low body, cream belly, amber half-lidded eyes, orange oval glands behind eyes, a few broad rounded brown bumps/spots, slim folded hindlegs (NOT swollen bodybuilder thighs). Small indigo flower satchel with a red chili charm alongside him. Not a green frog and not a chick.\nBoth characters occupy a small part of a roomy environment. Exactly one of each. The toad remains the traveling protagonist, JOJO a secondary cameo minding its own business at a different depth and position. They do not talk, wave at each other, touch, pose together, or gaze at the camera. Both grounded in the SAME painted world with matching light, perspective, soft contact shadows and appropriate occlusion. Jojo readable, not hidden in a faraway speck, but never a giant foreground mascot.\nStyle: warm yet neutral daylight, low-mottling hand-painted opaque watercolor/gouache, thin natural dark brown contour, natural colors, soft cohesive light. Preserve a little broad directional brushwork but use clean connected color shapes, simple leaf clusters, large connected shadow patches and only one or two subtle tone changes per paving slab. NO all-over granular paper overlay, mottled speckles, densely fragmented leaf shadows, bark scratches, dense stone noise, sepia/red wash, soft-focus blur, glossy 3D rendering or flat vector aesthetic. Scene space more important than ornament. Foreground/midground/background clearly separated without busy clutter.\nOutput: 1536x1024 landscape 3:2 composition. No title, caption, speech bubbles, lettering, logo, watermark, diagrams or UI. Do not draw the reference sheets.\n\nScene: a quiet Sichuan rice-field ridge path in late afternoon, layered tidy green paddy bands, shallow irrigation channel, a few low tiled farm roofs far back and soft blue hills. One leafy shade tree at the near path edge. Natural late-afternoon light but NO orange-red global filter.\nAction and composition: an airy wide landscape with large clean blue sky and green fields; gentle diagonal ridge path gives depth. In the nearer tree shade, the small toad dozes comfortably at a root with the indigo satchel beside him, about 16% canvas height, eyes gently closed and folded hindlegs modest. A few paces farther along the SAME firm dry ridge JOJO stands waiting patiently, whole figure about 18% canvas height, with one rounded yellow hand holding a small simple wooden kite reel at belly level. A small cream-paper diamond kite with a muted blue patch rests clearly on the grass NEXT TO JOJO's feet, NOT yet in the sky, with a long simple paper ribbon tail barely lifted by a light breeze. ONE unambiguous slack string joins the reel to the kite. JOJO looks up toward the sky waiting for wind, with the beak/eyes anatomically consistent at a mild three-quarter angle. Cape rests down, not superhero flight. No one runs or talks, no other children, no additional kites. The grounded kite is intentionally not flying yet. Keep grass in broad clusters, rice in continuous grouped strips, soft solid tree shadow not tiny leaf mottling.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/references/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_daoming_04.webp",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_tianba_04.webp"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-13bff19e-0a87-4021-a781-15b39dcc506f.png",
+      "selected": false
+    },
+    {
+      "id": "card_jojo_04",
+      "phase": "cleanup",
+      "prompt": "Edit this exact 3:2 travel illustration ONLY to consolidate busy mottled texture. Keep both characters, poses, sizes, placement and identity unchanged: sleepy toad under the tree with indigo satchel, yellow red-caped Jojo holding reel and looking up, grounded cream-and-blue kite with slack connecting string and tail, all landscape geometry and neutral daylight unchanged. Do not fly the kite, wake the toad, add interaction or move anything.\nReduce the high-frequency surface mottling by approximately 60% as a VISUAL goal. Especially repaint the massive tree trunk as 3-4 BROAD connected muted brown planes with only a few long soft bark marks, no dense chips, flecks, scratches or camouflage. The path should have a continuous warm earth base and a couple of broad soft shade shapes, no thousands of tiny dapples or ground specks. Simplify the far mountain/woodland to calm layered blue/green silhouettes, and the rice field to grouped plant bands rather than each tiny leaf and dot. Consolidate foreground grass into clean clusters, keep a few existing flowers but do not scatter more. On tree leaves use intact color fills with one shaded area, not mottled multi-colored noise. Preserve the toad's few major spots and glands; simplify only its minor random belly flecks.\nRetain gentle low-texture hand-painted gouache: sparse broad directional strokes, slightly organic outlines and soft form shading, neither sterile flat vector nor cel anime. NO blur, bleaching, global orange-red tint, paper-noise overlay or glossy 3D. No letters or new objects. Return one complete same-size illustration.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-13bff19e-0a87-4021-a781-15b39dcc506f.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-8191a5d5-c2cb-4e87-bf7a-8f1c24aaa3bc.png",
+      "selected": true
+    }
+  ],
+  "selectedOutputs": [
+    {
+      "id": "card_jojo_01",
+      "file": "card_jojo_01.png",
+      "bytes": 2667410,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "3bb219ebcfb894ed9940a7f5b6a380917bb105fd08318ea7741656f9497875dd",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9c5cea0a-ab11-49c5-bf2c-fa4700a7f333.png"
+    },
+    {
+      "id": "card_jojo_02",
+      "file": "card_jojo_02.png",
+      "bytes": 2301752,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "7b747171abde1e0b143d917336e2377f7209cf2d2e110c61fed2c665cec3cd3a",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-0bfe58c9-14b8-46e4-a7d5-87cb2b79b36f.png"
+    },
+    {
+      "id": "card_jojo_03",
+      "file": "card_jojo_03.png",
+      "bytes": 2558184,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "b8a9d376bd66ccb68493bbf2ef888dc6eb1f91edfea6798c91d6eec308f34190",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-1605451a-35f9-444b-8ec7-ba536250490f.png"
+    },
+    {
+      "id": "card_jojo_04",
+      "file": "card_jojo_04.png",
+      "bytes": 2371694,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "590fff18b73e0ad8100b7fd1e35ffd92026281b0c8bc13ddca32e5cd0100175b",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-8191a5d5-c2cb-4e87-bf7a-8f1c24aaa3bc.png"
+    }
+  ],
+  "processing": "四张先各独立生成，再各用模型收整过密碎斑；选稿仅cp -n逐字节复制，无程序重绘/滤镜/裁切/压缩。2026-09-16用户确认以减纹理版继续修改，四张未选初稿已从工具原生目录移入废纸篓，精确恢复路径见清理与底图确认.json；选稿原图和原生副本未改动。",
+  "textureNote": "约60%是每次编辑提示的视觉目标，不是像素测量或已测得的减少比例。",
+  "classification": "叫叫为建议的跨原有地点内容分类category_jojo；草案不等于运行时已接入。尚未得到是否第5地理目的地的明确回复。",
+  "protectedRuntime": {
+    "files": 90,
+    "sha256": "e0b2dcc75d1fef8828f94d01f1cd85d4b30ba14608e5de71d6d7f000df8e0d9b"
+  },
+  "activeRevisionRecords": {
+    "card_jojo_01": "card_jojo_01-猪儿虫构图v3记录.json",
+    "card_jojo_02": "card_jojo_02-树上看豌杂面修订记录.json"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "status": "integrated-1.4.7",
+  "artSelection": {
+    "status": "user-selected-edit-bases",
+    "date": "2026-09-16",
+    "record": "清理与底图确认.json",
+    "note": "沿用户选定减纹理原图修订：第一则为抓猪儿虫v3，第二则为树上看叫叫吃豌豆杂酱面；当前图文以cards[]为准，原图与历史修订保留。2026-09-16按原四地点彩蛋分类接入1.4.7。",
+    "latestRevision": "card_jojo_02-树上看豌杂面修订记录.json",
+    "activeRevisionRecords": {
+      "card_jojo_01": "card_jojo_01-猪儿虫构图v3记录.json",
+      "card_jojo_02": "card_jojo_02-树上看豌杂面修订记录.json"
+    }
+  },
+  "category": {
+    "id": "category_jojo",
+    "name": "叫叫",
+    "kind": "cameo_collection",
+    "classificationStatus": "用户确认作为原四地点彩蛋分类，不新增目的地"
+  },
+  "runtimeIntegration": {
+    "enabled": true,
+    "note": "1.4.7接入CARDS及SOUVENIRS，ROUTES仍为原四地，无独立后端。发布与验收状态见outputs/release/1.4.7-叫叫彩蛋发布验收.MD。"
+  },
+  "cards": [
+    {
+      "id": "card_jojo_01",
+      "routeId": "route_daoming",
+      "place": "道明竹乡",
+      "title": "竹林里，抓猪儿虫",
+      "text": "竹叶沙沙响，疙宝在竹根边歇脚，看见叫叫正弯着身子抓猪儿虫。胖乎乎的绿虫趴在叶上，叫叫小心一拢，连着叶子托了起来。疙宝在凉荫里望着，没有凑过去打扰。",
+      "note": "猪儿虫是四川话里对青虫的俗称，此处画成肉乎乎的绿色幼虫，不指定具体物种。这段竹林偶遇为虚构见闻，关联收藏品「猪儿虫」，不新增捕虫或饲养玩法。",
+      "visual": "左前景疙宝与靛蓝花包留在竹根旁，朝右侧旁观；叫叫移到右侧中前景的竹丛边，脚踩实地，双手将叶上的短胖分节绿虫托在浅黄色身体前，完整虫体轮廓清楚；右侧竹叶收拢空路，保留石板弯路、屋舍和远山，无对白或共同捕虫。",
+      "categoryId": "category_jojo",
+      "image": "card_jojo_01-caterpillar-v3.png",
+      "idStatus": "已写入运行时CardId，1.4.7",
+      "souvenirId": "souvenir_caterpillar"
+    },
+    {
+      "id": "card_jojo_02",
+      "routeId": "route_chengdu_tea",
+      "place": "成都坝坝茶",
+      "title": "树下那碗豌杂面",
+      "text": "疙宝蹲在树杈上，往下看见叫叫正坐在小桌前吃豌豆杂酱面。筷子挑起一绺面，碗里的豌豆和杂酱还冒着热气。树叶轻轻晃，叫叫埋头吃得香，疙宝就在树荫里看了一会儿。",
+      "note": "茶铺边的一顿豌豆杂酱面，是旅途里偶然看见的日常。疙宝在树上旁观，不与叫叫交谈或同桌；关联收藏品「豌杂面」，不新增可购买吃食或出游条件。",
+      "visual": "从前景树杈向下看茶铺院坝，疙宝与靛蓝花包在左侧粗枝上，转头往下看；右侧下方叫叫坐小竹凳、在矮桌前用筷子挑面，碗里可见面条、浅金豌豆与褐色杂酱。保留茶铺与竹桌椅的乡土感，低碎斑手绘，不对话或共享饭食。",
+      "categoryId": "category_jojo",
+      "image": "card_jojo_02-noodles-v2.png",
+      "idStatus": "已写入运行时CardId，1.4.7",
+      "souvenirId": "souvenir_wanza_noodles"
+    },
+    {
+      "id": "card_jojo_03",
+      "routeId": "route_huanglongxi",
+      "place": "黄龙溪河街",
+      "title": "水车又转了一圈",
+      "text": "木水车吱呀转着，舀起的水又哗啦落下。疙宝趴在临水石沿听响，叫叫站在栏杆后，看同一片木叶转过来、又转过去。",
+      "note": "河街支渠、水车与停留位置均为虚构构图，不对应黄龙溪的指定设施。叫叫在干燥护栏内旁观，不接触转动中的水车。",
+      "visual": "横向河街与支渠，木水车在中景，房屋和远处淡山低细节。疙宝在近处干燥石沿听水，叫叫在护栏内看水车，脸和领结保持可见。",
+      "categoryId": "category_jojo",
+      "image": "card_jojo_03.png",
+      "idStatus": "已写入运行时CardId，1.4.7"
+    },
+    {
+      "id": "card_jojo_04",
+      "routeId": "route_tianba",
+      "place": "田坝地头",
+      "title": "田埂上，等一阵风",
+      "text": "田埂上的风还小，纸鸢躺在草边，尾巴偶尔动一下。叫叫攥着线轴，仰头等风；疙宝在树荫里打盹，倒是先把这一小会儿睡安逸了。",
+      "note": "纸鸢还没有飞起来，等风本身就是这一页故事。纸鸢不是新道具，两个角色各自停留，不触发共同任务或奖励。",
+      "visual": "开阔稻田与淡蓝天空，近处疙宝在树荫里打盹，稍远叫叫站在干燥田埂上等风；小纸鸢落在脚边，松弛的单根线连到线轴，不画成已经升空。",
+      "categoryId": "category_jojo",
+      "image": "card_jojo_04.png",
+      "idStatus": "已写入运行时CardId，1.4.7"
+    }
+  ],
+  "souvenirs": [
+    {
+      "id": "souvenir_caterpillar",
+      "name": "猪儿虫",
+      "description": "胖嘟嘟的一小条，伏在叶子上，慢悠悠地拱一下。",
+      "cardId": "card_jojo_01",
+      "routeId": "route_daoming",
+      "categoryId": "category_jojo",
+      "kind": "souvenir",
+      "image": "../jojo-souvenirs-v1/souvenir_caterpillar.png",
+      "visual": "短胖分节绿虫伏在一片绿叶上；柔和黄绿色、深褐细轮廓与克制水粉笔触。",
+      "usage": "只作收藏；不加入吃食库存，不新增饲养、捕虫互动或出游条件。",
+      "idStatus": "已写入运行时SouvenirId，1.4.7"
+    },
+    {
+      "id": "souvenir_wanza_noodles",
+      "name": "豌杂面",
+      "description": "软糯豌豆配香喷喷的杂酱，面条一拌，巴适得很。",
+      "cardId": "card_jojo_02",
+      "routeId": "route_chengdu_tea",
+      "categoryId": "category_jojo",
+      "kind": "souvenir",
+      "image": "../jojo-souvenirs-v1/souvenir_wanza_noodles.png",
+      "visual": "暖白青花碗装面，面条、浅金煮豌豆、褐色杂酱和少量葱绿清楚可辨。",
+      "usage": "只作收藏，不加入小铺、出游吃食槽或可消耗库存，不新增烹饪玩法。",
+      "idStatus": "已写入运行时SouvenirId，1.4.7"
+    }
+  ],
+  "souvenirAssociation": {
+    "status": "user-requested",
+    "date": "2026-09-16",
+    "scope": "仅前两则分别关联猪儿虫、豌杂面；其余两则不新增收藏品。",
+    "runtimeIntegration": true,
+    "acquisitionPolicy": "随对应见闻归来带回，占每趟原有的一件纪念物名额，不额外加奖；对应见闻重复时收藏数量正常累计。其他卡排除这两件绑定物，沿用原地点三物未收优先。",
+    "record": "../jojo-souvenirs-v1/收藏品设定.MD"
+  }
+}

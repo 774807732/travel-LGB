@@ -21,7 +21,11 @@ export type CardId =
   | "card_tianba_01"
   | "card_tianba_02"
   | "card_tianba_03"
-  | "card_tianba_04";
+  | "card_tianba_04"
+  | "card_jojo_01"
+  | "card_jojo_02"
+  | "card_jojo_03"
+  | "card_jojo_04";
 export type SouvenirId =
   | "souvenir_bamboo_mat"
   | "souvenir_bamboo_basket"
@@ -34,8 +38,11 @@ export type SouvenirId =
   | "souvenir_wooden_boat"
   | "souvenir_corn"
   | "souvenir_sweet_potato"
-  | "souvenir_small_pumpkin";
+  | "souvenir_small_pumpkin"
+  | "souvenir_caterpillar"
+  | "souvenir_wanza_noodles";
 export type ItemId = FoodId | GearId | SouvenirId;
+export const CARD_CATEGORIES = { category_jojo: "叫叫彩蛋" } as const;
 
 export const FOODS: {
   id: FoodId;
@@ -146,6 +153,9 @@ export const CARDS: {
   text: string;
   note: string;
   requiredFood?: FoodId;
+  categoryId?: keyof typeof CARD_CATEGORIES;
+  // 对应见闻的纪念物占用原来每趟的一件名额，不是额外奖励。
+  souvenirId?: SouvenirId;
 }[] = [
   {
     id: "card_daoming_01",
@@ -260,6 +270,32 @@ export const CARDS: {
     text: "院坝里摆开了一桌又一桌，寿桃端到了老人家面前。它蹲在树杈上往下看，笑声一阵阵飘过来：今天这儿，闹热得很。",
     note: "这场坝坝宴选了祝寿的主题，寿字、寿桃和围桌笑语都是故事里的布置，不对应真实人物或宴席。",
   },
+  {
+    id: "card_jojo_01", routeId: "route_daoming", categoryId: "category_jojo",
+    title: "竹林里，抓猪儿虫",
+    text: "竹叶沙沙响，疙宝在竹根边歇脚，看见叫叫正弯着身子抓猪儿虫。胖乎乎的绿虫趴在叶上，叫叫小心一拢，连着叶子托了起来。疙宝在凉荫里望着，没有凑过去打扰。",
+    note: "猪儿虫是四川话里对青虫的俗称，此处画成肉乎乎的绿色幼虫，不指定具体物种。这段竹林偶遇为虚构见闻，关联收藏品「猪儿虫」，不新增捕虫或饲养玩法。",
+    souvenirId: "souvenir_caterpillar",
+  },
+  {
+    id: "card_jojo_02", routeId: "route_chengdu_tea", categoryId: "category_jojo",
+    title: "树下那碗豌杂面",
+    text: "疙宝蹲在树杈上，往下看见叫叫正坐在小桌前吃豌豆杂酱面。筷子挑起一绺面，碗里的豌豆和杂酱还冒着热气。树叶轻轻晃，叫叫埋头吃得香，疙宝就在树荫里看了一会儿。",
+    note: "茶铺边的一顿豌豆杂酱面，是旅途里偶然看见的日常。疙宝在树上旁观，不与叫叫交谈或同桌；关联收藏品「豌杂面」，不新增可购买吃食或出游条件。",
+    souvenirId: "souvenir_wanza_noodles",
+  },
+  {
+    id: "card_jojo_03", routeId: "route_huanglongxi", categoryId: "category_jojo",
+    title: "水车又转了一圈",
+    text: "木水车吱呀转着，舀起的水又哗啦落下。疙宝趴在临水石沿听响，叫叫站在栏杆后，看同一片木叶转过来、又转过去。",
+    note: "河街支渠、水车与停留位置均为虚构构图，不对应黄龙溪的指定设施。叫叫在干燥护栏内旁观，不接触转动中的水车。",
+  },
+  {
+    id: "card_jojo_04", routeId: "route_tianba", categoryId: "category_jojo",
+    title: "田埂上，等一阵风",
+    text: "田埂上的风还小，纸鸢躺在草边，尾巴偶尔动一下。叫叫攥着线轴，仰头等风；疙宝在树荫里打盹，倒是先把这一小会儿睡安逸了。",
+    note: "纸鸢还没有飞起来，等风本身就是这一页故事。纸鸢不是新道具，两个角色各自停留，不触发共同任务或奖励。",
+  },
 ];
 export const SOUVENIRS: {
   id: SouvenirId;
@@ -309,6 +345,8 @@ export const SOUVENIRS: {
   { id: "souvenir_corn", routeId: "route_tianba", name: "包谷", description: "苞叶一揭，满满一棒田坝里的太阳。" },
   { id: "souvenir_sweet_potato", routeId: "route_tianba", name: "红苕", description: "幺姑婆塞的两个红苕，朴实又暖心。" },
   { id: "souvenir_small_pumpkin", routeId: "route_tianba", name: "小南瓜", description: "圆墩墩一个，抱回屋里也喜庆。" },
+  { id: "souvenir_caterpillar", routeId: "route_daoming", name: "猪儿虫", description: "胖嘟嘟的一小条，伏在叶子上，慢悠悠地拱一下。" },
+  { id: "souvenir_wanza_noodles", routeId: "route_chengdu_tea", name: "豌杂面", description: "软糯豌豆配香喷喷的杂酱，面条一拌，巴适得很。" },
 ];
 export const FOOD_NAMES = Object.fromEntries(
   FOODS.map((x) => [x.id, x.name]),
@@ -317,12 +355,19 @@ export const GEAR_NAMES = Object.fromEntries(
   GEARS.map((x) => [x.id, x.name]),
 ) as Record<GearId, string>;
 export const cardById = (id: CardId) => CARDS.find((x) => x.id === id)!;
+// 新专属物只随指定见闻带回；其他见闻仍从原地点纪念物中未收优先。
+export function souvenirsForCard(id: CardId) {
+  const card = cardById(id);
+  return SOUVENIRS.filter((s) => card.souvenirId
+    ? s.id === card.souvenirId
+    : s.routeId === card.routeId && !CARDS.some((c) => c.souvenirId === s.id));
+}
 export const routeById = (id: RouteId) => ROUTES.find((x) => x.id === id)!;
 export const souvenirById = (id: SouvenirId) =>
   SOUVENIRS.find((x) => x.id === id)!;
 export const itemName = (id: ItemId) =>
   [...FOODS, ...GEARS, ...SOUVENIRS].find((x) => x.id === id)!.name;
 export const cardImage = (id: CardId) =>
-  `/art/cards/${id}.webp?v=${id.endsWith("_04") ? "fourth-v1" : "clean-v2"}`;
+  `/art/cards/${id}.webp?v=${id.startsWith("card_jojo_") ? "jojo-v1" : id.endsWith("_04") ? "fourth-v1" : "clean-v2"}`;
 export const itemImage = (id: ItemId) =>
   `/art/items/${id === "gear_oilpaper_umbrella" ? "gear_rain_boots" : id}.${id.startsWith("souvenir_") ? "png" : "webp"}`;

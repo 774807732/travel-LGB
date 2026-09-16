@@ -12,6 +12,7 @@ import {
   GEARS,
   ROUTES,
   SOUVENIRS,
+  souvenirsForCard,
   type CardId,
   type SouvenirId,
 } from "./content";
@@ -60,7 +61,7 @@ function trip(v: unknown, legacy = false): v is Trip {
   return (
     !!route &&
     CARDS.some((c) => c.id === v.cardId && c.routeId === route.id && (!c.requiredFood || c.requiredFood === (v.loadout as Loadout).food)) &&
-    SOUVENIRS.some((s) => s.id === v.souvenirId && s.routeId === route.id)
+    souvenirsForCard(v.cardId as CardId).some((s) => s.id === v.souvenirId)
   );
 }
 function base(v: unknown, legacy = false): v is Record<string, unknown> {

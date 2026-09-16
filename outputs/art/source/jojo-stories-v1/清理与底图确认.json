@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-16",
+  "status": "completed",
+  "userDecision": "移除用户图2中的四张初稿；保留图1中的四张减纹理版，后续修改只从保留版原图开始。",
+  "futureEditBases": [
+    {
+      "id": "card_jojo_01",
+      "file": "card_jojo_01.png",
+      "sha256": "3bb219ebcfb894ed9940a7f5b6a380917bb105fd08318ea7741656f9497875dd",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9c5cea0a-ab11-49c5-bf2c-fa4700a7f333.png"
+    },
+    {
+      "id": "card_jojo_02",
+      "file": "card_jojo_02.png",
+      "sha256": "7b747171abde1e0b143d917336e2377f7209cf2d2e110c61fed2c665cec3cd3a",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-0bfe58c9-14b8-46e4-a7d5-87cb2b79b36f.png"
+    },
+    {
+      "id": "card_jojo_03",
+      "file": "card_jojo_03.png",
+      "sha256": "b8a9d376bd66ccb68493bbf2ef888dc6eb1f91edfea6798c91d6eec308f34190",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-1605451a-35f9-444b-8ec7-ba536250490f.png"
+    },
+    {
+      "id": "card_jojo_04",
+      "file": "card_jojo_04.png",
+      "sha256": "590fff18b73e0ad8100b7fd1e35ffd92026281b0c8bc13ddca32e5cd0100175b",
+      "nativeOutput": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-8191a5d5-c2cb-4e87-bf7a-8f1c24aaa3bc.png"
+    }
+  ],
+  "baseRule": "使用本目录card_jojo_01–04.png完整原图，不使用截图缩略图或已移除初稿；编号与故事对应保持不变。",
+  "disposal": {
+    "method": "recoverable-trash",
+    "trashDirectory": "/Users/jojo/.Trash/travel-LGB-叫叫四张初稿-20260916-IEzsRQ",
+    "count": 4,
+    "totalBytes": 11191809,
+    "files": [
+      {
+        "id": "card_jojo_01",
+        "source": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-3f3b854b-c798-4e4c-88b3-a22a3ebf0ee4.png",
+        "trashPath": "/Users/jojo/.Trash/travel-LGB-叫叫四张初稿-20260916-IEzsRQ/exec-3f3b854b-c798-4e4c-88b3-a22a3ebf0ee4.png",
+        "bytes": 3006157,
+        "sha256": "9d1b97a0548a28944763663d0f9307a1970d004adf5dabcc62423195688b193e"
+      },
+      {
+        "id": "card_jojo_02",
+        "source": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-9026e654-1184-4664-9068-0575de852a66.png",
+        "trashPath": "/Users/jojo/.Trash/travel-LGB-叫叫四张初稿-20260916-IEzsRQ/exec-9026e654-1184-4664-9068-0575de852a66.png",
+        "bytes": 2538948,
+        "sha256": "f6b1ecf7028ccd2bdf1d27e6b589cdfdd6e4a5ddcd4967e4c065b6410cef4990"
+      },
+      {
+        "id": "card_jojo_03",
+        "source": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-7f19eb48-2add-4e76-b9f7-a1244cf4084d.png",
+        "trashPath": "/Users/jojo/.Trash/travel-LGB-叫叫四张初稿-20260916-IEzsRQ/exec-7f19eb48-2add-4e76-b9f7-a1244cf4084d.png",
+        "bytes": 2857420,
+        "sha256": "06c0901fdaa58f1968dfbe04118ae116e3ad20426b626350b6facd203708c1d9"
+      },
+      {
+        "id": "card_jojo_04",
+        "source": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-13bff19e-0a87-4021-a781-15b39dcc506f.png",
+        "trashPath": "/Users/jojo/.Trash/travel-LGB-叫叫四张初稿-20260916-IEzsRQ/exec-13bff19e-0a87-4021-a781-15b39dcc506f.png",
+        "bytes": 2789284,
+        "sha256": "eb0d1b0bc8aab36e0c1a314db41b64cbb347dbd985cf9eeaa9732947ee200d1c"
+      }
+    ]
+  },
+  "provenance": "生成记录.json保留8次实际调用及当时输入/输出路径；初稿原路径因本次清理不再存在，可按本记录trashPath找回。聊天历史图片卡片未删除。",
+  "scope": "仅选稿、清理及记录，不重绘、不改故事、不接入运行时、不提交或推送、不部署。",
+  "protectedRuntime": {
+    "files": 90,
+    "sha256": "e0b2dcc75d1fef8828f94d01f1cd85d4b30ba14608e5de71d6d7f000df8e0d9b"
+  }
+}

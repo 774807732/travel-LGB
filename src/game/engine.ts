@@ -3,7 +3,7 @@ import {
   FOODS,
   GEARS,
   ROUTES,
-  SOUVENIRS,
+  souvenirsForCard,
   FOOD_NAMES,
   GEAR_NAMES,
   type FoodId,
@@ -154,12 +154,13 @@ function tripResult(state: GameState, loadout: Loadout, seed: number) {
   const cards = CARDS.filter((c) => c.routeId === routeId && (!c.requiredFood || c.requiredFood === loadout.food));
   const unseen = cards.filter((c) => !state.unlockedCards.includes(c.id));
   const cardPool = unseen.length ? unseen : cards;
-  const souvenirs = SOUVENIRS.filter((s) => s.routeId === routeId);
+  const cardId = cardPool[Math.floor(rng() * cardPool.length)].id;
+  const souvenirs = souvenirsForCard(cardId);
   const ungathered = souvenirs.filter((s) => !state.souvenirs[s.id]);
   const souvenirPool = ungathered.length ? ungathered : souvenirs;
   return {
     routeId,
-    cardId: cardPool[Math.floor(rng() * cardPool.length)].id,
+    cardId,
     souvenirId: souvenirPool[Math.floor(rng() * souvenirPool.length)].id,
     duration: (3600 + Math.floor(rng() * 10801)) * 1000,
   };

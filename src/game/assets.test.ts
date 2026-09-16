@@ -32,14 +32,14 @@ test("正式素材 ID 齐全，横竖场景与源图均存在", async () => {
     ...GEARS.map((x) => x.id),
     ...SOUVENIRS.map((x) => x.id),
   ];
-  assert.equal(manifest.length, 49);
+  assert.equal(manifest.length, 55);
   assert.deepEqual(manifest.map((x) => x.id).sort(), ids.sort());
   for (const asset of manifest) {
     assert.ok((await stat(asset.source)).size > 0);
     assert.ok((await stat(asset.output)).size > 0);
   }
 });
-test("横版约 16:9 / 竖版 3:4，纪念物 PNG，十六卡完整资源小于 6 MiB", async () => {
+test("横版约 16:9 / 竖版 3:4，纪念物 PNG，二十卡完整资源小于 7.5 MiB", async () => {
   let bytes = 0;
   for (const asset of manifest) {
     const meta = await sharp(asset.output).metadata();
@@ -59,8 +59,8 @@ test("横版约 16:9 / 竖版 3:4，纪念物 PNG，十六卡完整资源小于 
     assert.equal(meta.width! / meta.height!, ratio);
     bytes += (await stat(asset.output)).size;
   }
-  // 四张新增 1200×800 卡约 0.96 MiB；原图不降质，整包预算相应增加 1 MiB。
-  assert.ok(bytes < 6 * 1024 * 1024, "网页只带交付图，不带概念板和源 PNG");
+  // 叫叫四卡和两件透明纪念物单独增加预算，不重新压缩或改绘旧图。
+  assert.ok(bytes < 7.5 * 1024 * 1024, "网页只带交付图，不带概念板和源 PNG");
   for (const layout of ["portrait", "wide"] as const) {
     for (const scene of ["home", "yard"] as const) {
       const asset = manifest.find(
@@ -97,6 +97,27 @@ test("四张定稿保持用户确认的 SHA-256，交付完整 3:2 且单图小�
     assert.equal(encoded.info.width, 1200);
     assert.equal(encoded.info.height, 800);
     assert.ok((await stat(asset.output)).size < 300 * 1024);
+  }
+});
+test("叫叫六份源素材为用户确认的最后版本，运行时文字与草案一致", async () => {
+  const selected = {
+    card_jojo_01: "516dcb757015219eccb843d28fd1ce1e50434a62196e2a5b7c4951c306d71b30",
+    card_jojo_02: "c73213750315b692ba514df6c221591712462dcb294407740641d2905af3c4bf",
+    card_jojo_03: "b8a9d376bd66ccb68493bbf2ef888dc6eb1f91edfea6798c91d6eec308f34190",
+    card_jojo_04: "590fff18b73e0ad8100b7fd1e35ffd92026281b0c8bc13ddca32e5cd0100175b",
+    souvenir_caterpillar: "26033f74f83f1a90b56e674125551c021b6bcc924fd73cb90df00d53434f891d",
+    souvenir_wanza_noodles: "e5d8db7380bcfe69cc746a1266808ad334d9bfc997412881d4d51a736512bff2",
+  };
+  for (const [id, hash] of Object.entries(selected)) {
+    const asset = manifest.find((a) => a.id === id)!;
+    assert.equal(createHash("sha256").update(await readFile(asset.source)).digest("hex"), hash);
+    assert.ok((await stat(asset.output)).size < 350 * 1024);
+  }
+  const draft = JSON.parse(await readFile("outputs/art/source/jojo-stories-v1/content-draft.json", "utf8"));
+  for (const card of CARDS.filter((c) => c.categoryId)) {
+    const source = draft.cards.find((c: { id: string }) => c.id === card.id);
+    for (const field of ["title", "text", "note", "routeId", "categoryId", "souvenirId"] as const)
+      assert.equal(card[field], source[field]);
   }
 });
 test("六个跳跃姿态各占完整单元，四条格边全透明且每格有实色角色", async () => {

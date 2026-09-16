@@ -1,0 +1,115 @@
+{
+  "date": "2026-09-16",
+  "tool": "built-in image_gen",
+  "scope": "两件关联收藏品素材，不重绘见闻插画、不接入运行时",
+  "calls": [
+    {
+      "assetId": "souvenir_caterpillar",
+      "phase": "initial",
+      "request": {
+        "referenced_image_paths": [
+          "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/jojo-stories-v1/card_jojo_01-caterpillar-v3.png",
+          "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenir_gaiwan-alpha-v2.png"
+        ],
+        "prompt": "Use case: background-extraction / stylized-concept.\n为四川乡土手绘游戏《旅行癞疙宝》制作一个独立收藏品“猪儿虫”，正方形1024×1024，真正透明alpha背景PNG。输入图1是物件来源，提取叫叫手中叶子上的绿色短胖猪儿虫与承托的一片绿叶，去除整个环境、两位角色、手、文字；不是修改原场景。输入图2仅作现有收藏品的深褐轮廓和克制水粉笔触参考，不要画茶碗。\n保持图1猪儿虫的识别特征：短胖肉乎乎、柔和黄绿色、约六七段圆润体节、极小深褐眼点和小足，头部稍抬，安静可爱而非大眼拟人卡通；不画成猪，不画毛刺或蜗牛。一片长椭圆绿叶托住全虫，叶脉仅保留主脉和少量结构线；虫体清楚区别叶片。轻微三分之四侧视，完整主体居中，最长边占画布约75%，四边留足安全透明留白。沿用低碎斑手绘水粉，大色面加一两处柔和阴影，保留少量宽连贯笔触，不能满身随机噪点或斑驳，不用摄影写实或光滑3D。\n只输出这一个独立物件。背景必须是实际透明像素，不是白纸、地面、黑底或画出来的棋盘格；无场景、无边框、无投影底板、无文字水印。"
+      },
+      "nativePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-82cb62c9-0ef5-432d-9c96-c13cd1b8f10a.png",
+      "selected": true,
+      "reason": "有真实alpha，作为猪儿虫当前素材"
+    },
+    {
+      "assetId": "souvenir_wanza_noodles",
+      "phase": "initial",
+      "request": {
+        "referenced_image_paths": [
+          "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/jojo-stories-v1/card_jojo_02-noodles-v2.png",
+          "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/art/source/souvenir_gaiwan-alpha-v2.png"
+        ],
+        "prompt": "Use case: background-extraction / stylized-concept.\n为四川乡土手绘游戏《旅行癞疙宝》制作一个独立收藏品“豌杂面”，正方形1024×1024，真正透明alpha背景PNG。输入图1是物件来源，将桌上的一碗豌豆杂酱面提取并画成清楚的独立收藏物件，去掉环境、桌椅、人物和筷子，不能输出整幅场景；输入图2仅作现有收藏品的暖白青花瓷、深褐轮廓和克制水粉风格参考，不画带盖茶碗。\n一只日常暖白青花小面碗，低调蓝色口沿和少量大笔花叶纹，碗里清楚可辨奶黄色面条、浅金黄色煮豌豆、褐色杂酱及一点葱绿；豌豆不是青豌豆，不要把豌杂面画成汤粥、包子、拉面配蛋或火锅。三分之四俯视，能看清碗口和碗身，面条自然盘在碗内，全部主体完整居中，最长边占画布约75%，四边安全透明留白。无腾空挑面、无筷子、无单独蒸汽特效或散落配料。\n匹配输入的低碎斑手绘水粉：宽而连贯的少量笔触、简洁柔和体积、清晰可爱小图轮廓；避免大量细颗粒、密集碎斑、脏旧纹理、摄影高光、塑料3D和全局偏红。\n只输出一个碗装面物件。背景必须是实际透明alpha，不是白纸、桌面、黑底或绘制棋盘格；不加人物、文字、标签、边框、水印或不透明投影底板。"
+      },
+      "nativePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-860978a4-ec6a-497e-8286-82bc9f86deae.png",
+      "selected": false,
+      "reason": "RGB棋盘格底，不交付；本地保留souvenir_wanza_noodles-opaque-v1.png"
+    },
+    {
+      "assetId": "souvenir_wanza_noodles",
+      "phase": "alpha-retry",
+      "request": {
+        "referenced_image_paths": [
+          "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-860978a4-ec6a-497e-8286-82bc9f86deae.png"
+        ],
+        "prompt": "Use case: background-extraction.\n只修改这张“豌杂面”收藏品图片的背景：删除全部灰白棋盘格及棋盘格上的阴影，输出真正含alpha通道的透明背景PNG。这些棋盘格目前是画进RGB像素里的错误背景，不要保留、重画或把它换成白底。碗和碗内食物整体保留实色，包括白瓷、蓝色花叶纹、面条、浅金煮豌豆、褐色杂酱、葱绿，造型、比例、颜色、手绘笔触全部不变；不把白瓷或面条抠成洞。不新增物件、文字、水印、投影、蒸汽或边框。四周保持干净透明，不画任何表示透明的图案。"
+      },
+      "nativePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-7ea2733a-ea26-4349-ae73-f10d0ae238af.png",
+      "selected": false,
+      "reason": "仍为RGB棋盘格底，仅原生记录保留，不交付"
+    },
+    {
+      "assetId": "souvenir_wanza_noodles",
+      "phase": "clean-generation",
+      "request": {
+        "prompt": "Create ONE isolated transparent-background PNG game inventory collectible: a small warm ivory ceramic bowl with a simple muted cobalt-blue rim and only two painted blue leafy sprigs. The bowl contains Sichuan pea-and-minced-pork noodles (豌杂面): visible pale cream wheat noodle loops, a small cluster of soft golden-yellow cooked peas, brown minced-meat sauce, and just a few green scallion pieces. Gentle three-quarter overhead view. Entire object fully visible, centered in a square canvas, object width 75% of canvas, generous empty TRANSPARENT padding. Real RGBA alpha channel, outside the bowl alpha=0; preserve opaque white porcelain. Nothing else. NO checkerboard illustration, NO backdrop, NO floor, NO paper, NO shadow rectangle, NO text. Hand-painted cozy rural Chinese game asset, warm deep-brown thin contour, large soft gouache color areas and a few restrained broad brush marks; very low mottled texture. Simple readable thumbnail, not glossy photoreal food, not plastic 3D. No utensils, chopsticks, characters, floating noodles or steam."
+      },
+      "nativePath": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-907114d3-a81a-4183-a2f8-e82e424df944.png",
+      "selected": true,
+      "reason": "重新生成独立碗装面，真实alpha检查通过"
+    }
+  ],
+  "selectedOutputs": [
+    {
+      "file": "outputs/art/source/jojo-souvenirs-v1/souvenir_caterpillar.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "bytes": 831327,
+      "sha256": "26033f74f83f1a90b56e674125551c021b6bcc924fd73cb90df00d53434f891d",
+      "alphaPixels": {
+        "transparent": 1139702,
+        "nearOpaque250to255": 417920,
+        "fullyOpaque255": 1224,
+        "dominantNonzero": {
+          "alpha": 253,
+          "count": 368296
+        }
+      },
+      "visibleBounds": {
+        "minX": 28,
+        "minY": 281,
+        "maxX": 1241,
+        "maxY": 979
+      },
+      "deliveryFile": "05-收藏品猪儿虫.png"
+    },
+    {
+      "file": "outputs/art/source/jojo-souvenirs-v1/souvenir_wanza_noodles.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "bytes": 1540413,
+      "sha256": "e5d8db7380bcfe69cc746a1266808ad334d9bfc997412881d4d51a736512bff2",
+      "alphaPixels": {
+        "transparent": 854235,
+        "nearOpaque250to255": 700371,
+        "fullyOpaque255": 173,
+        "dominantNonzero": {
+          "alpha": 253,
+          "count": 480079
+        }
+      },
+      "visibleBounds": {
+        "minX": 98,
+        "minY": 188,
+        "maxX": 1156,
+        "maxY": 1082
+      },
+      "deliveryFile": "06-收藏品豌杂面.png"
+    }
+  ],
+  "alphaNote": "模型原生RGBA主体主要alpha=252/253，接近不透明而非全部255；四角alpha=0，保留原生alpha不做程序改图。",
+  "runtimeBaseline": {
+    "files": 90,
+    "sha256": "e0b2dcc75d1fef8828f94d01f1cd85d4b30ba14608e5de71d6d7f000df8e0d9b"
+  },
+  "status": "local-assets-only",
+  "runtimeIntegration": false
+}

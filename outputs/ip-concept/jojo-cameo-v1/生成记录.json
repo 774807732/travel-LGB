@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-16",
+  "title": "叫叫彩蛋角色手绘适配 v1",
+  "status": "概念稿待用户确认，未接入游戏",
+  "generator": "built-in image_gen.imagegen",
+  "scope": "基于用户提供的叫叫既有IP参考制作多视图、结构比例、表情动作；不重新设计癞疙宝，不修改现有场景或部署。",
+  "reference_priority": "七张叫叫规范决定身份和结构；游戏道明第四卡仅用于手绘媒介/光影参考。01选稿作为02和03的风格锚点。",
+  "references": [
+    {
+      "name": "JOJOIP规范2025-08.png",
+      "bytes": 548831,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "c2244a90178fd4fb1b38f93461ce485df314a0b7a77930c328e440ca2235267e",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025-08.png",
+      "archive_path": "references/JOJOIP规范2025-08.png"
+    },
+    {
+      "name": "JOJOIP规范2025_画板 10.png",
+      "bytes": 345656,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "1849124c3be517605196123acae198ace6f997199e648fb374ddc7822dff82cd",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 10.png",
+      "archive_path": "references/JOJOIP规范2025_画板 10.png"
+    },
+    {
+      "name": "JOJOIP规范2025_画板 15.png",
+      "bytes": 165076,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "957b65d79eb255c84eae9cae986a178799bfb4c7733a637462949a59cb2b0233",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 15.png",
+      "archive_path": "references/JOJOIP规范2025_画板 15.png"
+    },
+    {
+      "name": "JOJOIP规范2025_画板 19.png",
+      "bytes": 317509,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "0e7c7170806af7109f3e706704eaa63b2259f0c14d22a39221288e502d3a6f01",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 19.png",
+      "archive_path": "references/JOJOIP规范2025_画板 19.png"
+    },
+    {
+      "name": "JOJOIP规范2025_画板 5.png",
+      "bytes": 142918,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "abf6ccfed8881bb9ba0da99458d80f5f07c9cc8422f0413d0554dabba60e2dc5",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 5.png",
+      "archive_path": "references/JOJOIP规范2025_画板 5.png"
+    },
+    {
+      "name": "JOJOIP规范2025_画板 7.png",
+      "bytes": 181172,
+      "width": 2835,
+      "height": 1595,
+      "sha256": "251748e8931d750d3554888b08114d106f0b8f22e7a57ab2aac112a82e3903b9",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 7.png",
+      "archive_path": "references/JOJOIP规范2025_画板 7.png"
+    },
+    {
+      "name": "图层 21.png",
+      "bytes": 134519,
+      "width": 2834,
+      "height": 1595,
+      "sha256": "6a4c2fc44b0c1ff944aae1929ca6613513355eb702948b2e141ef664847a8688",
+      "archiveMatchesOriginal": true,
+      "source_path": "/Users/jojo/Downloads/叫叫角色基本/图层 21.png",
+      "archive_path": "references/图层 21.png"
+    }
+  ],
+  "validation_rejections": [
+    {
+      "stage": "before-first-generation",
+      "message": "First attempted request rejected before generation: referenced_image_paths must contain at most 5 paths; selected 5 task-relevant references for turnaround.",
+      "generated_image": false
+    }
+  ],
+  "successful_generation_calls": 6,
+  "calls": [
+    {
+      "name": "01-turnaround",
+      "prompt": "Use case: stylized-concept.\nAsset type: character identity-preserving hand-painted turnaround concept sheet for a future cameo in the Sichuan idle travel game \"旅行癞疙宝\".\nPrimary request: Depict the EXACT Jojo / 叫叫 yellow bird mascot from the supplied character specifications, adapted only in rendering medium to the game's restrained hand-painted look. This is Jojo itself, NOT a new bird inspired by Jojo and NOT a redesigned toad.\nInput images: Image 1 is the authoritative colored identity, clothing and cape turnaround. Images 2 and 3 are the authoritative body/limb proportions. Image 4 is the soft capsule body construction. Image 5 is ONLY a paint, contour and lighting style reference; DO NOT copy its toad anatomy, spots, satchel, chili ornament, scene or objects.\nOutput: ONE landscape 3:2 character sheet, ideally 1536x1024, pale neutral ivory opaque background, very clean, almost no background texture. No environment, collage of existing source pages, diagrams copied verbatim, logos or watermark.\nComposition: clean editorial character reference sheet. Modest title top left exactly \"叫叫 · 彩蛋角色设定\"; small subtitle exactly \"多视图\". Five large equally scaled complete standing views arranged in ONE horizontal row with aligned feet and consistent total height: front, front three-quarter, true side profile, back three-quarter, back. Comfortable margins and no overlap. Short Chinese labels beneath: \"正面\", \"前侧面\", \"侧面\", \"后侧面\", \"背面\". Sparse quiet horizontal alignment guides behind the figures. Small yellow/red/orange/brown paint swatches below, no invented hex codes or measurements. Bottom short caption exactly \"保留原有比例与识别点，只适配手绘质感\".\nIdentity invariants: a rounded vertically oriented stubby capsule, seamless head/body with no neck or waist indentation; soft chick-yellow body, tiny two-lobed yellow tuft, modest dark-brown curved eyebrows, two dark-brown round eyes with white rims and small highlights in the same relative size and placement as image 1, small orange rounded beak. No cheek blush, eyelashes, furry feathers, big duck bill or separate white belly. The upper head region is larger than the lower body region, the lower belly/body height about twice the short exposed leg-plus-foot height. Two small orange legs and compact rounded foot shapes, not anatomical bird claws or webbed duck feet. Yellow droplet-like arms/wings hang from around the body midpoint and are longer than the exposed legs. Preserve the reference's upright stocky silhouette, not a spherical giant head glued to a tiny body. Red-orange cape wraps across the body midpoint and down the back in one rounded hem, fastened at the front by a bow of three rounded lobes, center knot visible. Cape falls BELOW the belly edge but ABOVE the soles; rear view lower back is covered by the red cape. No neck scarf tails, no long superhero flight cape, no jacket, no extra clothes or props. The reference color areas and silhouette must stay unmistakable.\nRendering: restrained matte 2D gouache storybook painting; thin confident dark-brown hand-drawn contour; clean connected yellow color planes with at most one broad gentle shadow per plane; light sparse brush variation, NO random mottled flecks, speckles, grain overlay or dense fabric texture. Keep recognizable light yellow, warm red-orange and orange rather than tinting everything red or muddy brown. No glossy 3D, no clay, no realistic feathers, no anime makeover. Capsule volume and cape wrapping remain readable in each angle. Gentle diffuse neutral daylight and minimal grounded shadows. Accuracy and consistency matter more than ornament.",
+      "referenced_image_paths": [
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 7.png",
+        "/Users/jojo/Downloads/叫叫角色基本/图层 21.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 10.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/public/art/cards/card_daoming_04.webp"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-06794f31-81d9-47c7-8baf-daed6d632aa0.png",
+      "selected_local_copy": "01-turnaround.png",
+      "status": "selected-concept-pending-user-approval"
+    },
+    {
+      "name": "02-construction-initial",
+      "prompt": "Use case: stylized-concept.\nAsset type: second sheet in an identity-preserving Jojo / 叫叫 character understanding set for a future cameo in the Sichuan travel game.\nInput images: Image 1 is the newly generated hand-painted TURNAROUND ANCHOR: keep exactly its identity, colors, yellow body silhouette, head/torso proportions, eyes, tuft, orange beak/feet, red-orange wraparound cape and three-round-lobed front bow, and paint medium. Image 2 is the original official capsule construction reference. Image 3 is the original proportion reference. Image 4 is the original limb-volume reference. Image 5 is the original full-body and eye-perspective reference. All are subject references, not page layouts to trace.\nOutput: one landscape 3:2 image, ideally 1536x1024, as a clean professionally arranged concept reference sheet on the same near-white neutral ivory ground as Image 1. Opaque background, almost no background texture. Title exactly \"叫叫 · 结构与比例\". No logos or watermarks.\nLayout: two balanced rows with generous whitespace, clear separation, and large legible drawings. Upper row: three full-body equally scaled studies with headings \"正面比例\", \"胶囊体块\", \"转向透视\". First is the colored front standing character matching Image 1 with a few slim measurement brackets. Show ONLY these three qualitative callouts, correctly associated: \"头长大于身长\", \"身长约为脚长两倍\", \"手长大于脚长\". These describe the reference design, do not add percentages, numbered grids or fabricated exact dimensions. Middle is the same silhouette in thin brown construction lines with translucent pale blue overlapping rounded end volumes and connecting capsule; no sausage food photo, no split detached head or waist. Third is the same character in front three-quarter view with subtle curved eye-line and torso cross-section guides showing coherent perspective; face features and bow turn with the volume.\nLower row: three close-up modules, headings exactly \"眼部转向\", \"手臂体积\", \"落脚关系\". Eye module shows front and side head mini-studies: far eye foreshortens/disappears in true side, small beak follows the rounded head surface; never eyes on the back. Arm module shows rounded droplet/soft flattened oval cylinder hanging from body midpoint, plus its simple elliptical cross-section, not real feathers or muscular human hands. Foot module shows one short orange leg with compact rounded forward foot resting on a simple ground line, light contact shadow and a small paired-feet standing thumbnail. No duck webbing or claws. Hands may have rounded simplified digits only when opened, no extra arms.\nShort footer exactly \"同一体块转向，五官与披风一起变化\".\nRendering: match Image 1's restrained matte 2D gouache, dark-brown hand-drawn contours and clean connected yellow/red/orange color planes. Construction guides are sparse muted blue-green, not busy neon grids. Preserve recognizable character color and volume; no noisy paper, stippling, fur, granular texture, 3D gloss, white belly, blush, long legs, separate giant baby head, neck, toad proportions, new accessories or background scene. Exact caption spelling, readable Chinese, no extra prose or invented branding. This is a careful production concept study, not an ornamental poster.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 10.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 7.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 19.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025-08.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-cd51c7d1-2666-4f3b-83ae-d3e810209641.png",
+      "selected_local_copy": null,
+      "status": "superseded-not-copied-to-project"
+    },
+    {
+      "name": "03-actions-initial",
+      "prompt": "Use case: stylized-concept.\nAsset type: third sheet in a consistent Jojo / 叫叫 cameo character concept set: facial expression and gentle action studies.\nInput images: Image 1 is the hand-painted TURNAROUND ANCHOR and controls identity, proportions, colors and rendering style. Image 2 is the user's original authoritative colored turnaround. Image 3 is the original beak/mouth mechanics. Image 4 is the original rounded-limb construction. Image 5 is the original body-in-motion and face-perspective study. Preserve this actual Jojo character; do not create a different chick or a toad hybrid.\nOutput: ONE landscape 3:2 image, ideally 1536x1024, clean opaque pale neutral ivory background matching Image 1. Title exactly \"叫叫 · 表情与动作\". No logos or watermark.\nComposition: organized airy reference sheet with TWO clearly separated rows. Top row contains three equally sized HEAD-AND-UPPER-CAPE portraits with short labels \"平静\", \"好奇\", \"轻笑\": calm closed small beak and reference open round eyes; curious slight head tilt and eye direction without inflating eyes; gentle happy eyes and a modest open beak with a small pink tongue. Beak and mouth meet seamlessly at the same edge; no human lips, teeth, long duck bill, detached floating beak or an extra nose. Keep tiny curved brows and two-lobed yellow tuft. No cheek blush.\nBottom row contains FOUR distinct COMPLETE full-body colored actions, same character mass and height except natural gentle bends, short labels \"站定\", \"慢走\", \"招呼\", \"俯身看\". Neutral front-three-quarter standing; a small relaxed side-view walking step with short orange legs, no run or leap; a restrained friendly wave with ONE yellow arm lifted and the other resting, simplified rounded digits if visible, not a separate human hand; modest forward lean looking down curiously with both feet grounded and knees slightly bent. Hands remain rooted near the body midpoint. This is a quiet friendly cameo, not an action superhero or slapstick character. No props, objects, other characters, scene or added clothes. Caption below exactly \"轻轻路过，偶尔打个招呼\".\nCritical identity and geometry: same continuous round capsule head-body, no neck or thin waist; larger head region and visible lower belly like the references, NOT a giant spherical head on tiny body. Same saturated-but-natural chick-yellow, warm red-orange cape, orange beak and feet. Cape wraps across the middle of the body, fastened by three rounded red lobes in front, curved lower hem covers the lower back but stays off the ground; it responds gently to the pose, never turns into a separate scarf, waist belt or enormous billowing flag. Upper arms longer than exposed short legs, compact rounded feet, no claws or webbing, no duplicate limbs. Preserve full bodies without crops.\nStyle: identical to Image 1: restrained matte 2D hand-painted gouache, fine warm deep-brown structural outlines, clean connected color fields, very sparse gentle directional brushwork, few large readable shadow planes. No mottled flecks, random grain, fur, feather tufts across the body, dark gritty outlines, muddy brown/yellow cast or 3D toy look. Keep expressions recognizable and subtly distinct, poses readable at small scene scale. Chinese text exact and legible; no extra text.",
+      "referenced_image_paths": [
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 15.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 19.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025-08.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-8cd28c9a-5da3-4ac6-8f4c-439b5c3a985d.png",
+      "selected_local_copy": null,
+      "status": "superseded-not-copied-to-project"
+    },
+    {
+      "name": "02-annotation-correction",
+      "prompt": "Use case: precise-object-edit.\nInput image: the existing Jojo structure/proportion sheet is the sole EDIT TARGET.\nPrimary request: Correct ONLY the three blue annotation callouts at the far left of the upper-left front-view study. They currently use measurement brackets in the wrong places. Remove all three blue vertical measurement brackets and their ticks in that narrow far-left annotation area. Remove the bottom text \"手长大于脚长\" that is incorrectly positioned beside the feet.\nKeep the top two existing blue text statements \"头长大于身长\" and \"身长约为脚长两倍\" as unconnected explanatory notes, without brackets; do not change their wording. Place the same third statement \"手长大于脚长\" beside the hanging yellow arm at its midpoint height (NOT next to the orange legs) and use one very short fine blue leader that points unambiguously to the yellow arm silhouette. Fit the three notes legibly within the existing blank space to the left of the standing character; if necessary stack them with tasteful spacing but do not alter the character or other modules.\nAlso cleanly typeset the upper-middle heading exactly \"胶囊体块\", same dark brown type size as the other module headings, without overprinted duplicate strokes.\nPreserve EVERYTHING else: every character drawing, all their dimensions/poses/proportions/colors/eyes/cape/legs, all other blue construction lines, the six-panel composition, all remaining text and captions, neutral ivory background, 3:2 canvas and restrained hand-painted paint texture. No new content, no global color or texture change, no cropping, no redrawing the mascot, no extra labels. The goal is a precise small diagram-annotation correction, not a new version of the illustration.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-cd51c7d1-2666-4f3b-83ae-d3e810209641.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-2d8fb759-a14b-4854-803b-983de5510529.png",
+      "selected_local_copy": null,
+      "status": "superseded-not-copied-to-project"
+    },
+    {
+      "name": "03-profile-correction",
+      "prompt": "Use case: precise-object-edit.\nImage 1 is the only EDIT TARGET: Jojo expression and action sheet.\nImage 2 is the official colored turnaround for identity and side-profile facial geometry ONLY.\nImage 3 is the consistent hand-painted turnaround for paint style and side-profile geometry ONLY.\nCorrect ONE local issue: in Image 1's BOTTOM ROW, SECOND full-body figure, the one labelled \"慢走\", the beak sits outside the face silhouette while two frontal eyes remain visible. Make this single walking figure a coherent TRUE LEFT-FACING SIDE PROFILE matching the side profile in Images 2 and 3. Show ONE visible round white-rimmed dark-brown eye on the near side, ONE small curved brow, and the tiny orange beak protruding gently from the left head outline. Remove only the wrongly visible second eye and extra brow; arrange the single visible eye and beak as in the reference side view. Keep the walking pose, capsule-shaped body, short stepping legs, red wraparound cape, bow, colors, scale and foot position.\nPreserve the entire rest of Image 1 unchanged: title, three top expressions, other three actions, all seven Chinese labels, caption, character identities, layout, colors, background and texture. No new figures or objects, no changed gestures, no new facial marks. One local facial-perspective correction only. Keep original 1536x1024 3:2 framing and clean matte gouache.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-8cd28c9a-5da3-4ac6-8f4c-439b5c3a985d.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Documents/ChatGPT/旅行癞疙宝/outputs/ip-concept/jojo-cameo-v1/01-turnaround.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-c42e9115-e2a8-4582-8677-a8da2118d8fa.png",
+      "selected_local_copy": "03-expressions-actions.png",
+      "status": "selected-concept-pending-user-approval"
+    },
+    {
+      "name": "02-perspective-correction",
+      "prompt": "Edit the FIRST supplied image only, a completed 1536x1024 Chinese Jojo character construction sheet. Make one tightly localized correction in the TOP RIGHT study under 转向透视. The other two images are the authoritative original Jojo turnaround and perspective references.\n\nProblem: this top-right figure currently has two front-facing eyes but its orange beak protrudes off the extreme left head silhouette like a profile. Its red front bow is also too far left. This is inconsistent facial perspective.\n\nCorrection: keep this figure a coherent FRONT THREE-QUARTER VIEW toward viewer's left, following the original references. Reposition the small orange beak onto the curved front facial surface BETWEEN the two eyes, a little below the eye centers, no longer protruding off the far left silhouette. Subtly adjust the eyes if necessary so the farther eye has plausible foreshortening; keep two visible eyes. Align the front red three-lobed cape bow under the face's vertical centerline, with the cape edge wrapping naturally. Adjust only the blue local construction centerline if needed to match this orientation. Preserve the existing overall head and body silhouette, yellow color, tuft, limbs, feet, capsule proportions, cape volume and pose.\n\nDo NOT change any of the other five studies, Chinese text, callouts, headings, margins, panel arrangement, off-white background, thin brown outlines, low-mottling gouache texture, palette or canvas dimensions. Especially keep the corrected left arm callout and the bottom-left true side-profile study exactly as they are. No additional details, no facial blush, no white belly, no toad characteristics. Produce the same single complete sheet with just this local perspective correction.",
+      "referenced_image_paths": [
+        "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-2d8fb759-a14b-4854-803b-983de5510529.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025_画板 5.png",
+        "/Users/jojo/Downloads/叫叫角色基本/JOJOIP规范2025-08.png"
+      ],
+      "native_output": "/Users/jojo/.codex/generated_images/01a09f41-387a-7dd3-a948-906ff221d891/exec-d07377a1-ebc5-44ee-b04a-b4fc199176c7.png",
+      "selected_local_copy": "02-construction-proportions.png",
+      "status": "selected-concept-pending-user-approval"
+    }
+  ],
+  "selected_outputs": [
+    {
+      "name": "01-turnaround.png",
+      "bytes": 1541226,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "b13d4529896d3d8368aa6cdf7abf61bf8e87d5564526026810c837b9e34e012c",
+      "archiveMatchesNative": true
+    },
+    {
+      "name": "02-construction-proportions.png",
+      "bytes": 1728927,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "d2b0ff60f8467756f3682d1ef228a5ff63832d6ae2153fa6cbcf7abdeb95f094",
+      "archiveMatchesNative": true
+    },
+    {
+      "name": "03-expressions-actions.png",
+      "bytes": 1653668,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "hasAlpha": false,
+      "sha256": "d9bbe0a4f682cf4a3d51e2c4019a5b42cfeee5771fe993c9fa7d9c5b27f0a37d",
+      "archiveMatchesNative": true
+    }
+  ],
+  "processing": "只以cp -n逐字节复制所选原生PNG；没有裁切、缩放、换色、抠图或程序重绘。项目目录不保存未选中的过程图；原生工具输出留在默认生成目录。",
+  "protected_runtime": {
+    "files": 90,
+    "sha256": "e0b2dcc75d1fef8828f94d01f1cd85d4b30ba14608e5de71d6d7f000df8e0d9b"
+  },
+  "runtime_status": {
+    "branch": "main",
+    "local_head": "5c9fae1f23c848a1e06e2c8040bce421c24b2f11",
+    "mini_source_head": "5c9fae1f23c848a1e06e2c8040bce421c24b2f11",
+    "mini_release": "db87df67675d56b1a035e74e812fd5e1281cc6e8",
+    "app_version": "1.4.6",
+    "github_live_check": "本轮SSH443只读查询超时；未声称实时远端校验成功。",
+    "committed": false,
+    "pushed": false,
+    "deployed": false
+  }
+}
