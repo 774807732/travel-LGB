@@ -1,5 +1,7 @@
 # 元素映射
 
+2026-09-16正式映射：Mini `current → releases/357d63ba17460d1870863fd7f955f8b7de985684`（1.4.7），Git已推送；本地72/Mini66测试、两次69文件哈希核对及正式四趟彩蛋/两新收藏/备份去重通过。正式并发手账图片偶发502已复现，默认静态服务连接队列5，调整待确认，HTTPS整体验收仍未关闭。1.4.6 db87df6留作回滚；下方准备/未接入记录为历史。
+
 2026-09-16｜1.4.7映射已落地，用户明确推送Git并只发布Mini：`category_jojo`为跨原四地点的彩蛋分类，不是`RouteId`。`card_jojo_01–04`依次对应竹乡/坝坝茶/河街/田坝，源图依次抓虫v3/豌杂面v2/水车/等风，网页`/art/cards/card_jojo_01–04.webp?v=jojo-v1`；旧16卡顺序/缓存路径不变。`cards[].souvenirId`绑定`01→souvenir_caterpillar`、`02→souvenir_wanza_noodles`，`souvenirsForCard`统一抽取及存档验证；其他卡用原地点三物未收优先，每趟一件。两PNG在`public/art/items/`，不进入FOODS/GEARS；存档键/version=2不变。72项本地测试/构建和独立档通过，待推送发布；后续以[验收记录](outputs/release/1.4.7-叫叫彩蛋发布验收.MD)为准，下面未接入记录为历史。
 
 2026-09-16 收藏草案映射：`card_jojo_01 → souvenir_caterpillar（猪儿虫）`，`card_jojo_02 → souvenir_wanza_noodles（豌杂面）`，后两则无新增收藏。对应透明PNG在 `outputs/art/source/jojo-souvenirs-v1/`；`jojo-stories-v1/content-draft.json` 的 `souvenirs / cards[].souvenirId / souvenirAssociation` 记录关系，交付清单同步。新9文件ZIP包含四见闻与两收藏，旧7文件ZIP为历史快照。该关联不表示已实现必得或额外掉落；运行时 `SouvenirId / SOUVENIRS / CARDS / ROUTES / manifest`、12件收藏、吃食/存档均不变，无发布。
@@ -68,9 +70,9 @@
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main` 与 Mini `source` 跟踪最新文档；`current → releases/db87df67675d56b1a035e74e812fd5e1281cc6e8` 是现用应用，63文件哈希一致，`1735608`及更早版本留作回滚 |
+| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main`与Mini `source`跟踪最新文档；`current → releases/357d63ba17460d1870863fd7f955f8b7de985684`是现用1.4.7应用，69文件哈希一致，`db87df6`及更早版本留作回滚 |
 | 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mini `current`、设置页 `1.4.6`、桌面760px四列手账、底部「不会自动同步存档」、帮助「旅途随机一到四小时」、小铺筒靴鞋、手账16卡/12物及「坝坝宴，安逸～」；场景仍用 `yard-web-wall.webp` |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mini `current`、设置页1.4.7、桌面760px四列、20卡/14物、叫叫分类、存档提示；场景仍用`yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
@@ -102,13 +104,13 @@
 | 斑驳、碎斑、点状纹理、画面太花 | 材质与阴影的高频碎色块；第二轮以第一轮为底再减约 60% | 九张 `public/art/cards/card_*.webp`；重点树叶/草丛/大青砖，不等同于角色主要疙瘩或石板接缝 |
 | 减纹理版、干净版见闻、第二轮 | 当前九张重绘图，卡片 ID 与存档不变 | `outputs/art/source/cards-clean-v2/` → 原 WebP 路径；`cardImage(id)` 加 `?v=clean-v2` |
 | 上一版、第一轮、对照底图 | 本次编辑基准，不是最初原图 | 原生源图 `outputs/art/source/cards-clean-v1/`；网页备份 `outputs/art/review/cards-clean-v1/`；最初原图仍在 `review/cards-original-v1/` |
-| 收齐几张、图鉴进度 | 不同卡种数 / 总数 16（本地与 Mini 一致） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
+| 收齐几张、图鉴进度 | 不同卡种数 / 总数20（本地与Mini一致） | `state.unlockedCards.length / CARDS.length`、`.collection-heading` |
 | 第几次收到 | 每种卡的累计记录 | `state.cardCollection[cardId]` |
 | 手账、相册 | 三类收藏 | `panel='journal/souvenirs/records'`、`.journal-tabs` |
-| 见闻墙、全部见闻 | 手账连续排列十六张卡，桌面每行4张、窄屏3张，本地与Mini一致，不按地点分组；路线ID仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`Sheet.wide`、`.sheet-wide .card-grid`、`.postcard-thumb`；三标签共用桌面760px宽度 |
+| 见闻墙、全部见闻 | 手账连续排列20张，桌面4列、窄屏3列，不按地点分组；路线ID仍用于旅行规则 | `panel='journal'`、`CARDS.map`、`Sheet.wide`、`.sheet-wide .card-grid`、`.postcard-thumb`；叫叫4卡追加末尾 |
 | 等一封来信、未解锁卡 | 隐藏地点和插画的占位卡，解锁后可打开详情 | `.postcard-thumb.undiscovered`、`state.unlockedCards`、`readCard` |
 | 小格子、陈列架、架上物件 | 最近纪念物入口 / 无白框透明物件 | `.gift-prop`、`.item-art[src*="/souvenir_"]`、`state.completed.at(-1).souvenirId` |
-| 透明抠图、物品白底 | 十二纪念物 PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；`scripts/extract-souvenirs.mjs` 去背景 |
+| 透明抠图、物品白底 | 14纪念物PNG，不是按钮底色 | `itemImage`、`public/art/items/souvenir_*.png`；旧物去背景使用`extract-souvenirs.mjs`，新两件保留模型原生alpha |
 | 手信、礼物、土货、小东西 | 14种，每趟1件；抓虫/面卡绑定新物，其他卡用原地点3物未收优先 | `CARDS[].souvenirId`、`souvenirsForCard`、`SOUVENIRS`、`state.souvenirs`、`panel='object'` |
 | 竹乡手信 | 小竹垫、小竹篮、竹蜻蜓 | `route_daoming` → `souvenir_bamboo_mat / souvenir_bamboo_basket / souvenir_bamboo_dragonfly` |
 | 坝坝茶手信 | 小盖碗、小竹凳、小蒲扇 | `route_chengdu_tea` → `souvenir_gaiwan / souvenir_tea_stool / souvenir_palm_fan` |
