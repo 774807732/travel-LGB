@@ -20,9 +20,9 @@ const now = 1_800_000_000_000;
 const meal: Loadout = { food: "food_home_meal", gear: null };
 const packed = () => prepareTrip(newGame(now), meal, now);
 
-test("免费饭：零盘缠也可准备，不修改输入", () => {
+test("免费饭免吃食费用，零盘缠不能准备，不修改输入", () => {
   const state = { ...newGame(now), coins: 0 };
-  assert.equal(prepareTrip(state, meal, now).phase, "packed");
+  assert.throws(() => prepareTrip(state, meal, now), /出门需要 12 文盘缠/);
   assert.equal(state.phase, "home");
 });
 test("教学边界：15 秒出发，60 秒来信，105 秒归来", () => {
@@ -35,7 +35,7 @@ test("教学边界：15 秒出发，60 秒来信，105 秒归来", () => {
   assert.equal(advanceGame(p, now + 104999).phase, "traveling");
   const returned = advanceGame(p, now + 105000);
   assert.equal(returned.phase, "home");
-  assert.equal(returned.coins, 32);
+  assert.equal(returned.coins, 20);
   assert.equal(returned.souvenirCount, 1);
 });
 test("离线跨多个节点只结算一趟，读信和重放推进不重复奖励", () => {
@@ -43,11 +43,11 @@ test("离线跨多个节点只结算一趟，读信和重放推进不重复奖�
   assert.equal(offline.completed.length, 1);
   const reloaded = JSON.parse(JSON.stringify(offline));
   const read = markLetterRead(reloaded, "trip_1", now + 86400000 * 8);
-  assert.equal(advanceGame(read, now + 86400000 * 9).coins, 32);
+  assert.equal(advanceGame(read, now + 86400000 * 9).coins, 20);
   assert.equal(read.souvenirCount, 1);
   assert.deepEqual(read.unlockedCards, ["card_daoming_01"]);
 });
-test("取消不损耗；出发仅扣吃食，不扣永久用具", () => {
+test("取消不损耗；出发扣吃食和路费，不扣永久用具", () => {
   const start = newGame(now);
   start.inventory.food_yeerba = 1;
   start.ownedGear.push("gear_bamboo_flask");

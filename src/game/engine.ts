@@ -57,6 +57,11 @@ export type GameState = {
 };
 export const HARVEST_INTERVAL = 4 * 60 * 60 * 1000;
 export const HARVEST_CAP = 3;
+export const TRIP_COST = 12;
+// 准备时不扣款，但小铺不能花掉这一趟已预留的路费。
+export function spendableCoins(state: GameState): number {
+  return Math.max(0, state.coins - (state.phase === "packed" ? TRIP_COST : 0));
+}
 export const CARD = { ...CARDS[0], place: "道明竹乡" }; // 兼容早期原型引用。
 export function newGame(now: number, seed = hashSeed(now)): GameState {
   return {
@@ -195,6 +200,14 @@ export function advanceGame(input: GameState, requestedNow: number): GameState {
     now >= state.departureAt &&
     state.bag
   ) {
+    // 兼容旧版余额不足的预备档：到点仍留在家，吃食/盘缠不动，收成后可重新准备。
+    // 不对已经在途的旧旅程补扣，也不增加需要迁移的扣款标记。
+    if (state.coins < TRIP_COST) {
+      state.phase = "home";
+      state.bag = null;
+      state.departureAt = null;
+      return state;
+    }
     const start = state.departureAt;
     const seed = hashSeed(state.seed ^ state.nextTripNumber);
     const result = tripResult(state, state.bag, seed);
@@ -211,6 +224,7 @@ export function advanceGame(input: GameState, requestedNow: number): GameState {
       seed,
     };
     if (state.bag.food !== "food_home_meal") state.inventory[state.bag.food]--;
+    state.coins -= TRIP_COST;
     state.nextTripNumber++;
     state.tutorialStarted = true;
     state.phase = "traveling";
@@ -258,6 +272,8 @@ export function prepareTrip(
     throw new Error("这份吃食没有库存，可选免费的家常饭。");
   if (loadout.gear !== null && !state.ownedGear.includes(loadout.gear))
     throw new Error("还没有这个用具。");
+  if (state.coins < TRIP_COST)
+    throw new Error(`出门需要 ${TRIP_COST} 文盘缠，还差 ${TRIP_COST - state.coins} 文，先去院坝收成吧。`);
   if (
     state.phase === "packed" &&
     state.bag?.food === loadout.food &&
@@ -312,8 +328,10 @@ export function buyItem(
     throw new Error("家常饭不用买，直接装进行囊就好。");
   const item = [...FOODS, ...GEARS].find((x) => x.id === id);
   if (!item) throw new Error("小铺里没有这件东西。");
-  if (state.coins < item.price)
-    throw new Error("盘缠不够，先带一份免费的家常饭吧。");
+  if (spendableCoins(state) < item.price)
+    throw new Error(state.phase === "packed"
+      ? `这趟已预留 ${TRIP_COST} 文路费，可用盘缠不够；可以先去院坝收成，或取消准备。`
+      : "盘缠不够，先去院坝收成吧。");
   if (GEARS.some((x) => x.id === id)) {
     if (state.ownedGear.includes(id as GearId))
       throw new Error("这个用具已经有了，不用再买。");

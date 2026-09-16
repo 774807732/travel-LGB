@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { CARDS, ROUTES, cardImage } from "./content";
-import { advanceGame, prepareTrip } from "./engine";
+import { advanceGame, prepareTrip, TRIP_COST } from "./engine";
+import { withTravelBudget } from "./fixtures/travel-budget";
 import { decodeSave, exportGame, isGameState, DEBUG_SAVE_KEY, SAVE_KEY } from "./storage";
 import { twelveCardSave } from "./fixtures/twelve-card-save";
 
@@ -65,6 +66,7 @@ test("四地新卡按未见优先获得，来信/归来及导出导入后刷新�
   const oldTrips = structuredClone(state.completed);
   const awarded = new Set<string>();
   for (let n = 0; n < 60 && awarded.size < 4; n++) {
+    state = withTravelBudget(state);
     const packed = prepareTrip(state, meal, state.lastSeenAt + 1);
     const out = advanceGame(packed, packed.departureAt!);
     const trip = out.trip!;
@@ -79,7 +81,7 @@ test("四地新卡按未见优先获得，来信/归来及导出导入后刷新�
     assert.equal(letter.souvenirCount, state.souvenirCount);
     assert.deepEqual(advanceGame(letter, trip.letterAt).cardCollection, letter.cardCollection);
     const returned = advanceGame(decodeSave(exportGame(letter)).state, trip.returnsAt);
-    assert.equal(returned.coins, state.coins + 8);
+    assert.equal(returned.coins, state.coins - TRIP_COST + 8);
     assert.equal(returned.souvenirCount, state.souvenirCount + 1);
     assert.deepEqual(decodeSave(exportGame(returned)).state, returned);
     const refreshed = advanceGame(decodeSave(exportGame(returned)).state, trip.returnsAt + 1);

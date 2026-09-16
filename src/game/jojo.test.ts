@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { CARDS, FOODS, GEARS, ROUTES, SOUVENIRS, cardImage, souvenirsForCard } from "./content";
-import { advanceGame, prepareTrip } from "./engine";
+import { advanceGame, prepareTrip, TRIP_COST } from "./engine";
+import { withTravelBudget } from "./fixtures/travel-budget";
 import { decodeSave, exportGame, isGameState } from "./storage";
 import { sixteenCardSave } from "./fixtures/sixteen-card-save";
 
@@ -70,6 +71,7 @@ test("20 种子旧满档自然获得四彩蛋及两新物，每趟只一件且�
     let state = sixteenCardSave();
     state.seed = seed;
     for (let n = 0; n < 60 && state.unlockedCards.length < 20; n++) {
+      state = withTravelBudget(state);
       const packed = prepareTrip(state, meal, state.lastSeenAt + 1);
       const wait = packed.departureAt! - state.lastSeenAt - 1;
       assert.ok(wait >= 120000 && wait <= 300000);
@@ -84,9 +86,9 @@ test("20 种子旧满档自然获得四彩蛋及两新物，每趟只一件且�
       const letter = advanceGame(decodeSave(exportGame(out)).state, trip.letterAt);
       assert.ok(letter.unlockedCards.includes(trip.cardId));
       assert.deepEqual(letter.souvenirs, state.souvenirs);
-      assert.equal(letter.coins, state.coins);
+      assert.equal(letter.coins, state.coins - TRIP_COST);
       const returned = advanceGame(decodeSave(exportGame(letter)).state, trip.returnsAt);
-      assert.equal(returned.coins, state.coins + 8);
+      assert.equal(returned.coins, state.coins - TRIP_COST + 8);
       assert.equal(returned.souvenirCount, state.souvenirCount + 1);
       assert.equal(Object.values(returned.souvenirs).reduce((a, b) => a + b, 0), returned.completed.length);
       const again = advanceGame(decodeSave(exportGame(returned)).state, trip.returnsAt);

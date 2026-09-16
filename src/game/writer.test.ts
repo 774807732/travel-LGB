@@ -132,9 +132,15 @@ test("连续操作在排他事务内读最新档；收成不重复，采购与�
     saveGame(s, SAVE_KEY, advanceGame(packed, packed.departureAt!));
   });
   const end = loadGame(s, SAVE_KEY, f.now()).state;
-  assert.equal(end.coins, 28);
+  assert.equal(end.coins, 16);
   assert.equal(end.phase, "traveling");
   assert.equal(end.inventory.food_sweet_potato_congee, 0);
+  const repeatDeparture = () => a.writer.run(() => {
+    const current = loadGame(s, SAVE_KEY, f.now()).state;
+    saveGame(s, SAVE_KEY, advanceGame(current, end.lastSeenAt));
+  });
+  await Promise.all([repeatDeparture(), repeatDeparture(), repeatDeparture()]);
+  assert.equal(loadGame(s, SAVE_KEY, f.now()).state.coins, 16);
   f.close();
 });
 

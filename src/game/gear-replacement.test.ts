@@ -7,7 +7,7 @@ import { decodeSave, isGameState } from "./storage";
 const now = 1_800_000_000_000;
 const legacyId = "gear_oilpaper_umbrella";
 const bag: Loadout = { food: "food_home_meal", gear: legacyId };
-const ownedSave = () => ({ ...newGame(now, 71), coins: 0, ownedGear: [legacyId] });
+const ownedSave = () => ({ ...newGame(now, 71), coins: 12, ownedGear: [legacyId] });
 
 test("旧伞持有/预备档直接显示筒靴，不重买、不重置出发时间或改变路线倾向", () => {
   const owned = decodeSave(JSON.stringify(ownedSave()));
@@ -23,7 +23,7 @@ test("旧伞持有/预备档直接显示筒靴，不重买、不重置出发时�
   assert.deepEqual(restored, packed);
   assert.equal(prepareTrip(restored, bag, now + 2).departureAt, packed.departureAt);
   const cancelled = cancelPreparation(restored, now + 2);
-  assert.equal(cancelled.coins, 0);
+  assert.equal(cancelled.coins, 12);
   assert.deepEqual(cancelled.ownedGear, [legacyId]);
   assert.deepEqual(routeWeights(bag), { route_daoming: 1, route_chengdu_tea: 1, route_huanglongxi: 2, route_tianba: 1 });
 });

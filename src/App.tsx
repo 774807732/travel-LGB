@@ -12,6 +12,8 @@ import {
   newGame,
   nextEventAt,
   prepareTrip,
+  spendableCoins,
+  TRIP_COST,
   type GameState,
   type Loadout,
 } from "./game/engine";
@@ -500,14 +502,18 @@ export default function App() {
           : "疙宝在家，正安逸着";
   const statusCopy =
     state.phase === "packed"
-      ? "出门前还能改。它收拾妥当，就自己走。"
+      ? state.coins < TRIP_COST
+        ? `出门还差 ${TRIP_COST - state.coins} 文盘缠，先去院坝收成吧。`
+        : `已预留 ${TRIP_COST} 文路费，出门才扣；出门前还能改。`
       : state.phase === "traveling"
         ? state.trip?.number === 1
           ? "第一次出门，就在附近走走。"
           : "这趟大约半天内回来，不用一直守着。"
+        : state.coins < TRIP_COST
+          ? `出门还差 ${TRIP_COST - state.coins} 文盘缠，先去院坝收成吧。`
         : state.completed.length
           ? "歇够了，再给它备一份吃的。"
-          : "一份家常饭，就能开始第一趟小旅行。";
+          : `备好一份家常饭和 ${TRIP_COST} 文盘缠，就能开始小旅行。`;
   const titles: Record<Exclude<Panel, null>, string> = {
     bag: "收拾行囊",
     food: "带点什么吃的",
@@ -755,7 +761,7 @@ export default function App() {
             模拟离线一天
           </button>
           <button
-            disabled={!canWrite || state.phase !== "home"}
+            disabled={!canWrite || state.phase !== "home" || state.coins < TRIP_COST}
             onClick={() => perform((s, now) => prepareTrip(s, emptyBag, now))}
           >
             用家常饭再出一趟
@@ -834,14 +840,22 @@ export default function App() {
                 {state.phase === "traveling"
                   ? "包包已经背走了，等它回来再收拾。不用担心，这趟的吃食已经带上。"
                   : state.phase === "packed"
-                    ? "吃食先留着，出门才消耗。改完确认会重新等待；原样确认不会催它，也不会重置时间。"
-                    : "去哪儿由疙宝自己决定。吃食和用具只影响它的兴致；免费家常饭也能收齐全部见闻。"}
+                    ? "吃食和路费先留着，出门才消耗。改完确认会重新等待；原样确认不会催它，也不会重置时间。"
+                    : "去哪儿由疙宝自己决定。吃食和用具只影响它的兴致；家常饭不用买，路费要备好。"}
               </div>
               {state.phase !== "traveling" && (
                 <>
+                  <p className="notice" aria-label="出游盘缠">
+                    每次出门消耗 {TRIP_COST} 文盘缠，首趟也一样。准备和取消不扣款。
+                    {state.coins < TRIP_COST
+                      ? `现有 ${state.coins} 文，还差 ${TRIP_COST - state.coins} 文，先去院坝收成吧。`
+                      : state.phase === "packed"
+                        ? `现有 ${state.coins} 文，已为这趟留好 ${TRIP_COST} 文。`
+                        : `现有 ${state.coins} 文，出门时再扣。`}
+                  </p>
                   <button
                     className="primary"
-                    disabled={!canWrite}
+                    disabled={!canWrite || state.coins < TRIP_COST}
                     onClick={async () => {
                       if (
                         await perform(
@@ -862,7 +876,7 @@ export default function App() {
                       disabled={!canWrite}
                       onClick={async () => {
                         if (
-                          await perform(cancelPreparation, "先在家歇歇，吃食还在。")
+                          await perform(cancelPreparation, "先在家歇歇，吃食和盘缠都还在。")
                         )
                           setPanel(null);
                       }}
@@ -935,7 +949,7 @@ export default function App() {
                 </span>
                 <span>
                   <b>不带用具</b>
-                  <small>一份吃的，就可以出门</small>
+                  <small>不用额外添用具，备好吃食和路费就行</small>
                 </span>
                 {!draft.gear && <Icon name="check" size={20} />}
               </button>
@@ -981,8 +995,11 @@ export default function App() {
                 </span>
               </div>
               <p className="muted intro">
-                不用样样都买，一份家常饭也能走遍四处。
+                不用样样都买，家常饭免费；每次出门还需 {TRIP_COST} 文盘缠。
               </p>
+              {state.phase === "packed" && (
+                <p className="notice">这趟需留出 {TRIP_COST} 文路费，小铺可用 {spendableCoins(state)} 文；取消准备后解除预留。</p>
+              )}
               <h3 className="section-label">
                 吃点好的 <small>每趟一份</small>
               </h3>
@@ -1000,7 +1017,7 @@ export default function App() {
                   </div>
                   <button
                     className="price-button"
-                    disabled={!canWrite || state.coins < item.price}
+                    disabled={!canWrite || spendableCoins(state) < item.price}
                     aria-label={"购买" + item.name + "，" + item.price + "文"}
                     onClick={async () => {
                       if (
@@ -1032,7 +1049,7 @@ export default function App() {
                     disabled={
                       !canWrite ||
                       state.ownedGear.includes(item.id) ||
-                      state.coins < item.price
+                      spendableCoins(state) < item.price
                     }
                     aria-label={"购买" + item.name + "，" + item.price + "文"}
                     onClick={async () => {
@@ -1053,7 +1070,7 @@ export default function App() {
               ))}
               <div className="paper-note">
                 院坝每四小时攒一份收成，每份换 12 文，最多留三份。旅途归来再添 8
-                文。没有盘缠，也不会卡住旅行。
+                文。出门消耗 {TRIP_COST} 文；盘缠不足时，等收成攒够再出发。
               </div>
               <button className="secondary" onClick={() => open("bag")}>
                 去收拾行囊
@@ -1459,7 +1476,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                  旅行癞疙宝 · 1.4.7
+                  旅行癞疙宝 · 1.4.8
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
@@ -1479,7 +1496,7 @@ export default function App() {
                 </li>
                 <li>
                   <b>装好一份吃的</b>
-                  <p>家常饭免费，用具可不带。第一趟约两分钟就能完整体验。</p>
+                  <p>家常饭免费，用具可不带。每次实际出门扣 {TRIP_COST} 文盘缠，首趟也一样；准备只预留，取消不扣。第一趟约两分钟就能完整体验。</p>
                 </li>
                 <li>
                   <b>把时间留给它</b>
@@ -1495,7 +1512,7 @@ export default function App() {
                 </li>
               </ol>
               <div className="paper-note">
-                不催它，不会饿着，也不会走丢。没有盘缠，还有家常饭。
+                不催它，不会饿着，也不会走丢。家常饭免费，路费不足就先在家歇歇，去院坝收成再出发。
               </div>
             </div>
           )}

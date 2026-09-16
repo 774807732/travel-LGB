@@ -1,5 +1,9 @@
 # 元素映射
 
+2026-09-16发布准备：版本在`package.json/package-lock.json/App.tsx`统一为1.4.8，`TRIP_COST=12`及旧档规则不再改动。本地82游戏测试/4服务测试/构建/最终独立档通过，准备推Git及Mini；正式current此刻仍357d63b，将保留回滚，存档ID/键/格式不迁移。
+
+2026-09-16本地扣费映射：`engine.ts / TRIP_COST=12`统一每趟路费；`prepareTrip`校验余额但不扣，`spendableCoins`仅在packed时扣除12文预留供`buyItem`和小铺按钮共用；`advanceGame`仅在packed→traveling扣`state.coins`，`cancelPreparation`释放预留且不扣款。不新增扣费存档字段，正常/独立档键及version=2不变；旧在途不追扣，旧不足额准备档到点回home并清空bag/departureAt，保留吃食，收成后需手动重备。新增`trip-cost.test.ts`/`fixtures/travel-budget.ts`与合成验收脚本，82测试/构建及独立档通过；尚未提交推送或部署，Mini应用仍357d63b。
+
 2026-09-16最新映射：队列修复`f4901aa`已推送/同步Mini，`deploy/mac-mini/serve.py → /Users/jojo/Sites/travel-LGB/web/queue128-v1/serve.py`（SHA-256 `4dc5787144b7a15f344711cdcb293b9ad73db2d9fa3ef0654e9973202445f448`），仅覆盖`request_queue_size=128`。web服务重载，旧plist在Mini `service-backups/web-before-queue128-20260916/`；8788/0.0.0.0/current及alias/https不变。正式20卡×10轮哈希与独立档桌面/390px/收藏/刷新通过，1.4.7本次缺口关闭；应用357d63b及69文件保持原哈希，所有内容ID/存档映射不改，1.4.6回滚保留。
 
 2026-09-16正式映射：Mini `current → releases/357d63ba17460d1870863fd7f955f8b7de985684`（1.4.7），Git已推送；本地72/Mini66测试、两次69文件哈希核对及正式四趟彩蛋/两新收藏/备份去重通过。正式并发手账图片偶发502已复现，默认静态服务连接队列5，调整待确认，HTTPS整体验收仍未关闭。1.4.6 db87df6留作回滚；下方准备/未接入记录为历史。
@@ -93,8 +97,10 @@
 | 行囊、准备栏 | 一吃食一用具的配置 | `panel='bag'`、`draft`、`state.bag` |
 | 吃的、干粮 | 必选槽 | `Loadout.food`、`panel='food'` |
 | 家伙什、工具 | 可选永久槽 | `Loadout.gear`、`panel='gear'` |
-| 收拾好了 | 预留后等待自行出发 | `prepareTrip` |
-| 先不出门 | 取消预留、不耗库存 | `cancelPreparation` |
+| 收拾好了 | 校验余额≥12文；预留吃食/路费后等待出发，不立即扣款 | `prepareTrip` |
+| 先不出门 | 取消预留、不耗吃食或盘缠 | `cancelPreparation` |
+| 出游路费、出门12文 | 每次packed→traveling消耗12文，首趟同样；归来仍+8 | `TRIP_COST`、`advanceGame`、`state.coins` |
+| 小铺可用盘缠 | 准备时从总余额留出12文；取消后解除，不增存档字段 | `spendableCoins`、`buyItem`、`App.tsx`小铺/行囊/帮助 |
 | 簸箕、晒谷子、收成 | 定时积累 / 换盘缠；桌面左下斜排，手机不变 | 横版 `.harvest-wide / .harvest-tray`、`WIDE_HARVEST_TRAYS`（共用图像/碰撞中心）；竖版 `.harvest-props`；层级 3，`availableHarvests / harvest` |
 | 簸箕大小、素材放大 20% | 三簸箕显示宽高各 ×1.2，非移动中心或重绘图片 | `.harvest-tray` 宽 `clamp(69.12px,7.68%,92.16px)`，`aspect-ratio:1`；点击框随按钮尺寸，碰撞在 `WIDE_WALK_MAPS.yard` |
 | 收成提示条、慢慢来 | 独立点击收成入口，桌面底部居中 | `.harvest-caption`，中心横向 50% / 顶部 91%，仍调用 `onHarvest` |

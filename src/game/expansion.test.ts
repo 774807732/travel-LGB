@@ -3,9 +3,11 @@ import assert from "node:assert/strict";
 import { advanceGame, buyItem, newGame, prepareTrip, routeWeights, type GameState, type Loadout } from "./engine";
 import { decodeSave, isGameState } from "./storage";
 import { SOUVENIRS } from "./content";
+import { withTravelBudget } from "./fixtures/travel-budget";
 const now = 1_800_000_000_000;
 const meal: Loadout = { food: "food_home_meal", gear: null };
 function depart(state: GameState, loadout = meal) {
+  state = withTravelBudget(state);
   const packed = prepareTrip(state, loadout, state.lastSeenAt + 1);
   return advanceGame(packed, packed.departureAt!);
 }
@@ -28,6 +30,7 @@ test("红苕见闻只按出发快照触发，库存耗完/途中添购不会改�
   for (let seed = 1; seed <= 16 && !found; seed++) {
     let state = finish(depart(newGame(now, seed)));
     for (let i = 0; i < 12; i++) {
+      state = withTravelBudget(state, 28); // 12文路费，以及出发前/途中的两份8文吃食。
       state = buyItem(state, "food_sweet_potato_congee", state.lastSeenAt);
       const out = depart(state, { food: "food_sweet_potato_congee", gear: null });
       assert.equal(out.inventory.food_sweet_potato_congee, 0);

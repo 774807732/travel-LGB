@@ -13,6 +13,7 @@ import {
   type Loadout,
 } from "./engine";
 import { CARDS, ROUTES, SOUVENIRS, souvenirsForCard } from "./content";
+import { withTravelBudget } from "./fixtures/travel-budget";
 import {
   archiveBeforeReplace,
   decodeSave,
@@ -27,6 +28,7 @@ import {
 const now = 1_800_000_000_000,
   meal: Loadout = { food: "food_home_meal", gear: null };
 function travel(state: GameState) {
+  state = withTravelBudget(state);
   const packed = prepareTrip(state, meal, state.lastSeenAt + 1);
   const out = advanceGame(packed, packed.departureAt!);
   return advanceGame(out, out.trip!.returnsAt);
@@ -74,7 +76,7 @@ test("路线倾向叠加但不锁定目的地；连续两次同地后排除", ()
     0,
   );
 });
-test("100 组存档免费饭可收齐 19 张普通卡与 14 物，不连去同地三次", () => {
+test("100 组存档靠收成和免费饭可收齐 19 张普通卡与 14 物，不连去同地三次", () => {
   for (let seed = 1; seed <= 100; seed++) {
     let state = newGame(now, seed);
     const cards = new Set<string>(),
@@ -126,7 +128,7 @@ test("重复见闻累计次数、首末日期与总信数一致，重放不增�
     }
   }
 });
-test("商店扣款、吃食库存、永久用具和免费饭兜底", () => {
+test("商店扣款、吃食库存、永久用具；免费饭仍需收成攒路费", () => {
   const initial = newGame(now),
     food = buyItem(initial, "food_yeerba", now);
   assert.equal(food.coins, 16);
@@ -140,7 +142,8 @@ test("商店扣款、吃食库存、永久用具和免费饭兜底", () => {
     /已经有/,
   );
   assert.throws(() => buyItem(gear, "food_guokui", now), /盘缠不够/);
-  assert.equal(prepareTrip(gear, meal, now).phase, "packed");
+  assert.throws(() => prepareTrip(gear, meal, now), /出门需要 12 文盘缠/);
+  assert.equal(prepareTrip(harvest(gear, now), meal, now).phase, "packed");
   assert.throws(() => buyItem(initial, "food_home_meal", now), /不用买/);
 });
 test("吃食库存上限 99，不吞钱；途中仍可采购", () => {
@@ -198,7 +201,7 @@ test("导出导入往返覆盖全状态，旧版旅途安全升级", () => {
   assert.equal(decoded.migrated, true);
   assert.equal(decoded.state.completed.length, 1);
   assert.equal(decoded.state.souvenirs.souvenir_bamboo_mat, 1);
-  assert.equal(decoded.state.coins, 32);
+  assert.equal(decoded.state.coins, 20);
 });
 test("导入拒绝无效 JSON、未知版本、负数、错配的路线与奖励", () => {
   const state = travel(newGame(now));
