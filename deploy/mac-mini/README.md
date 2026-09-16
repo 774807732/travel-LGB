@@ -1,5 +1,14 @@
 # Mac mini 部署
 
+## 静态服务队列修复（2026-09-16，准备部署）
+
+用户明确授权仅调整游戏静态服务队列、备份并重启该服务。`serve.py`沿用Python标准`SimpleHTTPRequestHandler`和线程服务器，只覆盖待接入TCP队列为128；不是新后端或玩家人数上限。现有8788、绑定地址和`current`目录保持。应用仍1.4.7/357d63b，不重新复制成品或切换current。
+
+- 本地先运行`npm test`（72项）、`npm run build`、`PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s deploy/mac-mini -p 'test_*.py' -v`（4项，含40并发×5轮、GET/HEAD/304/404/501和current切换回滚）。
+- 本地使用`/usr/bin/python3 deploy/mac-mini/serve.py 5173 --bind 127.0.0.1 --directory dist`服务构建；独立档桌面与390px、20图/14物/详情返回/刷新通过。`node scripts/check-static-resources.mjs http://127.0.0.1:5173/ 10`真实20卡×10轮全部匹配SHA-256。
+- Mini先备份实际`~/Library/LaunchAgents/com.jojo.travel-lgb.web.plist`，将脚本复制至不可覆盖的`/Users/jojo/Sites/travel-LGB/web/queue128-v1/serve.py`，核对哈希和plist后，替换web plist并仅bootout/bootstrap这个LaunchAgent（修改argv后单独kickstart不能重读plist）。不重启alias/https；备份位置和实际复验结果待部署后补齐。
+- 正式并发检查：`node scripts/check-static-resources.mjs https://travel-lgb.duckdns.org/ 10`（逐轮20并发，附唯一查询串、正常TLS和逐字节哈希；仅这条命令直连该域名，不改代理）。再用正式`?debug=1`复查桌面/窄屏卡墙与收藏。
+
 2026-09-16最新：1.4.7应用`357d63ba17460d1870863fd7f955f8b7de985684`已上线，本地72测试/构建/独立档先通过，Mini66项非原画归档测试/构建及两次69文件哈希一致后原子切换；1.4.6 db87df6保留，无重启。HTTPS证书/10资源哈希及正式叫叫四趟/两新物/备份刷新通过，但手账并发图片复现偶发502，不能宣称验收全部通过；Python静态服务默认队列5，调整等待用户回复。Token/代理/网络/其他服务未动；详见`outputs/release/1.4.7-叫叫彩蛋发布验收.MD`。以下1.4.6为历史，当前素材测试6项仅本地执行。
 
 2026-09-12 起作为正式环境；原 Sites 站点已永久删除，后续不重建 Sites。

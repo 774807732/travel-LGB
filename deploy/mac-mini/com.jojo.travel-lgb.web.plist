@@ -7,8 +7,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/python3</string>
-    <string>-m</string>
-    <string>http.server</string>
+    <string>/Users/jojo/Sites/travel-LGB/web/queue128-v1/serve.py</string>
     <string>8788</string>
     <string>--bind</string>
     <string>0.0.0.0</string>

@@ -1,5 +1,7 @@
 # 元素映射
 
+2026-09-16队列映射准备：`deploy/mac-mini/serve.py → /Users/jojo/Sites/travel-LGB/web/queue128-v1/serve.py`，web LaunchAgent改为运行此薄包装，唯一服务行为覆盖为`ThreadingHTTPServer.request_queue_size=128`。静态路径仍`current`、8788/0.0.0.0不变，应用357d63b的69文件保持原哈希；本地测试/独立档通过，部署与正式复验待执行。
+
 2026-09-16正式映射：Mini `current → releases/357d63ba17460d1870863fd7f955f8b7de985684`（1.4.7），Git已推送；本地72/Mini66测试、两次69文件哈希核对及正式四趟彩蛋/两新收藏/备份去重通过。正式并发手账图片偶发502已复现，默认静态服务连接队列5，调整待确认，HTTPS整体验收仍未关闭。1.4.6 db87df6留作回滚；下方准备/未接入记录为历史。
 
 2026-09-16｜1.4.7映射已落地，用户明确推送Git并只发布Mini：`category_jojo`为跨原四地点的彩蛋分类，不是`RouteId`。`card_jojo_01–04`依次对应竹乡/坝坝茶/河街/田坝，源图依次抓虫v3/豌杂面v2/水车/等风，网页`/art/cards/card_jojo_01–04.webp?v=jojo-v1`；旧16卡顺序/缓存路径不变。`cards[].souvenirId`绑定`01→souvenir_caterpillar`、`02→souvenir_wanza_noodles`，`souvenirsForCard`统一抽取及存档验证；其他卡用原地点三物未收优先，每趟一件。两PNG在`public/art/items/`，不进入FOODS/GEARS；存档键/version=2不变。72项本地测试/构建和独立档通过，待推送发布；后续以[验收记录](outputs/release/1.4.7-叫叫彩蛋发布验收.MD)为准，下面未接入记录为历史。
