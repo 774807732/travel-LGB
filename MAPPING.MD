@@ -1,6 +1,6 @@
 # 元素映射
 
-2026-09-16发布准备：版本在`package.json/package-lock.json/App.tsx`统一为1.4.8，`TRIP_COST=12`及旧档规则不再改动。本地82游戏测试/4服务测试/构建/最终独立档通过，准备推Git及Mini；正式current此刻仍357d63b，将保留回滚，存档ID/键/格式不迁移。
+2026-09-16最新：版本`package.json/package-lock.json/App.tsx`为1.4.8；Mini `current → releases/55904218a74827c052ec521dfa53a1c2c5dab230`，代码已推Git。JS `game-C_8WaFS_.js`、CSS `game-DBatHZqe.css`，本地/Mini构建/发布目录69文件哈希一致；本地82测试/4服务测试/独立档、Mini76测试/构建和正式HTTPS资源/60图并发/相关独立档扣费与备份检查通过。原357d63b保留回滚，服务三PID不变；收尾文档另同步源码、不切应用，内容ID/存档键/version=2不迁移。
 
 2026-09-16本地扣费映射：`engine.ts / TRIP_COST=12`统一每趟路费；`prepareTrip`校验余额但不扣，`spendableCoins`仅在packed时扣除12文预留供`buyItem`和小铺按钮共用；`advanceGame`仅在packed→traveling扣`state.coins`，`cancelPreparation`释放预留且不扣款。不新增扣费存档字段，正常/独立档键及version=2不变；旧在途不追扣，旧不足额准备档到点回home并清空bag/departureAt，保留吃食，收成后需手动重备。新增`trip-cost.test.ts`/`fixtures/travel-budget.ts`与合成验收脚本，82测试/构建及独立档通过；尚未提交推送或部署，Mini应用仍357d63b。
 
@@ -76,9 +76,9 @@
 | 原 Sites 版、旧私密网址 | 已永久删除的历史站点，不再发布 | `outputs/release/发布记录.MD` 保留历史；`.openai/hosting.json` 已移除 |
 | 正式环境、Mac mini 版 | Mac mini 上的常驻静态站点 | `https://travel-lgb.duckdns.org/`；旧 `http://10.131.75.39:8788/`；`com.jojo.travel-lgb.web` |
 | 源码仓库、GitHub 仓库 | 项目代码与素材的版本库 | `origin=git@github.com:774807732/travel-LGB.git`，主分支 `main` |
-| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main`与Mini `source`跟踪最新文档；`current → releases/357d63ba17460d1870863fd7f955f8b7de985684`是现用1.4.7应用，69文件哈希一致，`db87df6`及更早版本留作回滚 |
-| 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 当前无游戏侧并发配置或压力测试；不再按 Sites 配额判断 |
-| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mini `current`、设置页1.4.7、桌面760px四列、20卡/14物、叫叫分类、存档提示；场景仍用`yard-web-wall.webp` |
+| 最新提交、线上版本、漏部署 | 源码提交可包含文档，不能只凭哈希不同判断漏部署 | `main`与Mini `source`跟踪最新文档；`current → releases/55904218a74827c052ec521dfa53a1c2c5dab230`是现用1.4.8应用，69文件哈希一致，`357d63b`及更早版本留作回滚 |
+| 同时在线、并发、访问流量 | Mac mini 的服务与网络承载能力 | 静态服务TCP待接入队列128（非人数上限），1.4.7已验200/200图并发，1.4.8复验60/60图；不按Sites配额判断 |
+| 刷新仍是旧图、改了没变化 | 先核对正式网址与发布目录，不清玩家存档 | Mini `current`、设置页1.4.8、每次出门12文、桌面760px四列、20卡/14物、叫叫分类、存档提示；场景仍用`yard-web-wall.webp` |
 | 点地、跳过去 | 点击目标，经完整小跳到达 | `moveToad`、`hopCommand`、`ToadActor` |
 | 蓄力、蹬后腿、收腿、接地 | 六帧姿态图集与分段时序 | `jump-atlas.webp`、`sampleHop / HOP_TIMING`、`.toad-jump-sprite` |
 | 弧线、跳高 | 单次腾空的离地高度 | `sampleHop.lift`、`--hop-lift` |
