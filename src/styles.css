@@ -377,22 +377,6 @@ svg {
 .world-prop:focus-visible .prop-hint {
   opacity: 1;
 }
-.gift-prop {
-  width: 52px;
-  left: 10%;
-  top: 72%;
-  height: 49px;
-}
-.gift-prop.has-gift {
-  width: 54px;
-  height: 54px;
-  transform: translate(-50%, -100%);
-}
-.empty-shelf-label {
-  font-size: 10px;
-  color: #655640;
-  border-bottom: 1px solid #938464;
-}
 .dot,
 .inline-dot,
 .nav-dot {
@@ -1593,9 +1577,6 @@ textarea {
   .satchel-prop {
     width: 52px;
   }
-  .gift-prop {
-    width: 48px;
-  }
   .mail-prop {
     width: 50px;
   }
@@ -1672,16 +1653,10 @@ textarea {
   width: 24%;
   height: 28%;
 }
-.gift-prop,
-.gift-prop.has-gift {
-  left: 9%;
-  top: 65%;
-}
 .eyebrow,
 .coin-balance > span:last-child,
 .scene-label,
 .prop-hint,
-.empty-shelf-label,
 .harvest-props span,
 .traveler-status p,
 .save-status,
@@ -1728,14 +1703,6 @@ textarea {
 .toad-hotspot {
   width: 96px;
 }
-.gift-prop,
-.gift-prop.has-gift {
-  top: 63%;
-}
-.gift-prop.has-gift {
-  left: 14%;
-  top: 70%;
-}
 /* 真透明场景素材正常合成，避免木地板染透角色和道具。 */
 .toad-hotspot,
 .world-prop,
@@ -1753,9 +1720,6 @@ textarea {
   border: 0;
   border-radius: 0;
   padding: 0;
-}
-.gift-prop .item-art {
-  filter: drop-shadow(0 2px 1px #4a382a30);
 }
 
 /* Web 横版独立构图；角色和小道具不随场景整体放大。 */
@@ -1865,14 +1829,6 @@ textarea {
   top: calc(73.1% + 10px);
   width: 58px;
 }
-.scene[data-layout="wide"] .gift-prop,
-.scene[data-layout="wide"] .gift-prop.has-gift {
-  left: 13.6%;
-  top: calc(72.3% + 9px);
-  width: 54px;
-  height: 54px;
-  transform: translate(-50%, -100%);
-}
 .scene[data-layout="wide"] .away-note {
   left: 50%;
   top: 53%;
@@ -1943,6 +1899,79 @@ textarea {
 .harvest-caption:active {
   transform: translate(-50%, 1px);
 }
+
+/* 固定在既有家具表面；不占矮桌行囊或地面走动区域。 */
+.display-prop {
+  width: 44px;
+  height: 44px;
+  left: 14%;
+  transform: translate(-50%, -100%);
+  display: grid;
+  place-items: center;
+}
+.display-prop[data-slot="shelfTop"] { top: 70%; }
+.display-prop:active { transform: translate(-50%, -100%) translateY(1px); }
+.display-prop[data-slot="shelfLower"] { top: 80%; }
+.display-prop .item-art {
+  height: 100%;
+  filter: drop-shadow(0 2px 1px #4a382a30);
+}
+.display-empty {
+  color: #645335;
+  background: #f3ebddad;
+  border: 1px dashed #8a7854;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 16px;
+  line-height: 20px;
+  opacity: .7;
+}
+.display-prop:hover .display-empty,
+.display-prop:focus-visible .display-empty { opacity: 1; }
+.display-prop .prop-hint { bottom: -18px; }
+.scene[data-layout="wide"] .display-prop {
+  left: 13.6%;
+  width: 54px;
+  height: 54px;
+}
+.scene[data-layout="wide"] .display-prop[data-slot="shelfTop"] { top: calc(72.3% + 9px); }
+.scene[data-layout="wide"] .display-prop[data-slot="shelfLower"] { top: calc(83.4% + 3px); }
+.display-entry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 18px;
+  background: #e9ecdb;
+  border-color: #c4caab;
+  color: #586343;
+}
+.object-detail .display-entry { margin-top: 22px; }
+.display-slots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.display-slots button { padding: 10px 3px; background: #ede9d8; }
+.display-slots b,
+.display-choice b { display: block; font-size: 13px; font-weight: 500; }
+.display-slots small,
+.display-choice small { display: block; font-size: 11px; color: var(--muted); margin-top: 4px; }
+.display-slot-art { display: grid; place-items: center; height: 64px; color: #8c9670; font-size: 24px; }
+.display-slot-art .item-art { width: 60px; height: 60px; }
+.display-slots [aria-pressed="true"],
+.display-choice[aria-pressed="true"] { border: 2px solid #788151; background: #e5e9d5; }
+.display-selection { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 22px 0 14px; }
+.display-selection b { font-size: 15px; font-weight: 500; }
+.display-selection small { display: block; font-size: 12px; color: var(--muted); }
+.display-selection button { flex-shrink: 0; padding: 8px 10px; font-size: 13px; }
+.display-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.display-choice { padding: 8px 3px; }
+.display-choice .item-art { width: 70px; max-width: 100%; height: 70px; margin: 0 auto; }
+.display-note { font-size: 12px; margin: 18px 0; }
+.display-done { width: 100%; }
 
 @media (min-width: 960px) {
   .sheet {

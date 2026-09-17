@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Icon } from "./components/Icon";
 import { Sheet } from "./components/Sheet";
+import { HomeDisplayEditor } from "./components/HomeDisplayEditor";
+import { DISPLAY_SLOTS, homeDisplay, placeSouvenir, type DisplaySlotId } from "./game/homeDisplay";
 import { ToadActor, type HopCommand } from "./components/ToadActor";
 import {
   availableHarvests,
@@ -59,6 +61,7 @@ type Panel =
   | "inbox"
   | "card"
   | "object"
+  | "display"
   | "settings"
   | "import"
   | "confirm"
@@ -80,7 +83,7 @@ function Scene({
   onBag,
   onYard,
   onHome,
-  onGifts,
+  onDisplay,
   onHarvest,
   onShop,
   onInbox,
@@ -100,7 +103,7 @@ function Scene({
   onBag: () => void;
   onYard: () => void;
   onHome: () => void;
-  onGifts: () => void;
+  onDisplay: (slot: DisplaySlotId) => void;
   onHarvest: () => void;
   onShop: () => void;
   onInbox: () => void;
@@ -114,7 +117,7 @@ function Scene({
 }) {
   const home = state.scene === "home",
     ready = availableHarvests(state),
-    lastGift = state.completed.at(-1)?.souvenirId;
+    display = homeDisplay(state);
   function handleGroundClick(event: MouseEvent<HTMLElement>) {
     if ((event.target as HTMLElement).closest("button")) return;
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -166,18 +169,18 @@ function Scene({
               <span className="prop-hint">收拾行囊</span>
             </button>
           )}
-          <button
-            className={"world-prop gift-prop " + (lastGift ? "has-gift" : "")}
-            aria-label={lastGift ? "看看带回的纪念物" : "看看纪念物小格"}
-            onClick={onGifts}
+          {DISPLAY_SLOTS.map((slot) => <button
+            key={slot.id}
+            className="world-prop display-prop"
+            data-slot={slot.id}
+            aria-label={`布置${slot.name}，${display[slot.id] ? itemName(display[slot.id]!) : "空着"}`}
+            onClick={() => onDisplay(slot.id)}
           >
-            {lastGift ? (
-              <ItemArt id={lastGift} />
-            ) : (
-              <span className="empty-shelf-label">小物件</span>
-            )}
-            {state.hasUnreadReturn && <i className="dot" />}
-          </button>
+            {display[slot.id]
+              ? <ItemArt id={display[slot.id]!} />
+              : <span className="display-empty" aria-hidden="true">＋</span>}
+            <span className="prop-hint">布置{slot.name}</span>
+          </button>)}
         </>
       ) : (
         <>
@@ -301,6 +304,7 @@ export default function App() {
       "souvenir_bamboo_mat",
     ),
     [returnPanel, setReturnPanel] = useState<Panel>("journal");
+  const [displaySlot, setDisplaySlot] = useState<DisplaySlotId>("shelfTop");
   const [toast, setToast] = useState(""),
     [idlePose, setIdlePose] = useState(0),
     [leaving, setLeaving] = useState(false),
@@ -437,6 +441,8 @@ export default function App() {
       setLayout(media.matches ? "wide" : "portrait");
     };
     media.addEventListener("change", sync);
+    // 首次渲染到监听就绪之间也可能缩放窗口，补读一次当前尺寸。
+    sync();
     return () => media.removeEventListener("change", sync);
   }, []);
   useEffect(() => {
@@ -525,6 +531,7 @@ export default function App() {
     inbox: "窗边信夹",
     card: "路上的见闻",
     object: "带回的小东西",
+    display: "布置小屋",
     settings: "小设置",
     import: "带回一份存档",
     confirm: candidate?.label ?? "确认存档",
@@ -534,6 +541,8 @@ export default function App() {
     setPanel(
       panel === "food" || panel === "gear"
         ? "bag"
+        : panel === "display"
+          ? "souvenirs"
         : panel === "card" || panel === "object"
           ? returnPanel
           : "settings",
@@ -599,7 +608,7 @@ export default function App() {
             onBag={() => open("bag")}
             onYard={() => changeScene("yard")}
             onHome={() => changeScene("home")}
-            onGifts={() => open("souvenirs")}
+            onDisplay={(slot) => { setDisplaySlot(slot); open("display"); }}
             onHarvest={collect}
             onShop={() => open("shop")}
             onInbox={() => open("inbox")}
@@ -786,6 +795,7 @@ export default function App() {
             "gear",
             "card",
             "object",
+            "display",
             "help",
             "import",
             "confirm",
@@ -797,6 +807,17 @@ export default function App() {
               {game.readOnlyNotice}
             </p>
           )}
+          {panel === "display" && <HomeDisplayEditor
+            state={state}
+            slot={displaySlot}
+            onSlot={setDisplaySlot}
+            canWrite={canWrite}
+            onPlace={(id) => perform(
+              (s, now) => placeSouvenir(s, displaySlot, id, now),
+              id ? "摆好啦，给小屋添一点路上的念想。" : "收回手账里了，纪念物还在。",
+            )}
+            onView={() => { changeScene("home"); setPanel(null); }}
+          />}
           {panel === "bag" && (
             <>
               <p className="muted intro">一份路上吃的，再带个顺手的家伙什。</p>
@@ -1162,6 +1183,9 @@ export default function App() {
                     </p>
                     <span>不是贵重的，是它路上惦记着带回来的。</span>
                   </div>
+                  <button className="display-entry" onClick={() => open("display")}>
+                    <Icon name="home" size={20} /> 布置小屋 <Icon name="arrow" size={18} />
+                  </button>
                   <div className="souvenir-grid">
                     {ROUTES.flatMap(route => SOUVENIRS.filter(item => item.routeId === route.id)).map((item) => {
                       const count = state.souvenirs[item.id] ?? 0;
@@ -1350,6 +1374,7 @@ export default function App() {
               <h3>{object.name}</h3>
               <p>{object.description}</p>
               <small>家里已经收着 {state.souvenirs[object.id] ?? 0} 件</small>
+              <button className="display-entry" onClick={() => open("display")}>去布置小屋 <Icon name="arrow" size={18} /></button>
             </article>
           )}
           {panel === "settings" && (
@@ -1509,6 +1534,10 @@ export default function App() {
                   <p>
                     四处蜀地、{CARDS.length}张见闻、{SOUVENIRS.length}种纪念物。偶尔也会看见叫叫，自顾自地做些小事。带上红苕稀饭，还可能遇到田坝的一段特别见闻。没有稀有度，没有完不成的每日任务。
                   </p>
+                </li>
+                <li>
+                  <b>把念想摆进小屋</b>
+                  <p>从手账的纪念物页进入“布置小屋”，或直接点小格架的摆位。小格架上下两层都能放，选一件就摆好；换下或收回都不消耗物品和盘缠，布置会随存档保存。</p>
                 </li>
               </ol>
               <div className="paper-note">

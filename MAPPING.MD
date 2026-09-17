@@ -1,5 +1,13 @@
 # 元素映射
 
+2026-09-17 Git交付边界：本批运行时映射以两层`shelfTop/shelfLower`为准，窗边`window`仅在旧档校验/读取迁移中出现，不再有UI/CSS落点。尚未执行的“缩小20%＋2.5D调位”预计只涉及`.display-prop`横竖宽高与两层`top/left`锚点；当前映射和构建仍是下方93测试版本，不新增存档字段、内容ID或素材文件。本批只推Git，不切Mini `current`。
+
+2026-09-16最新本地映射：`DISPLAY_SLOTS`/`HomeDisplay`只含`shelfTop`、`shelfLower`；`window`操作被拒绝，横竖CSS锚点与帮助中的窗边说明移除，`.display-slots`改两列。`isHomeDisplay`仅为兼容旧档继续校验历史window，`decodeSave`完整校验后投影为两位并标记迁移，`homeDisplay`展示也忽略退役字段；收藏数量/旅程/version=2/两个存档键不变。新增两项退役兼容回归，共93测试/构建与独立档通过；本地产物JS `game-BJe5XJ1W.js`、CSS `game-C-JPA4im.css`，未提交推送或发布。下方三位字段为历史映射。
+
+2026-09-16本地收藏摆放映射：`src/game/homeDisplay.ts`定义`DISPLAY_SLOTS`、`homeDisplay`兼容展示、`placeSouvenir`搬动/替换/收回和`isHomeDisplay`校验；`GameState.homeDisplay?`为`{shelfTop, shelfLower, window}`，各值`SouvenirId|null`，只允许已拥有且不重复的物品。缺字段沿用最近一件；首次编辑写齐3位，全null表示明确收空。`storage.ts`验证后接入原保存/备份/导入导出及写锁，不改两个存档键/version=2。`HomeDisplayEditor.tsx`与`App.tsx/.display-prop[data-slot]`复用14件原PNG，横竖位置独立；无新内容ID/素材/后端。新增9项回归，共91测试和构建/独立档通过；最终本地JS `game-U6cmu2-t.js`、CSS `game-BOCOK1vM.css`。版本仍1.4.8且未发布，Mini应用仍5590421，其他候选没有运行时映射。
+
+2026-09-16玩法讨论仅作候选：陈列/来客/捎带/连续见闻/小玩具尚无运行时映射，不新增内容ID、存档字段、货币、接口或后端。待用户选定后另行设计；当前仍为1.4.8，未推送或部署本轮文档。
+
 2026-09-16最新：版本`package.json/package-lock.json/App.tsx`为1.4.8；Mini `current → releases/55904218a74827c052ec521dfa53a1c2c5dab230`，代码已推Git。JS `game-C_8WaFS_.js`、CSS `game-DBatHZqe.css`，本地/Mini构建/发布目录69文件哈希一致；本地82测试/4服务测试/独立档、Mini76测试/构建和正式HTTPS资源/60图并发/相关独立档扣费与备份检查通过。原357d63b保留回滚，服务三PID不变；收尾文档另同步源码、不切应用，内容ID/存档键/version=2不迁移。
 
 2026-09-16本地扣费映射：`engine.ts / TRIP_COST=12`统一每趟路费；`prepareTrip`校验余额但不扣，`spendableCoins`仅在packed时扣除12文预留供`buyItem`和小铺按钮共用；`advanceGame`仅在packed→traveling扣`state.coins`，`cancelPreparation`释放预留且不扣款。不新增扣费存档字段，正常/独立档键及version=2不变；旧在途不追扣，旧不足额准备档到点回home并清空bag/departureAt，保留吃食，收成后需手动重备。新增`trip-cost.test.ts`/`fixtures/travel-budget.ts`与合成验收脚本，82测试/构建及独立档通过；尚未提交推送或部署，Mini应用仍357d63b。

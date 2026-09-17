@@ -12,6 +12,7 @@ import {
   type CardId,
   type SouvenirId,
 } from "./content";
+import type { HomeDisplay } from "./homeDisplay";
 export { FOOD_NAMES, GEAR_NAMES };
 export type { FoodId, GearId };
 export type Phase = "home" | "packed" | "traveling";
@@ -49,6 +50,7 @@ export type GameState = {
   readLetters: string[];
   souvenirCount: number;
   souvenirs: Partial<Record<SouvenirId, number>>;
+  homeDisplay?: HomeDisplay;
   hasUnreadReturn: boolean;
   reducedMotion: boolean;
   soundEnabled: boolean;

@@ -16,6 +16,7 @@ import {
   type CardId,
   type SouvenirId,
 } from "./content";
+import { homeDisplay, isHomeDisplay } from "./homeDisplay";
 
 export const SAVE_KEY = "travel-toad:v1";
 export const DEBUG_SAVE_KEY = "travel-toad:review:v1";
@@ -169,6 +170,7 @@ export function isGameState(v: unknown): v is GameState {
   )
     return false;
   if (!record(v.cardCollection) || !record(v.souvenirs)) return false;
+  if ("homeDisplay" in v && !isHomeDisplay(v.homeDisplay, v.souvenirs)) return false;
   const unlocked = v.unlockedCards as string[];
   if (Object.keys(v.cardCollection).length !== unlocked.length) return false;
   for (const [id, entry] of Object.entries(v.cardCollection)) {
@@ -298,7 +300,13 @@ export function decodeSave(raw: string): {
       contentMigrated = true;
     }
   }
-  if (isGameState(value)) return { state: value, migrated: contentMigrated };
+  if (isGameState(value)) {
+    // 先完整校验旧档再收回退役摆位；不改收藏数量、原档文本或另外两处布置。
+    if (value.homeDisplay && Object.hasOwn(value.homeDisplay, "window")) {
+      return { state: { ...value, homeDisplay: homeDisplay(value) }, migrated: true };
+    }
+    return { state: value, migrated: contentMigrated };
+  }
   const migrated = migrateV1(value);
   if (migrated) return { state: migrated, migrated: true };
   throw new Error("存档版本或内容不完整，现有进度没有改变。");
