@@ -1,6 +1,6 @@
 # 元素映射
 
-2026-09-17 Git交付边界：本批运行时映射以两层`shelfTop/shelfLower`为准，窗边`window`仅在旧档校验/读取迁移中出现，不再有UI/CSS落点。尚未执行的“缩小20%＋2.5D调位”预计只涉及`.display-prop`横竖宽高与两层`top/left`锚点；当前映射和构建仍是下方93测试版本，不新增存档字段、内容ID或素材文件。本批只推Git，不切Mini `current`。
+2026-09-17 Git交付边界：运行时映射以两层`shelfTop/shelfLower`为准，窗边`window`仅在旧档校验/读取迁移中出现，不再有UI/CSS落点；代码已推送`main`（`e5ad380`）。尚未执行的“缩小20%＋2.5D调位”预计只涉及`.display-prop`横竖宽高与两层`top/left`锚点；当前映射和构建仍是下方93测试版本，不新增存档字段、内容ID或素材文件。本批未切Mini `current`。
 
 2026-09-16最新本地映射：`DISPLAY_SLOTS`/`HomeDisplay`只含`shelfTop`、`shelfLower`；`window`操作被拒绝，横竖CSS锚点与帮助中的窗边说明移除，`.display-slots`改两列。`isHomeDisplay`仅为兼容旧档继续校验历史window，`decodeSave`完整校验后投影为两位并标记迁移，`homeDisplay`展示也忽略退役字段；收藏数量/旅程/version=2/两个存档键不变。新增两项退役兼容回归，共93测试/构建与独立档通过；本地产物JS `game-BJe5XJ1W.js`、CSS `game-C-JPA4im.css`，未提交推送或发布。下方三位字段为历史映射。
 
