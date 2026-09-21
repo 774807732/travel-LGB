@@ -96,7 +96,14 @@ test("旧版不足路费的预备档仍能读取；到点留家不扣钱食物�
     const old: GameState = {
       ...newGame(now), coins, phase: "packed", bag: { food: "food_yeerba", gear: null },
       departureAt: now + 15000,
-      inventory: { food_yeerba: 1, food_guokui: 0, food_sweet_potato_congee: 0 },
+      inventory: {
+        food_yeerba: 1,
+        food_guokui: 0,
+        food_sweet_potato_congee: 0,
+        food_douhua_rice: 0,
+        food_sugar_oil_fruit: 0,
+        food_brown_sugar_lianggao: 0,
+      },
     };
     assert.ok(isGameState(old));
     const before = advanceGame(restore(old), now + 14999);

@@ -32,7 +32,7 @@ test("正式素材 ID 齐全，横竖场景与源图均存在", async () => {
     ...GEARS.map((x) => x.id),
     ...SOUVENIRS.map((x) => x.id),
   ];
-  assert.equal(manifest.length, 55);
+  assert.equal(manifest.length, 61);
   assert.deepEqual(manifest.map((x) => x.id).sort(), ids.sort());
   for (const asset of manifest) {
     assert.ok((await stat(asset.source)).size > 0);
@@ -157,6 +157,8 @@ test("直接叠景的角色和道具具备真实 alpha，四角全透明", async
     "food_sweet_potato_congee",
     "gear_straw_hat",
     "gear_oilpaper_umbrella",
+    ...FOODS.slice(-3).map((item) => item.id),
+    ...GEARS.slice(-3).map((item) => item.id),
   ]);
   for (const asset of manifest.filter((a) => ids.has(a.id))) {
     const meta = await sharp(asset.output).metadata();

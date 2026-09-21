@@ -904,6 +904,31 @@ svg {
     serif;
   color: #6e653f;
 }
+.shop-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0 4px;
+  padding: 4px;
+  background: #e9e8d7;
+  border-radius: 10px;
+}
+.shop-tabs button {
+  flex: 1;
+  padding: 8px 6px;
+  border-color: transparent;
+  background: transparent;
+  font-size: 13px;
+}
+.shop-tabs button small {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.shop-tabs [aria-pressed="true"] {
+  color: #52643c;
+  background: #f8f3e8;
+  box-shadow: 0 2px 4px #68664613;
+}
 .section-label {
   font-size: 13px;
   font-weight: 500;
@@ -941,6 +966,9 @@ svg {
   color: var(--muted);
   font-size: 11px;
   line-height: 1.8;
+}
+.shop-row .purchase-warning {
+  color: #9a694d;
 }
 .price-button {
   padding: 6px 10px;

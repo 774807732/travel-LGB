@@ -13,7 +13,7 @@ test("旧伞持有/预备档直接显示筒靴，不重买、不重置出发时�
   const owned = decodeSave(JSON.stringify(ownedSave()));
   assert.equal(owned.migrated, false);
   assert.deepEqual(owned.state.ownedGear, [legacyId]);
-  assert.equal(GEARS.length, 3);
+  assert.equal(GEARS.length, 6);
   assert.equal(GEAR_NAMES[legacyId], "筒靴鞋");
   assert.equal(GEARS.find(g => g.id === legacyId)!.price, 24);
   assert.equal(itemImage(legacyId), "/art/items/gear_rain_boots.webp");

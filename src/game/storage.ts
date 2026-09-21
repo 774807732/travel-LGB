@@ -74,11 +74,12 @@ function base(v: unknown, legacy = false): v is Record<string, unknown> {
     !time(v.lastSeenAt)
   )
     return false;
+  if (!record(v.inventory)) return false;
+  const inventory = v.inventory;
   if (
-    !record(v.inventory) ||
-    !integer(v.inventory.food_yeerba) ||
-    !integer(v.inventory.food_guokui) ||
-    !integer(v.inventory.food_sweet_potato_congee) ||
+    !FOODS.filter((food) => food.price > 0).every((food) =>
+      integer(inventory[food.id]),
+    ) ||
     !strings(v.ownedGear) ||
     !v.ownedGear.every((g) => GEARS.some((x) => x.id === g))
   )
@@ -281,9 +282,13 @@ export function decodeSave(raw: string): {
   // 保留版本 1/2 的时间与数量，定向迁移旧圆石；不重算旅途、不重新发奖。
   let contentMigrated = false;
   if (record(value) && (value.version === 1 || value.version === 2)) {
-    if (record(value.inventory) && !Object.hasOwn(value.inventory, "food_sweet_potato_congee")) {
-      value.inventory.food_sweet_potato_congee = 0;
-      contentMigrated = true;
+    if (record(value.inventory)) {
+      for (const food of FOODS.filter((item) => item.price > 0)) {
+        if (!Object.hasOwn(value.inventory, food.id)) {
+          value.inventory[food.id] = 0;
+          contentMigrated = true;
+        }
+      }
     }
     for (const t of [...(Array.isArray(value.completed) ? value.completed : []), value.trip]) {
       if (record(t) && t.souvenirId === "souvenir_pebble") {

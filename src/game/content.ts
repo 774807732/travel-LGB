@@ -1,5 +1,18 @@
-export type FoodId = "food_home_meal" | "food_yeerba" | "food_guokui" | "food_sweet_potato_congee";
-export type GearId = "gear_bamboo_flask" | "gear_oilpaper_umbrella" | "gear_straw_hat";
+export type FoodId =
+  | "food_home_meal"
+  | "food_yeerba"
+  | "food_guokui"
+  | "food_sweet_potato_congee"
+  | "food_douhua_rice"
+  | "food_sugar_oil_fruit"
+  | "food_brown_sugar_lianggao";
+export type GearId =
+  | "gear_bamboo_flask"
+  | "gear_oilpaper_umbrella"
+  | "gear_straw_hat"
+  | "gear_enamel_tea_mug"
+  | "gear_small_packbasket"
+  | "gear_bamboo_whistle";
 export type RouteId =
   | "route_daoming"
   | "route_chengdu_tea"
@@ -79,6 +92,27 @@ export const FOODS: {
     hint: "不要胀太多哦",
     description: "不要胀太多哦",
   },
+  {
+    id: "food_douhua_rice",
+    name: "豆花饭",
+    price: 8,
+    hint: "热乎乎吃一碗，想顺着水声走走",
+    description: "豆花配一小碗米饭，吃得安稳。更容易去黄龙溪河街，不指定目的地。",
+  },
+  {
+    id: "food_sugar_oil_fruit",
+    name: "糖油果子",
+    price: 10,
+    hint: "甜滋滋的，想去没逛够的地方看看",
+    description: "一串小小的糖油果子。更容易走到还有未收录见闻的地方；手账收齐后恢复普通随机。",
+  },
+  {
+    id: "food_brown_sugar_lianggao",
+    name: "红糖凉糕",
+    price: 10,
+    hint: "吃得清清凉凉，走路也轻快些",
+    description: "凉糕淋一点红糖浆。普通旅程时间缩短15%，来信也会随旅程提前。",
+  },
 ];
 export const GEARS: {
   id: GearId;
@@ -108,6 +142,27 @@ export const GEARS: {
     price: 24,
     hint: "帽檐一压，太阳也没得法",
     description: "田埂边慢慢走，戴着遮太阳。更容易去田坝地头；买一次，每趟都能带。",
+  },
+  {
+    id: "gear_enamel_tea_mug",
+    name: "搪瓷茶缸",
+    price: 24,
+    hint: "茶缸往包里一放，走到哪儿都想歇一哈",
+    description: "旧式搪瓷茶缸，端着喝茶正合适。更容易去成都坝坝茶；买一次，每趟都能带。",
+  },
+  {
+    id: "gear_small_packbasket",
+    name: "小背篼",
+    price: 30,
+    hint: "专找还没带回家的小东西",
+    description: "背得稳稳当当。更容易去还有未收纪念物的地方，每趟仍只带回一件。",
+  },
+  {
+    id: "gear_bamboo_whistle",
+    name: "竹哨子",
+    price: 30,
+    hint: "轻轻吹一声，收拾好就早点出门",
+    description: "清脆的一声提醒自己莫磨蹭。普通出发等待缩短为一分半到三分钟。",
   },
 ];
 export const ROUTES: {

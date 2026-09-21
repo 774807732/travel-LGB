@@ -299,6 +299,7 @@ export default function App() {
     { state, mode, warning, act, replace, advanceDebug } = game;
   const [panel, setPanel] = useState<Panel>(null),
     [draft, setDraft] = useState<Loadout>(emptyBag);
+  const [shopTab, setShopTab] = useState<"food" | "gear">("food");
   const [selectedCard, setSelectedCard] = useState<CardId>("card_daoming_01"),
     [selectedObject, setSelectedObject] = useState<SouvenirId>(
       "souvenir_bamboo_mat",
@@ -1021,74 +1022,118 @@ export default function App() {
               {state.phase === "packed" && (
                 <p className="notice">这趟需留出 {TRIP_COST} 文路费，小铺可用 {spendableCoins(state)} 文；取消准备后解除预留。</p>
               )}
-              <h3 className="section-label">
-                吃点好的 <small>每趟一份</small>
-              </h3>
-              {FOODS.filter((f) => f.price > 0).map((item) => (
-                <div className="shop-row" key={item.id}>
-                  <ItemArt id={item.id} />
-                  <div>
-                    <b>{item.name}</b>
-                    <small>{item.hint}</small>
-                    <small>
-                      存着{" "}
-                      {state.inventory[item.id as keyof typeof state.inventory]}{" "}
-                      份
-                    </small>
-                  </div>
-                  <button
-                    className="price-button"
-                    disabled={!canWrite || spendableCoins(state) < item.price}
-                    aria-label={"购买" + item.name + "，" + item.price + "文"}
-                    onClick={async () => {
-                      if (
-                        await perform(
-                          (s, now) => buyItem(s, item.id, now),
-                          item.name + "备好了一份。",
-                        )
-                      )
-                        playSound("bag");
-                    }}
-                  >
-                    {item.price} 文
-                  </button>
-                </div>
-              ))}
-              <h3 className="section-label">
-                顺手的用具 <small>买一次就好</small>
-              </h3>
-              {GEARS.map((item) => (
-                <div className="shop-row" key={item.id}>
-                  <ItemArt id={item.id} />
-                  <div>
-                    <b>{item.name}</b>
-                    <small>{item.hint}</small>
-                    <small>每趟都能用</small>
-                  </div>
-                  <button
-                    className="price-button"
-                    disabled={
-                      !canWrite ||
-                      state.ownedGear.includes(item.id) ||
-                      spendableCoins(state) < item.price
-                    }
-                    aria-label={"购买" + item.name + "，" + item.price + "文"}
-                    onClick={async () => {
-                      if (
-                        await perform(
-                          (s, now) => buyItem(s, item.id, now),
-                          item.name + "收好了，以后都能带。",
-                        )
-                      )
-                        playSound("bag");
-                    }}
-                  >
-                    {state.ownedGear.includes(item.id)
-                      ? "已有"
-                      : item.price + " 文"}
-                  </button>
-                </div>
-              ))}
+              <nav className="shop-tabs" aria-label="小铺分类">
+                <button
+                  aria-pressed={shopTab === "food"}
+                  onClick={() => setShopTab("food")}
+                >
+                  食物 <small>{FOODS.length - 1}种</small>
+                </button>
+                <button
+                  aria-pressed={shopTab === "gear"}
+                  onClick={() => setShopTab("gear")}
+                >
+                  道具 <small>{GEARS.length}件</small>
+                </button>
+              </nav>
+              {shopTab === "food" ? (
+                <section aria-label="可购买食物">
+                  <h3 className="section-label">
+                    吃点好的 <small>每趟一份</small>
+                  </h3>
+                  {FOODS.filter((f) => f.price > 0).map((item) => {
+                    const shortAfterBuying =
+                      state.phase === "home" &&
+                      state.coins >= item.price &&
+                      state.coins - item.price < TRIP_COST;
+                    return (
+                      <div className="shop-row" key={item.id}>
+                        <ItemArt id={item.id} />
+                        <div>
+                          <b>{item.name}</b>
+                          <small>{item.hint}</small>
+                          <small>
+                            存着{" "}
+                            {state.inventory[item.id as keyof typeof state.inventory]}{" "}
+                            份
+                          </small>
+                          {shortAfterBuying && (
+                            <small className="purchase-warning">
+                              买后还差 {TRIP_COST - (state.coins - item.price)} 文出门
+                            </small>
+                          )}
+                        </div>
+                        <button
+                          className="price-button"
+                          disabled={!canWrite || spendableCoins(state) < item.price}
+                          aria-label={"购买" + item.name + "，" + item.price + "文"}
+                          onClick={async () => {
+                            if (
+                              await perform(
+                                (s, now) => buyItem(s, item.id, now),
+                                item.name + "备好了一份。",
+                              )
+                            )
+                              playSound("bag");
+                          }}
+                        >
+                          {item.price} 文
+                        </button>
+                      </div>
+                    );
+                  })}
+                </section>
+              ) : (
+                <section aria-label="可购买道具">
+                  <h3 className="section-label">
+                    顺手的用具 <small>买一次就好</small>
+                  </h3>
+                  {GEARS.map((item) => {
+                    const shortAfterBuying =
+                      state.phase === "home" &&
+                      !state.ownedGear.includes(item.id) &&
+                      state.coins >= item.price &&
+                      state.coins - item.price < TRIP_COST;
+                    return (
+                      <div className="shop-row" key={item.id}>
+                        <ItemArt id={item.id} />
+                        <div>
+                          <b>{item.name}</b>
+                          <small>{item.hint}</small>
+                          <small>每趟都能用</small>
+                          {shortAfterBuying && (
+                            <small className="purchase-warning">
+                              买后还差 {TRIP_COST - (state.coins - item.price)} 文出门
+                            </small>
+                          )}
+                        </div>
+                        <button
+                          className="price-button"
+                          disabled={
+                            !canWrite ||
+                            state.ownedGear.includes(item.id) ||
+                            spendableCoins(state) < item.price
+                          }
+                          aria-label={"购买" + item.name + "，" + item.price + "文"}
+                          onClick={async () => {
+                            if (
+                              await perform(
+                                (s, now) => buyItem(s, item.id, now),
+                                item.name + "收好了，以后都能带。",
+                              )
+                            )
+                              playSound("bag");
+                          }}
+                        >
+                          {state.ownedGear.includes(item.id)
+                            ? "已有"
+                            : item.price + " 文"}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </section>
+              )}
               <div className="paper-note">
                 院坝每四小时攒一份收成，每份换 12 文，最多留三份。旅途归来再添 8
                 文。出门消耗 {TRIP_COST} 文；盘缠不足时，等收成攒够再出发。
@@ -1501,7 +1546,7 @@ export default function App() {
                 重新开始
               </button>
               <p className="version-note">
-                  旅行癞疙宝 · 1.4.9
+                  旅行癞疙宝 · 1.5.0
                 <br />
                 原创插画与故事 · 本地单人小游戏
               </p>
@@ -1517,7 +1562,7 @@ export default function App() {
               <ol>
                 <li>
                   <b>在院坝收成</b>
-                  <p>每四小时一份，最多三份。小铺里能添些特色吃食和用具。</p>
+                  <p>每四小时一份，最多三份。小铺分食物和道具两页：食物每趟一份，道具买一次一直能用。</p>
                 </li>
                 <li>
                   <b>装好一份吃的</b>
@@ -1526,7 +1571,7 @@ export default function App() {
                 <li>
                   <b>把时间留给它</b>
                   <p>
-                    后续收好行囊约两到五分钟出门，旅途随机一到四小时。会捎信，也会带小东西回家。
+                    默认收好行囊约两到五分钟出门，旅途随机一到四小时。竹哨子会缩短准备，红糖凉糕会缩短旅程；它仍会捎信，也只带一件小东西回家。
                   </p>
                 </li>
                 <li>

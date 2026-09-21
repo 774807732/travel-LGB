@@ -3,6 +3,7 @@ import {
   FOODS,
   GEARS,
   ROUTES,
+  SOUVENIRS,
   souvenirsForCard,
   FOOD_NAMES,
   GEAR_NAMES,
@@ -73,7 +74,14 @@ export function newGame(now: number, seed = hashSeed(now)): GameState {
     lastSeenAt: now,
     createdAt: now,
     seed: seed >>> 0,
-    inventory: { food_yeerba: 0, food_guokui: 0, food_sweet_potato_congee: 0 },
+    inventory: {
+      food_yeerba: 0,
+      food_guokui: 0,
+      food_sweet_potato_congee: 0,
+      food_douhua_rice: 0,
+      food_sugar_oil_fruit: 0,
+      food_brown_sugar_lianggao: 0,
+    },
     ownedGear: [],
     bag: null,
     departureAt: null,
@@ -118,6 +126,7 @@ function validTime(state: GameState, now: number) {
 export function routeWeights(
   loadout: Loadout,
   recent: RouteId[] = [],
+  progress?: Pick<GameState, "unlockedCards" | "souvenirs">,
 ): Record<RouteId, number> {
   const weights: Record<RouteId, number> = {
     route_daoming: 1,
@@ -128,9 +137,33 @@ export function routeWeights(
   if (loadout.food === "food_yeerba") weights.route_daoming++;
   if (loadout.food === "food_guokui") weights.route_chengdu_tea++;
   if (loadout.food === "food_sweet_potato_congee") weights.route_tianba++;
+  if (loadout.food === "food_douhua_rice") weights.route_huanglongxi++;
   if (loadout.gear === "gear_bamboo_flask") weights.route_daoming++;
   if (loadout.gear === "gear_oilpaper_umbrella") weights.route_huanglongxi++;
   if (loadout.gear === "gear_straw_hat") weights.route_tianba++;
+  if (loadout.gear === "gear_enamel_tea_mug") weights.route_chengdu_tea++;
+  if (loadout.food === "food_sugar_oil_fruit" && progress) {
+    for (const route of ROUTES) {
+      const hasEligibleUnseen = CARDS.some(
+        (card) =>
+          card.routeId === route.id &&
+          (!card.requiredFood || card.requiredFood === loadout.food) &&
+          !progress.unlockedCards.includes(card.id),
+      );
+      if (hasEligibleUnseen) weights[route.id]++;
+    }
+  }
+  if (loadout.gear === "gear_small_packbasket" && progress) {
+    for (const route of ROUTES) {
+      if (
+        SOUVENIRS.some(
+          (item) =>
+            item.routeId === route.id && !progress.souvenirs[item.id],
+        )
+      )
+        weights[route.id]++;
+    }
+  }
   if (recent.length >= 2 && recent.at(-1) === recent.at(-2))
     weights[recent.at(-1)!] = 0;
   return weights;
@@ -147,6 +180,7 @@ function tripResult(state: GameState, loadout: Loadout, seed: number) {
   const weights = routeWeights(
     loadout,
     state.completed.slice(-2).map((t) => t.routeId),
+    state,
   );
   let point = rng() * Object.values(weights).reduce((a, b) => a + b, 0);
   let routeId: RouteId = "route_huanglongxi";
@@ -165,11 +199,16 @@ function tripResult(state: GameState, loadout: Loadout, seed: number) {
   const souvenirs = souvenirsForCard(cardId);
   const ungathered = souvenirs.filter((s) => !state.souvenirs[s.id]);
   const souvenirPool = ungathered.length ? ungathered : souvenirs;
+  const baseDuration = (3600 + Math.floor(rng() * 10801)) * 1000;
+  const duration =
+    loadout.food === "food_brown_sugar_lianggao"
+      ? Math.round((baseDuration * 0.85) / 1000) * 1000
+      : baseDuration;
   return {
     routeId,
     cardId,
     souvenirId: souvenirPool[Math.floor(rng() * souvenirPool.length)].id,
-    duration: (3600 + Math.floor(rng() * 10801)) * 1000,
+    duration,
   };
 }
 export function availableLetters(state: GameState): Trip[] {
@@ -285,11 +324,12 @@ export function prepareTrip(
   state.bag = { ...loadout };
   state.phase = "packed";
   const wait = state.tutorialStarted
-    ? (120 +
-        Math.floor(
-          random(hashSeed(state.seed + state.nextTripNumber))() * 181,
-        )) *
-      1000
+    ? (loadout.gear === "gear_bamboo_whistle" ? 90 : 120) * 1000 +
+      Math.floor(
+        random(hashSeed(state.seed + state.nextTripNumber))() *
+          (loadout.gear === "gear_bamboo_whistle" ? 91 : 181),
+      ) *
+        1000
     : 15000;
   state.departureAt = state.lastSeenAt + wait;
   return state;

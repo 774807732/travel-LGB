@@ -281,5 +281,11 @@
   { "id": "card_jojo_03", "source": "outputs/art/source/jojo-stories-v1/card_jojo_03.png", "output": "public/art/cards/card_jojo_03.webp", "width": 1200 },
   { "id": "card_jojo_04", "source": "outputs/art/source/jojo-stories-v1/card_jojo_04.png", "output": "public/art/cards/card_jojo_04.webp", "width": 1200 },
   { "id": "souvenir_caterpillar", "source": "outputs/art/source/jojo-souvenirs-v1/souvenir_caterpillar.png", "output": "public/art/items/souvenir_caterpillar.png", "width": 300 },
-  { "id": "souvenir_wanza_noodles", "source": "outputs/art/source/jojo-souvenirs-v1/souvenir_wanza_noodles.png", "output": "public/art/items/souvenir_wanza_noodles.png", "width": 300 }
+  { "id": "souvenir_wanza_noodles", "source": "outputs/art/source/jojo-souvenirs-v1/souvenir_wanza_noodles.png", "output": "public/art/items/souvenir_wanza_noodles.png", "width": 300 },
+  { "id": "food_douhua_rice", "source": "outputs/art/source/shop-expansion-v1/food_douhua_rice.png", "output": "public/art/items/food_douhua_rice.webp", "width": 300 },
+  { "id": "food_sugar_oil_fruit", "source": "outputs/art/source/shop-expansion-v1/food_sugar_oil_fruit.png", "output": "public/art/items/food_sugar_oil_fruit.webp", "width": 300 },
+  { "id": "food_brown_sugar_lianggao", "source": "outputs/art/source/shop-expansion-v1/food_brown_sugar_lianggao.png", "output": "public/art/items/food_brown_sugar_lianggao.webp", "width": 300 },
+  { "id": "gear_enamel_tea_mug", "source": "outputs/art/source/shop-expansion-v1/gear_enamel_tea_mug.png", "output": "public/art/items/gear_enamel_tea_mug.webp", "width": 300 },
+  { "id": "gear_small_packbasket", "source": "outputs/art/source/shop-expansion-v1/gear_small_packbasket.png", "output": "public/art/items/gear_small_packbasket.webp", "width": 300 },
+  { "id": "gear_bamboo_whistle", "source": "outputs/art/source/shop-expansion-v1/gear_bamboo_whistle.png", "output": "public/art/items/gear_bamboo_whistle.webp", "width": 300 }
 ]

@@ -9,10 +9,10 @@ import { sixteenCardSave } from "./fixtures/sixteen-card-save";
 const cameo = CARDS.filter((c) => c.categoryId === "category_jojo");
 const meal = { food: "food_home_meal", gear: null } as const;
 
-test("叫叫为跨原四地的彩蛋分类，不增目的地、吃食、用具或出游条件", () => {
+test("叫叫仍为跨原四地的独立彩蛋，不绑定新增商品或出游条件", () => {
   assert.equal(ROUTES.length, 4);
-  assert.equal(FOODS.length, 4);
-  assert.equal(GEARS.length, 3);
+  assert.equal(FOODS.length, 7);
+  assert.equal(GEARS.length, 6);
   assert.equal(cameo.length, 4);
   assert.deepEqual(cameo.map((c) => c.routeId), ROUTES.map((r) => r.id));
   assert.ok(CARDS.slice(0, 16).every((c) => !c.categoryId));
