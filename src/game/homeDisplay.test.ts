@@ -155,10 +155,16 @@ test("窗边柜不再有摆放入口或操作，编辑器只保留小格架两�
   assert.match(css, /\.display-slots\s*\{[^}]*repeat\(2, minmax\(0, 1fr\)\)/);
 });
 
-test("家景监听就绪后同步当前尺寸，按压摆件保持家具锚点", async () => {
+test("家景监听就绪后同步当前尺寸，摆件缩小20%并按2.5D层板锚定", async () => {
   const app = await readFile("src/App.tsx", "utf8");
   const css = await readFile("src/styles.css", "utf8");
   const effect = app.slice(app.indexOf("const media = matchMedia(DESKTOP_MEDIA)"));
   assert.match(effect, /media\.addEventListener\("change", sync\);\s*\/\/[^\n]*\n\s*sync\(\);/);
+  assert.match(css, /\.display-prop\s*\{[^}]*width: 44px;[^}]*height: 44px;/);
+  assert.match(css, /\.display-prop \.item-art\s*\{[^}]*width: 80%;[^}]*height: 80%;/);
+  assert.match(css, /\.display-prop\[data-slot="shelfTop"\]\s*\{ top: 69%; \}/);
+  assert.match(css, /\.display-prop\[data-slot="shelfLower"\]\s*\{ top: 79%; \}/);
+  assert.match(css, /\.scene\[data-layout="wide"\] \.display-prop\[data-slot="shelfTop"\]\s*\{ top: 72%; \}/);
+  assert.match(css, /\.scene\[data-layout="wide"\] \.display-prop\[data-slot="shelfLower"\]\s*\{ top: 82\.5%; \}/);
   assert.match(css, /\.display-prop:active\s*\{\s*transform: translate\(-50%, -100%\) translateY\(1px\);/);
 });

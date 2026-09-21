@@ -1,5 +1,7 @@
 # 元素映射
 
+2026-09-21本地视觉映射：`src/styles.css`保留`.display-prop`手机44×44px、宽版54×54px点击热区；仅将其下`.item-art`设为`width/height:80%`。竖版`shelfTop/shelfLower`的`top`为69%/79%，宽版为72%/82.5%，`left`继续使用14%/13.6%，按压仍只下移1px且不改变家具锚点。`src/game/homeDisplay.test.ts`新增尺寸、四个锚点及最小热区断言；不改`DISPLAY_SLOTS`、`GameState.homeDisplay`、14件原PNG、内容ID或存档格式。93项测试/构建及独立档宽窄视觉、编辑入口/刷新复验通过；当前未提交、未切Mini `current`。
+
 2026-09-17 Git交付边界：运行时映射以两层`shelfTop/shelfLower`为准，窗边`window`仅在旧档校验/读取迁移中出现，不再有UI/CSS落点；代码已推送`main`（`e5ad380`）。尚未执行的“缩小20%＋2.5D调位”预计只涉及`.display-prop`横竖宽高与两层`top/left`锚点；当前映射和构建仍是下方93测试版本，不新增存档字段、内容ID或素材文件。本批未切Mini `current`。
 
 2026-09-16最新本地映射：`DISPLAY_SLOTS`/`HomeDisplay`只含`shelfTop`、`shelfLower`；`window`操作被拒绝，横竖CSS锚点与帮助中的窗边说明移除，`.display-slots`改两列。`isHomeDisplay`仅为兼容旧档继续校验历史window，`decodeSave`完整校验后投影为两位并标记迁移，`homeDisplay`展示也忽略退役字段；收藏数量/旅程/version=2/两个存档键不变。新增两项退役兼容回归，共93测试/构建与独立档通过；本地产物JS `game-BJe5XJ1W.js`、CSS `game-C-JPA4im.css`，未提交推送或发布。下方三位字段为历史映射。

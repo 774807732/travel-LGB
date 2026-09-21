@@ -1909,11 +1909,13 @@ textarea {
   display: grid;
   place-items: center;
 }
-.display-prop[data-slot="shelfTop"] { top: 70%; }
+.display-prop[data-slot="shelfTop"] { top: 69%; }
 .display-prop:active { transform: translate(-50%, -100%) translateY(1px); }
-.display-prop[data-slot="shelfLower"] { top: 80%; }
+.display-prop[data-slot="shelfLower"] { top: 79%; }
 .display-prop .item-art {
-  height: 100%;
+  /* 点击热区仍保持 44px；摆件视觉统一缩小 20%，并收进层板平面。 */
+  width: 80%;
+  height: 80%;
   filter: drop-shadow(0 2px 1px #4a382a30);
 }
 .display-empty {
@@ -1935,8 +1937,8 @@ textarea {
   width: 54px;
   height: 54px;
 }
-.scene[data-layout="wide"] .display-prop[data-slot="shelfTop"] { top: calc(72.3% + 9px); }
-.scene[data-layout="wide"] .display-prop[data-slot="shelfLower"] { top: calc(83.4% + 3px); }
+.scene[data-layout="wide"] .display-prop[data-slot="shelfTop"] { top: 72%; }
+.scene[data-layout="wide"] .display-prop[data-slot="shelfLower"] { top: 82.5%; }
 .display-entry {
   display: flex;
   align-items: center;
