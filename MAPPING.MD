@@ -1,6 +1,6 @@
 # 元素映射
 
-2026-09-21本地1.5.0映射：`FoodId`新增`food_douhua_rice/food_sugar_oil_fruit/food_brown_sugar_lianggao`，`GearId`新增`gear_enamel_tea_mug/gear_small_packbasket/gear_bamboo_whistle`；源图在`outputs/art/source/shop-expansion-v1/`，运行时图在`public/art/items/`并纳入61项素材清单。`routeWeights(loadout,recent,progress)`复用原四地权重，补全见闻/纪念物只在仍缺对应内容时+1；凉糕时长与竹哨等待在出发快照确定。`storage.ts`动态校验全部付费食物并给旧档缺失新键补0，存档version仍2。`App.tsx/.shop-tabs`提供双页签及路费提示。102测试、构建和独立档通过，未推送/发布。
+2026-09-21正式1.5.0映射：`FoodId`新增`food_douhua_rice/food_sugar_oil_fruit/food_brown_sugar_lianggao`，`GearId`新增`gear_enamel_tea_mug/gear_small_packbasket/gear_bamboo_whistle`；源图在`outputs/art/source/shop-expansion-v1/`，运行时图在`public/art/items/`并纳入61项素材清单。`routeWeights(loadout,recent,progress)`复用原四地权重，补全见闻/纪念物只在仍缺对应内容时+1；凉糕时长与竹哨等待在出发快照确定。`storage.ts`动态校验全部付费食物并给旧档缺失新键补0，存档version仍2。`App.tsx/.shop-tabs`提供双页签及路费提示。应用`5cb8cb0`已推送并发布Mini，`current → releases/5cb8cb0211d322cfe6528a63d11b5a7df928355e`；75个成品文件两次汇总SHA-256均为`4e92de3d7c69f4fa4de58de131654be0a3ae80fa5ae4e83557cbf365a0256ef3`，正式独立档验收通过。
 
 2026-09-21正式映射：1.4.9应用`08ebbda`已发布Mini，`current → releases/08ebbda0b48516be841cce79b28ef9711eaf2aab`。运行时摆位仍只有`shelfTop/shelfLower`；`.display-prop`热区手机44px/宽版54px，内部`.item-art`为80%，竖版`top`为69%/79%，宽版72%/82.5%，`left`为14%/13.6%。`homeDisplay`存档、退役`window`迁移、14件PNG和内容ID不变；正式宽窄独立档与刷新已通过。
 
