@@ -1,5 +1,7 @@
 # 元素映射
 
+2026-09-21正式映射：1.4.9应用`08ebbda`已发布Mini，`current → releases/08ebbda0b48516be841cce79b28ef9711eaf2aab`。运行时摆位仍只有`shelfTop/shelfLower`；`.display-prop`热区手机44px/宽版54px，内部`.item-art`为80%，竖版`top`为69%/79%，宽版72%/82.5%，`left`为14%/13.6%。`homeDisplay`存档、退役`window`迁移、14件PNG和内容ID不变；正式宽窄独立档与刷新已通过。
+
 2026-09-21本地视觉映射：`src/styles.css`保留`.display-prop`手机44×44px、宽版54×54px点击热区；仅将其下`.item-art`设为`width/height:80%`。竖版`shelfTop/shelfLower`的`top`为69%/79%，宽版为72%/82.5%，`left`继续使用14%/13.6%，按压仍只下移1px且不改变家具锚点。`src/game/homeDisplay.test.ts`新增尺寸、四个锚点及最小热区断言；不改`DISPLAY_SLOTS`、`GameState.homeDisplay`、14件原PNG、内容ID或存档格式。93项测试/构建及独立档宽窄视觉、编辑入口/刷新复验通过；当前未提交、未切Mini `current`。
 
 2026-09-17 Git交付边界：运行时映射以两层`shelfTop/shelfLower`为准，窗边`window`仅在旧档校验/读取迁移中出现，不再有UI/CSS落点；代码已推送`main`（`e5ad380`）。尚未执行的“缩小20%＋2.5D调位”预计只涉及`.display-prop`横竖宽高与两层`top/left`锚点；当前映射和构建仍是下方93测试版本，不新增存档字段、内容ID或素材文件。本批未切Mini `current`。
